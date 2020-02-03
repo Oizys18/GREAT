@@ -5,17 +5,24 @@
             <div class="join-container">
                 
                 <div class="input-with-label">
-                    <input v-model="email"
+                    <input v-model="email" v-bind:class="{error : error.email, complete:!error.email&&email.length!==0}"
                         id="email" placeholder="이메일을 입력하세요."
                         type="text"/>
                     <label for="email">이메일</label>
+                    <div class="error-text" v-if="error.email">
+                        {{error.email}}
+                    </div>
                 </div>
   
                 <div class="input-with-label">
                     <input v-model="password"
+                        v-bind:class="{error : error.password, complete:!error.password&&password.length!==0}"
                         id="password" :type="passwordType"
                         placeholder="비밀번호를 입력하세요."/>
                     <label for="password">비밀번호</label>
+                    <div class="error-text" v-if="error.password">
+                        {{error.password}}
+                    </div>
                 </div>
 
                 <div class="input-with-label">
@@ -34,9 +41,9 @@
 
                 <div class="input-with-label">
                     <label for="birth">생년월일</label>
-                    <input v-model="birth"
-                        id="birth" placeholder="생년월일을 입력하세요."
-                        type="date"/>
+                    <!-- <input v-model="birth" id="birth" placeholder="생년월일을 입력하세요." 
+                    type="date" data-date-picker="activated"> -->
+                    <v-date-picker v-model="picker" color="green lighten-1"></v-date-picker>
                 </div>
 
                 <div class="join-radio-container">
@@ -72,12 +79,15 @@
                         <label for="loginID">ID</label>
                         <input v-model="loginID"
                         id="loginID"
+                        @keyup.enter="login"
                         type="text"/>
                     </div>
                     <br>
                     <div class="input-with-label">
                         <label for="loginPW">PW</label>
-                        <input type="password" id="loginPW" />
+                        <input type="password" 
+                        @keyup.enter="login"
+                        id="loginPW" />
                     </div>
                 </div>
                 <v-btn rounded color="#FC913A" dark @click="login">확 인</v-btn>
@@ -154,26 +164,28 @@
 
             }
             , login(){
-            let {email, password} = this;
-            let data = {
-                email, password
-            }
-            UserApi.requestLogin(data,res=>{
+            let {loginID, loginPW} =this;
+            UserApi.requestLogin(loginID, loginPW,res=>{
             console.log(res);
             })
         },
-        joinRequest(){
-            this.join = true;
-        },
-        joinRedirect(){
-            this.email = '';
-            this.password = '';
-            this.passwordConfirm = '';
-            this.nickname = '';
-            this.birth = '';
-            this.gender = '';
-            this.join = false;
-        }
+            joinRequest(){
+                let {email, password} =this;
+                let data={
+                    email, password
+                }
+
+                this.join = true;
+            },
+            joinRedirect(){
+                this.email = '';
+                this.password = '';
+                this.passwordConfirm = '';
+                this.nickname = '';
+                this.birth = '';
+                this.gender = '';
+                this.join = false;
+            }
     },
     data() {
         return {
@@ -190,6 +202,7 @@
             error: {
                 email: false,
                 password: false,
+                loginID: false
             },
             isSubmit: false,
             component: this
