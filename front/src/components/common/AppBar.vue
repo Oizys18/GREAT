@@ -5,7 +5,9 @@
 
       <v-toolbar-title>GREAT</v-toolbar-title>
       <v-spacer></v-spacer>
-
+      <router-link to="/">| index |</router-link>
+      <router-link to="Main">| Main |</router-link>
+      <router-link to="Authentication">| Auth |</router-link>
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
@@ -37,7 +39,7 @@ export default {
 
 <style>
 #nav {
-  z-index:9999;
+  z-index:100;
   position: fixed;
   width:100%;
 }
