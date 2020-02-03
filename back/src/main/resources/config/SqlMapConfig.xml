@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.ssafy.great.dto.User"   		alias="user"/>
+		<typeAlias type="com.ssafy.great.dto.Store"   		alias="store"/>
+		<typeAlias type="com.ssafy.great.dto.Menu"   		alias="menu"/>
+		<typeAlias type="com.ssafy.great.dto.Review"   		alias="review"/>
+		<typeAlias type="com.ssafy.great.dto.Bookmark"   	alias="bookmark"/>
+	</typeAliases>
+	<mappers>
+	 	<mapper resource="query/user_sql.xml" />
+	 	<mapper resource="query/store_sql.xml" />
+	 	<mapper resource="query/bookmark_sql.xml" />
+	 	<mapper resource="query/review_sql.xml" />
+	 	<mapper resource="query/category_sql.xml"/>
+	</mappers>
+</configuration>

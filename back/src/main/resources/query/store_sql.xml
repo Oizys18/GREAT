@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sql.store">
+	<resultMap type="menu" id="menuMap">
+		<id column="menuId" property="id" />
+		<result column="menuName" property="name" />
+		<result column="menuPrice" property="price" />
+	</resultMap>
+
+	<resultMap type="store" id="storeMap">
+		<id column="id" property="id" />
+		<result column="store_id" property="store_id" />
+		<result column="name" property="name" />
+		<result column="open_time" property="open_time" />
+		<result column="map_x" property="map_x" />
+		<result column="map_y" property="map_y" />
+		<result column="location_name" property="location_name" />
+		<result column="rating" property="rating" />
+		<result column="phone" property="phone" />
+		<result column="tag" property="tag" />
+		<result column="category" property="category" />
+		<result column="image" property="image" />
+		<collection property="menu" ofType="menu"
+			resultMap="menuMap" />
+	</resultMap>
+
+	<select id="selectById" parameterType="integer"
+		resultMap="storeMap">
+		select s.*, m.id as menuId, m.name as menuName, m.price as menuPrice
+		from menu m
+		right outer join (select *
+							from store
+						   where id = #{id}) s
+		on s.id = m.store
+	</select>
+
+
+	<select id="selectByIdList" parameterType="java.util.HashMap"
+		resultType="store">
+		select *
+		from store
+		where id in
+		<foreach collection="idList" item="item" index="index"
+			separator="," open="(" close=")">
+			#{item.value}
+		</foreach>
+	</select>
+
+	<select id="selectByCategory" parameterType="integer"
+		resultType="store">
+		select *
+		from store
+		where category = #{category}
+		order by rating desc
+		limit 8
+	</select>
+
+	<update id="update" parameterType="store">
+		update store
+		   set store_id = #{store_id},
+			   name = #{id},
+			   open_time = #{open_time},
+			   map_x = #{map_x},
+			   map_y = #{map_y},
+		  	   location_name = #{location_name},
+			   rating = #{rating},
+			   phone = #{phone},
+			   category = #{category},
+			   tag = #{tag},
+			   image = #{image}
+		 where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="integer">
+		delete from store
+		where id = #{id}
+	</delete>
+
+	<insert id="insertStore" parameterType="store"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into store(store_id,
+						  name,
+						  open_time,
+						  map_x,
+						  map_y,
+						  location_name,
+						  rating,
+						  phone,
+						  category,
+						  tag,
+						  image)
+		values(#{store_id},
+			   #{name},
+			   #{open_time},
+			   #{map_x},
+			   #{map_y},
+			   #{location_name},
+			   #{rating},
+			   #{phone},
+			   #{category},
+			   #{tag},
+			   #{image})
+	</insert>
+
+	<insert id="insertMenu" parameterType="menu">
+		insert into menu(store, name, price)
+		values(#{store}, #{name}, #{price})
+	</insert>
+	
+	<select id="selectByStoreId" parameterType="Integer" resultType="store">
+		select *
+		  from store
+		 where store_id = #{store_id}
+	</select>
+</mapper>
