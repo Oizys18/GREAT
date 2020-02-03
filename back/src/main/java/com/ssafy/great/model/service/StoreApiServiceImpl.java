@@ -39,9 +39,9 @@ public class StoreApiServiceImpl {
 						sb.append(s[i] + " ");
 					}
 					System.out.println(sb.toString() + ": " + s[s.length - 1]);
-					li.add(new Menu(123123, Integer.parseInt((String) list.get("id")), sb.toString(), s[s.length - 1]));
+					li.add(new Menu(123123, 0, sb.toString(), s[s.length - 1]));
 				}
-			} else li = null;
+			} 
 			
 			int ranNum = (int) (Math.random() * 50);
 			d = (double) ranNum / 10;
