@@ -5,6 +5,37 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    reviews: [
+      {name: "Kin Khao",rating :"★★★☆☆", contents: "Thai"},
+      {name: 'Jū-Ni',rating :"★★☆☆☆", contents: "SushiJapanese $$$$"},
+      {name: 'Delfina',rating :"★☆☆☆", contents: "Pizza Casual"},
+      {name: 'San Tung', rating :"★★★★☆",contents: "Chinese  $$"},
+      {name: 'Anchor Oyster Bar', rating :"★★★☆☆",contents: "Seafood Cioppino"},
+      {name: 'Locanda',rating :"★★★☆☆", contents: "Italian"},
+      {name: 'Garden Creamery',rating :"★★★★★", contents: "Ice cream"},
+    ],
+    gridbookmarks:[
+      {title:"Jason Oner",star:true},
+      {title:"Travis Howard",star:false},
+      {title:"Ali Connors",star:false},
+      {title:"Cindy Baker",star:true},
+      {title:"ABCDEFG",star:false},
+      {title:"Oner",star:true},
+      {title:"SSAFY",star:true},
+      {title:"Vue",star:false},
+      {title:"Visual Code",star:false},
+      {title:"KaKao",star:true},
+      {title:"QWERTDF sdfsd",star:false},
+      {title:"BookMark",star:true},
+      {title:"Grid",star:true},
+      {title:"food",star:false},
+      {title:"npm",star:false},
+
+
+
+
+
+    ],
     categories: [
       "한식",
       "중식",
