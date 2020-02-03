@@ -1,6 +1,7 @@
 package com.ssafy.great.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.ssafy.great.dto.Store;
 
@@ -15,6 +16,9 @@ public interface StoreDao {
 	/** 식당 category에 해당하는 식당 목록 검색 */
 	List<Store> selectByCategory(int category);
 
+	/** x,y 좌표 기준 최소 거리 8개 식당 목록 검색 */
+	List<Store> selectByLocation(Map<String,Object> data);
+	
 	/** 식당 정보 수정 */
 	void update(Store store);
 

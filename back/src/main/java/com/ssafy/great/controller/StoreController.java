@@ -41,6 +41,15 @@ public class StoreController {
 		return RestUtil.handleSuccess(service.searchByCategory(category));
 	}
 	
+	@GetMapping("/store/location/{category}/{x}/{y}")
+	@ApiOperation("사용자 지정 위치로부터 가까운 식당 8개 목록 검색")
+	public ResponseEntity<Map<String,Object>> ssearchByLocation(
+							@PathVariable int category,
+							@PathVariable double x,
+							@PathVariable double y){
+		return RestUtil.handleSuccess(service.searchByLocation(category, x, y));
+	}
+	
 	@PutMapping("/store")
 	@ApiOperation("식당 정보 수정")
 	public ResponseEntity<Map<String,Object>> putStore(@RequestBody Store store){

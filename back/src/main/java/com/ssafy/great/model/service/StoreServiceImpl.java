@@ -1,6 +1,8 @@
 package com.ssafy.great.model.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,19 @@ public class StoreServiceImpl implements StoreService {
 	/** 식당 category에 해당하는 식당 목록 검색(1 grid block) */
 	public List<Store> searchByCategory(int category){
 		return dao.selectByCategory(category);
+	}
+	
+	/** 사용자 지정 위치로부터 가까운 식당 8개 목록 검색 
+	 * @param category 사용자가 선택한 카테고리 id
+	 * @param x 사용자 지정 위치 x좌표
+	 * @param y 사용자 지정 위치 y좌표
+	 */
+	public List<Store> searchByLocation(int category, double x, double y) {
+		Map<String,Object> data = new HashMap<String, Object>();
+		data.put("category", category);
+		data.put("x", x);
+		data.put("y", y);
+		return dao.selectByLocation(data);
 	}
 	
 	/** 식당 정보 수정 */
