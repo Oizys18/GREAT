@@ -24,11 +24,18 @@
     padding: 10px;
     margin-top: 10px;
     border: 1px solid grey !important;
+
+    overflow:hidden
   }
   /* info components */
   .user-details {
+    width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
+    text-align: center;
+  }
+  .btn-edit{
+    border: 1px solid red;
   }
   .user-modify {
     padding: 3px;
@@ -37,8 +44,9 @@
   }
  
   .modify-button {
-    padding: 7px 20px;
-    border: 1px solid grey;
+    padding: 5px 18px;
+    /* border: 1px solid grey; */
+    border: 2px solid #f8f9f9;
     border-radius: 5px;
     margin-left: 5px;
     margin-right: 5px;
@@ -51,17 +59,16 @@
     
     align-items: center;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 15px;
     margin-bottom: 20px;
     
   }
     /* radio css */
-
-  /* reviews components*/
   .radio-btn-group {
+    width:30%;
     margin: 0 auto;
     display: flex;
-    float: right;
+    /* float: right; */
     /* margin-top: 5px;
     margin-right: 10px; */
     
@@ -105,9 +112,12 @@
     font-size: 1.25rem;
     border: 1px solid #f1f1f1;
 }
-
+  /* reviews components*/
+  .slide-group{
+    /* border:1px solid red; */
+  }
   /* card components */
-  .review-card{
+  .tab-review-card{
     border: 0.5px solid black ;
     padding: 10px;
     float : left;
@@ -115,19 +125,37 @@
     margin-bottom: 5px;
     margin-right:10px; */
     margin : 10px 10px 5px 5px;
-    width: 150px;
-    height: 80px;
+    padding-top: 10%;
+    width: 170px;
+    height: 130px;
   }
   .card-elem{
     box-shadow :none !important;
   }
+  .review-card-name{
+  }
+  .review-card-contents{
+    margin-top :10px;
+    margin-bottom :10px;
+  }
+  .review-card-rating{
+    
+  }
 
   /* food,grid,info components */
 
+  /* grid list*/
+  .gridlist-box{
+    border: 1px solid red;
+    float: left;
+    width: 50%;
+  }
+ 
 @media screen and (min-width: 800px) {
   .mypage-container {
     width: 80%;
   }
+ 
   
 }
 
@@ -135,5 +163,16 @@
     .tab-category{
     margin: auto;
    }
+   .slide-group{
+     width:80%;
+   }
+   .box-container{
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+  }
+  .radio-btn-group{
+    width:80%;
+  }
+  
 }
 
