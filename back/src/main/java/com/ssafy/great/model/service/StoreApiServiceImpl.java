@@ -45,7 +45,6 @@ public class StoreApiServiceImpl {
 			
 			int ranNum = (int) (Math.random() * 50);
 			d = (double) ranNum / 10;
-			System.out.println(d);
 			Store s = new Store(123123, Integer.parseInt((String) list.get("id")), (String) list.get("name"),
 					(String) list.get("bizhourInfo"), Double.parseDouble((String) list.get("x")),
 					Double.parseDouble((String) list.get("y")), (String) list.get("roadAddress"), (double) d,
