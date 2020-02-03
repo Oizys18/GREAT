@@ -25,7 +25,8 @@
         <div>
           <v-card flat>
             <div class="contents">
-              <p>grid bookmark lists</p>
+              <!-- <p>grid bookmark lists</p> -->
+              <GridList/>
             </div>
           </v-card>
         </div>
@@ -62,6 +63,8 @@ import InfoTab from "@/components/Tab/InfoTab.vue";
 import Info from "@/components/Tab/Info.vue";
 import Reviews from "@/components/Tab/Reviews.vue";
 
+import GridList from "@/components/Tab/GridList.vue";
+
 export default {
   name: "Mypage",
   components: {
@@ -69,8 +72,8 @@ export default {
     GridTab,
     InfoTab,
     Info,
-
-    Reviews
+    Reviews,
+    GridList
   },
   data() {
     return {
