@@ -1,6 +1,6 @@
 <template>
   <div align='center'>
-    <v-sheet class="mx-auto" elevation="8" max-width="800">
+    <v-sheet class=""  max-width="800">
       <v-slide-group  v-model="model" class="slide-group" :show-arrows="showArrows">
         <v-slide-item 
           v-for="(n,index) in totalReiviews"

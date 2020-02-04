@@ -19,7 +19,12 @@
     </div>
     
     <div v-else class="user-details">
-      <p>
+        <div class="edit-with-label">
+          <label for="name_modify">이름</label>  
+          <input v-model="name" id="name_modify" type="text"/>
+        </div>
+
+        <!-- <p>
         이름:
         <input
           type="text"
@@ -29,7 +34,7 @@
 
           v-model="name"
         />
-      </p>
+        </p> -->
     </div>
 
     <!-- 아이디 -->
@@ -37,7 +42,11 @@
       <p>이메일: {{ email }}</p>
     </div>
     <div v-else class="user-details">
-      <p>
+      <div class="edit-with-label">
+        <label for="email_modify">이메일</label>  
+        <input v-model="email" id="email_modify" type="text"/>
+      </div>
+      <!-- <p>
         이메일:
         <input
           type="text"
@@ -46,7 +55,7 @@
           class="user-modify"
           v-model="email"
         />
-      </p>
+      </p> -->
     </div>
 
     <!-- 생년월일 -->
@@ -54,7 +63,11 @@
       <p>생년월일: {{ birth }}</p>
     </div>
     <div v-else class="user-details">
-      <p>
+      <div class="edit-with-label">
+        <label for="birth_modify">생년월일</label>  
+        <input v-model="birth" id="birth_modify" type="text"/>
+      </div>
+      <!-- <p>
         생년월일:
         <input
           type="text"
@@ -63,7 +76,7 @@
           class="user-modify"
           v-model="birth"
         />
-      </p>
+      </p> -->
     </div>
 
     <!-- 성별 -->
@@ -71,31 +84,26 @@
       <p>성별 : {{ gender }}</p>
     </div>
   
-    <div v-else class="gender-box">
-          
-                
-      <div class="radio-btn-group">
-        성별:  
-        <div class="radio">
-          <input type="radio" value="Male" v-model="gender"  id="male_modify" name="male_modify"/>
-          <label for="male_modify">Male</label>
+    <div v-else class="user-details">
+      <div class="edit-with-label">
+        <label for="gender">성별</label>
+        
+        <div class="mypage-radio-btn-group">
+          <div class="mypage-radio">
+            <input type="radio" value="Male" v-model="gender"  id="male_modify" name="male_modify"/>
+            <label for="male_modify">Male</label>
+          </div>
+          <div class="mypage-radio">
+            <input type="radio" value="Female" v-model="gender" id="female_modify" name="female_modify"/>
+            <label for="female_modify">Female</label>
+          </div>
         </div>
-        <div class="radio">
-          <input type="radio" value="Female" v-model="gender" id="female_modify" name="female_modify"/>
-          <label for="female_modify">Female</label>
-        </div>
-      </div>
 
-          <!-- <label><input type="radio" value="Male" v-model="gender"  id="male_modify" name="male_modify" >Male</label>
-          <label><input type="radio" value="Female" v-model="gender" id="female_modify" name="female_modify">Female</label> -->
+      </div>    
+
       
-                <!-- <input type="radio" v-model="gender" id="male_modify" name="male_modify" class="" :value="Male" checked />
-                <lable for="male_modify">Male</lable>
 
-                <input type="radio" v-model="gender" id="female_modify" name="female_modify" class="" :value="Female" checked /> 
-                <lable for="female_modify">Female</lable>  -->
-               
-      </div>
+    </div>
     
     <div v-if="!isInfo" class="user-details">
       <button v-on:click="cancle" class="modify-button">취소</button>
