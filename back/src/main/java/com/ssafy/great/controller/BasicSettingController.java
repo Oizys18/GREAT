@@ -46,7 +46,7 @@ public class BasicSettingController {
 		String[] typeList = {"korean","japanese","chinese","asian","buffet","koreanSnack","cafe","theOthers"};
 		String[] typeListKo = {"한식","일식","중식","아시아음식","뷔페","분식","카페","기타"};
 		int index = 0;
-		for(int i = 0; i < searchWordList.length; i++) {
+		for(int i = 2; i < searchWordList.length; i++) {
 			String searchWord = searchWordList[i] + searchBaseWord;
 			Map<String, Object> result2 = apiService.createStoreInfo(searchWord, typeList[0]);
 			for(int j = 0 ; j< typeList.length;j++) {
