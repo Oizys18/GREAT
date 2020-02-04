@@ -45,8 +45,8 @@ public class BasicSettingController {
 		String type="korean" ; 
 		String[] typeList = {"korean","japanese","chinese","asian","buffet","koreanSnack","cafe","theOthers"};
 		String[] typeListKo = {"한식","일식","중식","아시아음식","뷔페","분식","카페","기타"};
-		
-		for(int i = 0; i < searchWordList.length; i++) {
+		int index = 0;
+		for(int i = 2; i < searchWordList.length; i++) {
 			String searchWord = searchWordList[i] + searchBaseWord;
 			Map<String, Object> result2 = apiService.createStoreInfo(searchWord, typeList[0]);
 			for(int j = 0 ; j< typeList.length;j++) {
@@ -54,6 +54,7 @@ public class BasicSettingController {
 				LinkedHashMap<String, Object> result = (LinkedHashMap<String, Object>) resultData.get("result");
 				LinkedHashMap<String, Object> place = (LinkedHashMap<String, Object>) result.get("place");
 				ArrayList<LinkedHashMap<String,Object>> list = (ArrayList<LinkedHashMap<String,Object>>) place.get("list"); // list 타입은 LinkedHashMap
+				
 				storeApiService.parsingData(list,j+1);
 			}
 		}
