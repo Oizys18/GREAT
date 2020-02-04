@@ -1,5 +1,31 @@
 <template>
-  <div>
+<div>
+ <v-carousel
+    cycle
+    height="400"
+    hide-delimiter-background
+    show-arrows-on-hover
+  >
+    <v-carousel-item
+      v-for="(slide, i) in slides"
+      :key="i"
+    >
+      <v-sheet
+        :color="colors[i]"
+        height="100%"
+      >
+        <v-row
+          class="fill-height"
+          align="center"
+          justify="center"
+        >
+          <div class="display-3">{{ slide }} Slide</div>
+        </v-row>
+      </v-sheet>
+    </v-carousel-item>
+  </v-carousel>
+  </div>
+  <!-- <div>
     <div class="index-background ">
       <div class="index-curtain">
         <div class="index-banner animated fadeInDown delay-0.2s ">
@@ -7,7 +33,7 @@
             GrEat
           </span>
         </div>
-        <!-- <div class="index-container animated fadeInDown delay-0.4s">
+        <div class="index-container animated fadeInDown delay-0.4s">
           <div class="index-card-container">
             <div class="index-card">
               <label for="address-input" style="padding:3px; margin:10px;"
@@ -44,11 +70,14 @@
               </button>
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
+
+
+
 
 <script>
 import axios from "axios";
@@ -63,7 +92,21 @@ export default {
     return {
       address: "",
       category: "",
-      addressList: []
+      addressList: [],
+       colors: [
+          'indigo',
+          'warning',
+          'pink darken-2',
+          'red lighten-1',
+          'deep-purple accent-4',
+        ],
+        slides: [
+          'First',
+          'Second',
+          'Third',
+          'Fourth',
+          'Fifth',
+        ],
     };
   },
   methods: {
@@ -117,14 +160,14 @@ font-family: 'Fredericka the Great', cursive; */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; */
 }
-.index-background {
-  /* background-image: url("https://cdn.vox-cdn.com/thumbor/XTn-0tqjh037qW59XLmXoMlxXjE=/0x0:2618x1472/1200x675/filters:focal(1100x527:1518x945)/cdn.vox-cdn.com/uploads/chorus_image/image/64045970/tacobell_7.0.0.1493054804.0.jpg"); */
+/* .index-background {
+  background-image: url("https://cdn.vox-cdn.com/thumbor/XTn-0tqjh037qW59XLmXoMlxXjE=/0x0:2618x1472/1200x675/filters:focal(1100x527:1518x945)/cdn.vox-cdn.com/uploads/chorus_image/image/64045970/tacobell_7.0.0.1493054804.0.jpg");
   background-size: cover;
   background-color: rgb(248, 212, 141);
   height: 100vh;
   overflow-y: hidden;
   background-position: center;
-}
+} */
 /* 
 .index-curtain {
   background: -webkit-linear-gradient(
@@ -135,7 +178,7 @@ font-family: 'Fredericka the Great', cursive; */
   height: 100vh;
 } */
 
-.index-container {
+/* .index-container {
   display: inline-block;
 }
 
@@ -167,5 +210,5 @@ font-family: 'Fredericka the Great', cursive; */
   width: 92%;
   height: 90%;
   opacity: 100%;
-}
+} */
 </style>
