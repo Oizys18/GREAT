@@ -14,12 +14,11 @@ const requestLogin = (loginID, loginPW, callback, errorCallback) => { // eslint-
 		.then(
 			res => {
 				console.log(res);
-				this.$router.push("/");
 			}
 		)
 
 }
-export const requestRegister = (email, username, password, birth, gender) => {
+const requestRegister = (email, username, password, birth, gender) => {
 	let joinData = {
 		email: email,
 		name: username,
@@ -31,7 +30,6 @@ export const requestRegister = (email, username, password, birth, gender) => {
 	.then(
 		res => {
 			console.log(res);
-			this.$router.push("/");
 		}
 	)
 };
@@ -42,7 +40,8 @@ export const logout = () => axios.post('/api/auth/logout');
 
 
 const UserApi = {
-	requestLogin: (data, callback, errorCallback) => requestLogin(data, callback, errorCallback)
+	requestLogin: (data, callback, errorCallback) => requestLogin(data, callback, errorCallback),
+	requestRegister: (email, username, password, birth, gender) => requestRegister(email, username, password, birth, gender)
 }
 
 export default UserApi

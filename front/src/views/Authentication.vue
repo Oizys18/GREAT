@@ -35,7 +35,7 @@
             placeholder="비밀번호를 다시한번 입력하세요."
           />
           <label for="password-confirm">비밀번호 확인</label>
-					<div class="error-text" v-if="error.passwordConfirm">{{error.passwordConfirm}}</div>
+          <div class="error-text" v-if="error.passwordConfirm">{{error.passwordConfirm}}</div>
         </div>
 
         <div class="input-with-label">
@@ -45,8 +45,13 @@
 
         <div class="input-with-label">
           <label for="birth">생년월일</label>
-          <input v-model="birth" id="birth" placeholder="생년월일을 입력하세요." 
-          type="date" data-date-picker="activated">
+          <input
+            v-model="birth"
+            id="birth"
+            placeholder="생년월일을 입력하세요."
+            type="date"
+            data-date-picker="activated"
+          />
           <!-- <v-date-picker v-model="picker" color="green lighten-1"></v-date-picker> -->
         </div>
 
@@ -79,24 +84,23 @@
       </div>
     </div>
     <div class="login" v-else>
-      <h1>Login</h1>
-      <div class="login-container">
-        <div class="login-box">
-          <div class="input-with-label">
-            <label for="loginID">ID</label>
-            <input v-model="loginID" id="loginID" @keyup.enter="loginApi" type="text" />
+      <div class="login-subcontainer">
+        <h1>Login</h1>
+        <div class="login-container">
+          <div class="login-box">
+            <div class="input-with-label">
+              <label for="loginID">ID</label>
+              <input v-model="loginID" id="loginID" @keyup.enter="loginApi" type="text" />
+            </div>
+            <br />
+            <div class="input-with-label">
+              <label for="loginPW">PW</label>
+              <input v-model="loginPW" type="password" @keyup.enter="loginApi" id="loginPW" />
+            </div>
           </div>
-          <br />
-          <div class="input-with-label">
-            <label for="loginPW">PW</label>
-            <input v-model="loginPW" type="password" @keyup.enter="loginApi" id="loginPW" />
-          </div>
+          <v-btn rounded color="#FC913A" dark @click="loginApi">확 인</v-btn>
         </div>
-        <v-btn rounded color="#FC913A" dark @click="loginApi">확 인</v-btn>
-      </div>
-      <p></p>
-
-      <div class="sns-login">
+				<div class="sns-login">
         <h3>SNS 로그인</h3>
         <SocialLogin />
       </div>
@@ -110,6 +114,9 @@
           <button @click="joinRequest" class="btn--text">회원가입</button>
         </div>
       </div>
+      </div>
+      
+      <p></p>
     </div>
   </div>
 </template>
@@ -147,10 +154,10 @@ export default {
     },
     email: function(v) {
       this.checkForm();
-		},
-		passwordConfirm: function(v){
-			this.checkForm();
-		}
+    },
+    passwordConfirm: function(v) {
+      this.checkForm();
+    }
   },
   methods: {
     checkForm() {
@@ -165,14 +172,13 @@ export default {
         this.error.password = "영문,숫자 포함 8 자리이상이어야 합니다.";
       else this.error.password = false;
 
-			if(
-				this.passwordConfirm.length > 0 &&
-				this.passwordConfirm != this.password &&
-				this.error.password == false
-			)
-
-				this.error.passwordConfirm = "입력한 비밀번호와 일치해야 합니다.";
-			else this.error.passwordConfirm = false;
+      if (
+        this.passwordConfirm.length > 0 &&
+        this.passwordConfirm != this.password &&
+        this.error.password == false
+      )
+        this.error.passwordConfirm = "입력한 비밀번호와 일치해야 합니다.";
+      else this.error.passwordConfirm = false;
       let isSubmit = true;
       Object.values(this.error).map(v => {
         if (v) isSubmit = false;
@@ -187,7 +193,9 @@ export default {
     },
     joinApi() {
       let { email, password, nickname, birth, gender } = this;
-      UserApi.requestRegister();
+      UserApi.requestRegister(email, nickname, password, birth, gender, res => {
+				console.log(res);
+			});
     },
     joinRequest() {
       this.join = true;
@@ -199,10 +207,10 @@ export default {
       this.nickname = "";
       this.birth = "";
       this.gender = "";
-			this.join = false;
-			this.error.email = false;
-			this.error.password = false;
-			this.error.passwordConfirm = false;
+      this.join = false;
+      this.error.email = false;
+      this.error.password = false;
+      this.error.passwordConfirm = false;
     }
   },
   data() {
