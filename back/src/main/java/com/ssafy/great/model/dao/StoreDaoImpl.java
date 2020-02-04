@@ -32,7 +32,16 @@ public class StoreDaoImpl implements StoreDao{
     public List<Store> selectByCategory(int category){
         return session.selectList("sql.store.selectByCategory", category);
     }
-
+    
+    /** x,y 좌표 기준 최소 거리 8개 식당 목록 검색 
+     * @param data('x') 사용자 위치 x좌표
+     * 		  data('y') 사용자 위치 y좌표
+     * 		  data('category') 카테고리 id
+     */
+    public List<Store> selectByLocation(Map<String,Object> data){
+    	return session.selectList("sql.store.selectByLocation", data);
+    }
+    
     /** 식당 정보 수정 */
     public void update(Store store){
         session.update("sql.store.update", store);

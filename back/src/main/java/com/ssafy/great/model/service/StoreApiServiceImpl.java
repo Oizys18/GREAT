@@ -39,13 +39,12 @@ public class StoreApiServiceImpl {
 						sb.append(s[i] + " ");
 					}
 					System.out.println(sb.toString() + ": " + s[s.length - 1]);
-					li.add(new Menu(123123, Integer.parseInt((String) list.get("id")), sb.toString(), s[s.length - 1]));
+					li.add(new Menu(123123, 0, sb.toString(), s[s.length - 1]));
 				}
-			} else li = null;
+			} 
 			
 			int ranNum = (int) (Math.random() * 50);
 			d = (double) ranNum / 10;
-			System.out.println(d);
 			Store s = new Store(123123, Integer.parseInt((String) list.get("id")), (String) list.get("name"),
 					(String) list.get("bizhourInfo"), Double.parseDouble((String) list.get("x")),
 					Double.parseDouble((String) list.get("y")), (String) list.get("roadAddress"), (double) d,

@@ -29,7 +29,9 @@
 
 	<select id="selectById" parameterType="integer"
 		resultMap="storeMap">
-		select s.*, m.id as menuId, m.name as menuName, m.price as menuPrice
+		select s.id, s.store_id, s.name, s.open_time, s.map_x, s.map_y,
+			   s.location_name, s.rating, s.phone, s.tag, s.category, s.image,
+			   m.id as menuId, m.name as menuName, m.price as menuPrice
 		from menu m
 		right outer join (select *
 							from store
@@ -40,8 +42,9 @@
 
 	<select id="selectByIdList" parameterType="java.util.HashMap"
 		resultType="store">
-		select *
-		from store
+		select s.id, s.store_id, s.name, s.open_time, s.map_x, s.map_y,
+			   s.location_name, s.rating, s.phone, s.tag, s.category, s.image
+		from store s
 		where id in
 		<foreach collection="idList" item="item" index="index"
 			separator="," open="(" close=")">
@@ -51,13 +54,14 @@
 
 	<select id="selectByCategory" parameterType="integer"
 		resultType="store">
-		select *
-		from store
+		select s.id, s.store_id, s.name, s.open_time, s.map_x, s.map_y,
+			   s.location_name, s.rating, s.phone, s.tag, s.category, s.image
+		from store s
 		where category = #{category}
 		order by rating desc
 		limit 8
 	</select>
-
+	
 	<update id="update" parameterType="store">
 		update store
 		   set store_id = #{store_id},
@@ -65,6 +69,7 @@
 			   open_time = #{open_time},
 			   map_x = #{map_x},
 			   map_y = #{map_y},
+			   location = point(#{map_x}, #{map_y})
 		  	   location_name = #{location_name},
 			   rating = #{rating},
 			   phone = #{phone},
@@ -86,6 +91,7 @@
 						  open_time,
 						  map_x,
 						  map_y,
+						  location,
 						  location_name,
 						  rating,
 						  phone,
@@ -97,6 +103,7 @@
 			   #{open_time},
 			   #{map_x},
 			   #{map_y},
+			   point(#{map_x}, #{map_y}),
 			   #{location_name},
 			   #{rating},
 			   #{phone},
@@ -111,8 +118,19 @@
 	</insert>
 	
 	<select id="selectByStoreId" parameterType="Integer" resultType="store">
-		select *
-		  from store
+		select s.id, s.store_id, s.name, s.open_time, s.map_x, s.map_y,
+			   s.location_name, s.rating, s.phone, s.tag, s.category, s.image
+		  from store s
 		 where store_id = #{store_id}
+	</select>
+	
+	<select id="selectByLocation" parameterType="java.util.HashMap" resultType="store">
+		select s.id, s.store_id, s.name, s.open_time, s.map_x, s.map_y,
+			   s.location_name, s.rating, s.phone, s.tag, s.category, s.image
+		  from store s
+		 where category = #{category}
+		   and ST_Distance_Sphere(location, point(#{x}, #{y})) <![CDATA[<]]> 1000
+		 order by ST_Distance_Sphere(location, point(#{x}, #{y}))
+		 limit 8
 	</select>
 </mapper>
