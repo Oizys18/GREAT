@@ -1,5 +1,6 @@
 *:focus {
     outline: none;
+    background-color: lightyellow;
   }
 
 .login {
