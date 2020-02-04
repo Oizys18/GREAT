@@ -1,7 +1,9 @@
 <template>
   <div id="app">
+    <v-app>
     <AppBar />
     <router-view />
+    </v-app>
   </div>
 </template>
 <script>
@@ -21,9 +23,9 @@ export default {
 #app {
   font-family: 'Noto Sans KR', sans-serif;
   /* font-family: "Avenir", Helvetica, Arial, sans-serif; */
-  -webkit-font-smoothing: antialiased;
+  /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: center; */
   /* color: #2c3e50; */
 }
 </style>
