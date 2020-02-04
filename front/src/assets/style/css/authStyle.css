@@ -3,11 +3,17 @@
     background-color: lightyellow;
   }
 
+.auth{
+    padding-top: 30px;
+}
+
 .login {
     display: flex;
     flex-direction: column;
+    padding-top: 10vh;
     margin: 0 auto;
-    width: 60%;
+    width: 70%;
+    
 }
 
 .login .input-with-label {
@@ -23,7 +29,7 @@
     padding: 0 15px 0 105px;
     box-sizing: border-box;
     color: #000;
-    background-color: lightyellow;
+    background-color: white;
     /* border: 1px solid #000;
     border-radius: 3px; */
     font-size: 13px;
@@ -37,27 +43,30 @@
 }
 
 .login h1 {
-    padding-top: 70px;
+    padding-top: 30px;
     padding-bottom: 30px;
     color: dimgray;
     font-weight: 900;
 }
+
 .login .login-container {
-    width:100%;
+    width: 100%;
     margin: 0 auto;
     margin-top: 10px;
     margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
 }
 .login .login-container .login-box {
     text-align: left;
     padding-bottom: 10px;
+    display: block;
 }
 
 .login .login-container .btn--login{
     width: 100%;
     box-shadow: none;
     line-height: 50px;
-    
 }
 .login .login-container button {
     width: 100%;
@@ -70,12 +79,25 @@
     box-shadow: none;
 }
 
-.login .sns-login {
-    margin: 0 auto;
+.login .login-subcontainer{
+    background-color: lightyellow;
     width: 100%;
-    margin-bottom: 30px;
-    text-align: right;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border : 5px solid orange;
+    border-radius: 25px;
 }
+
+.login .sns-login {
+    width: 100%;
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 .login .sns-login .google-login {
     display: inline-block;
 }
@@ -170,6 +192,12 @@
     color: #000;
 }
 
+.join .error-text{
+    font-size: x-small;
+    color: rgb(255, 61, 0);
+    text-align: right;
+}
+
 .join button{
     margin-left: 5px;
     margin-right: 5px;
@@ -256,22 +284,23 @@
 
 @media screen and (min-width: 600px){
     .login {
-        width: 40%;
+        width: 50%;
     }
-    
-    
+     
 }
 
 @media screen and (min-width: 800px){
     .login .login-container .login-box{
         width: 79%;
         float: left;
+        margin-right: 7%;
     }
     .login .login-container .v-btn:not(.v-btn--round).v-size--default{
         height: 110px;
         width: 9%;
         float: right;
     }
+    
     .join {
         width: 40%;
     }
