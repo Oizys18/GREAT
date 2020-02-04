@@ -10,7 +10,7 @@ const requestLogin = (loginID, loginPW, callback, errorCallback) => { // eslint-
 	let loginData = new Map();
 	loginData.set('email', loginID);
 	loginData.set('password', loginPW);
-	return axios.post('http://localhost:8080/user/login', loginData)
+	return axios.post('http://13.124.1.176:8080/user/login', loginData)
 		.then(
 			res => {
 				console.log(res);
@@ -27,7 +27,7 @@ export const requestRegister = (email, username, password, birth, gender) => {
 		birth: birth,
 		gender: gender
 	};
-	axios.post('http://localhost:8080/user/join', joinData)
+	axios.post('http://13.124.1.176:8080/user/join', joinData)
 	.then(
 		res => {
 			console.log(res);

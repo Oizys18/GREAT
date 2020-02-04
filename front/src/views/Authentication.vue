@@ -20,7 +20,7 @@
             v-model="password"
             v-bind:class="{error : error.password, complete:!error.password&&password.length!==0}"
             id="password"
-            :type="passwordType"
+            type="password"
             placeholder="비밀번호를 입력하세요."
           />
           <label for="password">비밀번호</label>
@@ -30,11 +30,12 @@
         <div class="input-with-label">
           <input
             v-model="passwordConfirm"
-            :type="passwordConfirmType"
+            type="password"
             id="password-confirm"
             placeholder="비밀번호를 다시한번 입력하세요."
           />
           <label for="password-confirm">비밀번호 확인</label>
+					<div class="error-text" v-if="error.passwordConfirm">{{error.passwordConfirm}}</div>
         </div>
 
         <div class="input-with-label">
@@ -146,21 +147,32 @@ export default {
     },
     email: function(v) {
       this.checkForm();
-    }
+		},
+		passwordConfirm: function(v){
+			this.checkForm();
+		}
   },
   methods: {
     checkForm() {
-      if (this.email.length >= 0 && !EmailValidator.validate(this.email))
+      if (this.email.length > 0 && !EmailValidator.validate(this.email))
         this.error.email = "이메일 형식이 아닙니다.";
       else this.error.email = false;
 
       if (
-        this.password.length >= 0 &&
+        this.password.length > 0 &&
         !this.passwordSchema.validate(this.password)
       )
         this.error.password = "영문,숫자 포함 8 자리이상이어야 합니다.";
       else this.error.password = false;
 
+			if(
+				this.passwordConfirm.length > 0 &&
+				this.passwordConfirm != this.password &&
+				this.error.password == false
+			)
+
+				this.error.passwordConfirm = "입력한 비밀번호와 일치해야 합니다.";
+			else this.error.passwordConfirm = false;
       let isSubmit = true;
       Object.values(this.error).map(v => {
         if (v) isSubmit = false;
@@ -187,7 +199,10 @@ export default {
       this.nickname = "";
       this.birth = "";
       this.gender = "";
-      this.join = false;
+			this.join = false;
+			this.error.email = false;
+			this.error.password = false;
+			this.error.passwordConfirm = false;
     }
   },
   data() {
@@ -205,7 +220,7 @@ export default {
       error: {
         email: false,
         password: false,
-        loginID: false
+        passwordConfirm: false
       },
       isSubmit: false,
       component: this
