@@ -5,7 +5,7 @@
     </div>
 
     <v-tabs class="tab-container"
-     color="#F5331E"  >
+     color="#FFA578"  >
       <FoodTab />
       <GridTab />
       <InfoTab />
@@ -27,8 +27,6 @@
           <v-card flat>
             <div class="contents">
               <!-- <p>grid bookmark lists</p> -->
-              <!-- 전체 그리드 북마크 목록을 두 화면에 나줘서 보여주기 -->
-              <GridList />
               <GridList />
             </div>
           </v-card>

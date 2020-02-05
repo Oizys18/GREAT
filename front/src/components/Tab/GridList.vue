@@ -1,14 +1,15 @@
 <template>
   <div class="gridlist-box">
-      <v-list>
-        <!-- <v-list-item v-for="(item,index) in items" :key="item.title">
+      <v-list class="">
+        <v-list-item v-for="(item,index) in items" :key="item.title"
+          class="gridbookmark-container">
           <GridBookmark :gridbookmarkIdx=index />
-        </v-list-item> -->
+          <v-divider v-if="isdivider(index)" class="mx-4" vertical></v-divider>
+        </v-list-item>
         
-
-        <v-list-item v-for="idx in 5 "  :key="idx" >
+        <!-- <v-list-item v-for="idx in 5 "  :key="idx"  >
           <GridBookmark :gridbookmarkIdx=idx />
-        </v-list-item>  
+        </v-list-item>   -->
 
       </v-list>
   </div>
@@ -33,6 +34,12 @@ export default {
       return this.$store.state.gridbookmarks;
     },
   
+  },
+  methods:{
+    isdivider(index){
+      if(index%2!=0) return false;
+      else return true;
+    }
   }
 };
 </script>
