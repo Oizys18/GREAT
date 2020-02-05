@@ -26,6 +26,7 @@ CREATE TABLE `store` (
   `open_time` varchar(500) NOT NULL,
   `map_x` double NOT NULL,
   `map_y` double not null,
+  `location` point not null,
   `location_name` varchar(50) not null,
   `rating` double not null,
   `category` int not null,
@@ -37,7 +38,9 @@ CREATE TABLE `store` (
 alter table store add constraint uni_store_id unique(`store_id`);
 alter table store add constraint fk_category_id
 	foreign key(category) references category(id);
-    
+
+CREATE SPATIAL INDEX geo ON store (location);
+
 CREATE TABLE `menu` (
   `id` int NOT NULL auto_increment,
   `store` int NOT NULL,

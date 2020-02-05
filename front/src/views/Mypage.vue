@@ -4,7 +4,8 @@
       <h2>{{ name }}</h2>
     </div>
 
-    <v-tabs class="tab-container">
+    <v-tabs class="tab-container"
+     color="#F5331E"  >
       <FoodTab />
       <GridTab />
       <InfoTab />
@@ -26,7 +27,9 @@
           <v-card flat>
             <div class="contents">
               <!-- <p>grid bookmark lists</p> -->
-              <GridList/>
+              <!-- 전체 그리드 북마크 목록을 두 화면에 나줘서 보여주기 -->
+              <GridList />
+              <GridList />
             </div>
           </v-card>
         </div>
@@ -87,6 +90,11 @@ export default {
      
     }
   },
+  computed:{
+    gridbookmarks: function(){
+      return this.$store.state.gridbookmarks;
+    }
+  }
 
 };
 </script>

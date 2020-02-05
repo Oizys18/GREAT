@@ -3,6 +3,8 @@ package com.ssafy.great.dto;
 import java.sql.Timestamp;
 import java.util.List;
 
+import org.locationtech.jts.geom.Point;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -15,6 +15,9 @@ public interface StoreService {
 	/** 식당 category에 해당하는 식당 목록 검색(1 grid block) */
 	List<Store> searchByCategory(int category);
 
+	/** 사용자 지정 위치로부터 가까운 식당 8개 목록 검색 */
+	List<Store> searchByLocation(int category, double x, double y);
+	
 	/** 식당 정보 수정 */
 	void updateStore(Store store);
 
