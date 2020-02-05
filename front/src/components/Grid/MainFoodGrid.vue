@@ -1,14 +1,12 @@
 <template>
   <div class="small-grid">
-    <button class="small-box"><GridItem :name="[this.itemName[0]]" /></button>
-    <button class="small-box"><GridItem :name="[this.itemName[1]]" /></button>
-    <button class="small-box"><GridItem :name="[this.itemName[2]]" /></button>
-    <button class="small-box"><GridItem :name="[this.itemName[3]]" /></button>
+    <template v-for="idx in indexList.slice(0,4)">
+      <button class="small-box" :key="idx"><GridItem :name="[itemName[idx].name]" /></button>
+    </template>
     <div class="small-category">{{ categoryName }}</div>
-    <button class="small-box"><GridItem :name="[this.itemName[4]]" /></button>
-    <button class="small-box"><GridItem :name="[this.itemName[5]]" /></button>
-    <button class="small-box"><GridItem :name="[this.itemName[6]]" /></button>
-    <button class="small-box"><GridItem :name="[this.itemName[7]]" /></button>
+    <template v-for="idx in indexList.slice(4,8)">
+      <button class="small-box" :key="idx"><GridItem :name="[itemName[idx].name]" /></button>
+    </template>
   </div>
 </template>
 
@@ -21,7 +19,9 @@ export default {
     GridItem
   },
   data() {
-    return {};
+    return {
+      indexList: [0,1,2,3,4,5,6,7]
+    };
   },
   props: ["num"],
   methods: {
@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     categoryName() {
-      return this.$store.state.categories[this.num];
+      return this.$store.state.categories[this.num].name;
     },
     itemName() {
       return this.$store.state[this.categoryName];
@@ -40,4 +40,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+</style>
