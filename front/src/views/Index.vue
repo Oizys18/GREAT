@@ -1,112 +1,78 @@
 <template>
-<div>
- <v-carousel
-    cycle
-    height="400"
-    hide-delimiter-background
-    show-arrows-on-hover
-  >
-    <v-carousel-item
-      v-for="(slide, i) in slides"
-      :key="i"
-    >
-      <v-sheet
-        :color="colors[i]"
-        height="100%"
-      >
-        <v-row
-          class="fill-height"
-          align="center"
-          justify="center"
+  <div class="carousel-container">
+    <!-- mobile carousel -->
+    <div class="small-screen-carousel" style="font-size:100px;">
+      This is mobile carousel
+    </div>
+
+    <div class="big-screen-carousel">
+      <span id="floatIMG" class="floating-IMG">
+        <span class="floating-text">
+          GrEAT
+        </span>
+      </span>
+      <div class="index-curtain"></div>
+      <div class="back-carousel">
+        <v-carousel
+          v-model="model"
+          height="100vh"
+          hide-delimiter-background
+          show-arrows-on-hover
         >
-          <div class="display-3">{{ slide }} Slide</div>
-        </v-row>
-      </v-sheet>
-    </v-carousel-item>
-  </v-carousel>
-  </div>
-  <!-- <div>
-    <div class="index-background ">
-      <div class="index-curtain">
-        <div class="index-banner animated fadeInDown delay-0.2s ">
-          <span>
-            GrEat
-          </span>
-        </div>
-        <div class="index-container animated fadeInDown delay-0.4s">
-          <div class="index-card-container">
-            <div class="index-card">
-              <label for="address-input" style="padding:3px; margin:10px;"
-                >주소입력</label
-              >
-              <input
-                type="text"
-                id="address-input"
-                v-model="address"
-                style="border:1px solid; margin:10px; padding:10px;"
-              />
-              <button
-                @click="getXY"
-                style="border:1px solid; margin: 10px; padding:10px;"
-              >
-                GOGO
-              </button>
-              <br />
-              <p v-for="x in this.addressList" :key="x - id">
-                {{ x.address.address_name }}
-                <button>[선택]</button>
-              </p>
-              <label for="category-input" style="padding:3px; margin:10px;"
-                >카테고리</label
-              >
-              <input
-                type="text"
-                id="category-input"
-                v-model="category"
-                style="border:1px solid; margin:10px; padding:10px;"
-              />
-              <button style="border:1px solid; margin: 10px; padding:10px;">
-                GOGO
-              </button>
+          <v-carousel-item v-for="color in colors" :key="color">
+            <v-sheet
+              class="back-carousel-sheet"
+              :color="color"
+              height="100%"
+              tile
+            >
+            </v-sheet>
+          </v-carousel-item>
+        </v-carousel>
+      </div>
+      <div class="front-wrapper-container">
+        <div>
+          <div :key="this.model">
+            <div tile>
+              <div class="front-wrapper-title animated fadeInDown delay:0.2s">
+                {{ this.title[this.model] }}
+              </div>
+              <div class="front-wrapper-content animated fadeInDown delay:0.3s">
+                {{ this.content[this.model] }}<br/>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 </template>
-
-
-
 
 <script>
 import axios from "axios";
 import "@/assets/style/css/animated.css";
-// import CardContainer from "@/components/common/CardContainer.vue";
 export default {
   name: "Index",
-  components: {
-    // CardContainer
-  },
+  components: {},
   data() {
     return {
       address: "",
       category: "",
       addressList: [],
-       colors: [
-          'indigo',
-          'warning',
-          'pink darken-2',
-          'red lighten-1',
-          'deep-purple accent-4',
-        ],
-        slides: [
-          'First',
-          'Second',
-          'Third',
-          'Fourth',
-          'Fifth',
-        ],
+      colors: ["warning", "pink darken-2", "red lighten-1"],
+      model: 0,
+      title: [
+        "🎉GrEAT과 함께 메뉴를 정해봐요🍔",
+        "🐱‍💻GrEAT is a good service!🐱‍🏍",
+        "😥Please, use GrEAT🐱‍🚀"
+      ],
+      content: {
+        0:"내 주변에서 갈 만한 식당 정하기",
+        1:`1.주소를 입력! 2.원하는 카테고리 선택! 3.START`,
+        2:"제발 사용해주세요ㅠ"
+      },
+      // contentA: `1.주소를 입력! 2.원하는 카테고리 선택 \\n 3.START`,
+      contentC: `3.START`,
     };
   },
   methods: {
@@ -122,93 +88,106 @@ export default {
         })
         .then(res => {
           this.addressList = res.data.documents;
-          console.log(res.data.documents[0].y);
-          console.log(res.data.documents[0].x);
+          // console.log(res.data.documents[0].y);
+          // console.log(res.data.documents[0].x);
         });
+    },
+    mouseIsMoving(e) {
+      var hamX = document.getElementById("floatIMG").offsetLeft;
+      var hamY = document.getElementById("floatIMG").offsetTop;
+      var x = (hamX - e.pageX) * 0.1;
+      var y = (hamY - e.pageY) * 0.1;
+      console.log(hamX, hamY);
+      document.getElementById("floatIMG").style.webkitTransform =
+        "translate(" + x + "px" + "," + y + "px)";
     }
   },
+
+  mounted() {
+    window.addEventListener("mousemove", this.mouseIsMoving);
+  }, //mounted
   watch: {
     address() {
-      console.log(this.address);
+      // console.log(this.address);
     }
   }
 };
 </script>
 
 <style>
-/* font-family: 'Lobster', cursive;
-font-family: 'Righteous', cursive;
-font-family: 'Poiret One', cursive;
-font-family: 'Josefin Slab', serif;
-font-family: 'Carter One', cursive;
-font-family: 'Fredericka the Great', cursive; */
-
-.index-banner {
-  font-family: "Lobster", cursive;
-  position: flex;
-  padding-top: 5vh;
-  justify-content: center;
-  font-size: 23vh;
-  color: rgba(246, 8, 0, 0.787);
-  /* color:rgb(255, 94, 0); */
-  /* font-weight: bold; */
-  /* background: -webkit-linear-gradient(
-    rgb(255, 255, 255),
-    rgb(98, 98, 98),
-    rgb(0, 0, 0)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
-}
-/* .index-background {
-  background-image: url("https://cdn.vox-cdn.com/thumbor/XTn-0tqjh037qW59XLmXoMlxXjE=/0x0:2618x1472/1200x675/filters:focal(1100x527:1518x945)/cdn.vox-cdn.com/uploads/chorus_image/image/64045970/tacobell_7.0.0.1493054804.0.jpg");
-  background-size: cover;
-  background-color: rgb(248, 212, 141);
-  height: 100vh;
-  overflow-y: hidden;
+.floating-IMG {
+  background-image: url("https://i2.wp.com/freepngimages.com/wp-content/uploads/2016/11/bacon-burger.png?fit=895%2C895");
   background-position: center;
-} */
-/* 
-.index-curtain {
-  background: -webkit-linear-gradient(
-    rgb(255, 145, 0),
-    rgba(255, 217, 0, 0.931),
-    rgba(253, 232, 139, 0.397)
-  );
-  height: 100vh;
-} */
-
-/* .index-container {
-  display: inline-block;
+  background-size: contain;
+  z-index: 3;
+  position: fixed;
+  top: 32vh;
+  left: 55vw;
+  height: 50vh;
+  width: 40vw;
+  /* -webkit-transform:rotate(10deg); */
+  /* -webkit-transform:translate() */
+}
+.floating-text {
+  /* text */
+  z-index: 3;
+  position: relative;
+  display: flex;
+  top: 10vh;
+  justify-content: center;
+  align-content: center;
+  font-size: 13vh;
+  font-family: "Lobster", cursive;
+  text-shadow: 3px 10px 5px rgba(0, 0, 0, 0.541);
+  color: rgba(255, 0, 0, 0.856);
 }
 
-@media (max-width: 800px) {
-  .index-banner {
-    font-size: 23vw;
-    padding-top: 10vh;
+.index-curtain {
+  z-index: 2;
+  position: fixed;
+  left: 5vw;
+  top: 12vh;
+  background-color: white;
+  width: 67vw;
+  height: 80vh;
+  border-radius: 15px;
+  box-shadow: 0 0 20px darkslategray;
+}
+.back-carousel {
+  z-index: 1;
+  position: relative;
+}
+.front-wrapper-title {
+  font-family: "Noto Sans KR", sans-serif;
+  position: fixed;
+  z-index: 4;
+  left: 10vw;
+  top: 20vh;
+  font-size: 3vw;
+  color: black;
+  font-weight: bold;
+}
+.front-wrapper-content {
+  font-family: "Noto Sans KR", sans-serif;
+  position: fixed;
+  z-index: 4;
+  left: 14vw;
+  top: 30vh;
+  font-size: 2vw;
+  color: black;
+  font-weight: bold;
+}
+
+@media (min-width: 800px) {
+  .small-screen-carousel {
+    display: none;
   }
 }
-
-.index-card-container {
-  width: 500px;
-  height: 350px;
-  background: black;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  opacity: 70%;
-  border: 1px solid black;
-  border-radius: 15px;
+@media (max-width: 800px) {
+  .big-screen-carousel {
+    display: none;
+  }
+  .small-screen-carousel {
+  }
 }
-.index-card-container:hover {
-  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.507);
-}
-
-.index-card {
-  background-color: white;
-  margin: 20px;
-  border-radius: 10px;
-  width: 92%;
-  height: 90%;
-  opacity: 100%;
-} */
 </style>
