@@ -32,22 +32,17 @@
       </div>
       <div class="front-wrapper-container">
         <div>
-          <div :key="this.model"> 
+          <div :key="this.model">
             <div tile>
-              <div
-                class="front-wrapper-title animated fadeInDown delay:0.2s"
-              >
+              <div class="front-wrapper-title animated fadeInDown delay:0.2s">
                 {{ this.title[this.model] }}
               </div>
-              <div
-                class="front-wrapper-content animated fadeInDown delay:0.3s"
-              >
-                {{ this.content[this.model] }}
+              <div class="front-wrapper-content animated fadeInDown delay:0.3s">
+                {{ this.content[this.model] }}<br/>
               </div>
             </div>
           </div>
         </div>
-      
       </div>
     </div>
   </div>
@@ -71,12 +66,13 @@ export default {
         "🐱‍💻GrEAT is a good service!🐱‍🏍",
         "😥Please, use GrEAT🐱‍🚀"
       ],
-      content: [
-        "내 주변에서 갈 만한 식당 정하기",
-        "1.주소를 입력!\n"+
-        "2.원하는 카테고리 선택!",
-        "제발 사용해주세요ㅠ"
-      ]
+      content: {
+        0:"내 주변에서 갈 만한 식당 정하기",
+        1:`1.주소를 입력! 2.원하는 카테고리 선택! 3.START`,
+        2:"제발 사용해주세요ㅠ"
+      },
+      // contentA: `1.주소를 입력! 2.원하는 카테고리 선택 \\n 3.START`,
+      contentC: `3.START`,
     };
   },
   methods: {
@@ -97,11 +93,11 @@ export default {
         });
     },
     mouseIsMoving(e) {
-      var hamX = document.getElementById("floatIMG").offsetLeft
-      var hamY = document.getElementById("floatIMG").offsetTop
+      var hamX = document.getElementById("floatIMG").offsetLeft;
+      var hamY = document.getElementById("floatIMG").offsetTop;
       var x = (hamX - e.pageX) * 0.1;
       var y = (hamY - e.pageY) * 0.1;
-      console.log(hamX,hamY)
+      console.log(hamX, hamY);
       document.getElementById("floatIMG").style.webkitTransform =
         "translate(" + x + "px" + "," + y + "px)";
     }
