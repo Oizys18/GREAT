@@ -1,20 +1,10 @@
 <template>
 <div>
   <div 
-    v-if="!btnChange" 
-    class="bar-btn" @click="go('Main')" 
-    v-on:mouseover = "btnChange = true"
-    v-on:mouseout = "btnChange = false">
+    class="bar-btn" 
+    @click="go('Main')">
   <span>Let's Start</span>
-  </div>
-  <div 
-    v-else 
-    class="bar-btn-hover" 
-    @click="go('Main')" 
-    v-on:mouseover = "btnChange = true"
-    v-on:mouseout = "btnChange = false">
-    <span>Let's Start</span>
-    <img 
+  <img 
       src="@/assets/img/arrow-icon.png"
       class="btn-img"/>
   </div>
@@ -45,17 +35,17 @@ export default {
   font-size: 1.2em;
   cursor: pointer;
   border-radius: 25px;
+  display: inline;
   transition-duration: 0.5s;
 }
-.bar-btn-hover {
-  font-family: "Lobster", cursive;
-  background-color: #fbedeb;
+.bar-btn img {
+  display: none;
+}
+.bar-btn:hover {
   padding: 3px 40px 3px 20px;
-  font-size: 1.2em;
-  cursor: pointer;
+}
+.bar-btn:hover img {
   display: inline;
-  border-radius: 25px;
-  transition-duration: 0.5s;
 }
 .btn-img {
   height: 90%;
