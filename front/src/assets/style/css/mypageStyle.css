@@ -6,10 +6,16 @@
     justify-content: center;
     margin: 0 auto;
   }
+
+  .mypage-container h2{
+    color:grey;
+    font-weight: 900;
+  }
   .part-container{
     margin-top:20px;
     margin-bottom: 20px;
     text-align: center;
+    align-content: center;
   }
   .name-container {
     padding-top: 90px;
@@ -35,34 +41,61 @@
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
+    overflow: hidden;
+    
+    /* border:1px solid palevioletred; */
+    /* display: flex; */
+    
   }
-  .btn-edit{
-    border: 1px solid red;
+  .edit-btn{  
+    /* border: 1px solid red; */
+    float:right;
+  }
+  .edit-box{
+    /* 취소, 확인 버튼 */
+    width:95%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    overflow: hidden;
+    
   }
   .user-modify {
     padding: 3px;
   
     border: 1px solid grey;
   }
+  .user-details-with-label{
+    font:bolder;
+    color: black;
+    position: relative;
+  }
+  .user-details-with-label label{
+    font:lighter;
+    color: gray;
+
+    position: absolute;
+    left: 30%;
+   
+  }
+
   .edit-with-label{
     font-size: 14px;
     position: relative;
 
   }
-  .edit-with-labe label{
+  .edit-with-label label{
     position: absolute;
-    left: 15px;
-    top: 19px;
-    color: #000;
+    left: 30%;
+    color: grey;
     
   }
   .edit-with-label input{
-    text-align: center;
-    /* width: 100%; */
+    text-align: left;
+    width: 250px;
     height: 30px;
     line-height: 1em;
     padding: 0 15px 0 70px;
-    margin-left: 10px;
     box-sizing: border-box;
     color: #000;
     background-color: lightyellow;
@@ -94,16 +127,23 @@
   
     /* radio css */
   .mypage-radio-btn-group {
-    width:40%;
+    width:57%;
     display: flex;
     float: right;
-    
+    margin-bottom: 15px;
+  }
+  .mypage-radio-btn-group label{
+    font-size: 14px;
+    color: grey;
+
+    /* position: absolute;
+    left: -7.5%; */
   }
   .mypage-radio-btn-group .mypage-radio {
-    margin: 0 .25rem;
+    margin: 0 .35rem;
   }
-  .mypage-radio-btn-group .mypage-radio label {
 
+  .mypage-radio-btn-group .mypage-radio label {
     background: #fff;
     border: 1px solid #ddd;
     padding: .2rem 0.5rem;
@@ -111,9 +151,6 @@
     cursor: pointer;
     color: #444;
     transition: box-shadow 400ms ease;       
-  }
- .mypage-radio-btn-group :hover {
-    /* box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12); */
   }
       
  .mypage-radio-btn-group input[type="radio"] {
@@ -126,18 +163,7 @@
     border-color: rgb(204, 242, 245);
   }
 
-  .mypage-radio-btn-group .show {
-    font-weight: 400;
-    color: #444;
-  }  
-  .mypage-radio-btn-group span {
-    background: #f5f5f5;
-    color: #F44336;
-    border-radius: 3px;
-    padding: .25rem .5rem;
-    font-size: 1.25rem;
-    border: 1px solid #f1f1f1;
-  }
+  
   /* reviews components*/
 
   /* card components */
@@ -169,14 +195,19 @@
   .gridlist-box{
     /* border: 1px solid red; */
     float: left;
-    width: 50%;
+    width: 100%;
   }
   /*gridboomark components*/
   .gridbookmark-container{
+    /* border: 1px solid navy; */
+    width: 50%;
+    float:left;
+  }
+  .gridbookmark-box{
     display: flex;
     width: 100%;
   }
-  
+ 
   
 @media screen and (min-width: 800px) {
   .mypage-container {
@@ -196,10 +227,38 @@
    .box-container{
     margin-left: 2.5%;
     margin-right: 2.5%;
-    
-  }
+   }
   .mypage-radio-btn-group{
     width:80%;
+  }
+  
+  /*info tab*/
+  .user-details-with-label label{
+    left:8%;
+    font-size:13px;
+  }
+  .edit-with-label label{
+    font-size:13px;
+    left: 8%;
+  }
+  .edit-with-label input{
+    text-align: left;
+    margin-left: 50px;
+    width: 180px;
+    line-height: 1em;
+    padding: 0 10px 0 20px;
+  }
+  .mypage-radio-btn-group {
+    width:72%;
+  }
+  .modify-button{
+    font-size:14px;
+  }
+
+  /*grid tab bookmark*/
+  .gridbookmark-container{
+    width: 100%;
+    float:none;
   }
   
 }
