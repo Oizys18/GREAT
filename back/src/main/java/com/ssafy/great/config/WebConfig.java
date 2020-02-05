@@ -11,7 +11,8 @@ public class WebConfig implements WebMvcConfigurer {
 	private String[] whiteList = {
 			"/user/login/**",
 			"/user/join/**",
-			"/user/email/**"
+			"/user/email/**",
+			"/user/socialLogin/**"
 	};
 	
 	@Override

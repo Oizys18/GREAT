@@ -45,6 +45,18 @@ public class UserServiceImpl implements UserService{
 		return true;
 	}
 	
+	
+	/** 소셜사용자 로그인
+	 *  로그인 성공하면 return true
+	 *  로그인 실패하면 return false
+	 */
+	public boolean socialLogin(String sns_token) {
+		User result = dao.socialLogin(sns_token);
+		if(result == null) return false;
+		return true;
+	}
+	
+	
 	/** 회원가입 */
 	public void join(User user) {
 		dao.insert(user);

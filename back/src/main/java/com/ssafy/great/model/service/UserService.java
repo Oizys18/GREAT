@@ -24,6 +24,12 @@ public interface UserService {
 	 *  로그인 실패하면 return false
 	 */
 	boolean login(Map<String, String> loginData);
+	
+	/** 소셜 사용자 로그인
+	 *  로그인 성공하면 return true
+	 *  로그인 실패하면 return false
+	 */
+	boolean socialLogin(String sns_token);
 
 	/** 회원가입 */
 	void join(User user);
