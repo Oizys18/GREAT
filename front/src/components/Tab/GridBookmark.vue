@@ -1,7 +1,8 @@
 <template>
-  <div class="gridbookmark-container" >
+  <div class="gridbookmark-box" >
+    
     <v-list-item-icon class="girdbookmark-elem-star">
-      <v-btn text icon color="#F5331E">
+      <v-btn text icon color="#F5D82E">
         <v-icon v-if="true">mdi-star</v-icon>
       </v-btn>
     </v-list-item-icon>
@@ -14,14 +15,14 @@
 
     <!-- 수정 버튼-->
     <v-list-item-icon class="girdbookmark-elem-edit">
-      <v-btn class="ma-2" text icon color="red lighten-2">
+      <v-btn class="ma-2" text icon color="blue lighten-2">
         <v-icon>mdi-pencil</v-icon>
       </v-btn>
     </v-list-item-icon>
 
     <!-- 삭제 버튼 -->
     <v-list-item-icon class="girdbookmark-elem-delete">
-      <v-btn class="ma-2" text icon color="red lighten-2">
+      <v-btn class="ma-2" text icon color="grey">
         <v-icon>mdi-delete</v-icon>
       </v-btn>
     </v-list-item-icon>

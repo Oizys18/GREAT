@@ -4,6 +4,24 @@
 import axios from 'axios'
 
 
+const emailCheck = (email) => {
+	return axios.get('http://13.124.1.176:8080/sendemail/'+email)
+	.then(
+		res => {
+			console.log(res);
+		}
+	)
+}
+
+
+const emailAuth = (email) => {
+	return axios.get('http://13.124.1.176:8080/user/email/'+email)
+	.then(
+		res => {
+			console.log(res);
+		}
+	)
+}
 
 const requestLogin = (loginID, loginPW, callback, errorCallback) => { // eslint-disable-line no-unused-vars
 	//백앤드와 로그인 통신하는 부분
@@ -40,6 +58,8 @@ export const logout = () => axios.post('/api/auth/logout');
 
 
 const UserApi = {
+	emailAuth: (email) => emailAuth(email),
+	emailCheck: (email) => emailCheck(email),
 	requestLogin: (data, callback, errorCallback) => requestLogin(data, callback, errorCallback),
 	requestRegister: (email, username, password, birth, gender) => requestRegister(email, username, password, birth, gender)
 }

@@ -1,9 +1,17 @@
 *:focus {
     outline: none;
-    background-color: lightyellow;
-  }
+    background-color: rgb(119, 119, 45);
+}
 
-.auth{
+input:-webkit-autofill {
+    -webkit-text-fill-color: black;
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-transition: background-color 9999s ease-out;
+}
+
+
+
+.auth {
     padding-top: 30px;
 }
 
@@ -13,7 +21,7 @@
     padding-top: 10vh;
     margin: 0 auto;
     width: 70%;
-    
+
 }
 
 .login .input-with-label {
@@ -57,17 +65,19 @@
     display: flex;
     flex-wrap: wrap;
 }
+
 .login .login-container .login-box {
     text-align: left;
     padding-bottom: 10px;
     display: block;
 }
 
-.login .login-container .btn--login{
+.login .login-container .btn--login {
     width: 100%;
     box-shadow: none;
     line-height: 50px;
 }
+
 .login .login-container button {
     width: 100%;
     border: none;
@@ -79,7 +89,7 @@
     box-shadow: none;
 }
 
-.login .login-subcontainer{
+.login .login-subcontainer {
     background-color: lightyellow;
     width: 100%;
     margin: 0 auto;
@@ -87,46 +97,52 @@
     padding-bottom: 20px;
     padding-left: 20px;
     padding-right: 20px;
-    border : 5px solid orange;
+    border: 5px solid orange;
     border-radius: 25px;
 }
 
 .login .sns-login {
     width: 100%;
-    display: flex;
+    height: 60px;
     margin-top: 30px;
     margin-bottom: 30px;
+}
+
+.login .social-login {
+    float: right;
 }
 
 .login .sns-login .google-login {
     display: inline-block;
 }
-.login .sns-login #kakao-login{
+
+.login .sns-login #kakao-login {
     display: inline-block;
     margin: 0 5px;
 }
-.login .sns-login #facebook-login{
-    display: inline-block;
-    margin: 0 5px;
-}
-.login .sns-login h3{
+
+.login .sns-login h3 {
     text-align: left;
     color: dimgray;
     font-weight: 700;
     margin-block-end: 0;
 }
+
 .login .add-option {
     width: 100%;
     margin: 0 auto;
 }
+
 .login .wrap {
     width: 100%;
     height: 50px;
 }
+
 .login .wrap p {
     float: left;
     font-size: 13px;
 }
+
 .login .wrap .btn--text {
     float: right;
 }
@@ -138,7 +154,7 @@
     width: 80%;
 }
 
-.join .join-container{
+.join .join-container {
     margin-top: 10px;
     margin-bottom: 10px;
     font-weight: bold;
@@ -157,6 +173,17 @@
     margin-bottom: 12px;
 }
 
+.join .email-input{
+    display: flex;
+}
+
+.join #email-check{
+    margin-left: 10px;
+    background-color: rgb(128, 66, 0); 
+    border-color: rgb(128, 66, 0);
+    width: 80px;
+}
+
 .join .input-with-label input {
     text-align: right;
     width: 100%;
@@ -170,20 +197,22 @@
     border-radius: 3px; */
     font-size: 13px;
 }
+
 .join input[type="date"]::-webkit-calendar-picker-indicator,
 .join input[type="date"]::-webkit-inner-spin-button {
     display: none;
     appearance: none;
 }
+
 .join input[type="date"]::-webkit-calendar-picker-indicator {
-    color: rgba(0, 0, 0, 0); 
+    color: rgba(0, 0, 0, 0);
     opacity: 1;
     display: block;
-    background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png) no-repeat; 
+    background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png) no-repeat;
     width: 20px;
     height: 20px;
     border-width: thin;
- }
+}
 
 .join .input-with-label label {
     position: absolute;
@@ -192,13 +221,13 @@
     color: #000;
 }
 
-.join .error-text{
+.join .error-text {
     font-size: x-small;
     color: rgb(255, 61, 0);
     text-align: right;
 }
 
-.join button{
+.join button {
     margin-left: 5px;
     margin-right: 5px;
     font-weight: 600;
@@ -210,12 +239,14 @@
     position: relative;
     margin-bottom: 12px;
 }
+
 .join .radio-input-with-label label {
     position: absolute;
     left: 15px;
     top: 19px;
     color: #000;
 }
+
 .join .join-radio-container {
     margin-top: 10px;
     width: 100%;
@@ -231,16 +262,19 @@
     margin-left: auto;
     margin-bottom: 10px;
 }
+
 .join .radio-btn-group {
     display: flex;
     float: right;
     margin-top: 18px;
     margin-right: 10px;
-    
+
 }
+
 .join .radio-btn-group .radio {
     margin: 0 .25rem;
 }
+
 .join .radio-btn-group .radio label {
 
     background: #fff;
@@ -249,16 +283,17 @@
     border-radius: 5px;
     cursor: pointer;
     color: #444;
-    transition: box-shadow 400ms ease;       
+    transition: box-shadow 400ms ease;
 }
+
 .join .radio-btn-group :hover {
     box-shadow: none;
 }
-      
+
 .join .radio-btn-group input[type="radio"] {
     display: none;
 }
-      
+
 .join .radio-btn-group input[type="radio"]:checked+label {
     background: rgb(204, 242, 245);
     border-color: rgb(204, 242, 245);
@@ -268,7 +303,8 @@
 .join .radio-btn-group .show {
     font-weight: 400;
     color: #444;
-}  
+}
+
 .join .radio-btn-group span {
     background: #f5f5f5;
     color: #F44336;
@@ -278,29 +314,30 @@
     border: 1px solid #f1f1f1;
 }
 
-.join .join-button-container{
+.join .join-button-container {
     margin-top: 10px;
 }
 
-@media screen and (min-width: 600px){
+@media screen and (min-width: 600px) {
     .login {
         width: 50%;
     }
-     
+
 }
 
-@media screen and (min-width: 800px){
-    .login .login-container .login-box{
+@media screen and (min-width: 800px) {
+    .login .login-container .login-box {
         width: 79%;
         float: left;
         margin-right: 7%;
     }
-    .login .login-container .v-btn:not(.v-btn--round).v-size--default{
+
+    .login .login-container .v-btn:not(.v-btn--round).v-size--default {
         height: 110px;
         width: 9%;
         float: right;
     }
-    
+
     .join {
         width: 40%;
     }
