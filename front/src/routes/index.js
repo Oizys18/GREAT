@@ -4,6 +4,7 @@ import Index from "../views/Index.vue";
 import Main from "../views/Main.vue";
 import Mypage from "../views/Mypage.vue";
 import Authentication from "../views/Authentication.vue";
+import Social from "../views/Social.vue";
 import PageNotFound from "../views/PageNotFound.vue";
 
 Vue.use(VueRouter);
@@ -33,6 +34,11 @@ const routes = [
     path: "/authentication",
     name: "Authentication",
     component: Authentication
+  },
+  {
+    path: "/social",
+    name: "Social",
+    component: Social
   }
 ];
 
