@@ -22,6 +22,12 @@
 		where 	email = #{email} 
 		  and 	password = #{password}
 	</select>
+	
+	<select id="socialLogin" parameterType="string" resultType="user">
+		select 	* 
+		from 	user 
+		where 	sns_token = #{sns_token} 
+	</select>
 
 	<insert id="insert" parameterType="user">
 		insert into user(email, password, sns_token, birth, gender, name)

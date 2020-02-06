@@ -61,6 +61,21 @@ public class UserController {
 		return RestUtil.handleSuccess(data);
 	}
 	
+	@PostMapping("/user/socialLogin")
+	@ApiOperation("사용자 로그인")
+	public ResponseEntity<Map<String,Object>> socialLogin(@RequestBody String sns_token){
+		sns_token=(String) sns_token.subSequence(0, sns_token.length()-1);
+		System.out.println(sns_token);
+		boolean result = service.socialLogin(sns_token);
+		Map<String, String> data = new HashMap<String, String>();
+		
+		if(result) data.put("data", "success");
+		else return RestUtil.handleSuccess("not success");		
+		String token = JwtUtil.CreateToken();
+		data.put("Authorization", token);
+		return RestUtil.handleSuccess(data);
+	}
+	
 	@PostMapping("/user/join")
 	@ApiOperation("사용자 회원가입")
 	public ResponseEntity<Map<String,Object>> join(@RequestBody User user){

@@ -18,6 +18,9 @@ public interface UserDao {
 
 	/** email과 password가 일치하는 사용자 검색 */
 	User login(Map<String, String> loginData);
+	
+	/** sns_token 일치하는 사용자 검색 */
+	User socialLogin(String sns_token);
 
 	/** 사용자 정보 등록 */
 	void insert(User user);
