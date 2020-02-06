@@ -3,18 +3,21 @@
     <!-- 이름 -->
     <div v-if="isInfo" class="user-details" id="name">
       이름:&nbsp;{{ name }}
+        <span  style="float:right">
 
-        <v-btn
-        color="blue-grey"
-        class="ma-2 white--text"
-        v-on:click="change"
-        >
+          <v-btn 
+          depressed
+          text color="black"
+          class="ma-2"
+          v-on:click="change"
+          >
           Edit<v-icon right>mdi-pencil</v-icon> 
-        </v-btn>
+          </v-btn>
+
+        </span>
         <!-- <button class="btn-modify" v-on:click="change">내 정보 수정</button> -->
-      
-      
     </div>
+    
     <div v-else class="user-details">
       <p>
         이름:
@@ -133,11 +136,6 @@ export default {
     },
     ok() {
       //수정하기 - 확인 버튼 클릭
-    //   this.name = this.$refs.name_modify.value;
-    //   this.email = "";
-    //   this.birth = "";
-    //   this.gender = "";
-
       this.isInfo = true;
     }
   }

@@ -1,7 +1,7 @@
 /* Grid lvl 0 */
 .big-container {
   font-size: 1.3em;
-  margin-top: 5vh;
+  padding-top: 8vh;
   border: none;
   display: flex;
   justify-content: center;
