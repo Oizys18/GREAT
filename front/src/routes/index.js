@@ -5,6 +5,7 @@ import Main from "../views/Main.vue";
 import Mypage from "../views/Mypage.vue";
 import Authentication from "../views/Authentication.vue";
 import Social from "../views/Social.vue";
+import Map from "../views/Map.vue";
 import PageNotFound from "../views/PageNotFound.vue";
 
 Vue.use(VueRouter);
@@ -39,6 +40,11 @@ const routes = [
     path: "/social",
     name: "Social",
     component: Social
+  },
+  {
+    path: "/map",
+    name: "Map",
+    component: Map
   }
 ];
 
