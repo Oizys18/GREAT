@@ -14,18 +14,6 @@
           </v-btn>
       </div>
 
-      <!-- 이름:{{ name }}
-        <span  style="float:right">
-
-          <v-btn class="edit-btn"
-          text color="black"
-          v-on:click="change"
-          >
-          Edit<v-icon right>mdi-pencil</v-icon> 
-          </v-btn>
-
-        </span> -->
-        <!-- <button class="btn-modify" v-on:click="change">내 정보 수정</button> -->
     </div>
     
     <div v-else class="user-details">
