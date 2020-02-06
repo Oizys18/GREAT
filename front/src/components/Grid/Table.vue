@@ -15,10 +15,11 @@
 </template>
 
 <script>
-import "@/assets/style/css/gridStyle.css";
-import MainFoodGrid from "@/components/Grid/MainFoodGrid.vue";
-import FoodCategory from "@/components/Grid/FoodCategory.vue";
+import "@/assets/style/css/gridStyle.css"
+import MainFoodGrid from "@/components/Grid/MainFoodGrid.vue"
+import FoodCategory from "@/components/Grid/FoodCategory.vue"
 import GridApi from '../../apis/GridApi.js'
+
 export default {
   name: "Table",
   components: {
