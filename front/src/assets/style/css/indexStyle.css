@@ -1,76 +1,111 @@
-.floating-IMG {
-    /* position */
-    top: 29vh;
-    left: 55vw;
-    width: 40vw;
-    height: 50vh;
-    z-index: 3;
-    position: fixed;
-    /* image layout */
-    background-size: contain;
-    background-image: url("https://i2.wp.com/freepngimages.com/wp-content/uploads/2016/11/bacon-burger.png?fit=895%2C895");
-    background-position: center;
-  }
-  .floating-text {
-    /* position */
-    top: 13vmin;
-    z-index: 3;
-    display: flex;
-    position: relative;
-    align-content: center;
-    justify-content: center;
-  
-    /* shape */
-    color: rgba(255, 0, 0, 0.856);
-    font-size: 13vmin;
-    font-family: "Lobster", cursive;
-    text-shadow: 3px 10px 5px rgba(0, 0, 0, 0.541);
-  }
-  
+.floating-container {
+  /* position */
+  top: 29vh;
+  left: 55vw;
+  width: 40vw;
+  height: 50vh;
+  z-index: 3;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* image layout */
+  background-size: contain;
+  background-image: url("https://i2.wp.com/freepngimages.com/wp-content/uploads/2016/11/bacon-burger.png?fit=895%2C895");
+  background-position: center;
+}
+.floating-text {
+  /* position */
+  z-index: 3;
+  bottom: 2vmin;
+
+  /* shape */
+  color: rgba(255, 0, 0, 0.89);
+  font-size: min(13vmin, 11.5vmax);
+  font-family: "Lobster", cursive;
+  text-shadow: 3px 10px 5px rgba(0, 0, 0, 0.541);
+}
+
+.index-card {
+  /* position */
+  top: 12vh;
+  left: 5vw;
+  z-index: 2;
+  position: fixed;
+
+  /* shape */
+  width: 68vw;
+  height: 80vh;
+  box-shadow: 0 0 10px darkslategray;
+  border-radius: 15px;
+  background-color: white;
+}
+.index-carousel {
+  /* carousel position */
+  z-index: 1;
+  position: relative;
+}
+.index-card-title {
+  /* card title position */
+  left: 9vw;
+  top: 20vh;
+  z-index: 4;
+  position: fixed;
+
+  /* title text style */
+  color: black;
+  font-weight: bold;
+  font-size: 3vmax;
+  font-family: "Noto Sans KR", sans-serif;
+}
+.index-card-content {
+  /* card content position */
+  position: fixed;
+  z-index: 4;
+  left: 10vw;
+  top: 30vh;
+
+  /* content text style */
+  color: black;
+  font-weight: bold;
+  font-size: 2.5vmax;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+
+@media (max-width: 600px) {
   .index-card {
+      
     /* position */
-    top: 12vh;
-    left: 5vw;
-    z-index: 2;
-    position: fixed;
-  
+    top: 22vh;
+    left: 4vw;
+
     /* shape */
-    width: 68vw;
-    height: 80vh;
-    box-shadow: 0 0 10px darkslategray;
-    border-radius: 15px;
-    background-color: white;
+    width: 92vw;
+    height: 60vh;
   }
-  .index-carousel {
-    /* carousel position */
-    z-index: 1;
-    position: relative;
+  .floating-container {
+    /* position */
+    top: 10vh;
+    left: 25vw;
+    width: 50vw;
+    height: 25vh;
+    z-index: 3;
   }
   .index-card-title {
     /* card title position */
-    left: 9vw;
-    top: 20vh;
-    z-index: 4;
-    position: fixed;
-  
+    left: 8vw;
+    top: 35vh;
+
     /* title text style */
-    color: black;
-    font-weight: bold;
-    font-size: 3vmax;
-    font-family: "Noto Sans KR", sans-serif;
+    font-size: 2.5vmax;
   }
   .index-card-content {
-    
     /* card content position */
-    position: fixed;
-    z-index: 4;
-    left: 14vw;
-    top: 30vh;
-  
+    left: 12vw;
+    top: 40vh;
+
     /* content text style */
-    color: black;
-    font-weight: bold;
-    font-size: 2.5vmax;
-    font-family: "Noto Sans KR", sans-serif;
+    font-size: 2.3vmax;
   }
-  
+}
