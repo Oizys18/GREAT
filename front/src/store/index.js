@@ -127,6 +127,22 @@ export default new Vuex.Store({
       {id: 8, name: "기타"},
       {id: 8, name: "기타"},
     ],
+    한식index: [0,1,2,3,4,5,6,7],
+    중식index: [0,1,2,3,4,5,6,7],
+    일식index: [0,1,2,3,4,5,6,7],
+    아시아index: [0,1,2,3,4,5,6,7],
+    뷔페index: [0,1,2,3,4,5,6,7],
+    분식index: [0,1,2,3,4,5,6,7],
+    카페index: [0,1,2,3,4,5,6,7],
+    기타index: [0,1,2,3,4,5,6,7],
+    한식maxIndex: 7,
+    중식maxIndex: 7,
+    일식maxIndex: 7,
+    아시아maxIndex: 7,
+    뷔페maxIndex: 7,
+    분식maxIndex: 7,
+    카페maxIndex: 7,
+    기타maxIndex: 7,
     locationX: 127.0250186,
     locationY: 37.5056693,
   },
@@ -154,6 +170,38 @@ export default new Vuex.Store({
     },
     '기타'(state, payload) {
       state.기타 = payload
+    },
+    '한식List'(state, payload) {
+      state.한식maxIndex++;
+      state.한식index.splice(payload, 1, state.한식maxIndex)
+    },
+    '중식List'(state, payload) {
+      state.중식maxIndex++;
+      state.중식index.splice(payload, 1, state.중식maxIndex)
+    },
+    '일식List'(state, payload) {
+      state.일식maxIndex++;
+      state.일식index.splice(payload, 1, state.일식maxIndex)
+    },
+    '아시아List'(state, payload) {
+      state.아시아maxIndex++;
+      state.아시아index.splice(payload, 1, state.아시아maxIndex)
+    },
+    '뷔페List'(state, payload) {
+      state.뷔페maxIndex++;
+      state.뷔페index.splice(payload, 1, state.뷔페maxIndex)
+    },
+    '분식List'(state, payload) {
+      state.분식maxIndex++;
+      state.분식index.splice(payload, 1, state.분식maxIndex)
+    },
+    '카페List'(state, payload) {
+      state.카페maxIndex++;
+      state.카페index.splice(payload, 1, state.카페maxIndex)
+    },
+    '기타List'(state, payload) {
+      state.기타maxIndex++;
+      state.기타index.splice(payload, 1, state.기타maxIndex)
     },
   },
   actions: {},
