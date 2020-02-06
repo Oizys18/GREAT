@@ -5,7 +5,7 @@ import axios from 'axios'
 
 
 const emailCheck = (email) => {
-	return axios.get('http://13.124.1.176:8080/sendemail/'+email)
+	return axios.get('http://13.124.1.176:8080/user/email/'+email)
 	.then(
 		res => {
 			console.log(res);
@@ -15,7 +15,7 @@ const emailCheck = (email) => {
 
 
 const emailAuth = (email) => {
-	return axios.get('http://13.124.1.176:8080/user/email/'+email)
+	return axios.get('http://13.124.1.176:8080/sendemail/'+email)
 	.then(
 		res => {
 			console.log(res);
@@ -37,13 +37,13 @@ const requestLogin = (loginID, loginPW, callback, errorCallback) => { // eslint-
 
 }
 const requestRegister = (email, username, password, birth, gender) => {
-	let joinData = {
-		email: email,
-		name: username,
-		password: password,
-		birth: birth,
-		gender: gender
-	};
+	let joinData = new FormData();
+	joinData.append('email',email);
+	joinData.append('name',username);
+	joinData.append('password',password);
+	joinData.append('birth',birth);
+	joinData.append('gender',gender);
+
 	axios.post('http://13.124.1.176:8080/user/join', joinData)
 	.then(
 		res => {
@@ -52,7 +52,6 @@ const requestRegister = (email, username, password, birth, gender) => {
 	)
 };
 
-export const checkEmailExists = (email) => axios.get('/user/email/' + email);
 
 export const logout = () => axios.post('/api/auth/logout');
 

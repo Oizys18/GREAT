@@ -30,7 +30,7 @@
           <button>확인</button>
         </div>
         <div v-else></div>
-          <!-- <div class="input-with-label">
+         <!-- <div class="input-with-label">
             <input
               v-model="password"
               v-bind:class="{error : error.password, complete:!error.password&&password.length!==0}"
@@ -40,7 +40,7 @@
             />
             <label for="password">비밀번호</label>
             <div class="error-text" v-if="error.password">{{error.password}}</div>
-          </div>
+          </div> 
 
           <div class="input-with-label">
             <input
