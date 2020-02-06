@@ -57,7 +57,6 @@
 
 <script>
 import '@/assets/style/css/mypageStyle.css'
-
 import FoodTab from "@/components/Tab/FoodTab.vue";
 import GridTab from "@/components/Tab/GridTab.vue";
 import InfoTab from "@/components/Tab/InfoTab.vue";
@@ -92,7 +91,8 @@ export default {
     gridbookmarks: function(){
       return this.$store.state.gridbookmarks;
     }
-  }
+  },
+ 
 
 };
 </script>

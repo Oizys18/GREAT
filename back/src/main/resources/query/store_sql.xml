@@ -129,8 +129,8 @@
 			   s.location_name, s.rating, s.phone, s.tag, s.category, s.image
 		  from store s
 		 where category = #{category}
-		   and ST_Distance_Sphere(location, point(#{x}, #{y})) <![CDATA[<]]> 1000
+		   and ST_Distance_Sphere(location, point(#{x}, #{y})) <![CDATA[<]]> 10000
 		 order by ST_Distance_Sphere(location, point(#{x}, #{y}))
-		 limit 8
+		 limit 20
 	</select>
 </mapper>
