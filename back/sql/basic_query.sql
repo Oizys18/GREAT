@@ -3,10 +3,12 @@ create database great;
 
 use great;
 
+
+
 CREATE TABLE `user` (
   `id` int NOT NULL auto_increment,
   `email` varchar(30),
-  `password` varchar(20) NOT NULL,
+  `password` varchar(20) ,
   `sns_token` varchar(100),
   `birth` date NOT NULL,
   `gender` enum("M","F") not null,
