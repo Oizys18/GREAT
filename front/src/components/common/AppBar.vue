@@ -1,46 +1,49 @@
 <template>
-  <div id="nav" class="animated fadeInDown delay-0.2s">
-    <v-app-bar color="#FF3D00" dense >
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
-
-      <v-toolbar-title>GREAT</v-toolbar-title>
-      <v-spacer></v-spacer>
-      <router-link to="/">| index |</router-link>
-      <router-link to="Main">| Main |</router-link>
-      <router-link to="Authentication">| Auth |</router-link>
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <v-menu left bottom>
-        <template v-slot:activator="{ on }">
-          <v-btn icon v-on="on">
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-        </template>
-
-        <v-list>
-          <v-list-item v-for="n in 5" :key="n" @click="() => {}">
-            <v-list-item-title>Option {{ n }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-    </v-app-bar>
+  <div id="app-bar" class="animated fadeInDown delay-0.2s">
+    <div class="bar-banner" @click="go('/')">GrEAT</div>
+    <div class="bar-router">
+      <BarButton />
+    </div>
   </div>
 </template>
 
 <script>
+import BarButton from '../common/BarButton.vue'
 export default {
+  components: {
+    BarButton
+  },
   data() {
     return {};
+  },
+  methods: {
+    go(link) {
+      this.$router.push(link);
+    }
   }
 };
 </script>
 
 <style>
-#nav {
-  z-index:100;
+#app-bar {
+  z-index: 100;
   position: fixed;
-  width:100%;
+  width: 100%;
+  background: linear-gradient(72deg, #c0392b, #f1c40f);
+  padding: 15px;
+  font-size: 1.2em;
+  display: flex;
+}
+.bar-banner {
+  font-family: "Lobster", cursive;
+  color: rgb(236, 236, 236);
+  position: relative;
+  cursor: pointer;
+  left: 0;
+}
+.bar-router {
+  position: fixed;
+  right: 0;
+  padding: 0 10px 0 0;
 }
 </style>

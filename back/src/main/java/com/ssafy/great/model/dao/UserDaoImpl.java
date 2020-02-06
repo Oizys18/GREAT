@@ -33,6 +33,11 @@ public class UserDaoImpl implements UserDao{
     public User login(Map<String, String> loginData){
         return session.selectOne("sql.user.login", loginData);
     }
+    
+    /** email과 password가 일치하는 사용자 검색 */
+    public User socialLogin(String sns_token){
+    	return session.selectOne("sql.user.socialLogin", sns_token);
+    }
 
     /** 사용자 정보 등록 */
     public void insert(User user){

@@ -4,7 +4,8 @@
       <h2>{{ name }}</h2>
     </div>
 
-    <v-tabs class="tab-container">
+    <v-tabs class="tab-container"
+     color="#FFA578"  >
       <FoodTab />
       <GridTab />
       <InfoTab />
@@ -26,7 +27,7 @@
           <v-card flat>
             <div class="contents">
               <!-- <p>grid bookmark lists</p> -->
-              <GridList/>
+              <GridList />
             </div>
           </v-card>
         </div>
@@ -87,6 +88,11 @@ export default {
      
     }
   },
+  computed:{
+    gridbookmarks: function(){
+      return this.$store.state.gridbookmarks;
+    }
+  }
 
 };
 </script>
