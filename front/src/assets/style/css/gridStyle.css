@@ -40,6 +40,10 @@
 .small-box {
   border: 5px solid white;
 }
+.small-box:hover {
+  white-space: nowrap; 
+  overflow: hidden;
+}
 .small-category {
   border: 5px solid white;
   z-index: 1;

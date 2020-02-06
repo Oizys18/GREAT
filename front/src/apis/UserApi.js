@@ -5,54 +5,63 @@ import axios from 'axios'
 
 
 const emailCheck = (email) => {
-	return axios.get('http://13.124.1.176:8080/sendemail/'+email)
-	.then(
-		res => {
-			console.log(res);
-		}
-	)
-}
-
-
-const emailAuth = (email) => {
-	return axios.get('http://13.124.1.176:8080/user/email/'+email)
-	.then(
-		res => {
-			console.log(res);
-		}
-	)
-}
-
-const requestLogin = (loginID, loginPW, callback, errorCallback) => { // eslint-disable-line no-unused-vars
-	//백앤드와 로그인 통신하는 부분
-	let loginData = new Map();
-	loginData.set('email', loginID);
-	loginData.set('password', loginPW);
-	return axios.post('http://13.124.1.176:8080/user/login', loginData)
+	return axios.get('http://13.124.1.176:8080/user/email/' + email)
 		.then(
 			res => {
 				console.log(res);
 			}
 		)
+}
 
+
+const emailAuth = (email) => {
+	return axios.get('http://13.124.1.176:8080/sendemail/' + email)
+		.then(
+			res => {
+				console.log(res);
+			}
+		)
+}
+
+const requestLogin = (loginID, loginPW, callback, errorCallback) => { // eslint-disable-line no-unused-vars
+	let loginData = new Map();
+	loginData.set('email', loginID);
+	loginData.set('password', loginPW);
+	const response = axios.post('http://13.124.1.176:8080/user/login', loginData)
+		.then(
+			res => {
+				console.log(res);
+			}
+		)
+	return response.Authorization;
 }
 const requestRegister = (email, username, password, birth, gender) => {
-	let joinData = {
-		email: email,
-		name: username,
-		password: password,
-		birth: birth,
-		gender: gender
-	};
-	axios.post('http://13.124.1.176:8080/user/join', joinData)
-	.then(
-		res => {
-			console.log(res);
-		}
-	)
+	// var birthDate = new Pikaday({
+	// 	field: birth,
+	// 	format: 'yyyy-MM-dd',
+	// 	toString(date, format){
+	// 		let day = ("0" + date.getDate()).slice(-2);
+	// 		let month = ("0" + (date.getMonth() + 1)).slice(-2);
+	// 		let year = date.getFullYear();
+	// 		return `${year}-${month}-${day}`;
+	// 	}
+	// });
+	axios.post('http://13.124.1.176:8080/user/join', {
+			params: {
+				email: email,
+				name: username,
+				password: password,
+				birth: birth,
+				gender: gender
+			}
+		})
+		.then(
+			res => {
+				console.log(res);
+			}
+		)
 };
 
-export const checkEmailExists = (email) => axios.get('/user/email/' + email);
 
 export const logout = () => axios.post('/api/auth/logout');
 
