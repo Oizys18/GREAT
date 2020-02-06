@@ -1,0 +1,76 @@
+.floating-IMG {
+    /* position */
+    top: 29vh;
+    left: 55vw;
+    width: 40vw;
+    height: 50vh;
+    z-index: 3;
+    position: fixed;
+    /* image layout */
+    background-size: contain;
+    background-image: url("https://i2.wp.com/freepngimages.com/wp-content/uploads/2016/11/bacon-burger.png?fit=895%2C895");
+    background-position: center;
+  }
+  .floating-text {
+    /* position */
+    top: 13vmin;
+    z-index: 3;
+    display: flex;
+    position: relative;
+    align-content: center;
+    justify-content: center;
+  
+    /* shape */
+    color: rgba(255, 0, 0, 0.856);
+    font-size: 13vmin;
+    font-family: "Lobster", cursive;
+    text-shadow: 3px 10px 5px rgba(0, 0, 0, 0.541);
+  }
+  
+  .index-card {
+    /* position */
+    top: 12vh;
+    left: 5vw;
+    z-index: 2;
+    position: fixed;
+  
+    /* shape */
+    width: 68vw;
+    height: 80vh;
+    box-shadow: 0 0 10px darkslategray;
+    border-radius: 15px;
+    background-color: white;
+  }
+  .index-carousel {
+    /* carousel position */
+    z-index: 1;
+    position: relative;
+  }
+  .index-card-title {
+    /* card title position */
+    left: 9vw;
+    top: 20vh;
+    z-index: 4;
+    position: fixed;
+  
+    /* title text style */
+    color: black;
+    font-weight: bold;
+    font-size: 3vmax;
+    font-family: "Noto Sans KR", sans-serif;
+  }
+  .index-card-content {
+    
+    /* card content position */
+    position: fixed;
+    z-index: 4;
+    left: 14vw;
+    top: 30vh;
+  
+    /* content text style */
+    color: black;
+    font-weight: bold;
+    font-size: 2.5vmax;
+    font-family: "Noto Sans KR", sans-serif;
+  }
+  
