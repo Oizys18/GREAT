@@ -80,22 +80,22 @@
                 <input
                   type="radio"
                   name="radio"
-                  value="male"
+                  value="M"
                   checked="checked"
                   v-model="gender"
-                  id="male"
+                  id="M"
                 />
-                <label for="male">남성</label>
+                <label for="M">남성</label>
               </div>
               <div class="radio">
                 <input
                 type="radio" 
                 name="radio" 
-                value="female" 
+                value="F" 
                 v-model="gender" 
-                id="female" 
+                id="F" 
                 />
-                <label for="female">여성</label>
+                <label for="F">여성</label>
               </div>
             </div>
           </div>
