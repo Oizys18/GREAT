@@ -40,6 +40,9 @@
   border-radius: 15px;
   background-color: white;
 }
+.index-card:focus {
+  background-color: transparent;
+}
 .index-carousel {
   /* carousel position */
   z-index: 1;
@@ -72,10 +75,8 @@
   font-family: "Noto Sans KR", sans-serif;
 }
 
-
 @media (max-width: 600px) {
   .index-card {
-      
     /* position */
     top: 22vh;
     left: 4vw;
@@ -108,4 +109,34 @@
     /* content text style */
     font-size: 2.3vmax;
   }
+}
+
+.index-background{
+  z-index:0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* color:orange; */
+  background-color:orange;
+  width:100vw;
+  height:95vh;
+  position:fixed;
+  top:5vh;
+}
+
+.index-background:focus{
+  background-color: transparent;
+}
+
+.index-prev{
+  z-index:5;
+  width:80px;
+  height:80px;
+  transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+}
+.index-next{
+  z-index:5;
+  width:80px;
+  height:80px;
 }

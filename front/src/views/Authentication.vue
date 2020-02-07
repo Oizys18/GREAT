@@ -1,8 +1,8 @@
 <template>
   <div class="auth">
     <div class="join" v-if="join==true">
-      <h1>Join</h1>
       <div class="join-container">
+        <h1>Join</h1>
         <div class="input-with-label email-input">
           <input
             v-model="email"
@@ -80,22 +80,22 @@
                 <input
                   type="radio"
                   name="radio"
-                  value="male"
+                  value="M"
                   checked="checked"
                   v-model="gender"
-                  id="male"
+                  id="M"
                 />
-                <label for="male">남성</label>
+                <label for="M">남성</label>
               </div>
               <div class="radio">
                 <input
                 type="radio" 
                 name="radio" 
-                value="female" 
+                value="F" 
                 v-model="gender" 
-                id="female" 
+                id="F" 
                 />
-                <label for="female">여성</label>
+                <label for="F">여성</label>
               </div>
             </div>
           </div>
@@ -137,7 +137,7 @@
           </div>
         </div>
       </div>
-
+      <!-- <button @click="logoutApi()">임시로그아웃</button> -->
       <p></p>
     </div>
   </div>
@@ -224,6 +224,18 @@ export default {
     loginApi() {
       let { loginID, loginPW } = this;
       UserApi.requestLogin(loginID, loginPW, res => {
+        console.log(res);
+      });
+      var loginToken = UserApi.requestToken();
+      console.log(loginToken);
+      if(loginToken!=null){
+          this.$router.push({ path: '/' });
+        }else{
+          alert('로그인 실패');
+        }
+    },
+    logoutApi(){
+      UserApi.requestLogout(res => {
         console.log(res);
       });
     },

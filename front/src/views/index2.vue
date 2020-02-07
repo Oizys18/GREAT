@@ -5,36 +5,42 @@
         GrEAT
       </span>
     </span>
-
-    <div class="index-background">
-      <button @click="pageNext">
-        <img class="index-prev" src="@/assets/img/arrow-icon.png" />
-      </button>
-      <button @click="pagePrev">
-        <img class="index-next" src="@/assets/img/arrow-icon.png" />
-      </button>
-    </div>
-
     <div class="big-screen-carousel">
       <div class="index-carousel">
-        <div class="index-card">
-          <div class="index-card-container">
-            <div :key="this.page">
-              <div class="index-card-title animated fadeInDown delay:0.2s">
-                {{ this.title[this.page] }}
-              </div>
-
-              <div class="index-card-content animated fadeInDown delay:0.1s">
-                <span
-                  v-for="cardText in this.content[this.page]"
-                  :key="cardText"
-                >
-                  {{ cardText }}<br />
-                </span>
+        <v-carousel
+          v-model="model"
+          height="100vh"
+          hide-delimiter-background
+          show-arrows-on-hover
+        >
+          <div class="index-card">
+            <div class="index-card-container">
+              <div :key="this.model">
+                <div tile>
+                  <div class="index-card-title animated fadeInDown delay:0.2s">
+                    {{ this.title[this.model] }}
+                  </div>
+                  <div
+                    class="index-card-content animated fadeInDown delay:0.1s"
+                  >
+                    <span v-for="cardText in this.content[this.model]" :key="cardText">
+                      {{ cardText }}<br />
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+          <v-carousel-item v-for="color in IndexColors" :key="color">
+            <v-sheet
+              class="index-carousel-sheet"
+              :color="color"
+              height="100%"
+              tile
+            >
+            </v-sheet>
+          </v-carousel-item>
+        </v-carousel>
       </div>
     </div>
   </div>
@@ -48,8 +54,8 @@ export default {
   components: {},
   data() {
     return {
-      PageColors: ["warning", "pink darken-2", "red lighten-1"],
-      page: 0,
+      IndexColors: ["warning", "pink darken-2", "red lighten-1"],
+      model: 0,
       title: [
         "🎉GrEAT과 함께 메뉴를 정해봐요",
         "🐱‍💻언제 GrEAT을 써야하죠?🐱‍🏍",
@@ -82,18 +88,6 @@ export default {
         var y = (hamY - e.pageY) * 0.1;
         document.getElementById("FlyingBurger").style.webkitTransform =
           "translate(" + x + "px" + "," + y + "px)";
-      }
-    },
-    pagePrev() {
-      this.page -= 1;
-      if (this.page == -1) {
-        this.page = 2;
-      }
-    },
-    pageNext() {
-      this.page += 1;
-      if (this.page == 3) {
-        this.page = 0;
       }
     }
   },
