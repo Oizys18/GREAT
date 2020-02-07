@@ -46,7 +46,7 @@
         </div>
 
         <div class="input-with-label">
-          <input
+          <input=
             v-model="passwordConfirm"
             type="password"
             id="password-confirm"
@@ -137,7 +137,7 @@
           </div>
         </div>
       </div>
-
+      <!-- <button @click="logoutApi()">임시로그아웃</button> -->
       <p></p>
     </div>
   </div>
@@ -224,6 +224,17 @@ export default {
     loginApi() {
       let { loginID, loginPW } = this;
       UserApi.requestLogin(loginID, loginPW, res => {
+        console.log(res);
+      });
+      var loginToken = UserApi.requestToken();
+      if(loginToken!=null){
+          this.$router.push('Main');
+        }else{
+          alert('로그인 실패');
+        }
+    },
+    logoutApi(){
+      UserApi.requestLogout(res => {
         console.log(res);
       });
     },

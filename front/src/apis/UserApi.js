@@ -3,6 +3,7 @@
  */
 import axios from 'axios'
 
+var storage = localStorage;
 
 const emailCheck = (email) => {
 	return axios.get('http://13.124.1.176:8080/user/email/' + email)
@@ -23,6 +24,10 @@ const emailAuth = (email) => {
 		)
 }
 
+const requestToken = () =>{
+	return storage.getItem('token');
+}
+
 const requestLogin = (loginID, loginPW, callback, errorCallback) => { // eslint-disable-line no-unused-vars
 	return axios.post('http://13.124.1.176:8080/user/login', {
 			email: loginID,
@@ -31,9 +36,15 @@ const requestLogin = (loginID, loginPW, callback, errorCallback) => { // eslint-
 		.then(
 			res => {
 				console.log(res);
+				storage.setItem('token',res.data.Authorization);
 			}
 		)
 };
+
+const requestLogout = () => {
+	storage.setItem('token', null);
+};
+
 const requestRegister = (email, username, password, birth, gender) => {
 	//"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHcmVhdCIsImV4cCI6MTU4MDc5NTMxMn0.Sj6X08VPilE7biAakAURdVIGW4ZaUyLBFH24NgOctMU"
 	return axios.post('http://13.124.1.176:8080/user/join', {
@@ -52,12 +63,11 @@ const requestRegister = (email, username, password, birth, gender) => {
 };
 
 
-export const logout = () => axios.post('/api/auth/logout');
-
-
 const UserApi = {
+	requestToken: () => requestToken(),
 	emailAuth: (email) => emailAuth(email),
 	emailCheck: (email) => emailCheck(email),
+	requestLogout: () => requestLogout(),
 	requestLogin: (data, callback, errorCallback) => requestLogin(data, callback, errorCallback),
 	requestRegister: (email, username, password, birth, gender) => requestRegister(email, username, password, birth, gender)
 }
