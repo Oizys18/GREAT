@@ -1,0 +1,8 @@
+/* 상세정보 Sidebar */
+
+/* 전체 container */
+.sidebar-container{
+  position: fixed;
+  width: 27%;
+  height: 100%;
+}

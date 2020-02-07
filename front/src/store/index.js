@@ -145,6 +145,7 @@ export default new Vuex.Store({
     기타maxIndex: 7,
     locationX: 127.0250186,
     locationY: 37.5056693,
+    storeInfo: {}
   },
   mutations:{
     '한식'(state, payload) {
