@@ -3,6 +3,7 @@
  */
 import axios from 'axios'
 
+var storage = localStorage;
 
 const emailCheck = (email) => {
 	return axios.get('http://13.124.1.176:8080/user/email/' + email)
@@ -23,37 +24,36 @@ const emailAuth = (email) => {
 		)
 }
 
+const requestToken = () =>{
+	return storage.getItem('token');
+}
+
 const requestLogin = (loginID, loginPW, callback, errorCallback) => { // eslint-disable-line no-unused-vars
-	let loginData = new Map();
-	loginData.set('email', loginID);
-	loginData.set('password', loginPW);
-	const response = axios.post('http://13.124.1.176:8080/user/login', loginData)
+	return axios.post('http://13.124.1.176:8080/user/login', {
+			email: loginID,
+			password: loginPW
+		})
 		.then(
 			res => {
 				console.log(res);
+				storage.setItem('token',res.data.Authorization);
 			}
 		)
-	return response.Authorization;
-}
+};
+
+const requestLogout = () => {
+	storage.setItem('token', null);
+};
+
 const requestRegister = (email, username, password, birth, gender) => {
-	// var birthDate = new Pikaday({
-	// 	field: birth,
-	// 	format: 'yyyy-MM-dd',
-	// 	toString(date, format){
-	// 		let day = ("0" + date.getDate()).slice(-2);
-	// 		let month = ("0" + (date.getMonth() + 1)).slice(-2);
-	// 		let year = date.getFullYear();
-	// 		return `${year}-${month}-${day}`;
-	// 	}
-	// });
-	axios.post('http://13.124.1.176:8080/user/join', {
-			params: {
-				email: email,
-				name: username,
-				password: password,
-				birth: birth,
-				gender: gender
-			}
+	//"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHcmVhdCIsImV4cCI6MTU4MDc5NTMxMn0.Sj6X08VPilE7biAakAURdVIGW4ZaUyLBFH24NgOctMU"
+	return axios.post('http://13.124.1.176:8080/user/join', {
+			email: email,
+			password: password,
+			sns_token: null,
+			birth: birth,
+			gender: gender,
+			name: username
 		})
 		.then(
 			res => {
@@ -63,12 +63,11 @@ const requestRegister = (email, username, password, birth, gender) => {
 };
 
 
-export const logout = () => axios.post('/api/auth/logout');
-
-
 const UserApi = {
+	requestToken: () => requestToken(),
 	emailAuth: (email) => emailAuth(email),
 	emailCheck: (email) => emailCheck(email),
+	requestLogout: () => requestLogout(),
 	requestLogin: (data, callback, errorCallback) => requestLogin(data, callback, errorCallback),
 	requestRegister: (email, username, password, birth, gender) => requestRegister(email, username, password, birth, gender)
 }
