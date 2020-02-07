@@ -47,7 +47,7 @@ export default {
   components: {},
   data() {
     return {
-      PageColors: ["yellow", "orange", "redorange"],
+      PageColors: ["warning", "pink darken-2", "red lighten-1"],
       page: 0,
       title: [
         "🎉GrEAT과 함께 메뉴를 정해봐요",
