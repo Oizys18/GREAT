@@ -1,5 +1,6 @@
 <template>
   <div class="sidebar-container">
+    <!-- <div class="sidebar-image">aa</div> -->
     <StoreImage :url="storeInfo.image"/>
   </div>
 </template>
@@ -12,10 +13,10 @@ export default {
   name: 'Sidebar',
   props: ["id"],
   components: {
-    StoreImage
+    StoreImage 
   },
   mounted() {
-    GridApi.requestStoreInfo(this.id, function(response) {
+    GridApi.requestStoreInfo(this.id, response => {
       this.$store.state.storeInfo = response
     })
   },
