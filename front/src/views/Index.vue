@@ -14,16 +14,15 @@
         <img class="index-next" src="@/assets/img/arrow-icon.png" />
       </button>
     </div>
-
+    
     <div class="big-screen-carousel">
       <div class="index-carousel">
-        <div class="index-card">
-          <div class="index-card-container">
-            <div :key="this.page">
+        <div :key="this.page">
+          <div class="index-card">
+            <div class="index-card-container">
               <div class="index-card-title animated fadeInDown delay:0.2s">
                 {{ this.title[this.page] }}
               </div>
-
               <div class="index-card-content animated fadeInDown delay:0.1s">
                 <span
                   v-for="cardText in this.content[this.page]"
@@ -48,7 +47,7 @@ export default {
   components: {},
   data() {
     return {
-      PageColors: ["warning", "pink darken-2", "red lighten-1"],
+      PageColors: ["yellow", "orange", "redorange"],
       page: 0,
       title: [
         "🎉GrEAT과 함께 메뉴를 정해봐요",
