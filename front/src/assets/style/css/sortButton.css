@@ -1,0 +1,62 @@
+.night-label{
+	opacity: 0.2;
+}
+
+body
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.sort-layo
+{
+	width: 70vw;
+	max-width: 350px;
+	min-width: 250px;
+	height: 30vh;
+	display: grid;
+	grid-template-columns: 1fr 3fr 1fr;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+	font-size: 20px;
+}
+
+.sort-layo:nth-child(1)
+{
+	text-align: right;
+}
+
+svg
+{	
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+
+#night-content
+{
+	opacity: 0.8;
+}
+
+.inner-shadow
+{
+	stroke-opacity: 0.1;
+	stroke-width: 5;
+	stroke: black;
+	fill: none;
+}
+
+#land
+{
+	opacity: 0;
+}
+
+.sort-contatiner sort-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
