@@ -1,6 +1,6 @@
 <template>
-  <div class="foodbookmark-card">
-    <img src="@/assets/img/arrow-icon.png">
+  <div class="foodbookmark-item">
+    <!-- <img src="@/assets/img/store_tmp.jpg"> -->
    </div>
 </template>
  
@@ -10,11 +10,3 @@ export default {
 };
 </script>
 
-
-<style>
-    .foodbookmark-card{
-        border: 1px solid blue;
-        padding: 10px;
-        
-    }
-</style>
