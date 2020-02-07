@@ -1,8 +1,8 @@
 <template>
   <div class="auth">
     <div class="join" v-if="join==true">
-      <h1>Join</h1>
       <div class="join-container">
+        <h1>Join</h1>
         <div class="input-with-label email-input">
           <input
             v-model="email"
@@ -46,7 +46,7 @@
         </div>
 
         <div class="input-with-label">
-          <input=
+          <input
             v-model="passwordConfirm"
             type="password"
             id="password-confirm"
@@ -227,8 +227,9 @@ export default {
         console.log(res);
       });
       var loginToken = UserApi.requestToken();
+      console.log(loginToken);
       if(loginToken!=null){
-          this.$router.push('Main');
+          this.$router.push({ path: '/' });
         }else{
           alert('로그인 실패');
         }

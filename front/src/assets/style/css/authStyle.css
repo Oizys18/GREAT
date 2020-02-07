@@ -80,13 +80,14 @@ input:-webkit-autofill {
 }
 
 .login .login-container button {
-    width: 100%;
+    margin: 0 auto;
+    width: 30%;
     border: none;
     font-weight: 700;
     background-color: transparent;
     outline: none;
     cursor: pointer;
-    margin-top: 5px;
+    margin-top: 10px;
     box-shadow: none;
 }
 
@@ -153,16 +154,23 @@ input:-webkit-autofill {
     flex-direction: column;
     margin: 0 auto;
     width: 80%;
+    
 }
 
 .join .join-container {
-    margin-top: 10px;
+    margin-top: 75px;
     margin-bottom: 10px;
     font-weight: bold;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 5px solid orange;
+    border-radius: 25px;
+    background-color: lightyellow;
 }
 
 .join h1 {
-    padding-top: 70px;
+    padding-top: 30px;
     padding-bottom: 30px;
     color: dimgray;
     font-weight: 900;
@@ -193,7 +201,7 @@ input:-webkit-autofill {
     padding: 0 15px 0 105px;
     box-sizing: border-box;
     color: #000;
-    background-color: lightyellow;
+    background-color: white;
     /* border: 1px solid #000;
     border-radius: 3px; */
     font-size: 13px;
@@ -255,7 +263,7 @@ input:-webkit-autofill {
     line-height: 1em;
     box-sizing: border-box;
     color: #000;
-    background-color: lightyellow;
+    background-color: white;
     /* border: 1px solid #000;
     border-radius: 3px; */
     font-size: 13px;
@@ -332,7 +340,8 @@ input:-webkit-autofill {
 }
 
 .join .join-button-container {
-    margin-top: 10px;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 
 @media screen and (min-width: 800px) {
