@@ -24,7 +24,7 @@ const emailAuth = (email) => {
 		)
 }
 
-const requestToken = () =>{
+const requestToken = () => {
 	return storage.getItem('token');
 }
 
@@ -36,7 +36,8 @@ const requestLogin = (loginID, loginPW, callback, errorCallback) => { // eslint-
 		.then(
 			res => {
 				console.log(res);
-				storage.setItem('token',res.data.Authorization);
+				storage.setItem('token', res.data.data.Authorization);
+				console.log(storage.getItem('token'))
 			}
 		)
 };

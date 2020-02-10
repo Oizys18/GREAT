@@ -2,10 +2,12 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Index from "../views/Index.vue";
 import Main from "../views/Main.vue";
+import Map from "../views/Map.vue";
 import Mypage from "../views/Mypage.vue";
 import Authentication from "../views/Authentication.vue";
 import Social from "../views/Social.vue";
 import PageNotFound from "../views/PageNotFound.vue";
+import Map from "../views/Map.vue";
 
 Vue.use(VueRouter);
 
@@ -19,6 +21,11 @@ const routes = [
     path: "/main",
     name: "Main",
     component: Main
+  },
+  {
+    path: "/map",
+    name: "Map",
+    component: Map
   },
   {
     path: "*",
@@ -39,6 +46,11 @@ const routes = [
     path: "/social",
     name: "Social",
     component: Social
+  },
+  {
+    path: "/map",
+    name : "Map",
+    component: Map
   }
 ];
 

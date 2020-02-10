@@ -1,6 +1,5 @@
 *:focus {
     outline: none;
-    background-color: rgb(119, 119, 45);
 }
 
 input:-webkit-autofill {
