@@ -11,8 +11,8 @@
     <v-list-item-content class="girdbookmark-elem-title">
       <v-list-item-title v-if="!editFlag">{{title}} </v-list-item-title>
       <v-list-item-title v-else>
-        <input v-model="title" id="title_modify" name="title_modify" 
-        class="edit-bookmarkgrid-title" type="text"/> 
+        <input v-model="editTitle" id="title_modify" name="title_modify" 
+        class="title-modify-input" type="text"/> 
       </v-list-item-title>
       
       <!-- <v-list-item-title v-text="item.title"></v-list-item-title> -->
@@ -24,10 +24,10 @@
         v-on:click="clickEditBtn">
         <v-icon>mdi-pencil</v-icon>
       </v-btn>
-      <v-btn  v-else class="ma-2" text icon color="orange" id=btn-edit
+      <v-btn  v-else class="ma-2" text icon color="#F5D82E" id=btn-edit
         v-on:click="editGridBookmark_click" 
         :disabled="!isTitleForm"  
-        :class="{disabled : !isTitleForm}">
+      >
         <v-icon>mdi-checkbox-marked-circle</v-icon>
       </v-btn>
     </v-list-item-icon>
@@ -50,25 +50,25 @@ export default {
   data(){
     return{
       editFlag:false, //그리드 북마크 수정 여부 flag
-      isTitleForm:false, //title input text여부 check flag -> 수정확인 버튼 disabled 여부  
+      isTitleForm:true, //title input text여부 check flag -> 수정확인 버튼 disabled 여부  
+      editTitle:'',
     }
   },
   computed:{
-    title(){
-      return this.$store.state.gridbookmarks[this.gridbookmarkIdx].title
+    title : function(){
+        return this.$store.state.gridbookmarks[this.gridbookmarkIdx].title
     }
+
   },
   watch:{
-    title:function(){
+    endTitle:function(){
       //입력한 title이 맞는 경우인지 검사 -> 수정 확인 버튼 disabled 결정
-      console.log('asdfasdf')
-      console.log(this.title.length)
-    
-      if(this.title.length>0){
-        this.isTitleForm=true;
-      }else{
-        this.isTitleForm=false;
-      }
+
+      if(this.editTitle.length<=0){
+          this.isTitleForm=false;
+          console.log(' isTitleForm'+this.isTitleForm)
+      }else this.isTitleForm=true;
+
     }
   },
   methods:{
@@ -89,10 +89,11 @@ export default {
     clickEditBtn(){
       console.log('click edit title button!')
       this.editFlag=true;
+      this.editTitle=this.title;
     },
     editGridBookmark_click(){
+      this.$store.state.gridbookmarks[this.gridbookmarkIdx].title = this.editTitle
       this.editFlag=false;
-      console.log("title input 수정 후 클릭 ")    
     },
     delteGridbookmark(){
       console.log("1.그리드 북마크 삭제 클릭")

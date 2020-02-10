@@ -213,7 +213,12 @@
 .girdbookmark-elem-title .edit-bookmarkgrid-title input{
   border: 1px solid red;
 }
-/* ★icon */
+.title-modify-input{
+  color:gray;
+  padding:2px;
+  border:1px solid grey;
+}
+/* icon */
 .gridlist-box .v-application--is-ltr .v-list-item__action:first-child,
 .v-application--is-ltr .v-list-item__icon:first-child {
   margin: 16px !important;
