@@ -3,6 +3,7 @@
 /* 전체 container */
 .sidebar-container {
   position: fixed;
+  top: 8vh;
   width: 27%;
   height: 100%;
 }
@@ -12,4 +13,34 @@
   position: relative;
   width: 100%;
   height: 30%;
+}
+
+/* Text component */
+.sidebar-text {
+  position: relative;
+  top: 1vh;
+}
+
+.sidebar-text-title {
+  text-align: center;
+}
+.sidebar-text-name {
+  font-size: 2rem;
+  margin-left: 1vw;
+  margin-bottom: 1vh;
+  display: block;
+}
+.sidebar-text-rating {
+  display: inline;
+  margin-right: 4vw;
+  margin-left: 1vw;
+}
+
+.sidebar-text-body {
+  position: relative;
+  padding: 20px;
+  margin-top: 3vh;
+}
+.sidebar-text-tag {
+  overflow-wrap: inherit;
 }

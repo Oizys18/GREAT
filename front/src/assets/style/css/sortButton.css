@@ -1,0 +1,27 @@
+.sort {
+	background: rgb(200,240,255);
+	padding: 6px 36px;
+	display: inline-block;
+	font-size: 1.2em;
+	border-radius: 4px;
+	border:0;
+	cursor: pointer;
+	color: #000;
+  }
+  
+  .rating {
+	background: rgb(160,200,255);
+  }
+  
+  .distance {
+	background: rgb(140,180,255);
+  }
+  
+  
+  .sort-elements {
+	position: fixed;
+	right: 5vw;
+	top: 5vh;
+	padding: 30px 0 10px 0;
+	text-align: center;
+  }

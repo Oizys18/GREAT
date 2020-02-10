@@ -1,24 +1,20 @@
 <template>
   <div class="sidebar-container">
-    <!-- <div class="sidebar-image">aa</div> -->
-    <StoreImage :url="storeInfo.image"/>
+    <ImageInfo :url="storeInfo.image"/>
+    <TextInfo :textInfo="storeInfo"/>
+    
   </div>
 </template>
 
 <script>
 import '../../assets/style/css/Sidebar.css'
-import StoreImage from '../Sidebar/StoreImage'
-import GridApi from '../../apis/GridApi.js'
+import ImageInfo from '../Sidebar/ImageInfo'
+import TextInfo from '../Sidebar/TextInfo'
 export default {
   name: 'Sidebar',
-  props: ["id"],
   components: {
-    StoreImage 
-  },
-  mounted() {
-    GridApi.requestStoreInfo(this.id, response => {
-      this.$store.state.storeInfo = response
-    })
+    ImageInfo,
+    TextInfo
   },
   computed: {
     storeInfo() {

@@ -38,8 +38,8 @@ export default new Vuex.Store({
     ],
     categories: [
       {id: 1, name: "한식"},
-      {id: 2, name: "중식"},
-      {id: 3, name: "일식"},
+      {id: 2, name: "일식"},
+      {id: 3, name: "중식"},
       {id: 4, name: "아시아"},
       {id: 5, name: "뷔페"},
       {id: 6, name: "분식"},
@@ -147,6 +147,9 @@ export default new Vuex.Store({
     storeInfo: {}
   },
   mutations:{
+    'reset'(state){
+      state.한식index = [0,1,2,3,4,5,6,7]
+    },
     '한식'(state, payload) {
       state.한식 = payload
     },
