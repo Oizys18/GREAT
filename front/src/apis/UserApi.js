@@ -6,12 +6,13 @@ import axios from 'axios'
 var storage = localStorage;
 
 const emailCheck = (email) => {
-	return axios.get('http://13.124.1.176:8080/user/email/' + email)
+	var emailRes = axios.get('http://13.124.1.176:8080/user/email/' + email)
 		.then(
 			res => {
 				console.log(res);
 			}
 		)
+	return emailRes.data;
 }
 
 
@@ -25,7 +26,18 @@ const emailAuth = (email) => {
 }
 
 const requestToken = () => {
-	return storage.getItem('token');
+	console.log('token', storage.getItem('token'))
+	return axios.get('http://70.12.246.123:8080/user/1/',{
+		headers: { 'Authorization' : storage.getItem('token') }
+       })
+	.then(
+		res => { // eslint-disable-line no-unused-vars
+			console.log(storage.getItem('token'));
+		}
+		// this.$router.push({ path: '/' })
+	).catch(
+		// alert('로그인 실패')
+	)
 }
 
 const requestLogin = (loginID, loginPW, callback, errorCallback) => { // eslint-disable-line no-unused-vars
@@ -35,9 +47,8 @@ const requestLogin = (loginID, loginPW, callback, errorCallback) => { // eslint-
 		})
 		.then(
 			res => {
-				console.log(res);
 				storage.setItem('token', res.data.data.Authorization);
-				console.log(storage.getItem('token'))
+				console.log('login', storage.getItem('token'))
 			}
 		)
 };
@@ -58,6 +69,7 @@ const requestRegister = (email, username, password, birth, gender) => {
 		})
 		.then(
 			res => {
+				storage.setItem('token', res.data.data.Authorization);
 				console.log(res);
 			}
 		)

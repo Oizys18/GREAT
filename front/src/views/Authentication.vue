@@ -29,7 +29,8 @@
         </div>
 
         <div id="emailAuthInput" v-if="emailAuthReturn==true">
-          <input type="text" placeholder="메일로 전송된 인증번호를 입력하세요" /><div></div>
+          <input type="text" placeholder="메일로 전송된 인증번호를 입력하세요" />
+          <div></div>
           <button>확인</button>
         </div>
         <div v-else></div>
@@ -69,42 +70,30 @@
             placeholder="생년월일을 입력하세요."
             type="date"
             data-date-picker="activated"
-          /></div>
-          <!-- <v-date-picker v-model="picker" color="green lighten-1"></v-date-picker>-->
-          <div class="join-radio-container">
-            <div class="input-with-label">
-              <label for="gender">성별</label>
-            </div>
-            <div class="radio-btn-group">
-              <div class="radio">
-                <input
-                  type="radio"
-                  name="radio"
-                  value="M"
-                  checked="checked"
-                  v-model="gender"
-                  id="M"
-                />
-                <label for="M">남성</label>
-              </div>
-              <div class="radio">
-                <input
-                type="radio" 
-                name="radio" 
-                value="F" 
-                v-model="gender" 
-                id="F" 
-                />
-                <label for="F">여성</label>
-              </div>
-            </div>
+          />
+        </div>
+        <!-- <v-date-picker v-model="picker" color="green lighten-1"></v-date-picker>-->
+        <div class="join-radio-container">
+          <div class="input-with-label">
+            <label for="gender">성별</label>
           </div>
-          <div class="join-button-container">
-            <v-btn rounded color="#FC913A" dark @click="joinRedirect()">취소</v-btn>
-            <v-btn rounded color="#FC913A" dark @click="joinApi()">가입</v-btn>
+          <div class="radio-btn-group">
+            <div class="radio">
+              <input type="radio" name="radio" value="M" checked="checked" v-model="gender" id="M" />
+              <label for="M">남성</label>
+            </div>
+            <div class="radio">
+              <input type="radio" name="radio" value="F" v-model="gender" id="F" />
+              <label for="F">여성</label>
+            </div>
           </div>
         </div>
+        <div class="join-button-container">
+          <v-btn rounded color="#FC913A" dark @click="joinRedirect()">취소</v-btn>
+          <v-btn rounded color="#FC913A" dark @click="joinApi()">가입</v-btn>
+        </div>
       </div>
+    </div>
     <div class="login" v-else>
       <div class="login-subcontainer">
         <h1>Login</h1>
@@ -146,7 +135,7 @@
 <script>
 /* eslint-disable no-unused-vars */
 import "@/assets/style/css/authStyle.css";
-// import axios from 'axios'
+import axios from "axios";
 import SocialLogin from "@/components/common/SocialLogin.vue";
 import UserApi from "@/apis/UserApi";
 import PV from "password-validator";
@@ -209,10 +198,15 @@ export default {
     },
     emailCheck() {
       let { email } = this;
-      UserApi.emailCheck(email, res => {
-        console.log(res.Autorization);
+      axios.get("http://13.124.1.176:8080/user/email/" + email).then(res => {
+        console.log(res);
+        if (res.data.data.length < 3) {
+          this.emailCheckReturn = true;
+        } else {
+          alert("이메일 중복");
+        }
       });
-      this.emailCheckReturn = true;
+      
     },
     emailAuth() {
       let { email } = this;
@@ -226,15 +220,14 @@ export default {
       UserApi.requestLogin(loginID, loginPW, res => {
         console.log(res);
       });
-      var loginToken = UserApi.requestToken();
-      console.log(loginToken);
-      if(loginToken!=null){
-          this.$router.push({ path: '/' });
-        }else{
-          alert('로그인 실패');
-        }
+      this.tokenApi();
     },
-    logoutApi(){
+    tokenApi(){
+      UserApi.requestToken(res => {
+        console.log(res);
+      });
+    },
+    logoutApi() {
       UserApi.requestLogout(res => {
         console.log(res);
       });
