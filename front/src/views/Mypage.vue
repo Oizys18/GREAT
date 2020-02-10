@@ -15,7 +15,7 @@
         <div>
           <v-card flat>
             <div class="contents">
-              <TabFood/>
+              <p>food bookmark</p>
             </div>
           </v-card>
         </div>
@@ -62,7 +62,7 @@ import GridTab from "@/components/Tab/GridTab.vue";
 import InfoTab from "@/components/Tab/InfoTab.vue";
 import Info from "@/components/Tab/Info.vue";
 import Reviews from "@/components/Tab/Reviews.vue";
-import TabFood from "@/components/Tab/TabFood.vue"
+
 import GridList from "@/components/Tab/GridList.vue";
 
 export default {
@@ -73,8 +73,7 @@ export default {
     InfoTab,
     Info,
     Reviews,
-    GridList,
-    TabFood,
+    GridList
   },
   data() {
     return {

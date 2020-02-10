@@ -1,14 +1,14 @@
 <template>
   <div class="category-grid">
-    <div class="center-box">{{ $store.state.categories[0].name }}</div>
-    <div class="center-box">{{ $store.state.categories[1].name }}</div>
-    <div class="center-box">{{ $store.state.categories[2].name }}</div>
-    <div class="center-box">{{ $store.state.categories[3].name }}</div>
+    <div class="center-box"><img class="category-image" src="../../assets/img/korean.png" /></div>
+    <div class="center-box"><img class="category-image" src="../../assets/img/japanese.png" /></div>
+    <div class="center-box"><img class="category-image" src="../../assets/img/chinese.png" /></div>
+    <div class="center-box"><img class="category-image" src="../../assets/img/asian.png" /></div>
     <div class="center-box">Location</div>
-    <div class="center-box">{{ $store.state.categories[4].name }}</div>
-    <div class="center-box">{{ $store.state.categories[5].name }}</div>
-    <div class="center-box">{{ $store.state.categories[6].name }}</div>
-    <div class="center-box">{{ $store.state.categories[7].name }}</div>
+    <div class="center-box"><img class="category-image" src="../../assets/img/buffet.png" /></div>
+    <div class="center-box"><img class="category-image" src="../../assets/img/snack.png" /></div>
+    <div class="center-box"><img class="category-image" src="../../assets/img/cafe.png" /></div>
+    <div class="center-box"><img class="category-image" src="../../assets/img/guitar.png" /></div>
   </div>
 </template>
 

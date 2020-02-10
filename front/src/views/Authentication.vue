@@ -244,6 +244,7 @@ export default {
       UserApi.requestRegister(email, nickname, password, birth, gender, res => {
         console.log(res);
       });
+      this.joinRedirect();
     },
     joinRequest() {
       this.join = true;

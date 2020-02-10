@@ -176,11 +176,24 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.review-card-rating {
-}
+
 
 /* food,grid,info components */
-
+/*food bookmark*/
+.foodbookmark-item{
+  width: fit-content;
+  transition: 0.3s;
+  box-shadow: 0 4px 8px 0 rgb(0,0, 0, 0.2);
+  border: 1px solid red;
+  padding: 10px;
+}
+.foodbookmark-item:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  background-color: rgba(14, 13, 13, 0.3);
+}
+.foodbookmark-item img{
+  border: 1px solid blue;
+}
 /* grid list*/
 .gridlist-box {
   /* border: 1px solid red; */
@@ -197,8 +210,11 @@
   display: flex;
   width: 100%;
 }
+.girdbookmark-elem-title .edit-bookmarkgrid-title input{
+  border: 1px solid red;
+}
 .title-modify-input{
-  color:grey;
+  color:gray;
   padding:2px;
   border:1px solid grey;
 }
@@ -213,10 +229,6 @@
 .gridbookmark-box .v-list-item__icon {
   margin: 5px 0 !important;
 }
-.v-application :active {
-  background-color: transparent;
-}
-
 
 
 @media screen and (min-width: 800px) {

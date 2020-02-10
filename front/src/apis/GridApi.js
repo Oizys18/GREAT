@@ -12,7 +12,15 @@ var requestGridStores = function(data, callback) {
       callback(response.data.data)
     })
 }
-
+var requestGridStoresByRating = function(data, callback) {
+  var category = data.category;
+  axios
+    .get('http://13.124.1.176:8080/store/category/' + category)
+    .then(response => {
+      callback(response.data.data)
+    })
+  }
+  
 /** 식당 id에 해당하는 식당 상세 정보 요청 */
 var requestStoreInfo = function(data, callback) {
   axios
@@ -24,5 +32,6 @@ var requestStoreInfo = function(data, callback) {
 
 export default {
   requestGridStores,
-  requestStoreInfo
+  requestStoreInfo,
+  requestGridStoresByRating
 }

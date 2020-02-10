@@ -6,7 +6,8 @@
        draggable="true" 
        @mouseover="over(i)"
        @mouseleave="out(i)" 
-       v-on:dragend="changeIndex(i)" 
+       v-on:dragend="changeIndex(i)"
+       @click="storeInfo(idx)" 
        :key="idx">
       <GridItem :name="[itemName[idx].name]" />
       <StarRating v-if="mouseOn[i]" :rating="itemName[idx].rating" />
@@ -19,8 +20,9 @@
         draggable="true"
         @mouseenter="over(i+4)"
         @mouseleave="out(i+4)" 
-        :key="idx"
-        v-on:dragend="changeIndex(i+4)" >
+        v-on:dragend="changeIndex(i+4)"
+        @click="storeInfo(idx)" 
+        :key="idx">
       <GridItem :name="[itemName[idx].name]" />
       <StarRating 
         v-if="mouseOn[i+4]" 
@@ -34,6 +36,7 @@
 import "@/assets/style/css/gridStyle.css"
 import GridItem from "./GridItem.vue"
 import StarRating from '../common/StarRating.vue'
+import GridApi from '../../apis/GridApi.js'
 export default {
   name: "MainFoodGrid",
   components: {
@@ -69,6 +72,12 @@ export default {
     },
     out(i) {
       this.mouseOn.splice(i,1,false)
+    },
+    storeInfo(idx) {
+      GridApi.requestStoreInfo(this.itemName[idx].id, response => {
+        console.log(response)
+        this.$store.state.storeInfo = response
+      })
     }
   },
   computed: {
