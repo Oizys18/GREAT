@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Sidebar/>
+    <Sidebar :id="1"/>
     <Table />
   </div>
 </template>

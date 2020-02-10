@@ -7,7 +7,7 @@
 <script>
 import '../../assets/style/css/Sidebar.css'
 export default {
-  name: "StoreImage",
+  name: "ImageInfo",
   props: ["url"],
   computed: {
     imageUrl() {
