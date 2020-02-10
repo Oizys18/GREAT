@@ -144,7 +144,8 @@ export default new Vuex.Store({
     기타maxIndex: 7,
     locationX: 127.0250186,
     locationY: 37.5056693,
-    storeInfo: {}
+    storeInfo: null,
+    reviewInfo: null
   },
   mutations:{
     'reset'(state){
