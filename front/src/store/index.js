@@ -38,8 +38,8 @@ export default new Vuex.Store({
     ],
     categories: [
       {id: 1, name: "한식"},
-      {id: 2, name: "중식"},
-      {id: 3, name: "일식"},
+      {id: 2, name: "일식"},
+      {id: 3, name: "중식"},
       {id: 4, name: "아시아"},
       {id: 5, name: "뷔페"},
       {id: 6, name: "분식"},

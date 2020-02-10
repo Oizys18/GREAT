@@ -1,0 +1,9 @@
+/** Chip Component */
+.text-chip {
+  background-color: beige;
+  border-radius: 25px;
+  font-size: 0.8rem;
+  padding: 5px;
+  display: inline-block;
+  margin: 0.1vw;
+}
