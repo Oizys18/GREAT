@@ -147,6 +147,9 @@ export default new Vuex.Store({
     storeInfo: {}
   },
   mutations:{
+    'reset'(state){
+      state.한식index = [0,1,2,3,4,5,6,7]
+    },
     '한식'(state, payload) {
       state.한식 = payload
     },
