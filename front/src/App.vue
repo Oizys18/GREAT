@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <v-app>
-    <AppBar />
-    <router-view />
+      <AppBar />
+      <router-view />
     </v-app>
   </div>
 </template>
@@ -21,11 +21,9 @@ export default {
 
 <style>
 #app {
-  font-family: 'Noto Sans KR', sans-serif;
-  /* font-family: "Avenir", Helvetica, Arial, sans-serif; */
-  /* -webkit-font-smoothing: antialiased;
+  font-family: "Noto Sans KR", sans-serif;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center; */
-  /* color: #2c3e50; */
 }
+
 </style>

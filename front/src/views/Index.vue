@@ -1,37 +1,48 @@
 <template>
   <div class="carousel-container">
-    <span id="FlyingBurger" class="floating-container">
-      <span class="floating-text">
+    <span id="FlyingBurger" class="floating-container ">
+      <span class="floating-text animated pulse slower infinite">
         GrEAT
       </span>
     </span>
 
-    <div class="index-background">
-      <button @click="pageNext">
-        <img class="index-prev" src="@/assets/img/arrow-icon.png" />
-      </button>
-      <button @click="pagePrev">
-        <img class="index-next" src="@/assets/img/arrow-icon.png" />
-      </button>
+    <div
+      class="index-background transition:0.15s"
+      :style="{ backgroundColor: IndexColors[this.page] }"
+    >
+      <img
+        @click="pagePrev"
+        class="index-next"
+        src="@/assets/img/arrow-icon.png"
+      />
+
+      <img
+        @click="pageNext"
+        class="index-prev"
+        src="@/assets/img/arrow-icon.png"
+      />
     </div>
-    
+
     <div class="big-screen-carousel">
       <div class="index-carousel">
         <div :key="this.page">
           <div class="index-card">
             <div class="index-card-container">
-              <div class="index-card-title animated fadeInDown delay:0.2s">
+              <div class="index-card-title animated fadeInDown delay:0.15s">
                 {{ this.title[this.page] }}
               </div>
-              <div class="index-card-content animated fadeInDown delay:0.1s">
+              <div class="index-card-content animated fadeInDown delay:0.05s">
                 <span
-                  v-for="cardText in this.content[this.page]"
-                  :key="cardText"
+                  v-for="(cardText, id) in this.content[this.page]"
+                  :key="`${cardText}-${id}`"
                 >
                   {{ cardText }}<br />
                 </span>
               </div>
             </div>
+          </div>
+          <div class="index-carousel-indicator">
+            <CarouselIndicator :pageIDX="this.page" />
           </div>
         </div>
       </div>
@@ -42,12 +53,15 @@
 <script>
 import "@/assets/style/css/indexStyle.css";
 import "@/assets/style/css/animated.css";
+import CarouselIndicator from "@/components/common/CarouselIndicator.vue";
 export default {
   name: "Index",
-  components: {},
+  components: {
+    CarouselIndicator
+  },
   data() {
     return {
-      PageColors: ["warning", "pink darken-2", "red lighten-1"],
+      IndexColors: ["#F9D423", "#FC913A", "#FF4E50"],
       page: 0,
       title: [
         "🎉GrEAT과 함께 메뉴를 정해봐요",
@@ -94,10 +108,56 @@ export default {
       if (this.page == 3) {
         this.page = 0;
       }
+    },
+    lock(e) {
+      if (screen.width >= 800) {
+        var x = e.x;
+        this.startX = x;
+      } else {
+        var mx = e.x;
+        this.startX = mx;
+      }
+    },
+    move(e) {
+      if (screen.width >= 800) {
+        var x = e.x;
+        if (this.startX - x < 0) {
+          this.page -= 1;
+          if (this.page == -1) {
+            this.page = 2;
+          }
+        } else if (this.startX - x > 0) {
+          this.page += 1;
+          if (this.page == 3) {
+            this.page = 0;
+          }
+        }
+      } else {
+        var mx = e.x;
+        if (this.startX - mx < 0) {
+          this.page -= 1;
+          if (this.page == -1) {
+            this.page = 2;
+          }
+        } else if (this.startX - mx > 0) {
+          this.page += 1;
+          if (this.page == 3) {
+            this.page = 0;
+          }
+        }
+      }
     }
   },
   mounted() {
     window.addEventListener("mousemove", this.mouseIsMoving);
+
+    // touch start
+    window.addEventListener("touchstart", this.lock);
+    window.addEventListener("mousedown", this.lock);
+
+    // touch end
+    window.addEventListener("touchend", this.move);
+    window.addEventListener("mouseup", this.move);
   }
 };
 </script>
