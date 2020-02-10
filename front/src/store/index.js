@@ -15,26 +15,17 @@ export default new Vuex.Store({
       {name: 'Garden Creamery',rating :"★★★★★", contents: "Ice cream"},
     ],
     gridbookmarks:[
-      {title:"Jason Oner",star:true},
-      {title:"Travis Howard",star:false},
-      {title:"Ali Connors",star:false},
-      {title:"Cindy Baker",star:true},
-      {title:"ABCDEFG",star:false},
-      {title:"Oner",star:true},
-      {title:"SSAFY",star:true},
-      {title:"Vue",star:false},
-      {title:"Visual Code",star:false},
-      {title:"KaKao",star:true},
-      {title:"QWERTDF sdfsd",star:false},
-      {title:"BookMark",star:true},
-      {title:"Grid",star:true},
-      {title:"food",star:false},
-      {title:"npm",star:false},
-
-
-
-
-
+      {id:'1',name:"Jason Oner",type:'G',user:'1'},
+      {id:'2',name:"Travis Howard",type:'G',user:'1'},
+      {id:'3',name:"Ali Connors",type:'G',user:'1'},
+      {id:'4',name:"Cindy Baker",type:'G',user:'1'},
+      {id:'5',name:"ABCDEFG",type:'G',user:'1'},
+      {id:'6',name:"Oner",type:'G',user:'1'},
+      {id:'7',name:"SSAFY",type:'G',user:'1'},
+      {id:'8',name:"Vue",type:'G',user:'1'},
+      {id:'9',name:"Visual Code",type:'G',user:'1'},
+      {id:'10',name:"KaKao",type:'G',user:'1'},
+      {id:'11',name:"QWERTDF sdfsd",type:'G',user:'1'},
     ],
     categories: [
       {id: 1, name: "한식"},
