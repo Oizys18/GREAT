@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <template>
   <div class="tab-food-box" >
      <span v-for="n in 3" :key=n>
@@ -18,6 +17,3 @@ export default {
   }
 };
 </script>
- 
-=======
->>>>>>> 81ad5b86f57226996fcc6335cc6397b8708d49b0
