@@ -148,7 +148,22 @@ export default new Vuex.Store({
   },
   mutations:{
     'reset'(state){
-      state.한식index = [0,1,2,3,4,5,6,7]
+      state.한식index= [0,1,2,3,4,5,6,7]
+      state.중식index= [0,1,2,3,4,5,6,7]
+      state.일식index= [0,1,2,3,4,5,6,7]
+      state.아시아index= [0,1,2,3,4,5,6,7]
+      state.뷔페index= [0,1,2,3,4,5,6,7]
+      state.분식index= [0,1,2,3,4,5,6,7]
+      state.카페index= [0,1,2,3,4,5,6,7]
+      state.기타index= [0,1,2,3,4,5,6,7]
+      state.한식maxIndex=7
+      state.중식maxIndex=7
+      state.일식maxIndex=7
+      state.아시아maxIndex=7
+      state.뷔페maxIndex=7
+      state.분식maxIndex=7
+      state.카페maxIndex=7
+      state.기타maxIndex=7
     },
     '한식'(state, payload) {
       state.한식 = payload
