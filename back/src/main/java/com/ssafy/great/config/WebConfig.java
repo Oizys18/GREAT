@@ -12,7 +12,8 @@ public class WebConfig implements WebMvcConfigurer {
 			"/user/login/**",
 			"/user/join/**",
 			"/user/email/**",
-			"/user/socialLogin/**"
+			"/user/socialLogin/**",
+			"/user/search/**"
 	};
 	
 	@Override

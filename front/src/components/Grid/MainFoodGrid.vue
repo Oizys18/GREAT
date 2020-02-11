@@ -1,11 +1,33 @@
 <template>
   <div class="small-grid">
-    <template v-for="idx in indexList.slice(0,4)">
-      <button class="small-box" :key="idx"><GridItem :name="[itemName[idx].name]" /></button>
+    <template v-for="(idx, i) in indexList.slice(0, 4)">
+      <button
+        class="small-box"
+        draggable="true"
+        @mouseover="over(i)"
+        @mouseleave="out(i)"
+        v-on:dragend="changeIndex(i)"
+        @click="storeInfo(idx)"
+        :key="idx"
+      >
+        <GridItem :name="[itemName[idx].name]" />
+        <StarRating v-if="mouseOn[i]" :rating="itemName[idx].rating" />
+      </button>
     </template>
     <div class="small-category">{{ categoryName }}</div>
-    <template v-for="idx in indexList.slice(4,8)">
-      <button class="small-box" :key="idx"><GridItem :name="[itemName[idx].name]" /></button>
+    <template v-for="(idx, i) in indexList.slice(4, 8)">
+      <button
+        class="small-box"
+        draggable="true"
+        @mouseenter="over(i + 4)"
+        @mouseleave="out(i + 4)"
+        v-on:dragend="changeIndex(i + 4)"
+        @click="storeInfo(idx)"
+        :key="idx"
+      >
+        <GridItem :name="[itemName[idx].name]" />
+        <StarRating v-if="mouseOn[i + 4]" :rating="itemName[idx].rating" />
+      </button>
     </template>
   </div>
 </template>
@@ -13,25 +35,52 @@
 <script>
 import "@/assets/style/css/gridStyle.css";
 import GridItem from "./GridItem.vue";
+import StarRating from "../common/StarRating.vue";
+import GridApi from "../../apis/GridApi.js";
 export default {
   name: "MainFoodGrid",
   components: {
-    GridItem
+    GridItem,
+    StarRating
   },
   data() {
     return {
-      indexList: [0,1,2,3,4,5,6,7]
+      mouseOn: [false, false, false, false, false, false, false, false]
     };
   },
   props: ["num"],
   methods: {
     hi() {
       console.log("상세정보 사이드바!!");
+    },
+    changeIndex(i) {
+      var commitName = this.categoryName + "List";
+      this.$store.commit(commitName, i);
+      this.mouseOn.splice(i, 1, false);
+    },
+    over(i) {
+      this.mouseOn.splice(i, 1, true);
+    },
+    out(i) {
+      this.mouseOn.splice(i, 1, false);
+    },
+    storeInfo(idx) {
+      GridApi.requestStoreInfo(this.itemName[idx].id, response => {
+        this.$store.state.storeInfo = response;
+        // open sidebar
+        var sidebar = document.getElementById("sidebar-1");
+        sidebar.classList.remove("bounceOutLeft");
+        sidebar.classList.add("bounceInLeft");
+      });
     }
   },
   computed: {
     categoryName() {
       return this.$store.state.categories[this.num].name;
+    },
+    indexList() {
+      var listName = this.categoryName + "index";
+      return this.$store.state[listName];
     },
     itemName() {
       return this.$store.state[this.categoryName];
@@ -40,6 +89,4 @@ export default {
 };
 </script>
 
-<style>
-
-</style>
+<style></style>

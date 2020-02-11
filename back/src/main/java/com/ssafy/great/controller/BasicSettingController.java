@@ -49,7 +49,7 @@ public class BasicSettingController {
 		for(int i = 0; i < searchWordList.length; i++) {
 			String searchWord = searchWordList[i] + searchBaseWord;
 			Map<String, Object> result2 = apiService.createStoreInfo(searchWord, typeList[0]);
-			for(int j = 2; j< typeList.length;j++) {
+			for(int j = 0; j< typeList.length;j++) {
 				Map<String, Object> resultData = apiService.createStoreInfo(searchWord, typeList[j]);
 				LinkedHashMap<String, Object> result = (LinkedHashMap<String, Object>) resultData.get("result");
 				LinkedHashMap<String, Object> place = (LinkedHashMap<String, Object>) result.get("place");

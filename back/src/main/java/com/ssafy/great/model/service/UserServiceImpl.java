@@ -71,4 +71,10 @@ public class UserServiceImpl implements UserService{
 	public void deleteUser(int id) {
 		dao.delete(id);
 	}
+
+	@Override
+	public User selectByEmail(String email) {
+		// TODO Auto-generated method stub
+		return dao.selectByEmail(email);
+	}
 }

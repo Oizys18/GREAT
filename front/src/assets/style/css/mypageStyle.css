@@ -1,247 +1,343 @@
 /* mypage.vue */
 .mypage-container {
-    /* margin-top: 50px; */
-    width:100%;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-  }
+  /* margin-top: 50px; */
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
 
-  .mypage-container h2{
-    color:grey;
-    font-weight: 900;
-  }
-  .part-container{
-    margin-top:20px;
-    margin-bottom: 20px;
-    text-align: center;
-    align-content: center;
-  }
-  .name-container {
-    padding-top: 90px;
-    margin-bottom: 70px;
-    text-align: center;
-  }
-  .tab-container {
-    margin-top: 30px;
-    width: 80%;
-    align-items: center;
-    margin: 0 auto;
-  }
-  .box-container {
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid grey !important;
-    /* border :1px solid #F5331E; */
-    overflow:hidden
-  }
-  /* info components */
-  .user-details {
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-    overflow: hidden;
-    
-    /* border:1px solid palevioletred; */
-    /* display: flex; */
-    
-  }
-  .edit-btn{  
-    /* border: 1px solid red; */
-    float:right;
-  }
-  .edit-box{
-    /* 취소, 확인 버튼 */
-    width:95%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-    overflow: hidden;
-    
-  }
-  .user-modify {
-    padding: 3px;
-  
-    border: 1px solid grey;
-  }
-  .user-details-with-label{
-    font:bolder;
-    color: black;
-    position: relative;
-  }
-  .user-details-with-label label{
-    font:lighter;
-    color: gray;
+.mypage-container h2 {
+  color: grey;
+  font-weight: 900;
+}
+.part-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  align-content: center;
+}
+.name-container {
+  padding-top: 90px;
+  margin-bottom: 70px;
+  text-align: center;
+}
+.tab-container {
+  margin-top: 30px;
+  width: 80%;
+  align-items: center;
+  margin: 0 auto;
+}
+.box-container {
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid grey !important;
+  /* border :1px solid #F5331E; */
+  overflow: hidden;
+}
+/* info components */
+.user-details {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  overflow: hidden;
 
-    position: absolute;
-    left: 30%;
-   
-  }
+  /* border:1px solid palevioletred; */
+  /* display: flex; */
+}
+.edit-btn {
+  /* border: 1px solid red; */
+  float: right;
+}
+.edit-box {
+  /* 취소, 확인 버튼 */
+  width: 95%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  overflow: hidden;
+}
+.user-modify {
+  padding: 3px;
 
-  .edit-with-label{
-    font-size: 14px;
-    position: relative;
+  border: 1px solid grey;
+}
+.user-details-with-label {
+  font: bolder;
+  color: black;
+  position: relative;
+}
+.user-details-with-label label {
+  font: lighter;
+  color: gray;
 
-  }
-  .edit-with-label label{
-    position: absolute;
-    left: 30%;
-    color: grey;
-    
-  }
-  .edit-with-label input{
-    text-align: left;
-    width: 250px;
-    height: 30px;
-    line-height: 1em;
-    padding: 0 15px 0 70px;
-    box-sizing: border-box;
-    color: #000;
-    background-color: lightyellow;
-    /* border: 1px solid #000;
+  position: absolute;
+  left: 30%;
+}
+
+.edit-with-label {
+  font-size: 14px;
+  position: relative;
+}
+.edit-with-label label {
+  position: absolute;
+  left: 30%;
+  color: grey;
+}
+.edit-with-label input {
+  text-align: left;
+  width: 250px;
+  height: 30px;
+  line-height: 1em;
+  padding: 0 15px 0 70px;
+  box-sizing: border-box;
+  color: #000;
+  background-color: lightyellow;
+  /* border: 1px solid #000;
     border-radius: 3px; */
-    font-size: 13px;
-    
-  }
-  .modify-button {
-    padding: 5px 18px;
-    /* border: 1px solid grey; */
-    border: 2px solid #f8f9f9;
-    border-radius: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-  .modify-button:hover {
-    background-color: #f8f9f9;
-    border: 1px solid #f8f9f9;
-  }
-  .gender-box {
-    
-    align-items: center;
-    justify-content: center;
-    margin-top: 15px;
-    margin-bottom: 20px;
-    
-  }
-  
-    /* radio css */
-  .mypage-radio-btn-group {
-    width:57%;
-    display: flex;
-    float: right;
-    margin-bottom: 15px;
-  }
-  .mypage-radio-btn-group label{
-    font-size: 14px;
-    color: grey;
+  font-size: 13px;
+}
+.modify-button {
+  padding: 5px 18px;
+  /* border: 1px solid grey; */
+  border: 2px solid #f8f9f9;
+  border-radius: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.modify-button:hover {
+  background-color: #f8f9f9;
+  border: 1px solid #f8f9f9;
+}
+.gender-box {
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
 
-    /* position: absolute;
+/* radio css */
+.mypage-radio-btn-group {
+  width: 57%;
+  display: flex;
+  float: right;
+  margin-bottom: 15px;
+}
+.mypage-radio-btn-group label {
+  font-size: 14px;
+  color: grey;
+
+  /* position: absolute;
     left: -7.5%; */
-  }
-  .mypage-radio-btn-group .mypage-radio {
-    margin: 0 .35rem;
-  }
+}
+.mypage-radio-btn-group .mypage-radio {
+  margin: 0 0.35rem;
+}
 
-  .mypage-radio-btn-group .mypage-radio label {
-    background: #fff;
-    border: 1px solid #ddd;
-    padding: .2rem 0.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-    color: #444;
-    transition: box-shadow 400ms ease;       
-  }
-      
- .mypage-radio-btn-group input[type="radio"] {
-    display: none;
-  }
-      
- .mypage-radio-btn-group input[type="radio"]:checked+label {
-    background: rgb(204, 242, 245);
-    /* color: #fff; */
-    border-color: rgb(204, 242, 245);
-  }
+.mypage-radio-btn-group .mypage-radio label {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #444;
+  transition: box-shadow 400ms ease;
+}
 
-  
-  /* reviews components*/
+.mypage-radio-btn-group input[type="radio"] {
+  display: none;
+}
 
-  /* card components */
-  .tab-review-card{
-    border: 0.5px solid black ;
-    padding: 10px;
-    float : left;
-    /* margin-top:10px;
+.mypage-radio-btn-group input[type="radio"]:checked + label {
+  background: rgb(204, 242, 245);
+  /* color: #fff; */
+  border-color: rgb(204, 242, 245);
+}
+
+/* reviews components*/
+
+/* card components */
+.tab-review-card {
+  border: 0.5px solid black;
+  padding: 10px;
+  float: left;
+  /* margin-top:10px;
     margin-bottom: 5px;
     margin-right:10px; */
-    margin : 10px 10px 5px 5px;
-    width: 170px;
-    height: 140px;
-  }
-  
-  .review-card-name{
-  }
-  .review-card-contents{
-    margin-top :10px;
-    margin-bottom :10px;
-  }
-  .review-card-rating{
-    
-  }
+  margin: 10px 10px 5px 5px;
+  width: 170px;
+  height: 140px;
+}
 
-  /* food,grid,info components */
+.review-card-name {
+}
+.review-card-contents {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
-  /* grid list*/
-  .gridlist-box{
-    /* border: 1px solid red; */
-    float: left;
-    width: 100%;
-  }
-  /*gridboomark components*/
-  .gridbookmark-container{
-    /* border: 1px solid navy; */
-    width: 50%;
-    float:left;
-  }
-  .gridbookmark-box{
-    display: flex;
-    width: 100%;
-  }
- 
-  
+
+/* food,grid,info components */
+/*food bookmark*/
+.foodbookmark-item{
+  width: fit-content;
+  height: 30%;
+  transition: 0.3s;
+  box-shadow: 0 4px 8px 0 rgb(0,0, 0, 0.2);
+  border: 1px solid red;
+  padding: 10px;
+  margin: 10px;
+  float:left;
+}
+.hvrbox .foodgridbookmark-img {
+	display: block;
+}
+.foodbookmark-item:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  background-color: rgba(219, 216, 216, 0.3);
+}
+.foodbookmark-item img{
+  width: 200px ;
+  height: 200px ;
+  border: 1px solid blue;
+}
+/* test용 */
+.hvrbox,
+.hvrbox * {
+	box-sizing: border-box;
+}
+.hvrbox {
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+  border:2px solid navy;
+  width: fit-content;
+  height: 30%;
+  margin: 10px;
+}
+.hvrbox img {
+  width: 200px ;
+  height: 200px ;
+}
+.hvrbox .hvrbox-layer_bottom {
+	display: block;
+}
+.hvrbox .hvrbox-layer_top {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.6);
+	color: #fff;
+	padding: 15px;
+	-moz-transition: all 0.4s ease-in-out 0s;
+	-webkit-transition: all 0.4s ease-in-out 0s;
+	-ms-transition: all 0.4s ease-in-out 0s;
+	transition: all 0.4s ease-in-out 0s;
+}
+.hvrbox:hover .hvrbox-layer_top,
+.hvrbox.active .hvrbox-layer_top {
+	opacity: 1;
+}
+.hvrbox .hvrbox-text {
+	text-align: center;
+	font-size: 18px;
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-moz-transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+.hvrbox .hvrbox-text_mobile {
+	font-size: 15px;
+	border-top: 1px solid rgb(179, 179, 179); /* for old browsers */
+	border-top: 1px solid rgba(179, 179, 179, 0.7);
+	margin-top: 5px;
+	padding-top: 2px;
+	display: none;
+}
+.hvrbox.active .hvrbox-text_mobile {
+	display: block;
+}
+
+
+
+/* grid list*/
+.gridlist-box {
+  /* border: 1px solid red; */
+  float: left;
+  width: 100%;
+}
+/*gridboomark components*/
+.gridbookmark-container {
+  /* border: 1px solid navy; */
+  width: 50%;
+  float: left;
+}
+.gridbookmark-box {
+  display: flex;
+  width: 100%;
+}
+.girdbookmark-elem-title .edit-bookmarkgrid-title input{
+  border: 1px solid red;
+}
+.title-modify-input{
+  color:gray;
+  padding:2px;
+  border:1px solid grey;
+}
+/* icon */
+.gridlist-box .v-application--is-ltr .v-list-item__action:first-child,
+.v-application--is-ltr .v-list-item__icon:first-child {
+  margin: 16px !important;
+}
+.gridlist-box .v-list-item__content {
+  padding: 0 !important;
+}
+.gridbookmark-box .v-list-item__icon {
+  margin: 5px 0 !important;
+}
+
+
 @media screen and (min-width: 800px) {
   .mypage-container {
     width: 80%;
   }
- 
-  
 }
 
-@media screen and (max-width:800px){
-    .tab-category{
+@media screen and (max-width: 800px) {
+  .tab-category {
     margin: auto;
-   }
-   .slide-group{
-     width:80%;
-   }
-   .box-container{
+  }
+  .slide-group {
+    width: 80%;
+  }
+  .box-container {
     margin-left: 2.5%;
     margin-right: 2.5%;
-   }
-  .mypage-radio-btn-group{
-    width:80%;
   }
-  
+  .mypage-radio-btn-group {
+    width: 80%;
+  }
+
   /*info tab*/
-  .user-details-with-label label{
-    left:8%;
-    font-size:13px;
+  .user-details-with-label label {
+    left: 8%;
+    font-size: 13px;
   }
-  .edit-with-label label{
-    font-size:13px;
+  .edit-with-label label {
+    font-size: 13px;
     left: 8%;
   }
-  .edit-with-label input{
+  .edit-with-label input {
     text-align: left;
     margin-left: 50px;
     width: 180px;
@@ -249,17 +345,27 @@
     padding: 0 10px 0 20px;
   }
   .mypage-radio-btn-group {
-    width:72%;
+    width: 72%;
   }
-  .modify-button{
-    font-size:14px;
+  .modify-button {
+    font-size: 14px;
   }
 
   /*grid tab bookmark*/
-  .gridbookmark-container{
+  .gridbookmark-container {
     width: 100%;
-    float:none;
+    float: none;
+    height: 50px;
   }
-  
-}
+  .gridbookmark-box .v-icon {
+    /* border: 1px solid lightcoral; */
+  }
 
+  .gridlist-box .v-list-item {
+    padding: 8px 0 !important;
+  }
+
+  .title-modify-input{
+    width: 80%;
+  }
+}

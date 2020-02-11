@@ -25,7 +25,7 @@ CREATE TABLE `store` (
   `id` int NOT NULL auto_increment,
   `store_id` int NOT NULL,
   `name` varchar(50) NOT NULL,
-  `open_time` varchar(500) NOT NULL,
+  `open_time` varchar(500) ,
   `map_x` double NOT NULL,
   `map_y` double not null,
   `location` point not null,
@@ -34,7 +34,7 @@ CREATE TABLE `store` (
   `category` int not null,
   `phone` varchar(15) not null,
   `tag` varchar(100) ,
-  `image` varchar(500) not null,
+  `image` varchar(500) ,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 alter table store add constraint uni_store_id unique(`store_id`);
@@ -62,7 +62,7 @@ CREATE TABLE `review` (
   `id` int NOT NULL auto_increment,
   `store` int NOT NULL,
   `writer` int ,
-  `contents` text NOT NULL,
+  `contents` text ,
   `date` date NOT NULL,
   `image` varchar(100) ,
   PRIMARY KEY (`id`)

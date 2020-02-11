@@ -1,8 +1,8 @@
 <template>
   <div class="auth">
     <div class="join" v-if="join==true">
-      <h1>Join</h1>
       <div class="join-container">
+        <h1>Join</h1>
         <div class="input-with-label email-input">
           <input
             v-model="email"
@@ -12,95 +12,87 @@
             type="text"
           />
           <label for="email">이메일</label>
-          
-          <button v-if="emailCheckReturn==false"
+
+          <button
+            v-if="emailCheckReturn==false"
             class="v-btn v-btn--contained v-btn--rounded theme--dark"
             id="email-check"
             @click="emailCheck()"
           >중복 확인</button>
-          <button v-else
+          <button
+            v-else
             class="v-btn v-btn--contained v-btn--rounded theme--dark"
             id="email-check"
-            @click="emailAuth()">이메일 인증</button>
+            @click="emailAuth()"
+          >이메일 인증</button>
           <div class="error-text" v-if="error.email">{{error.email}}</div>
         </div>
-        
-        <div v-if="emailAuthReturn==true">
-          <input type="text" placeholder="메일로 전송된 인증번호를 입력하세요">
+
+        <div id="emailAuthInput" v-if="emailAuthReturn==true">
+          <input v-model ="emailAuthInput" type="text" placeholder="메일로 전송된 인증번호를 입력하세요" />
+          <div></div>
           <button>확인</button>
         </div>
         <div v-else></div>
-          <!-- <div class="input-with-label">
-            <input
-              v-model="password"
-              v-bind:class="{error : error.password, complete:!error.password&&password.length!==0}"
-              id="password"
-              type="password"
-              placeholder="비밀번호를 입력하세요."
-            />
-            <label for="password">비밀번호</label>
-            <div class="error-text" v-if="error.password">{{error.password}}</div>
-          </div>
+        <div class="input-with-label">
+          <input
+            v-model="password"
+            v-bind:class="{error : error.password, complete:!error.password&&password.length!==0}"
+            id="password"
+            type="password"
+            placeholder="비밀번호를 입력하세요."
+          />
+          <label for="password">비밀번호</label>
+          <div class="error-text" v-if="error.password">{{error.password}}</div>
+        </div>
 
-          <div class="input-with-label">
-            <input
-              v-model="passwordConfirm"
-              type="password"
-              id="password-confirm"
-              placeholder="비밀번호를 다시한번 입력하세요."
-            />
-            <label for="password-confirm">비밀번호 확인</label>
-            <div class="error-text" v-if="error.passwordConfirm">{{error.passwordConfirm}}</div>
-          </div>
+        <div class="input-with-label">
+          <input
+            v-model="passwordConfirm"
+            type="password"
+            id="password-confirm"
+            placeholder="비밀번호를 다시한번 입력하세요."
+          />
+          <label for="password-confirm">비밀번호 확인</label>
+          <div class="error-text" v-if="error.passwordConfirm">{{error.passwordConfirm}}</div>
+        </div>
 
-          <div class="input-with-label">
-            <input v-model="nickname" id="nickname" placeholder="닉네임을 입력하세요." type="text" />
-            <label for="nickname">닉네임</label>
-          </div>
+        <div class="input-with-label">
+          <input v-model="nickname" id="nickname" placeholder="닉네임을 입력하세요." type="text" />
+          <label for="nickname">닉네임</label>
+        </div>
 
+        <div class="input-with-label">
+          <label for="birth">생년월일</label>
+          <input
+            v-model="birth"
+            id="birth"
+            placeholder="생년월일을 입력하세요."
+            type="date"
+            data-date-picker="activated"
+          />
+        </div>
+        <!-- <v-date-picker v-model="picker" color="green lighten-1"></v-date-picker>-->
+        <div class="join-radio-container">
           <div class="input-with-label">
-            <label for="birth">생년월일</label>
-            <input
-              v-model="birth"
-              id="birth"
-              placeholder="생년월일을 입력하세요."
-              type="date"
-              data-date-picker="activated"
-            />
-           <v-date-picker v-model="picker" color="green lighten-1"></v-date-picker> -->
-            <!-- <div class="join-radio-container">
-            <div class="input-with-label">
-              <label for="gender">성별</label>
+            <label for="gender">성별</label>
+          </div>
+          <div class="radio-btn-group">
+            <div class="radio">
+              <input type="radio" name="radio" value="M" checked="checked" v-model="gender" id="M" />
+              <label for="M">남성</label>
             </div>
-            <div class="radio-btn-group">
-              <div class="radio">
-                <input
-                  type="radio"
-                  name="radio"
-                  value="male"
-                  checked="checked"
-                  v-model="gender"
-                  id="male"
-                />
-                <label for="male">남성</label>
-              </div>
-              <div class="radio">
-                <input type="radio" name="radio" value="female" v-model="gender" id="female" />
-                <label for="female">여성</label>
-              </div>
+            <div class="radio">
+              <input type="radio" name="radio" value="F" v-model="gender" id="F" />
+              <label for="F">여성</label>
             </div>
           </div>
-          <div class="join-button-container">
+        </div>
+        <div class="join-button-container">
           <v-btn rounded color="#FC913A" dark @click="joinRedirect()">취소</v-btn>
           <v-btn rounded color="#FC913A" dark @click="joinApi()">가입</v-btn>
         </div>
-        </div>
-        </div> -->
       </div>
-
-          
-
-          
     </div>
     <div class="login" v-else>
       <div class="login-subcontainer">
@@ -134,7 +126,7 @@
           </div>
         </div>
       </div>
-
+      <!-- <button @click="logoutApi()">임시로그아웃</button> -->
       <p></p>
     </div>
   </div>
@@ -143,7 +135,7 @@
 <script>
 /* eslint-disable no-unused-vars */
 import "@/assets/style/css/authStyle.css";
-// import axios from 'axios'
+import axios from "axios";
 import SocialLogin from "@/components/common/SocialLogin.vue";
 import UserApi from "@/apis/UserApi";
 import PV from "password-validator";
@@ -198,6 +190,7 @@ export default {
       )
         this.error.passwordConfirm = "입력한 비밀번호와 일치해야 합니다.";
       else this.error.passwordConfirm = false;
+      
       let isSubmit = true;
       Object.values(this.error).map(v => {
         if (v) isSubmit = false;
@@ -206,21 +199,42 @@ export default {
     },
     emailCheck() {
       let { email } = this;
-      UserApi.emailCheck(email, res => {
+      axios.get("http://13.124.1.176:8080/user/email/" + email).then(res => {
         console.log(res);
+        if (res.data.data.length < 3) {
+          this.emailCheckReturn = true;
+        } else {
+          alert("이메일 중복");
+        }
       });
-      this.emailCheckReturn = true;
+      
     },
-    emailAuth(){
+    emailAuth() {
       let { email } = this;
       UserApi.emailAuth(email, res => {
         console.log(res);
       });
       this.emailAuthReturn = true;
     },
-    loginApi() {
+    async loginApi() {
       let { loginID, loginPW } = this;
-      UserApi.requestLogin(loginID, loginPW, res => {
+      await UserApi.requestLogin(loginID, loginPW, res => {
+        console.log(res);
+      });
+      this.tokenApi();
+    },
+    tokenApi(){
+      UserApi.requestToken(res => {
+        console.log(res);
+      });
+      if(localStorage.getItem('token').length>10){
+        this.$router.push('/');
+      }else{
+        alert('로그인 실패');
+      }
+    },
+    logoutApi() {
+      UserApi.requestLogout(res => {
         console.log(res);
       });
     },
@@ -229,6 +243,7 @@ export default {
       UserApi.requestRegister(email, nickname, password, birth, gender, res => {
         console.log(res);
       });
+      this.joinRedirect();
     },
     joinRequest() {
       this.join = true;

@@ -1,46 +1,51 @@
 <template>
   <div class="carousel-container">
-    <!-- mobile carousel -->
-    <div class="small-screen-carousel" style="font-size:100px;">
-      This is mobile carousel
+    <span id="FlyingBurger" class="floating-container ">
+      <span class="floating-text animated pulse slower infinite">
+        GrEAT
+      </span>
+    </span>
+
+    <div
+      class="index-background transition:0.15s"
+      :style="{ backgroundColor: IndexColors[this.page] }"
+    >
+      <button>
+        <img
+          @click="pagePrev"
+          class="index-next"
+          src="@/assets/img/arrow-icon.png"
+        />
+      </button>
+      <button>
+        <img
+          @click="pageNext"
+          class="index-prev"
+          src="@/assets/img/arrow-icon.png"
+        />
+      </button>
     </div>
 
     <div class="big-screen-carousel">
-      <span id="floatIMG" class="floating-IMG">
-        <span class="floating-text">
-          GrEAT
-        </span>
-      </span>
-      <div class="index-curtain"></div>
-      <div class="back-carousel">
-        <v-carousel
-          v-model="model"
-          height="100vh"
-          hide-delimiter-background
-          show-arrows-on-hover
-        >
-          <v-carousel-item v-for="color in colors" :key="color">
-            <v-sheet
-              class="back-carousel-sheet"
-              :color="color"
-              height="100%"
-              tile
-            >
-            </v-sheet>
-          </v-carousel-item>
-        </v-carousel>
-      </div>
-      <div class="front-wrapper-container">
-        <div>
-          <div :key="this.model">
-            <div tile>
-              <div class="front-wrapper-title animated fadeInDown delay:0.2s">
-                {{ this.title[this.model] }}
+      <div class="index-carousel">
+        <div :key="this.page">
+          <div class="index-card">
+            <div class="index-card-container">
+              <div class="index-card-title animated fadeInDown delay:0.15s">
+                {{ this.title[this.page] }}
               </div>
-              <div class="front-wrapper-content animated fadeInDown delay:0.3s">
-                {{ this.content[this.model] }}<br/>
+              <div class="index-card-content animated fadeInDown delay:0.05s">
+                <span
+                  v-for="(cardText, id) in this.content[this.page]"
+                  :key="`${cardText}-${id}`"
+                >
+                  {{ cardText }}<br />
+                </span>
               </div>
             </div>
+          </div>
+          <div class="index-carousel-indicator">
+            <CarouselIndicator :pageIDX="this.page" />
           </div>
         </div>
       </div>
@@ -49,145 +54,115 @@
 </template>
 
 <script>
-import axios from "axios";
+import "@/assets/style/css/indexStyle.css";
 import "@/assets/style/css/animated.css";
+import CarouselIndicator from "@/components/common/CarouselIndicator.vue";
 export default {
   name: "Index",
-  components: {},
+  components: {
+    CarouselIndicator
+  },
   data() {
     return {
-      address: "",
-      category: "",
-      addressList: [],
-      colors: ["warning", "pink darken-2", "red lighten-1"],
-      model: 0,
+      IndexColors: ["#F9D423", "#FC913A", "#FF4E50"],
+      page: 0,
       title: [
-        "🎉GrEAT과 함께 메뉴를 정해봐요🍔",
-        "🐱‍💻GrEAT is a good service!🐱‍🏍",
-        "😥Please, use GrEAT🐱‍🚀"
+        "🎉GrEAT과 함께 메뉴를 정해봐요",
+        "🐱‍💻언제 GrEAT을 써야하죠?🐱‍🏍",
+        "😥GrEAT 해보고 싶어요!🐱‍🚀"
       ],
       content: {
-        0:"내 주변에서 갈 만한 식당 정하기",
-        1:`1.주소를 입력! 2.원하는 카테고리 선택! 3.START`,
-        2:"제발 사용해주세요ㅠ"
-      },
-      // contentA: `1.주소를 입력! 2.원하는 카테고리 선택 \\n 3.START`,
-      contentC: `3.START`,
+        0: ["", "🥘대충 정해도 근사한 식사!", "🍰다양한 선택지를 한 눈에!"],
+        1: [
+          "",
+          "🤦‍♂️너어어무 메뉴결정이 귀찮을 때!",
+          "🦅빠르게 메뉴를 결정해야 할 때!",
+          "🕵️‍♀️처음 가본 곳의 맛집을 찾고싶을 때!"
+        ],
+        2: [
+          "🤷‍♂️전혀 어렵지 않아요!!🤷‍♀️",
+          "",
+          "1.주소를 입력!",
+          "2.원하는 카테고리 선택!",
+          "3.START"
+        ]
+      }
     };
   },
   methods: {
-    getXY() {
-      axios
-        .get("https://dapi.kakao.com/v2/local/search/address.json", {
-          params: {
-            query: this.address
-          },
-          headers: {
-            Authorization: "KakaoAK f8d38a34b065785c71e6beed1528657f"
-          }
-        })
-        .then(res => {
-          this.addressList = res.data.documents;
-          // console.log(res.data.documents[0].y);
-          // console.log(res.data.documents[0].x);
-        });
-    },
     mouseIsMoving(e) {
-      var hamX = document.getElementById("floatIMG").offsetLeft;
-      var hamY = document.getElementById("floatIMG").offsetTop;
-      var x = (hamX - e.pageX) * 0.1;
-      var y = (hamY - e.pageY) * 0.1;
-      console.log(hamX, hamY);
-      document.getElementById("floatIMG").style.webkitTransform =
-        "translate(" + x + "px" + "," + y + "px)";
+      if (screen.width >= 800) {
+        var hamX = document.getElementById("FlyingBurger").offsetLeft;
+        var hamY = document.getElementById("FlyingBurger").offsetTop;
+        var x = (hamX - e.pageX) * 0.1;
+        var y = (hamY - e.pageY) * 0.1;
+        document.getElementById("FlyingBurger").style.webkitTransform =
+          "translate(" + x + "px" + "," + y + "px)";
+      }
+    },
+    pagePrev() {
+      this.page -= 1;
+      if (this.page == -1) {
+        this.page = 2;
+      }
+    },
+    pageNext() {
+      this.page += 1;
+      if (this.page == 3) {
+        this.page = 0;
+      }
+    },
+    lock(e) {
+      if (screen.width >= 800) {
+        var x = e.x;
+        this.startX = x;
+      } else {
+        var mx = e.x;
+        this.startX = mx;
+      }
+    },
+    move(e) {
+      if (screen.width >= 800) {
+        var x = e.x;
+        if (this.startX - x < 0) {
+          this.page -= 1;
+          if (this.page == -1) {
+            this.page = 2;
+          }
+        } else if (this.startX - x > 0) {
+          this.page += 1;
+          if (this.page == 3) {
+            this.page = 0;
+          }
+        }
+      } else {
+        var mx = e.x;
+        if (this.startX - mx < 0) {
+          this.page -= 1;
+          if (this.page == -1) {
+            this.page = 2;
+          }
+        } else if (this.startX - mx > 0) {
+          this.page += 1;
+          if (this.page == 3) {
+            this.page = 0;
+          }
+        }
+      }
     }
   },
-
   mounted() {
     window.addEventListener("mousemove", this.mouseIsMoving);
-  }, //mounted
-  watch: {
-    address() {
-      // console.log(this.address);
-    }
+
+    // touch start
+    window.addEventListener("touchstart", this.lock);
+    window.addEventListener("mousedown", this.lock);
+
+    // touch end
+    window.addEventListener("touchend", this.move);
+    window.addEventListener("mouseup", this.move);
   }
 };
 </script>
 
-<style>
-.floating-IMG {
-  background-image: url("https://i2.wp.com/freepngimages.com/wp-content/uploads/2016/11/bacon-burger.png?fit=895%2C895");
-  background-position: center;
-  background-size: contain;
-  z-index: 3;
-  position: fixed;
-  top: 32vh;
-  left: 55vw;
-  height: 50vh;
-  width: 40vw;
-  /* -webkit-transform:rotate(10deg); */
-  /* -webkit-transform:translate() */
-}
-.floating-text {
-  /* text */
-  z-index: 3;
-  position: relative;
-  display: flex;
-  top: 10vh;
-  justify-content: center;
-  align-content: center;
-  font-size: 13vh;
-  font-family: "Lobster", cursive;
-  text-shadow: 3px 10px 5px rgba(0, 0, 0, 0.541);
-  color: rgba(255, 0, 0, 0.856);
-}
-
-.index-curtain {
-  z-index: 2;
-  position: fixed;
-  left: 5vw;
-  top: 12vh;
-  background-color: white;
-  width: 67vw;
-  height: 80vh;
-  border-radius: 15px;
-  box-shadow: 0 0 20px darkslategray;
-}
-.back-carousel {
-  z-index: 1;
-  position: relative;
-}
-.front-wrapper-title {
-  font-family: "Noto Sans KR", sans-serif;
-  position: fixed;
-  z-index: 4;
-  left: 10vw;
-  top: 20vh;
-  font-size: 3vw;
-  color: black;
-  font-weight: bold;
-}
-.front-wrapper-content {
-  font-family: "Noto Sans KR", sans-serif;
-  position: fixed;
-  z-index: 4;
-  left: 14vw;
-  top: 30vh;
-  font-size: 2vw;
-  color: black;
-  font-weight: bold;
-}
-
-@media (min-width: 800px) {
-  .small-screen-carousel {
-    display: none;
-  }
-}
-@media (max-width: 800px) {
-  .big-screen-carousel {
-    display: none;
-  }
-  .small-screen-carousel {
-  }
-}
-</style>
+<style></style>
