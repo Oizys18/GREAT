@@ -1,7 +1,7 @@
 <template> 
   <!--food grid bookmark -->
   <div class="tab-food-box" >
-     <span v-for="n in 10" :key=n>
+     <span v-for="n in 7" :key=n>
     
          <FoodBookmark/>
          

@@ -4,7 +4,7 @@
     <div v-if="isInfo" class="user-details" id="name">
       <div class="user-details-with-label">
           <label for="name">이름 </label>  
-          {{name}}
+          {{user.name}}
 
           <v-btn class="edit-btn"
           text color="black"
@@ -19,7 +19,7 @@
     <div v-else class="user-details">
         <div class="edit-with-label">
           <label for="name_modify">이름</label>  
-          <input v-model="name" id="name_modify" name="name_modify" type="text"/>
+          <input v-model="user.name" id="name_modify" name="name_modify" type="text"/>
         </div>
 
     </div>
@@ -28,14 +28,14 @@
     <div v-if="isInfo" class="user-details" id="email">
       <div class="user-details-with-label">
           <label for="email">이메일</label>  
-          {{email}}
+          {{user.email}}
       </div>
       <!-- <p>이메일: {{ email }}</p> -->
     </div>
     <div v-else class="user-details">
       <div class="edit-with-label">
         <label for="email_modify">이메일</label>  
-        <input v-model="email" id="email_modify"  name="email_modify" type="text"/>
+        <input v-model="user.email" id="email_modify"  name="email_modify" type="text"/>
       </div>
     </div>
 
@@ -43,14 +43,14 @@
     <div v-if="isInfo" class="user-details" id="birth">
       <div class="user-details-with-label">
           <label for="birth">생년월일</label>  
-          {{birth}}
+          {{user.birth}}
       </div> 
       <!-- <p>생년월일: {{ birth }}</p> -->
     </div>
     <div v-else class="user-details">
       <div class="edit-with-label">
         <label for="birth_modify">생년월일</label>  
-        <input v-model="birth" id="birth_modify"  name="birth_modify" type="date"
+        <input v-model="user.birth" id="birth_modify"  name="birth_modify" type="date"
         data-date-picker="activated"/>
       </div>
     </div>
@@ -59,7 +59,9 @@
     <div v-if="isInfo" class="user-details" id="gender">
       <div class="user-details-with-label">
           <label for="gender">성별</label> 
-          {{gender}}
+            <!-- <div v-if="gender_">Male</div>
+            <div v-else>Female</div> -->
+            {{user.gender}}
       </div>
       <!-- <p>성별 : {{ gender }}</p> -->
     </div>
@@ -70,12 +72,12 @@
       </div>
       <div class="mypage-radio-btn-group">
         <div class="mypage-radio">
-            <input type="radio" value="Male" v-model="gender"  id="male_modify" name="male_modify"/>
+            <input type="radio" value="Male" v-model="user.gender"  id="male_modify" name="male_modify"/>
             <label for="male_modify">Male</label>
           </div>
         
           <div class="mypage-radio">
-            <input type="radio" value="Female" v-model="gender" id="female_modify" name="female_modify"/>
+            <input type="radio" value="Female" v-model="user.gender" id="female_modify" name="female_modify"/>
             <label for="female_modify">Female</label>
           </div>
       </div>
@@ -102,42 +104,46 @@
 </template>
 
 <script>
-import MypageApi from '../../apis/MypageApi'
+import MypageApi from '@/apis/MypageApi.js';
 export default {
   name: "Info",
   data() {
     return {
       myreviews: [],
       isInfo: true,
-      user: [
-        {
-          name: "xxx",
-          email: "xxxxxxxx@naver.com",
-          birth: "xxxx.xx.xx",
-          gender: "Female"
-        }
-      ],
-      name: "xxx",
-      email: "xxxxxxx@naver.com",
-      birth: "xxxx.xx.xx",
-      gender: "Female"
+      user:[],
+     
+      
     };
+  },
+  created:function(){
+     
   },
   mounted:function(){
     //로그인한 사용자 회원 정보 요청
-    MypageApi.requestUserInfo(this.user.id,response=>{
-      console.log(response)
-      this.$store.state.userInfo=response
+    MypageApi.requestUserInfo(response=>{
+      this.user=response;
+
+      if(this.user.gender=='M') this.user.gender='Male';
+      else this.user.gender='Female'
     })
-    // axios
-    //   .get('http://13.124.1.176:8080/review/store/2')
-    //   .then(response=>{
-    //     console.log('axios review data get')
-    //     console.log(response.data.data); 
-    //     this.myreviews = response.data.data;
-    //   })
+
+   
+  },
+  computed:{
   },
   methods: {
+    gender_(){
+      console.log('사용자 성별:'+this.user.gender)
+      if(this.user.gender=='M') {
+        console.log('남성')
+        return true;
+      }
+      else if(this.user.gender=='F') {
+        console.log('여성')
+        return false;
+      }
+    },
     change() {
       //수정하기 버튼 클릭
       this.isInfo = false;
@@ -148,14 +154,13 @@ export default {
     },
     ok() {
       //수정하기 - 확인 버튼 클릭
-      this.user.name='이름';
-      this.user.email= "ssafy@naver.com";
-      this.user.birth= "2020.02.10",
-      this.user.gender= "Female"
+      if(this.user.gender=='Male') this.user.gender='M'
+      else this.user.gender='F'
+
 
       MypageApi.modifyUserInfo(this.user,response=>{
-        console.log(response)
-        this.$store.state.userInfo=response
+        console.log('수정된 user data:'+response)
+        //this.$store.state.userInfo=response
       })
       this.isInfo = true;
     }
