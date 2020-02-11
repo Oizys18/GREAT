@@ -29,19 +29,18 @@ export default {
   z-index: 100;
   position: fixed;
   width: 100%;
-  /* background: linear-gradient(72deg, #c0392b, #f1c40f); */
-  background: transparent;
-  padding: 15px;
-  font-size: 1.2em;
+  background: linear-gradient(72deg, #c0392b, #f1c40f);
+  padding: 10px;
+  font-size: 1.4em;
   display: flex;
+  height:6vh;
+  align-items: center;
 }
 .app-bar-banner {
   font-family: "Lobster", cursive;
   color: rgb(236, 236, 236);
   position: relative;
   cursor: pointer;
-  font-size:2rem;
-  text-shadow:0px 2px 2px black;
   left: 0;
 }
 .app-bar-router {
