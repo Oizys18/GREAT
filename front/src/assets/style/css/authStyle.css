@@ -19,7 +19,7 @@ input:-webkit-autofill {
     flex-direction: column;
     padding-top: 10vh;
     margin: 0 auto;
-    width: 70%;
+    width: 60%;
 
 }
 
@@ -345,7 +345,7 @@ input:-webkit-autofill {
 
 @media screen and (min-width: 800px) {
     .login {
-        width: 40%;
+        width: 30%;
     }
     /* .login .login-container .login-box {
         width: 79%;
@@ -360,6 +360,6 @@ input:-webkit-autofill {
     } */
 
     .join {
-        width: 40%;
+        width: 30%;
     }
 }

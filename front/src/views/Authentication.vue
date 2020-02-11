@@ -133,9 +133,11 @@
         </div>
       </div>
       <!-- <button @click="logoutApi()">임시로그아웃</button> -->
+      <LogoutButton />
       <p></p>
     </div>
   </div>
+  
 </template>
 
 <script>
@@ -143,6 +145,7 @@
 import "@/assets/style/css/authStyle.css";
 import axios from "axios";
 import SocialLogin from "@/components/common/SocialLogin.vue";
+import LogoutButton from "@/components/common/LogoutButton.vue";
 import UserApi from "@/apis/UserApi";
 import PV from "password-validator";
 import * as EmailValidator from "email-validator";
@@ -150,7 +153,8 @@ import * as EmailValidator from "email-validator";
 export default {
   name: "Authentication",
   components: {
-    SocialLogin
+    SocialLogin,
+    LogoutButton
   },
   created() {
     this.component = this;
@@ -248,11 +252,7 @@ export default {
         alert("로그인 실패");
       }
     },
-    logoutApi() {
-      UserApi.requestLogout(res => {
-        console.log(res);
-      });
-    },
+    
     joinApi() {
       let { isSubmit, email, password, nickname, birth, gender } = this;
       if(isSubmit){

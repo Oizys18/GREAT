@@ -57,6 +57,7 @@ const requestLogin = (remID,loginID, loginPW, callback, errorCallback) => { // e
 const requestLogout = () => {
 	storage.setItem('id',null);
 	storage.setItem('token', null);
+	return storage.getItem('token');
 };
 
 const requestRegister = (email, username, password, birth, gender) => {
