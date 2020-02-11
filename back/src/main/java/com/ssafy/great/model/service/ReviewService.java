@@ -8,6 +8,9 @@ public interface ReviewService {
 
 	/** 모든 리뷰 검색 */
 	List<Review> searchAll();
+	
+	/** 사용자의 리뷰 검색 */
+	List<Review> selectByUserId(int userId);
 
 	/** 리뷰 id에 해당하는 리뷰 상세 정보 검색 */
 	Review searchById(int id);

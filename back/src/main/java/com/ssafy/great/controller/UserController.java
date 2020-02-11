@@ -39,6 +39,14 @@ public class UserController {
 		return RestUtil.handleSuccess(service.searchById(id));
 	}
 	
+	
+	
+	@GetMapping("/user/search/{email}")
+	@ApiOperation("이메일에 대항하는 사용자 id 검색")
+	public ResponseEntity<Map<String,Object>> selectByEmail(@PathVariable String email){
+		return RestUtil.handleSuccess(service.selectByEmail(email));
+	}
+	
 	@GetMapping("/user/email/{email}")
 	@ApiOperation("이메일 중복 체크")
 	public ResponseEntity<Map<String,Object>> emailCheck(@PathVariable String email){
