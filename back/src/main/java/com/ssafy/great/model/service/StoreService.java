@@ -13,7 +13,10 @@ public interface StoreService {
 	List<Store> searchBookmarkStores(List<Integer> idList);
 
 	/** 식당 category에 해당하는 식당 목록 검색(1 grid block) */
-	List<Store> searchByCategory(int category);
+	List<Store> searchByRating(int category, double x, double y);
+	
+	/** 식당 category에 해당하는 식당 목록 랜덤검색(1 grid block) */
+	List<Store> searchByDefault(int category, double x, double y);
 
 	/** 사용자 지정 위치로부터 가까운 식당 8개 목록 검색 */
 	List<Store> searchByLocation(int category, double x, double y);
