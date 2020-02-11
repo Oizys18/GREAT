@@ -29,7 +29,7 @@
         </div>
 
         <div id="emailAuthInput" v-if="emailAuthReturn==true">
-          <input type="text" placeholder="메일로 전송된 인증번호를 입력하세요" />
+          <input v-model ="emailAuthInput" type="text" placeholder="메일로 전송된 인증번호를 입력하세요" />
           <div></div>
           <button>확인</button>
         </div>
@@ -190,6 +190,7 @@ export default {
       )
         this.error.passwordConfirm = "입력한 비밀번호와 일치해야 합니다.";
       else this.error.passwordConfirm = false;
+      
       let isSubmit = true;
       Object.values(this.error).map(v => {
         if (v) isSubmit = false;
@@ -215,9 +216,9 @@ export default {
       });
       this.emailAuthReturn = true;
     },
-    loginApi() {
+    async loginApi() {
       let { loginID, loginPW } = this;
-      UserApi.requestLogin(loginID, loginPW, res => {
+      await UserApi.requestLogin(loginID, loginPW, res => {
         console.log(res);
       });
       this.tokenApi();
@@ -226,6 +227,11 @@ export default {
       UserApi.requestToken(res => {
         console.log(res);
       });
+      if(localStorage.getItem('token').length>10){
+        this.$router.push('/');
+      }else{
+        alert('로그인 실패');
+      }
     },
     logoutApi() {
       UserApi.requestLogout(res => {

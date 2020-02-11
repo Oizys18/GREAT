@@ -27,16 +27,13 @@ const emailAuth = (email) => {
 
 const requestToken = () => {
 	console.log('token', storage.getItem('token'))
-	return axios.get('http://70.12.246.123:8080/user/1/',{
+	return axios.get('http://70.12.246.123:8080/user',{
 		headers: { 'Authorization' : storage.getItem('token') }
        })
 	.then(
 		res => { // eslint-disable-line no-unused-vars
 			console.log(storage.getItem('token'));
 		}
-		// this.$router.push({ path: '/' })
-	).catch(
-		// alert('로그인 실패')
 	)
 }
 
@@ -47,6 +44,7 @@ const requestLogin = (loginID, loginPW, callback, errorCallback) => { // eslint-
 		})
 		.then(
 			res => {
+				storage.setItem('email',loginID);
 				storage.setItem('token', res.data.data.Authorization);
 				console.log('login', storage.getItem('token'))
 			}
