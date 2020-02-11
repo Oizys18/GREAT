@@ -15,26 +15,17 @@ export default new Vuex.Store({
       {name: 'Garden Creamery',rating :"★★★★★", contents: "Ice cream"},
     ],
     gridbookmarks:[
-      {title:"Jason Oner",star:true},
-      {title:"Travis Howard",star:false},
-      {title:"Ali Connors",star:false},
-      {title:"Cindy Baker",star:true},
-      {title:"ABCDEFG",star:false},
-      {title:"Oner",star:true},
-      {title:"SSAFY",star:true},
-      {title:"Vue",star:false},
-      {title:"Visual Code",star:false},
-      {title:"KaKao",star:true},
-      {title:"QWERTDF sdfsd",star:false},
-      {title:"BookMark",star:true},
-      {title:"Grid",star:true},
-      {title:"food",star:false},
-      {title:"npm",star:false},
-
-
-
-
-
+      {id:'1',name:"Jason Oner",type:'G',user:'1'},
+      {id:'2',name:"Travis Howard",type:'G',user:'1'},
+      {id:'3',name:"Ali Connors",type:'G',user:'1'},
+      {id:'4',name:"Cindy Baker",type:'G',user:'1'},
+      {id:'5',name:"ABCDEFG",type:'G',user:'1'},
+      {id:'6',name:"Oner",type:'G',user:'1'},
+      {id:'7',name:"SSAFY",type:'G',user:'1'},
+      {id:'8',name:"Vue",type:'G',user:'1'},
+      {id:'9',name:"Visual Code",type:'G',user:'1'},
+      {id:'10',name:"KaKao",type:'G',user:'1'},
+      {id:'11',name:"QWERTDF sdfsd",type:'G',user:'1'},
     ],
     categories: [
       {id: 1, name: "한식"},
@@ -144,11 +135,27 @@ export default new Vuex.Store({
     기타maxIndex: 7,
     locationX: 127.0250186,
     locationY: 37.5056693,
-    storeInfo: {}
+    storeInfo: null,
+    reviewInfo: null
   },
   mutations:{
     'reset'(state){
-      state.한식index = [0,1,2,3,4,5,6,7]
+      state.한식index= [0,1,2,3,4,5,6,7]
+      state.중식index= [0,1,2,3,4,5,6,7]
+      state.일식index= [0,1,2,3,4,5,6,7]
+      state.아시아index= [0,1,2,3,4,5,6,7]
+      state.뷔페index= [0,1,2,3,4,5,6,7]
+      state.분식index= [0,1,2,3,4,5,6,7]
+      state.카페index= [0,1,2,3,4,5,6,7]
+      state.기타index= [0,1,2,3,4,5,6,7]
+      state.한식maxIndex=7
+      state.중식maxIndex=7
+      state.일식maxIndex=7
+      state.아시아maxIndex=7
+      state.뷔페maxIndex=7
+      state.분식maxIndex=7
+      state.카페maxIndex=7
+      state.기타maxIndex=7
     },
     '한식'(state, payload) {
       state.한식 = payload

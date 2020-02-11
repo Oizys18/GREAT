@@ -2,17 +2,27 @@
 
 /* 전체 container */
 .sidebar-container {
+  background-color: white;
   position: fixed;
-  top: 8vh;
+  z-index: 100;
+  top: 0vh;
   width: 27%;
-  height: 100%;
+  min-width: 280px;
+  height: 90%;
+  overflow-y: auto;
+  box-shadow: 1px 1px 3px grey;
 }
 
 /* Image component */
 .sidebar-image {
   position: relative;
+  resize: both;
   width: 100%;
-  height: 30%;
+  max-height: 240px;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Text component */
@@ -21,6 +31,7 @@
   top: 1vh;
 }
 
+/* TitleText component */
 .sidebar-text-title {
   text-align: center;
 }
@@ -36,6 +47,7 @@
   margin-left: 1vw;
 }
 
+/* BodyText component */
 .sidebar-text-body {
   position: relative;
   padding: 20px;
@@ -43,4 +55,64 @@
 }
 .sidebar-text-tag {
   overflow-wrap: inherit;
+}
+
+/* MenuText component */
+.sidebar-text-menu {
+  margin-right: 1vw;
+  margin-left: 1vw;
+  padding: 1vw;
+  border-radius: 10px;
+  background-color: rgb(241, 239, 239);
+}
+.sidebar-menu-price {
+  float: right;
+}
+.sidebar-menu-more {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Review component */
+.sidebar-review {
+  margin-top: 3vh;
+  margin-right: 1vw;
+  margin-left: 1vw;
+}
+.review-write {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.sidebar-review-textarea {
+  position: relative;
+  overflow: hidden; 
+  word-wrap: break-word; 
+  resize: none; 
+  height: 160px;
+  width: 100%;
+  padding-top: 2vh;
+  padding-left: 1vw;
+	background-repeat:repeat-y, repeat;
+	-webkit-border-radius:12px;
+	border-radius:12px;
+	-webkit-box-shadow: 0px 2px 14px #000;
+	box-shadow: 0px 2px 14px #000;
+	border-top:1px solid #FFF;
+	border-bottom:1px solid #FFF;
+}
+.sidebar-review-rating {
+  float: left;
+  display: block;
+}
+
+/* 사이드바 접기버튼 */
+.sidebar-collide {
+  position: fixed;
+  top:0;
+  right:10px;
+  z-index: 5;
+  color: white;
+  font-size:2rem;
+  text-shadow: 0px 3px 3px black;
 }
