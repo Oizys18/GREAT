@@ -10,17 +10,20 @@
       class="index-background transition:0.15s"
       :style="{ backgroundColor: IndexColors[this.page] }"
     >
-      <img
-        @click="pagePrev"
-        class="index-next"
-        src="@/assets/img/arrow-icon.png"
-      />
-
-      <img
-        @click="pageNext"
-        class="index-prev"
-        src="@/assets/img/arrow-icon.png"
-      />
+      <button>
+        <img
+          @click="pagePrev"
+          class="index-next"
+          src="@/assets/img/arrow-icon.png"
+        />
+      </button>
+      <button>
+        <img
+          @click="pageNext"
+          class="index-prev"
+          src="@/assets/img/arrow-icon.png"
+        />
+      </button>
     </div>
 
     <div class="big-screen-carousel">
