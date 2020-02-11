@@ -75,7 +75,6 @@ export default {
     },
     storeInfo(idx) {
       GridApi.requestStoreInfo(this.itemName[idx].id, response => {
-        console.log(response)
         this.$store.state.storeInfo = response
       })
     }
