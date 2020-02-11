@@ -12,7 +12,10 @@ public interface UserService {
 
 	/** 사용자 id에 해당하는 사용자 검색  */
 	User searchById(int id);
-
+	
+	/** 사용자 email에 해당하는 사용자 검색  */
+	User selectByEmail(String email);
+	
 	/** email 중복 체크 
 	 * 	중복된 이메일이 있으면 return false
 	 *  중복된 이메일이 없으면 return true

@@ -42,4 +42,10 @@ public class ReviewDaoImpl implements ReviewDao{
     public void delete(int id){
         session.delete("sql.review.delete", id);
     }
+
+	@Override
+	public List<Review> selectByUserId(int userId) {
+		// TODO Auto-generated method stub
+		return session.selectList("sql.review.selectByUserId",userId);
+	}
 }
