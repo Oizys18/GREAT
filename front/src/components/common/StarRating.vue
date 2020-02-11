@@ -1,7 +1,7 @@
 <template>
   <div>
     <template v-for="(className, i) in starClass">
-      <span :key="i" :class="className" class="fa-star"></span>
+      <span :key="i" :class="className" class="rating-star fa-star"></span>
     </template>
   </div>
 </template>
@@ -27,6 +27,9 @@ export default {
 </script>
 
 <style>
+  .rating-star {
+    color: #bbb;
+  }
   .checked {
     color: orange
   }

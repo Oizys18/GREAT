@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img class="sidebar-image" :src="imageUrl"/>
+    <img v-if="imageUrl != '' && imageUrl != undefined" class="sidebar-image" :src="imageUrl"/>
   </div>
 </template>
 
