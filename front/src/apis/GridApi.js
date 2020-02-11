@@ -13,9 +13,8 @@ var requestGridStores = function(data, callback) {
     })
 }
 var requestGridStoresByRating = function(data, callback) {
-  var category = data.category;
   axios
-    .get('http://13.124.1.176:8080/store/category/' + category)
+    .get('http://13.124.1.176:8080/store/category/' + data)
     .then(response => {
       callback(response.data.data)
     })

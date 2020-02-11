@@ -13,8 +13,11 @@ public interface StoreDao {
 	/** 식당 id 리스트에 해당하는 식당 목록 검색 */
 	List<Store> selectByIdList(List<Integer> idList);
 
-	/** 식당 category에 해당하는 식당 목록 검색 */
-	List<Store> selectByCategory(int category);
+	/** 식당 category에 해당하는 식당 목록 별점순 검색 */
+	List<Store> selectByRating(Map<String,Object> data);
+	
+	/** 식당 category에 해당하는 식당 목록 랜덤검색 */
+	List<Store> selectByDefault(Map<String,Object> data);
 
 	/** x,y 좌표 기준 최소 거리 8개 식당 목록 검색 */
 	List<Store> selectByLocation(Map<String,Object> data);
