@@ -31,7 +31,7 @@
         <div id="emailAuthInput" v-if="emailAuthReturn==true">
           <input v-model="emailAuthInput" type="text" placeholder="메일로 전송된 인증번호를 입력하세요" />
           <div></div>
-          <button>확인</button>
+          <button @click="emailSubmit()">확인</button>
         </div>
         <div v-else></div>
         <div class="input-with-label">
@@ -220,7 +220,16 @@ export default {
         console.log(res);
       });
       this.emailAuthReturn = true;
-      this.isSubmit = true;
+    },
+    emailSubmit(){
+      let { emailAuthInput } = this;
+      if(sessionStorage.getItem('emailAuth') == emailAuthInput){
+        alert('이메일 인증 성공');
+        this.isSubmit = true;
+      }else {
+        alert('이메일 인증 실패');
+        this.isSubmit = false;
+      }
     },
     async loginApi() {
       let { remID, loginID, loginPW } = this;
@@ -279,6 +288,7 @@ export default {
       remID: false,
       emailCheckReturn: false,
       emailAuthReturn: false,
+      emailAuthInput: "",
       email: "",
       password: "",
       passwordConfirm: "",
