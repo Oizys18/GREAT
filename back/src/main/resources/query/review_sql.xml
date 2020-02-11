@@ -11,6 +11,10 @@
 	<select id="selectById" parameterType="integer" resultType="review">
 		select * from review where id = #{id}
 	</select>
+	
+	<select id="selectByUserId" parameterType="integer" resultType="review">
+		select * from review where writer = #{writer}
+	</select>
 
 	<select id="selectByStore" parameterType="integer" resultType="review">
 		select * 
