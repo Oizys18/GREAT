@@ -182,18 +182,94 @@
 /*food bookmark*/
 .foodbookmark-item{
   width: fit-content;
+  height: 30%;
   transition: 0.3s;
   box-shadow: 0 4px 8px 0 rgb(0,0, 0, 0.2);
   border: 1px solid red;
   padding: 10px;
+  margin: 10px;
+  float:left;
+}
+.hvrbox .foodgridbookmark-img {
+	display: block;
 }
 .foodbookmark-item:hover{
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  background-color: rgba(14, 13, 13, 0.3);
+  background-color: rgba(219, 216, 216, 0.3);
 }
 .foodbookmark-item img{
+  width: 200px ;
+  height: 200px ;
   border: 1px solid blue;
 }
+/* test용 */
+.hvrbox,
+.hvrbox * {
+	box-sizing: border-box;
+}
+.hvrbox {
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+  border:2px solid navy;
+  width: fit-content;
+  height: 30%;
+  margin: 10px;
+}
+.hvrbox img {
+  width: 200px ;
+  height: 200px ;
+}
+.hvrbox .hvrbox-layer_bottom {
+	display: block;
+}
+.hvrbox .hvrbox-layer_top {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.6);
+	color: #fff;
+	padding: 15px;
+	-moz-transition: all 0.4s ease-in-out 0s;
+	-webkit-transition: all 0.4s ease-in-out 0s;
+	-ms-transition: all 0.4s ease-in-out 0s;
+	transition: all 0.4s ease-in-out 0s;
+}
+.hvrbox:hover .hvrbox-layer_top,
+.hvrbox.active .hvrbox-layer_top {
+	opacity: 1;
+}
+.hvrbox .hvrbox-text {
+	text-align: center;
+	font-size: 18px;
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-moz-transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+.hvrbox .hvrbox-text_mobile {
+	font-size: 15px;
+	border-top: 1px solid rgb(179, 179, 179); /* for old browsers */
+	border-top: 1px solid rgba(179, 179, 179, 0.7);
+	margin-top: 5px;
+	padding-top: 2px;
+	display: none;
+}
+.hvrbox.active .hvrbox-text_mobile {
+	display: block;
+}
+
+
+
 /* grid list*/
 .gridlist-box {
   /* border: 1px solid red; */
@@ -287,5 +363,9 @@
 
   .gridlist-box .v-list-item {
     padding: 8px 0 !important;
+  }
+
+  .title-modify-input{
+    width: 80%;
   }
 }

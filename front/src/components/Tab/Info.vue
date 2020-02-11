@@ -102,11 +102,12 @@
 </template>
 
 <script>
+import MypageApi from '../../apis/MypageApi'
 export default {
   name: "Info",
   data() {
     return {
-      choices: [],
+      myreviews: [],
       isInfo: true,
       user: [
         {
@@ -122,6 +123,20 @@ export default {
       gender: "Female"
     };
   },
+  mounted:function(){
+    //로그인한 사용자 회원 정보 요청
+    MypageApi.requestUserInfo(this.user.id,response=>{
+      console.log(response)
+      this.$store.state.userInfo=response
+    })
+    // axios
+    //   .get('http://13.124.1.176:8080/review/store/2')
+    //   .then(response=>{
+    //     console.log('axios review data get')
+    //     console.log(response.data.data); 
+    //     this.myreviews = response.data.data;
+    //   })
+  },
   methods: {
     change() {
       //수정하기 버튼 클릭
@@ -133,6 +148,15 @@ export default {
     },
     ok() {
       //수정하기 - 확인 버튼 클릭
+      this.user.name='이름';
+      this.user.email= "ssafy@naver.com";
+      this.user.birth= "2020.02.10",
+      this.user.gender= "Female"
+
+      MypageApi.modifyUserInfo(this.user,response=>{
+        console.log(response)
+        this.$store.state.userInfo=response
+      })
       this.isInfo = true;
     }
   }

@@ -46,11 +46,6 @@ const routes = [
     name: "Social",
     component: Social
   },
-  {
-    path: "/map",
-    name : "Map",
-    component: Map
-  }
 ];
 
 const router = new VueRouter({
