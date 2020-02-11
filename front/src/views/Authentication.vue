@@ -29,7 +29,7 @@
         </div>
 
         <div id="emailAuthInput" v-if="emailAuthReturn==true">
-          <input v-model ="emailAuthInput" type="text" placeholder="메일로 전송된 인증번호를 입력하세요" />
+          <input v-model="emailAuthInput" type="text" placeholder="메일로 전송된 인증번호를 입력하세요" />
           <div></div>
           <button>확인</button>
         </div>
@@ -90,7 +90,7 @@
         </div>
         <div class="join-button-container">
           <v-btn rounded color="#FC913A" dark @click="joinRedirect()">취소</v-btn>
-          <v-btn rounded color="#FC913A" dark @click="joinApi()">가입</v-btn>
+          <v-btn :aria-disabled="!isSubmit" rounded color="#FC913A" dark @click="joinApi()">가입</v-btn>
         </div>
       </div>
     </div>
@@ -109,8 +109,14 @@
               <input v-model="loginPW" type="password" @keyup.enter="loginApi" id="loginPW" />
             </div>
           </div>
-          <v-btn rounded color="#FC913A" dark @click="loginApi">확 인</v-btn>
+          <div style="width: 100%;">
+            <div style="margin-left: 2px; margin-top: 15px;">
+              <input type="checkbox" v-model="remID" id="remID" /> 아이디 저장하기
+            </div>
+            <v-btn rounded color="#FC913A" dark @click="loginApi">확 인</v-btn>
+          </div>
         </div>
+
         <div class="sns-login">
           <h3>SNS 로그인</h3>
           <SocialLogin />
@@ -190,7 +196,7 @@ export default {
       )
         this.error.passwordConfirm = "입력한 비밀번호와 일치해야 합니다.";
       else this.error.passwordConfirm = false;
-      
+
       let isSubmit = true;
       Object.values(this.error).map(v => {
         if (v) isSubmit = false;
@@ -207,7 +213,6 @@ export default {
           alert("이메일 중복");
         }
       });
-      
     },
     emailAuth() {
       let { email } = this;
@@ -215,22 +220,23 @@ export default {
         console.log(res);
       });
       this.emailAuthReturn = true;
+      this.isSubmit = true;
     },
     async loginApi() {
-      let { loginID, loginPW } = this;
-      await UserApi.requestLogin(loginID, loginPW, res => {
+      let { remID, loginID, loginPW } = this;
+      await UserApi.requestLogin(remID, loginID, loginPW, res => {
         console.log(res);
       });
       this.tokenApi();
     },
-    tokenApi(){
+    tokenApi() {
       UserApi.requestToken(res => {
         console.log(res);
       });
-      if(localStorage.getItem('token').length>10){
-        this.$router.push('/');
-      }else{
-        alert('로그인 실패');
+      if (localStorage.getItem("token").length > 10) {
+        this.$router.push("/");
+      } else {
+        alert("로그인 실패");
       }
     },
     logoutApi() {
@@ -239,11 +245,16 @@ export default {
       });
     },
     joinApi() {
-      let { email, password, nickname, birth, gender } = this;
-      UserApi.requestRegister(email, nickname, password, birth, gender, res => {
-        console.log(res);
-      });
-      this.joinRedirect();
+      let { isSubmit, email, password, nickname, birth, gender } = this;
+      if(isSubmit){
+        UserApi.requestRegister(email, nickname, password, birth, gender, res => {
+          console.log(res);
+        });
+        this.joinRedirect();
+      }
+      else{
+        alert('이메일 인증을 해주세요');
+      }
     },
     joinRequest() {
       this.join = true;
@@ -265,6 +276,7 @@ export default {
   },
   data() {
     return {
+      remID: false,
       emailCheckReturn: false,
       emailAuthReturn: false,
       email: "",
