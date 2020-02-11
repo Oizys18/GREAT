@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Sidebar :id="1"/>
+    <Sidebar />
     <Table />
     <SortButton/>
   </div>
