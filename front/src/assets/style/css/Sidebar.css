@@ -3,7 +3,8 @@
 /* 전체 container */
 .sidebar-container {
   position: fixed;
-  top: 8vh;
+  z-index: 100;
+  top: 0vh;
   width: 27%;
   height: 100%;
 }
