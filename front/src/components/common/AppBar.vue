@@ -1,7 +1,7 @@
 <template>
   <div id="app-bar" class="animated fadeInDown delay-0.2s">
-    <div class="bar-banner" @click="go('/')">GrEAT</div>
-    <div class="bar-router">
+    <div class="app-bar-banner" @click="go('/')">GrEAT</div>
+    <div class="app-bar-router">
       <BarButton />
     </div>
   </div>
@@ -30,18 +30,20 @@ export default {
   position: fixed;
   width: 100%;
   background: linear-gradient(72deg, #c0392b, #f1c40f);
-  padding: 15px;
-  font-size: 1.2em;
+  padding: 10px;
+  font-size: 1.4em;
   display: flex;
+  height:6vh;
+  align-items: center;
 }
-.bar-banner {
+.app-bar-banner {
   font-family: "Lobster", cursive;
   color: rgb(236, 236, 236);
   position: relative;
   cursor: pointer;
   left: 0;
 }
-.bar-router {
+.app-bar-router {
   position: fixed;
   right: 0;
   padding: 0 10px 0 0;
