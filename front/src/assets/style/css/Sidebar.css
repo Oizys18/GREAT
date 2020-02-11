@@ -8,9 +8,9 @@
   top: 0vh;
   width: 27%;
   min-width: 280px;
-  height: 90%;
+  height: 100%;
   overflow-y: auto;
-  box-shadow: 1px 1px 3px grey;
+  box-shadow: 1px 1px 8px grey;
 }
 
 /* Image component */
@@ -18,7 +18,7 @@
   position: relative;
   resize: both;
   width: 100%;
-  max-height: 240px;
+  max-height: 300px;
   object-fit: cover;
   display: block;
   margin-left: auto;
