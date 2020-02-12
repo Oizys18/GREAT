@@ -56,7 +56,7 @@ const requestLogin = (remID,loginID, loginPW, callback, errorCallback) => { // e
 
 const requestLogout = () => {
 	storage.setItem('id',null);
-	storage.setItem('email',null);
+	storage.setItem('email',null); //신비 추가 
 	storage.setItem('token', null);
 	return storage.getItem('token');
 };
