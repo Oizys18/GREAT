@@ -5,7 +5,7 @@
     </div>
 
     <v-tabs class="tab-container"
-     color="#FFA578"  >
+     color="#FFA578">
       <FoodTab />
       <GridTab />
       <InfoTab />
@@ -15,7 +15,7 @@
         <div>
           <v-card flat>
             <div class="contents">
-              <TabFood/>
+              <FoodList/>
             </div>
           </v-card>
         </div>
@@ -34,25 +34,26 @@
       </v-tab-item>
 
       <v-tab-item vertical class="box-container" id="tab-info">
-        <div>
-          <div class="part-container">
+            <div>
             <v-card flat>
-              <Info />
+              <div class="contents">
+                <!-- <p>grid bookmark lists</p> -->
+                <Info/>
+              </div>
             </v-card>
-          </div>
-          
-          <!-- <hr /> -->
+        </div>
+
           <v-divider ></v-divider>
-          
+
           <div class="part-container">
               <p> 🍴 🙋‍♂️ 내가 남긴 리뷰 🚩 📝  </p>
               <!-- card components -->
               <Reviews/>
-            </div>
-        </div>
+          </div>
       </v-tab-item>
+      
     </v-tabs>
-  </div>
+</div>
 </template>
 
 <script>
@@ -62,12 +63,11 @@ import GridTab from "@/components/Tab/GridTab.vue";
 import InfoTab from "@/components/Tab/InfoTab.vue";
 import Info from "@/components/Tab/Info.vue";
 import Reviews from "@/components/Tab/Reviews.vue";
-import TabFood from "@/components/Tab/TabFood.vue"
+import FoodList from "@/components/Tab/FoodList.vue";
 import GridList from "@/components/Tab/GridList.vue";
 import MypageApi from '@/apis/MypageApi.js';
 
 export default {
-  
   name: "Mypage",
   components: {
     FoodTab,
@@ -76,30 +76,50 @@ export default {
     Info,
     Reviews,
     GridList,
-    TabFood,
+    FoodList
   },
   data() {
     return {
       tab: null,
       name: "",
-    }
+      tabs: ["Food", "Grid", "Info"],
+      currentTab: 0
+    };
   },
-  computed:{
-    gridbookmarks: function(){
+  computed: {
+    gridbookmarks: function() {
       return this.$store.state.gridbookmarks;
     }
   },
-  mounted:function(){ 
-     //로그인한 사용자 회원 정보 요청
-    MypageApi.setID()
-     MypageApi.requestUserInfo(response=>{
-      this.name=response.name;
-
-    })
-
-
-  
+  mounted: function() {
+    //로그인한 사용자 회원 정보 요청
+    MypageApi.setID();
+    MypageApi.requestUserInfo(response => {
+      this.name = response.name;
+    });
   }
-
 };
 </script>
+<style>
+.myp-tab {
+  position: relative;
+  top: 10vh;
+  left: 0;
+  max-height: 300px;
+}
+.contents{
+  max-height: 300px;
+  
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+

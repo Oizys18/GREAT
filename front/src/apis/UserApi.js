@@ -40,8 +40,8 @@ const requestToken = () => {
 }
 
 const requestLogin = (remID,loginID, loginPW, callback, errorCallback) => { // eslint-disable-line no-unused-vars
-	if(remID) storage.setItem('email',loginID);
-	else session.setItem('email',loginID);
+	storage.setItem('email',loginID);
+	// else session.setItem('email',loginID);
 	return axios.post('http://13.124.1.176:8080/user/login', {
 			email: loginID,
 			password: loginPW
@@ -56,6 +56,7 @@ const requestLogin = (remID,loginID, loginPW, callback, errorCallback) => { // e
 
 const requestLogout = () => {
 	storage.setItem('id',null);
+	storage.setItem('email',null); //신비 추가 
 	storage.setItem('token', null);
 	return storage.getItem('token');
 };

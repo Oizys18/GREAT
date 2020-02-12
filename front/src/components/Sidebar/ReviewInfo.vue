@@ -5,8 +5,7 @@
         <span>{{review.contents}}</span>
       </div>  
     </template> -->
-    <p class="review-write" @click="reviewWriting = !reviewWriting">리뷰 남기기</p>
-    <ReviewWrite v-if="reviewWriting"/>
+    <ReviewWrite :storeId="storeId"/>
   </div>
 </template>
 
@@ -14,12 +13,7 @@
 import ReviewWrite from '../Sidebar/ReviewWrite'
 export default {
   name: 'ReviewInfo',
-  props: ['reviewInfo'],
-  data() {
-    return {
-      reviewWriting: false
-    }
-  },
+  props: ['reviewInfo', 'storeId'],
   components: {
     ReviewWrite
   },

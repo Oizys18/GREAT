@@ -7,6 +7,7 @@ import Mypage from "../views/Mypage.vue";
 import Authentication from "../views/Authentication.vue";
 import Social from "../views/Social.vue";
 import PageNotFound from "../views/PageNotFound.vue";
+import Join from "../views/Join.vue";
 
 Vue.use(VueRouter);
 
@@ -46,6 +47,11 @@ const routes = [
     name: "Social",
     component: Social
   },
+  {
+    path: "/join",
+    name: "Join",
+    component: Join
+  }
 ];
 
 const router = new VueRouter({

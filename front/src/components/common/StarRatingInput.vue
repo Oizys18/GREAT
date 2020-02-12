@@ -1,35 +1,36 @@
 <template>
   <div class="star-rating">
-      <input id="star-5" type="radio" name="rating" value="star-5" />
-      <label for="star-5">
+    <template v-for="(idx, i) in idxList">
+      <input 
+        :key="idx" 
+        :id="'star-' + idx" 
+        type="radio" 
+        name="rating" 
+        :value="idx" 
+        @click="starClicked(idx)"/>
+      <label :key="i+10" :for="'star-' + idx">
         <i class="active fa fa-star" aria-hidden="true"></i>
       </label>
-      <input id="star-4" type="radio" name="rating" value="star-4" />
-      <label for="star-4">
-        <i class="active fa fa-star" aria-hidden="true"></i>
-      </label>
-      <input id="star-3" type="radio" name="rating" value="star-3" />
-      <label for="star-3">
-        <i class="active fa fa-star" aria-hidden="true"></i>
-      </label>
-      <input id="star-2" type="radio" name="rating" value="star-2" />
-      <label for="star-2">
-        <i class="active fa fa-star" aria-hidden="true"></i>
-      </label>
-      <input id="star-1" type="radio" name="rating" value="star-1" />
-      <label for="star-1">
-        <i class="active fa fa-star" aria-hidden="true"></i>
-      </label>
-    </div>
+    </template>
+  </div>
 </template>
 
 <script>
-import '../../assets/style/css/starRating.css'
+import "../../assets/style/css/starRating.css";
 export default {
-  name: 'StarRatingInput'
-}
+  name: "StarRatingInput",
+  data() {
+    return {
+      idxList: [5, 4, 3, 2, 1]
+    };
+  },
+  methods: {
+    starClicked(idx) {
+      this.$store.state.starRating = idx
+    }
+  },
+};
 </script>
 
 <style>
-
 </style>

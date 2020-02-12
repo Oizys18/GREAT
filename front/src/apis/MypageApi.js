@@ -17,13 +17,12 @@ var setID=function(){
 
 var requestUserInfo=function(callback){ //data:사용자 email
     var email = storage.getItem('email')
-    console.log('*storage eamil : '+email)
+    console.log('로그인한 email : '+email)
     axios
         .get('http://13.124.1.176:8080/user/search/'+email,{
             headers: { Authorization : storage.getItem('token') }
         })
         .then(res=>{
-            console.log(res.data.data)
             callback(res.data.data);
         })
 }
@@ -51,7 +50,8 @@ var modifyUserInfo=function(data){
   //var userID=storage.getItem('id')
   
   axios
-  //.get("http://13.124.1.176:8080/review/search/"+'userID')
+  // .get("http://13.124.1.176:8080/review/store/566",{
+  // .get("http://13.124.1.176:8080/review/search/"+userID,{
   .get("http://13.124.1.176:8080/review/store/566",{
     headers: { Authorization : storage.getItem('token') }
   })
