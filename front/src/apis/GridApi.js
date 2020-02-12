@@ -22,13 +22,11 @@ var requestGridStoresByRandom = function(data, callback) {
       callback(response.data.data)
     })
 }
-  }
 
 
 
 
 /** 사용자 위치와 카테고리에 해당하는 식당 정보 요청(별점순) */
->>>>>>> front/src/apis/GridApi.js
 var requestGridStoresByRating = function(data, callback) {
   axios
     .get('http://13.124.1.176:8080/store/category/' + data)
