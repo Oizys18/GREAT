@@ -12,6 +12,7 @@ var requestGridStores = function(data, callback) {
       callback(response.data.data)
     })
 }
+
 var requestGridStoresByRating = function(data, callback) {
   axios
     .get('http://13.124.1.176:8080/store/category/' + data)
@@ -29,8 +30,44 @@ var requestStoreInfo = function(data, callback) {
     })
 }
 
+/** 리뷰 작성 요청 */
+var requestReviewPost = function(data, callback) {
+  axios
+    .post('http://13.124.1.176:8080/review', data)
+    .then(response => {
+      callback(response.data.data)
+    })
+}
+
+/** 북마크 등록 요청 */
+var requestBookmarkPost = function(data, callback, errorCallback) {
+  axios
+    .post('http://13.124.1.176:8080/bookmark', data)
+    .then(response => {
+      callback(response.data.data)
+    })
+    .catch(() => {
+      errorCallback()
+    })
+}
+
+/** 북마크 삭제 요청 */
+var requestBookmarkDelete = function(data, callback, errorCallback) {
+  axios
+    .delete('http://13.124.1.176:8080/bookmark/' + data)
+    .then(response => {
+      callback(response.data.data)
+    })
+    .catch(() => {
+      errorCallback()
+    })
+}
+
 export default {
   requestGridStores,
   requestStoreInfo,
-  requestGridStoresByRating
+  requestGridStoresByRating,
+  requestReviewPost,
+  requestBookmarkPost,
+  requestBookmarkDelete
 }
