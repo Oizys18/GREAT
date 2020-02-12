@@ -1,5 +1,7 @@
 /* 상세정보 Sidebar */
-
+.material-icons {
+  font-size: 18px;
+}
 /* 전체 container */
 .sidebar-container {
   background-color: white;
@@ -11,6 +13,24 @@
   height: 100%;
   overflow-y: auto;
   box-shadow: 1px 1px 8px grey;
+}
+.sidebar-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+.sidebar-tab {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+.sidebar-tab-button {
+  margin-top: 3vh;
+  width: 8vw;
+  min-width: 90px;
+  height: 4vh;
+  border: 2px solid white;
+  background-color: #fbedeb;
+  font-size: 0.8rem;
+  font-weight: bold;
 }
 
 /* Image component */
@@ -39,6 +59,8 @@
   font-size: 2rem;
   margin-left: 1vw;
   margin-bottom: 1vh;
+  padding-right: 5vw;
+  width: 100%;
   display: block;
 }
 .sidebar-text-rating {
@@ -47,11 +69,48 @@
   margin-left: 1vw;
 }
 
+/** 북마크 버튼 component */
+.sidebar-bookmark {
+  display: inline;
+  float: right;
+  margin-top: 0.5vh;
+  margin-right: 0.5vw;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: inline-block;
+  background-color: #E6E6E6;
+  border-radius: 25px;
+  display: block;
+  transition: box-shadow 1s ease;
+}
+.sidebar-bookmark:hover {
+  transition: box-shadow 0.5s ease; 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.sidebar-heart {
+  fill: white;
+  background: none;
+  position: relative;
+  top: 12px;
+  width: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  transition: 0.5s;
+}
+
 /* BodyText component */
 .sidebar-text-body {
   position: relative;
   padding: 20px;
-  margin-top: 3vh;
+}
+.sidebar-text-line {
+  margin-bottom: 2vh;
+}
+.sidebar-text-text {
+  margin-left: 0.5vw;
+  line-height: 1.8rem;
 }
 .sidebar-text-tag {
   overflow-wrap: inherit;
@@ -62,6 +121,7 @@
   margin-right: 1vw;
   margin-left: 1vw;
   padding: 1vw;
+  line-height: 1.7rem;
   border-radius: 10px;
   background-color: rgb(241, 239, 239);
 }
@@ -75,12 +135,13 @@
 
 /* Review component */
 .sidebar-review {
-  margin-top: 3vh;
+  margin-top: 5vh;
   margin-right: 1vw;
   margin-left: 1vw;
 }
 .review-write {
   color: blue;
+  margin-top: 3vh;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -89,21 +150,31 @@
   overflow: hidden; 
   word-wrap: break-word; 
   resize: none; 
-  height: 160px;
+  height: 100px;
   width: 100%;
-  padding-top: 2vh;
-  padding-left: 1vw;
+  padding: 2vh 1vw 2vh 1vw;
 	background-repeat:repeat-y, repeat;
 	-webkit-border-radius:12px;
 	border-radius:12px;
-	-webkit-box-shadow: 0px 2px 14px #000;
-	box-shadow: 0px 2px 14px #000;
+	-webkit-box-shadow: 0px 2px 7px #000;
+  box-shadow: 0px 2px 7px #000;
+  margin-top: 2vh;
 	border-top:1px solid #FFF;
 	border-bottom:1px solid #FFF;
 }
 .sidebar-review-rating {
   float: left;
   display: block;
+}
+.sidebar-review-btn {
+  float: right;
+  margin-top: 2.3vh;
+  margin-right: 0.7vw;
+  background-color: beige;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 5px 20px 5px 20px;
+  border-radius: 25px;
 }
 
 /* 사이드바 접기버튼 */
