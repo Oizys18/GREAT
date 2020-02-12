@@ -2,7 +2,8 @@
   <div class="sidebar-text-title">
     <span class="sidebar-text-name">{{store.name}}</span>
     <StarRating class="sidebar-text-rating" :rating="store.rating"/>
-    <i class="fa fa-phone"></i> <span>{{store.phone}}</span>
+    <i v-if="store.phone != '' && store.phone != undefined" class="fa fa-phone"></i> 
+    <span>{{store.phone}}</span>
   </div>
 </template>
 
@@ -23,5 +24,4 @@ export default {
 </script>
 
 <style>
-
 </style>

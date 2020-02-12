@@ -28,8 +28,12 @@ public class StoreServiceImpl implements StoreService {
 	}
 	
 	/** 식당 category에 해당하는 식당 목록 검색(1 grid block) */
-	public List<Store> searchByCategory(int category){
-		return dao.selectByCategory(category);
+	public List<Store> searchByRating(int category, double x, double y){
+		Map<String,Object> data = new HashMap<String, Object>();
+		data.put("category", category);
+		data.put("x", x);
+		data.put("y", y);
+		return dao.selectByRating(data);
 	}
 	
 	/** 사용자 지정 위치로부터 가까운 식당 8개 목록 검색 
@@ -58,5 +62,14 @@ public class StoreServiceImpl implements StoreService {
 	/** 식당 정보 삽입 */
 	public void insertStore(Store store) {
 		dao.insert(store);
+	}
+
+	@Override
+	public List<Store> searchByDefault(int category, double x, double y) {
+		Map<String,Object> data = new HashMap<String, Object>();
+		data.put("category", category);
+		data.put("x", x);
+		data.put("y", y);
+		return dao.selectByDefault(data);
 	}
 }

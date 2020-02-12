@@ -3,7 +3,7 @@
     <p><i class="far fa-map-marker-alt"></i> <span>{{store.location_name}}</span></p>
     <p><i class="far fa-clock"></i> <span>{{store.open_time}}</span></p>
     
-    <div class="sidebar-text-tag">
+    <div v-if="tagList != null" class="sidebar-text-tag">
       <template v-for="tag in tagList">
         <Chip :key="tag" :text="tag" />
       </template>
@@ -24,7 +24,10 @@ export default {
       return this.textInfo
     },
     tagList() {
-      return this.store.tag.split(",")
+      if(this.store.tag != undefined && this.store.tag != '') {
+        return this.store.tag.split(",")
+      }
+      return null
     }
   },
 }

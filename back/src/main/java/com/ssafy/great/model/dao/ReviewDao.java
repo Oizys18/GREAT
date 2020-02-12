@@ -8,6 +8,11 @@ public interface ReviewDao {
 
 	/** 모든 리뷰 목록 검색 */
 	List<Review> selectAll();
+	
+	
+	/** 사용자의 리뷰 목록 검색 */
+	List<Review> selectByUserId(int userId);
+	
 
 	/** 리뷰 id에 해당하는 리뷰 정보 검색 */
 	Review selectById(int id);

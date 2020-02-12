@@ -29,8 +29,9 @@
         </div>
 
         <div id="emailAuthInput" v-if="emailAuthReturn==true">
-          <input type="text" placeholder="메일로 전송된 인증번호를 입력하세요" /><div></div>
-          <button>확인</button>
+          <input v-model="emailAuthInput" type="text" placeholder="메일로 전송된 인증번호를 입력하세요" />
+          <div></div>
+          <button @click="emailSubmit()">확인</button>
         </div>
         <div v-else></div>
         <div class="input-with-label">
@@ -69,42 +70,30 @@
             placeholder="생년월일을 입력하세요."
             type="date"
             data-date-picker="activated"
-          /></div>
-          <!-- <v-date-picker v-model="picker" color="green lighten-1"></v-date-picker>-->
-          <div class="join-radio-container">
-            <div class="input-with-label">
-              <label for="gender">성별</label>
-            </div>
-            <div class="radio-btn-group">
-              <div class="radio">
-                <input
-                  type="radio"
-                  name="radio"
-                  value="M"
-                  checked="checked"
-                  v-model="gender"
-                  id="M"
-                />
-                <label for="M">남성</label>
-              </div>
-              <div class="radio">
-                <input
-                type="radio" 
-                name="radio" 
-                value="F" 
-                v-model="gender" 
-                id="F" 
-                />
-                <label for="F">여성</label>
-              </div>
-            </div>
+          />
+        </div>
+        <!-- <v-date-picker v-model="picker" color="green lighten-1"></v-date-picker>-->
+        <div class="join-radio-container">
+          <div class="input-with-label">
+            <label for="gender">성별</label>
           </div>
-          <div class="join-button-container">
-            <v-btn rounded color="#FC913A" dark @click="joinRedirect()">취소</v-btn>
-            <v-btn rounded color="#FC913A" dark @click="joinApi()">가입</v-btn>
+          <div class="radio-btn-group">
+            <div class="radio">
+              <input type="radio" name="radio" value="M" checked="checked" v-model="gender" id="M" />
+              <label for="M">남성</label>
+            </div>
+            <div class="radio">
+              <input type="radio" name="radio" value="F" v-model="gender" id="F" />
+              <label for="F">여성</label>
+            </div>
           </div>
         </div>
+        <div class="join-button-container">
+          <v-btn rounded color="#FC913A" dark @click="joinRedirect()">취소</v-btn>
+          <v-btn :aria-disabled="!isSubmit" rounded color="#FC913A" dark @click="joinApi()">가입</v-btn>
+        </div>
       </div>
+    </div>
     <div class="login" v-else>
       <div class="login-subcontainer">
         <h1>Login</h1>
@@ -120,8 +109,14 @@
               <input v-model="loginPW" type="password" @keyup.enter="loginApi" id="loginPW" />
             </div>
           </div>
-          <v-btn rounded color="#FC913A" dark @click="loginApi">확 인</v-btn>
+          <div style="width: 100%;">
+            <div style="margin-left: 2px; margin-top: 15px;">
+              <input type="checkbox" v-model="remID" id="remID" /> 아이디 저장하기
+            </div>
+            <v-btn rounded color="#FC913A" dark @click="loginApi">확 인</v-btn>
+          </div>
         </div>
+
         <div class="sns-login">
           <h3>SNS 로그인</h3>
           <SocialLogin />
@@ -138,16 +133,19 @@
         </div>
       </div>
       <!-- <button @click="logoutApi()">임시로그아웃</button> -->
+      <LogoutButton />
       <p></p>
     </div>
   </div>
+  
 </template>
 
 <script>
 /* eslint-disable no-unused-vars */
 import "@/assets/style/css/authStyle.css";
-// import axios from 'axios'
+import axios from "axios";
 import SocialLogin from "@/components/common/SocialLogin.vue";
+import LogoutButton from "@/components/common/LogoutButton.vue";
 import UserApi from "@/apis/UserApi";
 import PV from "password-validator";
 import * as EmailValidator from "email-validator";
@@ -155,7 +153,8 @@ import * as EmailValidator from "email-validator";
 export default {
   name: "Authentication",
   components: {
-    SocialLogin
+    SocialLogin,
+    LogoutButton
   },
   created() {
     this.component = this;
@@ -201,6 +200,7 @@ export default {
       )
         this.error.passwordConfirm = "입력한 비밀번호와 일치해야 합니다.";
       else this.error.passwordConfirm = false;
+
       let isSubmit = true;
       Object.values(this.error).map(v => {
         if (v) isSubmit = false;
@@ -209,10 +209,14 @@ export default {
     },
     emailCheck() {
       let { email } = this;
-      UserApi.emailCheck(email, res => {
-        console.log(res.Autorization);
+      axios.get("http://13.124.1.176:8080/user/email/" + email).then(res => {
+        console.log(res);
+        if (res.data.data.length < 3) {
+          this.emailCheckReturn = true;
+        } else {
+          alert("이메일 중복");
+        }
       });
-      this.emailCheckReturn = true;
     },
     emailAuth() {
       let { email } = this;
@@ -221,30 +225,45 @@ export default {
       });
       this.emailAuthReturn = true;
     },
-    loginApi() {
-      let { loginID, loginPW } = this;
-      UserApi.requestLogin(loginID, loginPW, res => {
+    emailSubmit(){
+      let { emailAuthInput } = this;
+      if(sessionStorage.getItem('emailAuth') == emailAuthInput){
+        alert('이메일 인증 성공');
+        this.isSubmit = true;
+      }else {
+        alert('이메일 인증 실패');
+        this.isSubmit = false;
+      }
+    },
+    async loginApi() {
+      let { remID, loginID, loginPW } = this;
+      await UserApi.requestLogin(remID, loginID, loginPW, res => {
         console.log(res);
       });
-      var loginToken = UserApi.requestToken();
-      console.log(loginToken);
-      if(loginToken!=null){
-          this.$router.push({ path: '/' });
-        }else{
-          alert('로그인 실패');
-        }
+      this.tokenApi();
     },
-    logoutApi(){
-      UserApi.requestLogout(res => {
+    tokenApi() {
+      UserApi.requestToken(res => {
         console.log(res);
       });
+      if (localStorage.getItem("token").length > 10) {
+        this.$router.push("/");
+      } else {
+        alert("로그인 실패");
+      }
     },
+    
     joinApi() {
-      let { email, password, nickname, birth, gender } = this;
-      UserApi.requestRegister(email, nickname, password, birth, gender, res => {
-        console.log(res);
-      });
-      this.joinRedirect();
+      let { isSubmit, email, password, nickname, birth, gender } = this;
+      if(isSubmit){
+        UserApi.requestRegister(email, nickname, password, birth, gender, res => {
+          console.log(res);
+        });
+        this.joinRedirect();
+      }
+      else{
+        alert('이메일 인증을 해주세요');
+      }
     },
     joinRequest() {
       this.join = true;
@@ -266,8 +285,10 @@ export default {
   },
   data() {
     return {
+      remID: false,
       emailCheckReturn: false,
       emailAuthReturn: false,
+      emailAuthInput: "",
       email: "",
       password: "",
       passwordConfirm: "",

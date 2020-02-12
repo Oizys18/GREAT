@@ -27,9 +27,9 @@ public class StoreApiServiceImpl {
 
 	public void parsingData(ArrayList<LinkedHashMap<String, Object>> lists, int type) {
 		List<Store> stores = new ArrayList<Store>();
-		List<Menu> li = new ArrayList<Menu>();
 		double d;
 		for (LinkedHashMap<String, Object> list : lists) {
+			List<Menu> li = new ArrayList<Menu>();
 			if (list.get("menuInfo") != null) {
 				StringTokenizer st = new StringTokenizer(((String) list.get("menuInfo")), "|");
 				while (st.hasMoreTokens()) {

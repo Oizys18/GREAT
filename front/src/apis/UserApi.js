@@ -4,14 +4,16 @@
 import axios from 'axios'
 
 var storage = localStorage;
+var session = sessionStorage;
 
 const emailCheck = (email) => {
-	return axios.get('http://13.124.1.176:8080/user/email/' + email)
+	var emailRes = axios.get('http://13.124.1.176:8080/user/email/' + email)
 		.then(
 			res => {
 				console.log(res);
 			}
 		)
+	return emailRes.data;
 }
 
 
@@ -19,31 +21,43 @@ const emailAuth = (email) => {
 	return axios.get('http://13.124.1.176:8080/sendemail/' + email)
 		.then(
 			res => {
+				session.setItem('emailAuth',res.data.data)
 				console.log(res);
 			}
 		)
 }
 
 const requestToken = () => {
-	return storage.getItem('token');
+	console.log('token', storage.getItem('token'))
+	return axios.get('http://70.12.246.123:8080/user',{
+		headers: { 'Authorization' : storage.getItem('token') }
+       })
+	.then(
+		res => { // eslint-disable-line no-unused-vars
+			console.log(storage.getItem('token'));
+		}
+	)
 }
 
-const requestLogin = (loginID, loginPW, callback, errorCallback) => { // eslint-disable-line no-unused-vars
+const requestLogin = (remID,loginID, loginPW, callback, errorCallback) => { // eslint-disable-line no-unused-vars
+	if(remID) storage.setItem('email',loginID);
+	else session.setItem('email',loginID);
 	return axios.post('http://13.124.1.176:8080/user/login', {
 			email: loginID,
 			password: loginPW
 		})
 		.then(
 			res => {
-				console.log(res);
 				storage.setItem('token', res.data.data.Authorization);
-				console.log(storage.getItem('token'))
+				console.log('login', storage.getItem('token'))
 			}
 		)
 };
 
 const requestLogout = () => {
+	storage.setItem('id',null);
 	storage.setItem('token', null);
+	return storage.getItem('token');
 };
 
 const requestRegister = (email, username, password, birth, gender) => {
@@ -58,6 +72,7 @@ const requestRegister = (email, username, password, birth, gender) => {
 		})
 		.then(
 			res => {
+				storage.setItem('token', res.data.data.Authorization);
 				console.log(res);
 			}
 		)

@@ -42,4 +42,10 @@ public class ReviewServiceImpl implements ReviewService {
 	public void deleteReview(int id) {
 		dao.delete(id);
 	}
+
+	@Override
+	public List<Review> selectByUserId(int userId) {
+		// TODO Auto-generated method stub
+		return dao.selectByUserId(userId);
+	}
 }
