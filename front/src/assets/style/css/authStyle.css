@@ -1,353 +1,362 @@
 *:focus {
-    outline: none;
+	outline: none;
 }
 
 input:-webkit-autofill {
-    -webkit-text-fill-color: black;
-    transition: background-color 5000s ease-in-out 0s;
-    -webkit-transition: background-color 9999s ease-out;
+	-webkit-text-fill-color: black;
+	transition: background-color 5000s ease-in-out 0s;
+	-webkit-transition: background-color 9999s ease-out;
 }
 
 
 
 .auth {
-    padding-top: 30px;
+	background-color: ghostwhite;
+	padding-top: 30px;
+	padding-bottom: 1000%;
 }
 
 .login {
-    display: flex;
-    flex-direction: column;
-    padding-top: 10vh;
-    margin: 0 auto;
-    width: 70%;
+	display: flex;
+	flex-direction: column;
+	padding-top: 8vh;
+	margin: 0 auto;
+	width: 60%;
 
 }
 
 .login .input-with-label {
-    font-size: 14px;
-    position: relative;
+	font-size: 14px;
+	position: relative;
 }
 
 .login .input-with-label input {
-    text-align: right;
-    width: 100%;
-    height: 50px;
-    line-height: 1em;
-    padding: 0 15px 0 105px;
-    box-sizing: border-box;
-    color: #000;
-    background-color: white;
-    /* border: 1px solid #000;
+	text-align: right;
+	width: 100%;
+	height: 50px;
+	line-height: 1em;
+	padding: 0 15px 0 105px;
+	box-sizing: border-box;
+	color: #000;
+	background-color: white;
+	/* border: 1px solid #000;
     border-radius: 3px; */
-    font-size: 13px;
+	font-size: 13px;
 }
 
 .login .input-with-label label {
-    position: absolute;
-    left: 15px;
-    top: 19px;
-    color: #000;
+	position: absolute;
+	left: 15px;
+	top: 19px;
+	color: #000;
 }
 
 .login h1 {
-    padding-top: 30px;
-    padding-bottom: 30px;
-    color: dimgray;
-    font-weight: 900;
+	padding-top: 30px;
+	padding-bottom: 20px;
+	color: #274555;
+	font-weight: 900;
+	font-size: 40pt;
 }
 
 .login .login-container {
-    width: 100%;
-    margin: 0 auto;
-    margin-top: 10px;
-    margin-bottom: 40px;
-    display: flex;
-    flex-wrap: wrap;
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .login .login-container .login-box {
-    width: 200%;
-    text-align: left;
-    padding-bottom: 10px;
-    display: block;
+	width: 200%;
+	text-align: left;
+	padding-bottom: 10px;
+	display: block;
 }
 
 .login .login-container .btn--login {
-    width: 100%;
-    box-shadow: none;
-    line-height: 50px;
+	width: 100%;
+	box-shadow: none;
+	line-height: 50px;
 }
 
 .login .login-container button {
-    margin: 0 auto;
-    width: 30%;
-    border: none;
-    font-weight: 700;
-    background-color: transparent;
-    outline: none;
-    cursor: pointer;
-    margin-top: 10px;
-    box-shadow: none;
+	float: right;
+	/* width: 40%; */
+	border: none;
+	font-weight: 700;
+	background-color: transparent;
+	outline: none;
+	cursor: pointer;
+	/* margin-top: 10px; */
+	box-shadow: none;
 }
 
 .login .login-subcontainer {
-    background-color: lightyellow;
-    width: 100%;
-    margin: 0 auto;
-    margin-bottom: 10px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border: 5px solid orange;
-    border-radius: 25px;
+	width: 100%;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	border: 5px solid #ffda8e;
+	border-radius: 25px;
+	background-color: #fffcf0;
+	border-radius: 25px;
 }
 
 .login .sns-login {
-    width: 100%;
-    height: 60px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+	display: relative;
+	width: 100%;
+	height: 60px;
+	margin-top: 20px;
+	margin-bottom: 10px;
 }
 
 .login .social-login {
-    float: right;
+	float: right;
 }
 
 .login .sns-login .google-login {
-    display: inline-block;
+	display: inline-block;
 }
 
 .login .sns-login #kakao-login {
-    display: inline-block;
-    margin: 0 5px;
+	display: inline-block;
+	margin: 0 10px;
 }
 
 .login .sns-login h3 {
-    text-align: left;
-    color: dimgray;
-    font-weight: 700;
-    margin-block-end: 0;
+	text-align: left;
+	color: dimgray;
+	font-weight: 700;
+	font-size: 18pt;
+	margin-block-end: 0;
 }
 
 .login .add-option {
-    width: 100%;
-    margin: 0 auto;
+	width: 100%;
+	margin: 0 auto;
 }
 
 .login .wrap {
-    width: 100%;
-    height: 50px;
+	width: 100%;
+	height: 50px;
 }
 
 .login .wrap p {
-    float: left;
-    font-size: 13px;
+	float: left;
+	font-size: 15px;
 }
 
 .login .wrap .btn--text {
-    float: right;
+	float: right;
 }
 
 .join {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    width: 80%;
-    
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	width: 80%;
+
 }
 
 .join .join-container {
-    margin-top: 75px;
-    margin-bottom: 10px;
-    font-weight: bold;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border: 5px solid orange;
-    border-radius: 25px;
-    background-color: lightyellow;
+	margin-top: 8vh;
+	margin-bottom: 10px;
+	font-weight: bold;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	border: 5px solid #ffda8e;
+	border-radius: 25px;
+	background-color: #fffcf0;
 }
 
 .join h1 {
-    padding-top: 30px;
-    padding-bottom: 30px;
-    color: dimgray;
-    font-weight: 900;
+	padding-top: 30px;
+	padding-bottom: 20px;
+	color: #274555;
+	font-weight: 900;
+	font-size: 40pt;
 }
 
 .join .input-with-label {
-    font-size: 14px;
-    position: relative;
-    margin-bottom: 12px;
+	font-size: 14px;
+	position: relative;
+	margin-bottom: 12px;
 }
 
-.join .email-input{
-    display: flex;
+.join .email-input {
+	display: flex;
 }
 
-.join #email-check{
-    margin-left: 10px;
-    background-color: rgb(128, 66, 0); 
-    border-color: rgb(128, 66, 0);
-    width: 80px;
+.join #email-check {
+	margin-left: 10px;
+	background-color: #6f2108;
+	width: 80px;
 }
 
 .join .input-with-label input {
-    text-align: right;
-    width: 100%;
-    height: 50px;
-    line-height: 1em;
-    padding: 0 15px 0 105px;
-    box-sizing: border-box;
-    color: #000;
-    background-color: white;
-    /* border: 1px solid #000;
+	text-align: right;
+	width: 100%;
+	height: 50px;
+	line-height: 1em;
+	padding: 0 15px 0 105px;
+	box-sizing: border-box;
+	color: #000;
+	background-color: white;
+	/* border: 1px solid #000;
     border-radius: 3px; */
-    font-size: 13px;
+	font-size: 13px;
 }
 
 .join input[type="date"]::-webkit-calendar-picker-indicator,
 .join input[type="date"]::-webkit-inner-spin-button {
-    display: none;
-    appearance: none;
+	display: none;
+	appearance: none;
 }
 
 .join input[type="date"]::-webkit-calendar-picker-indicator {
-    color: rgba(0, 0, 0, 0);
-    opacity: 1;
-    display: block;
-    background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png) no-repeat;
-    width: 20px;
-    height: 20px;
-    border-width: thin;
+	color: rgba(0, 0, 0, 0);
+	opacity: 1;
+	display: block;
+	background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png) no-repeat;
+	width: 20px;
+	height: 20px;
+	border-width: thin;
 }
 
 .join .input-with-label label {
-    position: absolute;
-    left: 15px;
-    top: 19px;
-    color: #000;
+	position: absolute;
+	left: 15px;
+	top: 19px;
+	color: #000;
 }
 
 .join .error-text {
-    font-size: x-small;
-    color: rgb(255, 61, 0);
-    text-align: right;
+	font-size: x-small;
+	color: rgb(255, 61, 0);
+	text-align: right;
 }
 
 .join button {
-    margin-left: 5px;
-    margin-right: 5px;
-    font-weight: 600;
-    box-shadow: none;
+	margin-left: 5px;
+	margin-right: 5px;
+	font-weight: 600;
+	box-shadow: none;
 }
 
 .join .radio-input-with-label {
-    font-size: 14px;
-    position: relative;
-    margin-bottom: 12px;
+	font-size: 14px;
+	position: relative;
+	margin-bottom: 12px;
 }
 
 .join .radio-input-with-label label {
-    position: absolute;
-    left: 15px;
-    top: 19px;
-    color: #000;
+	position: absolute;
+	left: 15px;
+	top: 19px;
+	color: #000;
 }
 
 .join .join-radio-container {
-    margin-top: 10px;
-    width: 100%;
-    height: 50px;
-    line-height: 1em;
-    box-sizing: border-box;
-    color: #000;
-    background-color: white;
-    /* border: 1px solid #000;
+	margin-top: 10px;
+	width: 100%;
+	height: 50px;
+	line-height: 1em;
+	box-sizing: border-box;
+	color: #000;
+	background-color: white;
+	/* border: 1px solid #000;
     border-radius: 3px; */
-    font-size: 13px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 10px;
+	font-size: 13px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 10px;
 }
 
 .join .radio-btn-group {
-    display: flex;
-    float: right;
-    margin-top: 18px;
-    margin-right: 10px;
+	display: flex;
+	float: right;
+	margin-top: 18px;
+	margin-right: 10px;
 
 }
 
 .join .radio-btn-group .radio {
-    margin: 0 .25rem;
+	margin: 0 .25rem;
 }
 
 .join .radio-btn-group .radio label {
 
-    background: #fff;
-    border: 1px solid #ddd;
-    padding: .5rem 1.25rem;
-    border-radius: 5px;
-    cursor: pointer;
-    color: #444;
-    transition: box-shadow 400ms ease;
+	background: #fff;
+	border: 1px solid #ddd;
+	padding: .5rem 1.25rem;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #444;
+	transition: box-shadow 400ms ease;
 }
 
 .join .radio-btn-group :hover {
-    box-shadow: none;
+	box-shadow: none;
 }
 
 .join .radio-btn-group input[type="radio"] {
-    display: none;
+	display: none;
 }
 
 .join .radio-btn-group input[type="radio"]:checked+label {
-    background: rgb(204, 242, 245);
-    border-color: rgb(204, 242, 245);
-    color: black;
+	background: rgb(204, 242, 245);
+	border-color: rgb(204, 242, 245);
+	color: black;
 }
 
 .join .radio-btn-group .show {
-    font-weight: 400;
-    color: #444;
+	font-weight: 400;
+	color: #444;
 }
 
 .join .radio-btn-group span {
-    background: #f5f5f5;
-    color: #F44336;
-    border-radius: 3px;
-    padding: .25rem .5rem;
-    font-size: 1.25rem;
-    border: 1px solid #f1f1f1;
+	background: #f5f5f5;
+	color: #F44336;
+	border-radius: 3px;
+	padding: .25rem .5rem;
+	font-size: 1.25rem;
+	border: 1px solid #f1f1f1;
 }
 
-.join #emailAuthInput{
-    margin: 0 auto;
-    margin-bottom: 10px;
-    width: 90%;
-    /* float: right; */
+.join #emailAuthInput {
+	margin: 0 auto;
+	margin-bottom: 10px;
+	width: 90%;
+	/* float: right; */
 }
-.join #emailAuthInput input{
-    width: 70%;
-    font-size: 10pt;
+
+.join #emailAuthInput input {
+	width: 70%;
+	font-size: 10pt;
 }
-.join #emailAuthInput button{
-    border: 2px solid rgb(128, 66, 0);
-    border-radius: 25em;
-    width: 80px;
+
+.join #emailAuthInput button {
+	border: 2px solid #6f2108;
+	border-radius: 25em;
+	width: 80px;
 }
 
 .join .join-button-container {
-    margin-top: 30px;
-    margin-bottom: 10px;
+	margin-top: 30px;
+	margin-bottom: 10px;
 }
 
 @media screen and (min-width: 800px) {
-    .login {
-        width: 40%;
-    }
-    /* .login .login-container .login-box {
+	.login {
+		width: 30%;
+	}
+
+	/* .login .login-container .login-box {
         width: 79%;
         float: left;
         margin-right: 7%;
@@ -359,7 +368,7 @@ input:-webkit-autofill {
         float: right;
     } */
 
-    .join {
-        width: 40%;
-    }
+	.join {
+		width: 30%;
+	}
 }

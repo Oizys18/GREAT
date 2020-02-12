@@ -6,13 +6,13 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     reviews: [
-      {name: "Kin Khao",rating :"★★★☆☆", contents: "Thai"},
-      {name: 'Jū-Ni',rating :"★★☆☆☆", contents: "SushiJapanese $$$$"},
-      {name: 'Delfina',rating :"★☆☆☆", contents: "Pizza Casual"},
-      {name: 'San Tung', rating :"★★★★☆",contents: "Chinese  $$"},
-      {name: 'Anchor Oyster Bar', rating :"★★★☆☆",contents: "Seafood Cioppino"},
-      {name: 'Locanda',rating :"★★★☆☆", contents: "Italian"},
-      {name: 'Garden Creamery',rating :"★★★★★", contents: "Ice cream"},
+      {name: "Kin Khao",rating :"3", contents: "Thai"},
+      {name: 'Jū-Ni',rating :"2", contents: "SushiJapanese $$$$"},
+      {name: 'Delfina',rating :"1", contents: "Pizza Casual"},
+      {name: 'San Tung', rating :"4",contents: "Chinese  $$"},
+      {name: 'Anchor Oyster Bar', rating :"3",contents: "Seafood Cioppino"},
+      {name: 'Locanda',rating :"3", contents: "Italian"},
+      {name: 'Garden Creamery',rating :"5", contents: "Ice cream"},
     ],
     gridbookmarks:[
       {id:'1',name:"Jason Oner",type:'G',user:'1'},

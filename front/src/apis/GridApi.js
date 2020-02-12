@@ -5,14 +5,30 @@ var requestGridStores = function(data, callback) {
   var x = data.locationX
   var y = data.locationY
   var category = data.category
-
+  
   axios
-    .get('http://13.124.1.176:8080/store/location/' + category + '/' + x + '/' + y)
+  .get('http://13.124.1.176:8080/store/location/' + category + '/' + x + '/' + y)
+  .then(response => {
+    callback(response.data.data)
+  })
+}
+
+/** 사용자 위치와 카테고리에 해당하는 식당 정보 요청(랜덤순) */
+
+var requestGridStoresByRandom = function(data, callback) {
+  axios
+    .get('http://13.124.1.176:8080/store/category/' + data)
     .then(response => {
       callback(response.data.data)
     })
 }
+  }
 
+
+
+
+/** 사용자 위치와 카테고리에 해당하는 식당 정보 요청(별점순) */
+>>>>>>> front/src/apis/GridApi.js
 var requestGridStoresByRating = function(data, callback) {
   axios
     .get('http://13.124.1.176:8080/store/category/' + data)
@@ -69,5 +85,6 @@ export default {
   requestGridStoresByRating,
   requestReviewPost,
   requestBookmarkPost,
-  requestBookmarkDelete
+  requestBookmarkDelete,
+  requestGridStoresByRandom
 }
