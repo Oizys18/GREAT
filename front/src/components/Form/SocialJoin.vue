@@ -33,8 +33,8 @@
       </div>
     </div>
 		<div class="join-button-container">
-      <v-btn rounded color="#FC913A" dark @click="joinRedirect()">취소</v-btn>
-      <v-btn :aria-disabled="!isSubmit" rounded color="#FC913A" dark @click="joinApi()">가입</v-btn>
+      <v-btn rounded color="#ff7761" dark @click="joinRedirect()">취소</v-btn>
+      <v-btn :aria-disabled="!isSubmit" rounded color="#ff7761" dark @click="joinApi()">가입</v-btn>
     </div>
   </div>
 </template>

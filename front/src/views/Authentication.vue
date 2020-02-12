@@ -1,11 +1,11 @@
 <template>
   <div class="auth">
-    <!-- <div class = "login">
+    <div class = "login">
     <Login />
-    </div> -->
-    <div class = "join">
-      <SocialJoin />
     </div>
+    <!-- <div class = "join">
+      <SocialJoin />
+    </div> -->
     <!-- 
     <LogoutButton />
      -->
@@ -26,8 +26,8 @@ export default {
   name: "Authentication",
   components: {
     // LogoutButton,
-    // Login,
-    SocialJoin
+    Login,
+    // SocialJoin
   }
 };
 </script>
