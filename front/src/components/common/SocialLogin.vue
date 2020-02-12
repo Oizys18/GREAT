@@ -1,7 +1,7 @@
 <template>
     <div class="social-login">
         <div id="kakao-login">
-            <button>
+            <button @click="kakaoLogin">
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 55 55">
                     <g id="그룹_247" data-name="그룹 247" transform="translate(-237 -406)">
                         <g id="구성_요소_2" data-name="구성 요소 2" transform="translate(237 406)">
@@ -22,7 +22,7 @@
             </button>
         </div>
         <div class="google-login">
-            <button >
+            <button @click="handleClickGetAuth">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" viewBox="0 0 55 55">
                     <defs>
                         <clipPath id="clip-path">
@@ -57,8 +57,32 @@
 </template>
 
 <script>
+import KakaoAuth from "@/apis/KakaoApi.js";
+import axios from 'axios';
 
 export default {
-    name: "SocialLogin",
-}
+  name: "SocialLogin",
+  methods: {
+    kakaoLogin() {
+      KakaoAuth.loginWithKakao();
+
+    },
+    handleClickGetAuth() {
+        this.$gAuth
+        .signIn()
+        .then(GoogleUser => {
+            //on success do something
+          console.log("GoogleUser", GoogleUser["El"]);
+            axios.post("http://13.124.1.176:8080/user/socialLogin",GoogleUser["El"])
+                .then(response=>{
+                    console.log(response.data);
+                })
+        })
+        .catch(error => {
+          //on fail do something
+          console.log(error);
+        });
+    }
+  }
+};
 </script>

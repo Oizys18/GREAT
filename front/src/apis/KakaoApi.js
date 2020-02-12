@@ -14,7 +14,7 @@ const loginWithKakao = () => {
                 success: function (res) {
                     console.log(JSON.stringify(res["id"]));
                     console.log(JSON.stringify(res["properties"]["nickname"]));
-                    axios.post("http://localhost:8080/user/socialLogin", JSON.stringify(res["id"]))
+                    axios.post("http://13.124.1.176:8080/user/socialLogin", JSON.stringify(res["id"]))
                         .then(response=>{
                             console.log(response.data);
                         })
