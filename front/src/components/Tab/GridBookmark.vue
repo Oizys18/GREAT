@@ -8,7 +8,7 @@
     </v-list-item-icon>
 
     <!-- 북마크 이름 -->
-    <v-list-item-content class="girdbookmark-elem-title">
+    <v-list-item-content class="girdbookmark-elem-title" @click="gridDetail(gridbookmarkItem.id)">
       <v-list-item-title v-if="!editFlag">{{gridbookmarkItem.name}} </v-list-item-title>
       <v-list-item-title v-else>
         <input v-model="editTitle" id="title_modify" name="title_modify" 
@@ -124,6 +124,9 @@ export default {
       //     console.log("2.그리드 북마크 삭제 완료"+res.data)
       //   });    
     },
+    gridDetail(id){ //클릭한 grid bookmark 화면 모달화면으로 넘겨준다.
+      console.log('클릭한 grid bookmark list id:'+id)
+    }
   }
 };
 </script>
