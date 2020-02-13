@@ -136,11 +136,12 @@ export default new Vuex.Store({
     locationX: 127.0250186,
     locationY: 37.5056693,
     storeInfo: null,
-    reviewInfo: null,
     userInfo:null,
     userStoreList:null,
     userReviewList:null,
-    starRating: 0
+    reviewInfo: [],
+    starRating: 0,
+    bookmarkStoreList: []
   },
   mutations:{
     'reset'(state){
@@ -217,7 +218,6 @@ export default new Vuex.Store({
       state.기타maxIndex++;
       state.기타index.splice(payload, 1, state.기타maxIndex)
     },
-
     'userInfo'(state,payload){
       state.userInfo = payload;
     },
@@ -226,8 +226,28 @@ export default new Vuex.Store({
     },
     'userReviewList'(state,payload){
       state.userReviewList=payload;
+    },
+    'addBookmarkStore'(state, payload) {
+      var bookmarkList = state.bookmarkStoreList
+      var bookmark = bookmarkList.find(item => {
+        return item.id === payload.id
+      })
+
+      if(bookmark === undefined){
+        state.bookmarkStoreList.push(payload)
+      }
+    },
+    'deleteBookmarkStore'(state, payload) {
+      var bookmarkList = state.bookmarkStoreList
+      var index = bookmarkList.findIndex(item => {
+        return item.id === payload
+      })
+
+      if(index !== undefined){
+        state.bookmarkStoreList.splice(index, 1)
+      }
     }
-    
+>>>>>>> front/src/store/index.js
   },
   actions: {},
   modules: {}

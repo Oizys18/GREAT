@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+var storage = localStorage
+
 /** 사용자 위치와 카테고리에 해당하는 식당 정보 요청(거리순) */
 var requestGridStores = function(data, callback) {
   var x = data.locationX
@@ -14,7 +16,6 @@ var requestGridStores = function(data, callback) {
 }
 
 /** 사용자 위치와 카테고리에 해당하는 식당 정보 요청(랜덤순) */
-
 var requestGridStoresByRandom = function(data, callback) {
   axios
     .get('http://13.124.1.176:8080/store/category/' + data)
@@ -22,9 +23,6 @@ var requestGridStoresByRandom = function(data, callback) {
       callback(response.data.data)
     })
 }
-
-
-
 
 /** 사용자 위치와 카테고리에 해당하는 식당 정보 요청(별점순) */
 var requestGridStoresByRating = function(data, callback) {
@@ -44,10 +42,39 @@ var requestStoreInfo = function(data, callback) {
     })
 }
 
-/** 리뷰 작성 요청 */
-var requestReviewPost = function(data, callback) {
+/** 식당 id에 해당하는 리뷰 목록 요청 */
+var requestReviewInfo = function(data, callback) {
   axios
-    .post('http://13.124.1.176:8080/review', data)
+    .get('http://13.124.1.176:8080/review/store/' + data)
+    .then(response => {
+      callback(response.data.data)
+    })
+}
+
+/** 리뷰 작성 요청 */
+var requestReviewPost = function(data, callback, errorCallback) {
+  axios
+    .post('http://13.124.1.176:8080/review', data, {
+      headers: {
+        'Authorization': storage.getItem('token')
+      }
+    })
+    .then(response => {
+      callback(response.data.data)
+    })
+    .catch(() => {
+      errorCallback()
+    })
+}
+
+/** 북마크한 식당 목록 요청 */
+var requestBookmarkStoreList = function(data, callback) {
+  axios
+    .get('http://13.124.1.176:8080/bookmark/storelist/' + data, {
+      headers: {
+        'Authorization': storage.getItem('token')
+      }
+    })
     .then(response => {
       callback(response.data.data)
     })
@@ -56,7 +83,11 @@ var requestReviewPost = function(data, callback) {
 /** 북마크 등록 요청 */
 var requestBookmarkPost = function(data, callback, errorCallback) {
   axios
-    .post('http://13.124.1.176:8080/bookmark', data)
+    .post('http://13.124.1.176:8080/bookmark', data, {
+      headers: {
+        'Authorization': storage.getItem('token')
+      }
+    })
     .then(response => {
       callback(response.data.data)
     })
@@ -68,7 +99,12 @@ var requestBookmarkPost = function(data, callback, errorCallback) {
 /** 북마크 삭제 요청 */
 var requestBookmarkDelete = function(data, callback, errorCallback) {
   axios
-    .delete('http://13.124.1.176:8080/bookmark/' + data)
+    .delete('http://13.124.1.176:8080/bookmark/' 
+              + data.user + '/' + data.store, {
+      headers: {
+        'Authorization': storage.getItem('token')
+      }
+    })
     .then(response => {
       callback(response.data.data)
     })
@@ -84,5 +120,7 @@ export default {
   requestReviewPost,
   requestBookmarkPost,
   requestBookmarkDelete,
-  requestGridStoresByRandom
+  requestGridStoresByRandom,
+  requestBookmarkStoreList,
+  requestReviewInfo
 }

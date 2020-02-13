@@ -50,9 +50,6 @@ export default {
   },
   props: ["num"],
   methods: {
-    hi() {
-      console.log("상세정보 사이드바!!");
-    },
     changeIndex(i) {
       var commitName = this.categoryName + "List";
       this.$store.commit(commitName, i);
@@ -72,6 +69,10 @@ export default {
         sidebar.classList.remove("bounceOutLeft");
         sidebar.classList.add("bounceInLeft");
       });
+
+      GridApi.requestReviewInfo(this.itemName[idx].id, response => {
+        this.$store.state.reviewInfo = response
+      })
     }
   },
   computed: {

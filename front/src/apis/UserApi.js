@@ -22,19 +22,17 @@ const emailAuth = (email) => {
 		.then(
 			res => {
 				session.setItem('emailAuth',res.data.data)
-				console.log(res);
 			}
 		)
 }
 
 const requestToken = () => {
 	console.log('token', storage.getItem('token'))
-	return axios.get('http://70.12.246.123:8080/user',{
+	return axios.get('http://13.124.1.176:8080/user',{
 		headers: { 'Authorization' : storage.getItem('token') }
        })
 	.then(
 		res => { // eslint-disable-line no-unused-vars
-			console.log(storage.getItem('token'));
 		}
 	)
 }
@@ -47,8 +45,8 @@ const requestLogin = (remID,loginID, loginPW, callback, errorCallback) => { // e
 		})
 		.then(
 			res => {
+				storage.setItem('id', res.data.data.Info.id)
 				storage.setItem('token', res.data.data.Authorization);
-				console.log('login', storage.getItem('token'))
 			}
 		)
 };
@@ -60,6 +58,22 @@ const requestLogout = () => {
 	return storage.getItem('token');
 };
 
+const requestSocialRegister = (username, sns_token, birth, gender) => {
+	return axios.post('http://13.124.1.176:8080/user/join', {
+			email: null,
+			password: null,
+			sns_token: sns_token,
+			birth: birth,
+			gender: gender,
+			name: username
+		})
+		.then(
+			res => {
+				storage.setItem('token', res.data.data.Authorization);
+				console.log(res);
+			}
+		)
+};
 const requestRegister = (email, username, password, birth, gender) => {
 	//"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHcmVhdCIsImV4cCI6MTU4MDc5NTMxMn0.Sj6X08VPilE7biAakAURdVIGW4ZaUyLBFH24NgOctMU"
 	return axios.post('http://13.124.1.176:8080/user/join', {
@@ -73,7 +87,6 @@ const requestRegister = (email, username, password, birth, gender) => {
 		.then(
 			res => {
 				storage.setItem('token', res.data.data.Authorization);
-				console.log(res);
 			}
 		)
 };
@@ -85,6 +98,7 @@ const UserApi = {
 	emailCheck: (email) => emailCheck(email),
 	requestLogout: () => requestLogout(),
 	requestLogin: (data, callback, errorCallback) => requestLogin(data, callback, errorCallback),
+	requestSocialRegister: (username, sns_token, birth, gender) => requestSocialRegister(username, sns_token, birth, gender),
 	requestRegister: (email, username, password, birth, gender) => requestRegister(email, username, password, birth, gender)
 }
 
