@@ -124,7 +124,7 @@ export default {
     };
   },
   mounted:function(){
-    //로그인한 사용자 회원 정보 요청
+    //로그인한 사용자 회원 정보 요청z
     MypageApi.requestUserInfo(this.user.id,response=>{
       console.log(response)
       this.$store.state.userInfo=response

@@ -72,4 +72,5 @@ public class StoreServiceImpl implements StoreService {
 		data.put("y", y);
 		return dao.selectByDefault(data);
 	}
+
 }

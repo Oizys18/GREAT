@@ -79,4 +79,6 @@ public class StoreDaoImpl implements StoreDao{
 		// TODO Auto-generated method stub
 		return session.selectList("sql.store.selectByDefault",data);
 	}
+
+
 }

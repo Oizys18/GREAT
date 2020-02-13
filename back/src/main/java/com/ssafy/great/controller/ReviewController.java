@@ -33,7 +33,7 @@ public class ReviewController {
 	
 	@GetMapping("/review/search/{userId}")
 	@ApiOperation("사용자가 쓴 리뷰 목록 검색")
-	public ResponseEntity<Map<String,Object>> searchByUserId(int userId){
+	public ResponseEntity<Map<String,Object>> searchByUserId(@PathVariable int userId){
 		return RestUtil.handleSuccess(service.selectByUserId(userId));
 	}
 	
@@ -52,6 +52,7 @@ public class ReviewController {
 	@PostMapping("/review")
 	@ApiOperation("리뷰 정보 등록")
 	public ResponseEntity<Map<String,Object>> postReview(@RequestBody Review review){
+		System.out.println(review);
 		service.insertReview(review);
 		return RestUtil.handleSuccess("success");
 	}
