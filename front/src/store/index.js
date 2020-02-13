@@ -137,10 +137,10 @@ export default new Vuex.Store({
     locationY: 37.5056693,
     storeInfo: null,
     reviewInfo: null,
-
     userInfo:null,
     userStoreList:null,
     userReviewList:null,
+    starRating: 0
   },
   mutations:{
     'reset'(state){
