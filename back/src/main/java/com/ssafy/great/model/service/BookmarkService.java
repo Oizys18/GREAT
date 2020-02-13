@@ -1,6 +1,7 @@
 package com.ssafy.great.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.ssafy.great.dto.Bookmark;
 import com.ssafy.great.dto.Store;
@@ -15,6 +16,9 @@ public interface BookmarkService {
 
 	/** 북마크한 식당 목록 검색 (1 store / whole grid) */
 	List<Store> searchStoresById(int id);
+	
+	/**  userId에 해당하는 bookmark 식당 목록 검색 */
+	List<Store> selectByUserId (int userId);
 
 	/** 북마크 등록 */
 	void insertBookmark(Bookmark bookmark);
@@ -24,5 +28,7 @@ public interface BookmarkService {
 
 	/** 북마크 삭제 */
 	void deleteBookmark(int id);
-
+	
+	/** userId에 해당하는 북마크 삭제*/
+	void deleteByUserId(Map<String,Object>data);
 }

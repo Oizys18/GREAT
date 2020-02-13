@@ -168,4 +168,10 @@
 		order by RAND()
 		limit 20
 	</select>
+	
+	
+
+	
+	
+	
 </mapper>
