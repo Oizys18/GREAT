@@ -24,9 +24,10 @@
 	</select>
 
 	<insert id="insert" parameterType="review">
-		insert into review(store, contents, date, rating,image)
+		insert into review(store, contents, writer,date, rating,image)
 		values(#{store},
 			   #{contents},
+			   #{writer},
 			   #{date},
 			   #{rating},
 			   #{image})
