@@ -50,4 +50,17 @@ public class BookmarkServiceImpl implements BookmarkService {
 	public void deleteBookmark(int id) {
 		dao.delete(id);
 	}
+	
+
+	@Override
+	public List<Store> selectByUserId(int userId) {
+		// TODO Auto-generated method stub
+		return dao.selectByUserId(userId);
+	}
+
+	@Override
+	public void deleteByUserId(Map<String, Object> data) {
+		dao.deleteByUserId(data);
+		
+	}
 }
