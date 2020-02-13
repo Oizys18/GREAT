@@ -17,19 +17,19 @@
         <div style="width: 50%; float: left; margin-left: 2px; margin-top: 7px;">
           <input type="checkbox" v-model="remID" id="remID" /> 아이디 저장하기
         </div>
-				<div style="float: right;">
-        <v-btn rounded color="#ff7761" dark @click="loginApi">확 인</v-btn>
-				</div>
+        <div style="float: right;">
+          <v-btn rounded color="#ff7761" dark @click="loginApi">확 인</v-btn>
+        </div>
       </div>
     </div>
-		<hr>
+    <hr />
     <div class="sns-login">
-			<div style="width: 50%; float: left;">
-      <h3>SNS 로그인</h3>
-			</div>
-			<div style="width: 50%; float: right;">
-      <SocialLogin />
-			</div>
+      <div style="width: 50%; float: left;">
+        <h3>SNS 로그인</h3>
+      </div>
+      <div style="width: 50%; float: right;">
+        <SocialLogin />
+      </div>
     </div>
     <div class="add-option">
       <div class="wrap">
@@ -75,10 +75,7 @@ export default {
     },
     joinRequest() {
       this.$router.push("Join");
-		},
-		socialLoginRequest(){
-			var sns_token = localStorage.getItem('sns_token');
-		}
+    }
   },
 
   data() {
