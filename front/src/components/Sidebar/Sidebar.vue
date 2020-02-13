@@ -26,7 +26,7 @@
         <ReviewInfo :reviewInfo="reviewInfo" :storeId="storeInfo.id"/>
       </div>
       <div v-show="currentTab == 2">
-        <MapApp :store_id="storeInfo.id"/>
+        <MapApp class="sidebar-map" :store_id="storeInfo.id"/>
       </div>
     </div>
     <button @click="collide"><SidebarCollide /></button>

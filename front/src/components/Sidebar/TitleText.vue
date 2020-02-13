@@ -35,21 +35,47 @@ export default {
   computed: {
     store() {
       return this.textInfo;
+    },
+  },
+  watch: {
+    store(v) {
+      var heartBtn = document.getElementById("bookmark-heart")
+      var bookmarkList = this.$store.state.bookmarkStoreList
+
+      var bookmark = bookmarkList.find(item => {
+        return item.id === v.id
+      })
+
+      if(bookmark === undefined) {
+        heartBtn.style = "fill: white"
+        this.marked = false
+      }
+      else {
+        heartBtn.style = "fill: red"
+        this.marked = true
+      }
     }
   },
   methods: {
     bookmark() {
+      var heartBtn = document.getElementById("bookmark-heart")
       if(!this.marked){
         var data = {
           'stores': [this.store.id],
           'type': 'S',
-          'user': localStorage.getItem('id')
+          'user': 8
         }
 
+        this.$store.commit('addBookmarkStore', this.store)
+        heartBtn.style = "fill: red"
+        this.marked = true
         this.requestPost(data)
       } 
       else {
-        this.requestDelete()
+        this.$store.commit('deleteBookmarkStore', this.store.id)
+        heartBtn.style = "fill: white"
+        this.marked = false
+        // this.requestDelete()
       }
     },
     requestPost(data) {

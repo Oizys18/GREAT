@@ -29,7 +29,7 @@
   height: 4vh;
   border: 2px solid white;
   background-color: #fbedeb;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: bold;
 }
 
@@ -135,7 +135,7 @@
 
 /* Review component */
 .sidebar-review {
-  margin-top: 5vh;
+  margin-top: 3vh;
   margin-right: 1vw;
   margin-left: 1vw;
 }
@@ -175,6 +175,11 @@
   font-weight: bold;
   padding: 5px 20px 5px 20px;
   border-radius: 25px;
+}
+
+/** map component */
+.sidebar-map {
+  margin-top: 2vh;
 }
 
 /* 사이드바 접기버튼 */
