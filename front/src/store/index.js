@@ -136,7 +136,7 @@ export default new Vuex.Store({
     locationX: 127.0250186,
     locationY: 37.5056693,
     storeInfo: null,
-    reviewInfo: null,
+    reviewInfo: [],
     starRating: 0,
     bookmarkStoreList: []
   },

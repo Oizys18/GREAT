@@ -23,7 +23,7 @@
     <div class="sidebar-tab-content">
       <div v-show="currentTab == 0"><TextInfo :textInfo="storeInfo" /></div>
       <div v-show="currentTab == 1">
-        <ReviewInfo :reviewInfo="reviewInfo" :storeId="storeInfo.id"/>
+        <ReviewInfo :storeId="storeInfo.id"/>
       </div>
       <div v-show="currentTab == 2">
         <MapApp class="sidebar-map" :store_id="storeInfo.id"/>
@@ -41,6 +41,7 @@ import TitleText from "@/components/Sidebar/TitleText";
 import ReviewInfo from "@/components/Sidebar/ReviewInfo";
 import SidebarCollide from "@/components/Sidebar/SidebarCollide";
 import MapApp from "@/components/common/MapApp";
+import GridApi from '@/apis/GridApi.js'
 export default {
   name: "Sidebar",
   data() {
@@ -57,12 +58,14 @@ export default {
     MapApp,
     SidebarCollide
   },
+  mounted() {
+    GridApi.requestBookmarkStoreList(localStorage.getItem('id'), response => {
+      this.$store.state.bookmarkStoreList = response
+    })
+  },
   computed: {
     storeInfo() {
       return this.$store.state.storeInfo;
-    },
-    reviewInfo() {
-      return this.$store.state.reviewInfo;
     }
   },
   methods: {

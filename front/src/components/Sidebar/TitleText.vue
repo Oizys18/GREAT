@@ -19,7 +19,7 @@
 
 <script>
 import StarRating from "@/components/common/StarRating";
-import GridApi from "../../apis/GridApi.js"
+import GridApi from "@/apis/GridApi.js"
 export default {
   name: "TitleText",
   props: ["textInfo"],
@@ -29,7 +29,6 @@ export default {
   data() {
     return {
       marked: false,
-      bookmarkId: 0
     }
   },
   computed: {
@@ -58,32 +57,26 @@ export default {
   },
   methods: {
     bookmark() {
-      var heartBtn = document.getElementById("bookmark-heart")
       if(!this.marked){
-        var data = {
-          'stores': [this.store.id],
-          'type': 'S',
-          'user': 8
-        }
-
-        this.$store.commit('addBookmarkStore', this.store)
-        heartBtn.style = "fill: red"
-        this.marked = true
-        this.requestPost(data)
+        this.requestPost()
       } 
       else {
-        this.$store.commit('deleteBookmarkStore', this.store.id)
-        heartBtn.style = "fill: white"
-        this.marked = false
-        // this.requestDelete()
+        this.requestDelete()
       }
     },
-    requestPost(data) {
+    requestPost() {
       var heartBtn = document.getElementById("bookmark-heart")
+      var data = {
+        'stores': [this.store.id],
+        'type': 'S',
+        'user': localStorage.getItem('id')
+      }
+
       GridApi.requestBookmarkPost(data, response => {
         if(response !== null) {
             this.bookmarkId = response.id
             alert("북마크 등록이 완료되었습니다.")
+            this.$store.commit('addBookmarkStore', this.store)
             heartBtn.style = "fill: red"
             this.marked = true
           }
@@ -93,8 +86,15 @@ export default {
     },
     requestDelete() {
       var heartBtn = document.getElementById("bookmark-heart")
-      GridApi.requestBookmarkDelete(this.bookmarkId, response => {
+      var data = {
+        'user' : localStorage.getItem('id'),
+        'store': this.store.id
+      }
+
+      GridApi.requestBookmarkDelete(data, response => {
         if(response === 'success') {
+          alert("북마크 삭제가 완료되었습니다.")
+          this.$store.commit('deleteBookmarkStore', this.store.id)
           heartBtn.style = "fill: white"
           this.marked = false
         }

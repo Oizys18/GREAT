@@ -1,11 +1,11 @@
 <template>
   <div class="sidebar-text-body">
-    <div class="sidebar-text-line">
-      <i v-if="store.location_name != null" class="material-icons">location_on</i> 
+    <div v-if="store.location_name != null" class="sidebar-text-line">
+      <i class="material-icons">location_on</i> 
       <span class="sidebar-text-text">{{store.location_name}}</span>
     </div>
-    <div class="sidebar-text-line">
-      <i v-if="store.open_time != null" class="material-icons">access_alarm</i> 
+    <div v-if="store.open_time != null" class="sidebar-text-line">
+      <i class="material-icons">access_alarm</i> 
       <span class="sidebar-text-text">{{store.open_time}}</span> 
     </div>
     

@@ -42,6 +42,15 @@ var requestStoreInfo = function(data, callback) {
     })
 }
 
+/** 식당 id에 해당하는 리뷰 목록 요청 */
+var requestReviewInfo = function(data, callback) {
+  axios
+    .get('http://13.124.1.176:8080/review/store/' + data)
+    .then(response => {
+      callback(response.data.data)
+    })
+}
+
 /** 리뷰 작성 요청 */
 var requestReviewPost = function(data, callback, errorCallback) {
   axios
@@ -58,10 +67,23 @@ var requestReviewPost = function(data, callback, errorCallback) {
     })
 }
 
+/** 북마크한 식당 목록 요청 */
+var requestBookmarkStoreList = function(data, callback) {
+  axios
+    .get('http://13.124.1.176:8080/bookmark/storelist/' + data, {
+      headers: {
+        'Authorization': storage.getItem('token')
+      }
+    })
+    .then(response => {
+      callback(response.data.data)
+    })
+}
+
 /** 북마크 등록 요청 */
 var requestBookmarkPost = function(data, callback, errorCallback) {
   axios
-    .post('http://70.12.246.121:8080/bookmark', data, {
+    .post('http://13.124.1.176:8080/bookmark', data, {
       headers: {
         'Authorization': storage.getItem('token')
       }
@@ -77,7 +99,8 @@ var requestBookmarkPost = function(data, callback, errorCallback) {
 /** 북마크 삭제 요청 */
 var requestBookmarkDelete = function(data, callback, errorCallback) {
   axios
-    .delete('http://13.124.1.176:8080/bookmark/' + data, {
+    .delete('http://13.124.1.176:8080/bookmark/' 
+              + data.user + '/' + data.store, {
       headers: {
         'Authorization': storage.getItem('token')
       }
@@ -97,5 +120,7 @@ export default {
   requestReviewPost,
   requestBookmarkPost,
   requestBookmarkDelete,
-  requestGridStoresByRandom
+  requestGridStoresByRandom,
+  requestBookmarkStoreList,
+  requestReviewInfo
 }
