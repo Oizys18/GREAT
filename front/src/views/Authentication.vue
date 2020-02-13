@@ -20,7 +20,6 @@ import axios from "axios";
 import LogoutButton from "@/components/common/LogoutButton.vue";
 
 import Login from "@/components/Form/Login.vue";
-import SocialJoin from "@/components/Form/SocialJoin.vue";
 
 export default {
   name: "Authentication",
