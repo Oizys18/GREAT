@@ -109,7 +109,6 @@ export default {
   name: "Join",
   created() {
     this.component = this;
-
     this.passwordSchema
       .is()
       .min(8)
@@ -221,6 +220,7 @@ export default {
       nickname: "",
       birth: "",
       gender: "",
+      sns_token: "",
       join: false,
       passwordSchema: new PV(),
       error: {
