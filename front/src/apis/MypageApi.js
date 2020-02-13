@@ -29,30 +29,27 @@ var requestUserInfo=function(callback){ //data:사용자 email
 
 /*회원 정보 수정*/
 var modifyUserInfo=function(data){
-  console.log('토큰:'+storage.getItem('token'))
-    axios
-        .put('http://13.124.1.176:8080/user',{
-          params: {
-            user: data
-          },
-          headers:{
-            Authorization : storage.getItem('token')
-          }
-        })
-        .then(res=>{
-            console.log('수정후 결과 : '+res);
-        })
+  console.log('수정된 user data 토큰:'+storage.getItem('token'))
+    axios 
+      .put('http://13.124.1.176:8080/user',data,{
+          headers: { Authorization : storage.getItem('token')}
+      })
+      .then(res=>{
+        console.log('수정후 결과 : '+res);
+      })
 }
 
 /*사용자가 작성한 review list 요청 */
  var requestMyReviews=function(callback){
   
-  //var userID=storage.getItem('id')
-  
+  var userID=storage.getItem('id')
+  console.log(userID)
   axios
   // .get("http://13.124.1.176:8080/review/store/566",{
   // .get("http://13.124.1.176:8080/review/search/"+userID,{
-  .get("http://13.124.1.176:8080/review/store/566",{
+  // .get("http://13.124.1.176:8080/review/store/566",{
+
+  .get("http://13.124.1.176:8080/review/search/"+userID,{
     headers: { Authorization : storage.getItem('token') }
   })
   .then(res=>{
@@ -111,19 +108,16 @@ var deleteGridbookmark=function(data){
 
 
 /*foodgrid list*/
-var requestFoodbookmarkList=function(data,callback){
+var requestStorebookmarkList=function(callback){
   var userID=storage.getItem('id')  
   axios
-      .get('http://13.124.1.176:8080/bookmark/'+userID+'/'+'F',{
+      .get('http://13.124.1.176:8080/bookmark/storelist/'+userID,{
         headers: { Authorization : storage.getItem('token') }
       })
           //사용자 id에 해당하는 food bookmarks(F)목록을 불러온다.
-      
       .then(res=>{
-        //gridbookmark목록 저장
-        callback(res.data.data);
         console.log(res.data.data)
-
+        callback(res.data.data)
       })
 }
 
@@ -133,7 +127,7 @@ export default{
     requestGridbookmarkList,
     modifyGridbookmark,
     deleteGridbookmark,
-    requestFoodbookmarkList,
+    requestStorebookmarkList,
     requestMyReviews,
     setID,
 

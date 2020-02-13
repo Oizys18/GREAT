@@ -136,7 +136,11 @@ export default new Vuex.Store({
     locationX: 127.0250186,
     locationY: 37.5056693,
     storeInfo: null,
-    reviewInfo: null
+    reviewInfo: null,
+
+    userInfo:null,
+    userStoreList:null,
+    userReviewList:null,
   },
   mutations:{
     'reset'(state){
@@ -213,6 +217,17 @@ export default new Vuex.Store({
       state.기타maxIndex++;
       state.기타index.splice(payload, 1, state.기타maxIndex)
     },
+
+    'userInfo'(state,payload){
+      state.userInfo = payload;
+    },
+    'userStoreList'(state,payload){
+      state.userStoreList=payload;
+    },
+    'userReviewList'(state,payload){
+      state.userReviewList=payload;
+    }
+    
   },
   actions: {},
   modules: {}
