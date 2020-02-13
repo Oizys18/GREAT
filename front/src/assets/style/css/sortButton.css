@@ -1,92 +1,116 @@
-
-
 @font-face {
-    font-family: 'fontello';
-    src: url('https://css-tricks.com/examples/RoundButtons/fonts/fontello.eot');
-    src: url('https://css-tricks.com/examples/RoundButtons/fonts/fontello.eot?#iefix') format('embedded-opentype'),
-        url('https://css-tricks.com/examples/RoundButtons/fonts/fontello.woff') format('woff'),
-        url('https://css-tricks.com/examples/RoundButtons/fonts/fontello.ttf') format('truetype'),
-        url('https://css-tricks.com/examples/RoundButtons/fonts/fontello.svg#fontello') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'fontello';
+  src: url('https://css-tricks.com/examples/RoundButtons/fonts/fontello.eot');
+  src: url('https://css-tricks.com/examples/RoundButtons/fonts/fontello.eot?#iefix') format('embedded-opentype'),
+    url('https://css-tricks.com/examples/RoundButtons/fonts/fontello.woff') format('woff'),
+    url('https://css-tricks.com/examples/RoundButtons/fonts/fontello.ttf') format('truetype'),
+    url('https://css-tricks.com/examples/RoundButtons/fonts/fontello.svg#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 [class*="icon-"] {
-    font-family: 'fontello';
-    font-style: normal;
-    font-size: 3em;
+  font-family: 'fontello';
+  font-style: normal;
+  font-size: 3em;
 }
 
 .icon-cog:after {
-	content : "⭐";
-    /* content: "\2605"; */
+  content: "⭐";
+  /* content: "\2605"; */
 }
 
 .icon-cw:after {
-    /* content: "\27f3"; */
-    content: "\27f3";
+  /* content: "\27f3"; */
+  content: "\27f3";
 }
 
 .icon-location:after {
-    /* content: "\e724"; */
-    content: "🛫";
+  /* content: "\e724"; */
+  content: "🛫";
 }
 
 .sort-elements {
-    list-style: none;
-    text-align: center;
+  list-style: none;
+  text-align: center;
 }
 
 .sort-elements li {
-    position: relative;
-    display: inline-block;
-    margin-right: -4px;
+  position: relative;
+  display: inline-block;
+  margin-right: -4px;
 }
+
 .sort-elements a:link,
 .sort-elements a:visited {
-    display: block;
-    text-decoration: none;
-    background-color: #f7f7f7;
-    color: #a7a7a7;
-    margin: 25px;
-    width: 70px;
-    height: 70px;
-    position: relative;
-    text-align: center;
-    line-height: 70px;
-    border-radius: 50%;
-    box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
-    border: solid 1px transparent;
+  display: block;
+  text-decoration: none;
+  background-color: #f7f7f7;
+  color: #a7a7a7;
+  margin: 25px;
+  width: 70px;
+  height: 70px;
+  position: relative;
+  text-align: center;
+  line-height: 70px;
+  border-radius: 50%;
+  box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
+  border: solid 1px transparent;
 }
 
 .sort-elements a:before {
-    content: "";
-    display: block;
-    background: #fff;
-    border-top: 2px solid #ddd;
-    position: absolute;
-    top: -18px;
-    left: -18px;
-    bottom: -18px;
-    right: -18px;
-    z-index: -1;
-    border-radius: 50%;
-    box-shadow: inset 0px 8px 48px #ddd;
+  content: "";
+  display: block;
+  background: #fff;
+  border-top: 2px solid #ddd;
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  bottom: -18px;
+  right: -18px;
+  z-index: -1;
+  border-radius: 50%;
+  box-shadow: inset 0px 8px 48px #ddd;
 }
 
 .sort-elements a:active {
-    box-shadow: 0px 3px 4px #aaa inset, 0px 2px 3px #fff;
+  box-shadow: 0px 3px 4px #aaa inset, 0px 2px 3px #fff;
 }
 
 .sort-elements a:hover {
-    text-decoration: none;
-    color: #555;
-    background: #f5f5f5;
+  text-decoration: none;
+  color: #555;
+  background: #f5f5f5;
 }
+
 .sort-elements {
-    position: fixed;
-    right: 3vw;
-    top: 5vh;
-    padding: 30px 0 10px 0;
-    text-align: center;
+  position: fixed;
+  right: 3vw;
+  top: 5vh;
+  padding: 30px 0 10px 0;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .sort-elements {
+    top: 3vh;
+    width: 100%;
+    padding-bottom: 0;
+  }
+  [class*="icon-"] {
+    font-size: 2em;
+  }
+  .sort-elements a:link,
+  .sort-elements a:visited {
+    margin: 15px;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+  }
+  .sort-elements a:before {
+    top: -10px;
+    left: -10px;
+    bottom: -10px;
+    right: -10px;
+  }
 }
