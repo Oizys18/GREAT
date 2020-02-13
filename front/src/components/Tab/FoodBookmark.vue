@@ -7,23 +7,54 @@
       </div>
     </div>
    </div> -->
-   <div class="hvrbox">
-	<img src="@/assets/img/cafe.png" alt="Mountains" class="hvrbox-layer_bottom">
-	<div class="hvrbox-layer_top">
-		<div class="hvrbox-text">Store name 
-    <StarRating :rating="3" /> 
+  <div class="hvrbox" @click="showStoreDetail(FoodBookmarkItem.id)"
+  >
+    <img
+      :src="FoodBookmarkItem.image"
+      alt="image"
+      class="hvrbox-layer_bottom"
+    />
+    <div class="hvrbox-layer_top">
+      <div class="hvrbox-text">
+        {{FoodBookmarkItem.name}}<br/><br/>
+        📍 {{FoodBookmarkItem.location_name}}<br/><br/>
+        <StarRating :rating= "FoodBookmarkItem.rating"/>
+      </div>
     </div>
-	</div>
-</div>
+
+    <v-dialog v-model="isClicked"  max-width="30vw"  height="100%">
+       <!-- store info-->
+      <StoreInfoModal/>
+    </v-dialog>
+
+  </div>
 </template>
- 
+
 <script>
-import StarRating from '../common/StarRating.vue'
+import StarRating from "../common/StarRating.vue";
+import GridApi from '../../apis/GridApi'
+import StoreInfoModal from '@/components/Tab/StoreInfoModal.vue';
 export default {
   name: "FoodBookmark",
-  components:{
+  props: ["FoodBookmarkItem"],
+  components: {
     StarRating,
+    StoreInfoModal,
+  },
+  data(){
+    return{
+      isClicked:false,
+    }
+  },
+  methods: {
+    showStoreDetail(id) {
+      console.log("클릭한 store id:" + id);
+      this.isClicked=true;
+
+      GridApi.requestStoreInfo(id, response => {
+        this.$store.state.storeInfo = response;
+      });
+    }
   }
 };
 </script>
-
