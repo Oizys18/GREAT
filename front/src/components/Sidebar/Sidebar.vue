@@ -59,7 +59,7 @@ export default {
     SidebarCollide
   },
   mounted() {
-    GridApi.requestBookmarkStoreList(8, response => {
+    GridApi.requestBookmarkStoreList(localStorage.getItem('id'), response => {
       this.$store.state.bookmarkStoreList = response
     })
   },

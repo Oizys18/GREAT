@@ -22,19 +22,17 @@ const emailAuth = (email) => {
 		.then(
 			res => {
 				session.setItem('emailAuth',res.data.data)
-				console.log(res);
 			}
 		)
 }
 
 const requestToken = () => {
 	console.log('token', storage.getItem('token'))
-	return axios.get('http://70.12.246.123:8080/user',{
+	return axios.get('http://13.124.1.176:8080/user',{
 		headers: { 'Authorization' : storage.getItem('token') }
        })
 	.then(
 		res => { // eslint-disable-line no-unused-vars
-			console.log(storage.getItem('token'));
 		}
 	)
 }
@@ -48,8 +46,8 @@ const requestLogin = (remID,loginID, loginPW, callback, errorCallback) => { // e
 		})
 		.then(
 			res => {
+				storage.setItem('id', res.data.data.Info.id)
 				storage.setItem('token', res.data.data.Authorization);
-				console.log('login', storage.getItem('token'))
 			}
 		)
 };
@@ -74,7 +72,6 @@ const requestRegister = (email, username, password, birth, gender) => {
 		.then(
 			res => {
 				storage.setItem('token', res.data.data.Authorization);
-				console.log(res);
 			}
 		)
 };
