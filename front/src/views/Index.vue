@@ -41,6 +41,10 @@
                 >
                   {{ cardText }}<br />
                 </span>
+                <span v-show="page === 2">
+                  <br>
+                  <BarButton />
+                </span>
               </div>
             </div>
           </div>
@@ -56,11 +60,13 @@
 <script>
 import "@/assets/style/css/indexStyle.css";
 import "@/assets/style/css/animated.css";
+import BarButton from "@/components/common/BarButton.vue";
 import CarouselIndicator from "@/components/common/CarouselIndicator.vue";
 export default {
   name: "Index",
   components: {
-    CarouselIndicator
+    CarouselIndicator,
+    BarButton
   },
   data() {
     return {
@@ -83,8 +89,7 @@ export default {
           "🤷‍♂️전혀 어렵지 않아요!!🤷‍♀️",
           "",
           "1.주소를 입력!",
-          "2.원하는 카테고리 선택!",
-          "3.START"
+          "2.원하는 카테고리 선택!"
         ]
       }
     };

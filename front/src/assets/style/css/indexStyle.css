@@ -103,7 +103,7 @@
     top: 35vh;
 
     /* title text style */
-    font-size: 2.5vmax;
+    font-size: 6vmin;
   }
   .index-card-content {
     /* card content position */
@@ -111,7 +111,7 @@
     top: 40vh;
 
     /* content text style */
-    font-size: 2.3vmax;
+    font-size: 5vmin;
   }
 }
 

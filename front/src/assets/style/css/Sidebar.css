@@ -29,7 +29,7 @@
   height: 4vh;
   border: 2px solid white;
   background-color: #fbedeb;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: bold;
 }
 
@@ -97,7 +97,6 @@
   margin-left: auto;
   margin-right: auto;
   display: block;
-  transition: 0.5s;
 }
 
 /* BodyText component */
@@ -135,15 +134,28 @@
 
 /* Review component */
 .sidebar-review {
-  margin-top: 5vh;
+  margin-top: 3vh;
   margin-right: 1vw;
   margin-left: 1vw;
 }
-.review-write {
-  color: blue;
+.sidebar-review-area {
+  background-color: rgb(241, 239, 239);
+  padding: 0.5vh 1vw 0.5vh 1vw;
+  border-radius: 15px;
+  margin-bottom: 1vh;
+  line-height: 2rem;
+}
+.sidebar-review-area StarRating {
+  display: inline;
+}
+.sidebar-review-date{
+  display: inline;
+  float: left;
+  margin-right: 1vw;
+}
+
+.sidebar-review-write {
   margin-top: 3vh;
-  text-decoration: underline;
-  cursor: pointer;
 }
 .sidebar-review-textarea {
   position: relative;
@@ -175,6 +187,11 @@
   font-weight: bold;
   padding: 5px 20px 5px 20px;
   border-radius: 25px;
+}
+
+/** map component */
+.sidebar-map {
+  margin-top: 2vh;
 }
 
 /* 사이드바 접기버튼 */

@@ -7,24 +7,24 @@
       </div>
     </div>
    </div> -->
-  <div class="hvrbox" @click="showStoreDetail(FoodBookmarkItem.id)"
+  <div class="hvrbox" @click="showStoreDetail(store.id)"
   >
     <img
-      :src="FoodBookmarkItem.image"
+      :src="store.image" 
       alt="image"
       class="hvrbox-layer_bottom"
     />
     <div class="hvrbox-layer_top">
       <div class="hvrbox-text">
-        {{FoodBookmarkItem.name}}<br/><br/>
-        📍 {{FoodBookmarkItem.location_name}}<br/><br/>
-        <StarRating :rating= "FoodBookmarkItem.rating"/>
+        {{store.name}}<br/><br/>
+        📍 {{store.location_name}}<br/>
+        <StarRating :rating= "store.rating"/>
       </div>
     </div>
 
     <v-dialog v-model="isClicked"  max-width="30vw"  height="100%">
        <!-- store info-->
-      <StoreInfoModal/>
+      <StoreInfoModal @exit_Clicked="exit_Modal"/>
     </v-dialog>
 
   </div>
@@ -36,7 +36,7 @@ import GridApi from '../../apis/GridApi'
 import StoreInfoModal from '@/components/Tab/StoreInfoModal.vue';
 export default {
   name: "FoodBookmark",
-  props: ["FoodBookmarkItem"],
+  props: ["FoodBookmarkItem","isChecked","store"],
   components: {
     StarRating,
     StoreInfoModal,
@@ -54,6 +54,9 @@ export default {
       GridApi.requestStoreInfo(id, response => {
         this.$store.state.storeInfo = response;
       });
+    },
+    exit_Modal(flag){
+      this.isClicked=!flag;
     }
   }
 };

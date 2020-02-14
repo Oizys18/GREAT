@@ -3,7 +3,7 @@
     font-family: "Lobster", cursive;
     background-color: #fbedeb;
     padding: 3px 20px 3px 20px;
-    font-size: 1.2em;
+    font-size: 1.5em;
     cursor: pointer;
     border-radius: 25px;
     display: inline;
@@ -13,13 +13,13 @@
     display: none;
   }
   .bar-btn:hover {
-    padding: 3px 40px 3px 20px;
+    padding: 3px 1em 3px 20px;
   }
   .bar-btn:hover img {
     display: inline;
   }
   .bar-btn-img {
-    height: 90%;
+    height: 1.2em;
     position: absolute;
     margin-top: 2px;
   }
