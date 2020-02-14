@@ -1,8 +1,11 @@
 <template> 
   <!--food grid bookmark -->
   <div class="tab-food-box">
-     <span v-for="item in foodgridbookmarkList" :key=item.id>
+     <!-- <span v-for="item in foodgridbookmarkList" :key=item.id>
          <FoodBookmark :FoodBookmarkItem=item />
+     </span> -->
+     <span v-for="store in storeList" :key=store.id>
+         <FoodBookmark :store=store />
      </span>
    </div>
 </template>
@@ -29,12 +32,14 @@ export default {
       ],
     };
   },
+ computed: {
+    storeList: function() {
+      return this.$store.state.userStoreList;
+    },
+    
+  },
   mounted:function(){
-    //사용자의 food bookmark list를 요청
-    // MypageApi.requestFoodbookmarkList(this.user.id,response=>{
-    //   console.log(response)
-    //   this.$stroe.state.userFoodBookmarkList=response
-    // })
+    
   }
 };
 </script>

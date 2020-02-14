@@ -137,6 +137,9 @@ export default new Vuex.Store({
     locationX: 127.0250186,
     locationY: 37.5056693,
     storeInfo: null,
+    userInfo:null,
+    userStoreList:null,
+    userReviewList:null,
     reviewInfo: [],
     starRating: 0,
     bookmarkStoreList: []
@@ -216,6 +219,15 @@ export default new Vuex.Store({
       state.기타maxIndex++;
       state.기타index.splice(payload, 1, state.기타maxIndex)
     },
+    'userInfo'(state,payload){
+      state.userInfo = payload;
+    },
+    'userStoreList'(state,payload){
+      state.userStoreList=payload;
+    },
+    'userReviewList'(state,payload){
+      state.userReviewList=payload;
+    },
     'addBookmarkStore'(state, payload) {
       var bookmarkList = state.bookmarkStoreList
       var bookmark = bookmarkList.find(item => {
@@ -236,6 +248,7 @@ export default new Vuex.Store({
         state.bookmarkStoreList.splice(index, 1)
       }
     }
+>>>>>>> front/src/store/index.js
   },
   actions: {},
   modules: {}

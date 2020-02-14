@@ -3,7 +3,7 @@
     <v-sheet class=""  max-width="900">
       <v-slide-group  v-model="model" class="slide-group" :show-arrows="showArrows">
         <v-slide-item 
-          v-for="review in reviewList"
+          v-for="review in myReviews"
           :key="review"
           v-slot:default="{ }"
         >
@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import MypageApi from '../../apis/MypageApi'
 import TabCard from "@/components/Tab/TabCard.vue";
 export default {
   name: "Reviews",
@@ -36,16 +35,11 @@ export default {
       return this.$store.state.reviews;
     },
     myReviews:function(){
-      return this.$store.state.myReviews;
+      return this.$store.state.userReviewList;
     }
   },
   mounted:function(){
-    MypageApi.requestMyReviews(response=>{
-      this.reviewList=response;
-      console.log('요청받은 myreviews')
-      console.log(response)
-      //this.$store.state.MyReviews=response
-    })
+    
   }
 };
 
