@@ -12,22 +12,25 @@
 [class*="icon-"] {
   font-family: 'fontello';
   font-style: normal;
-  font-size: 3em;
+  font-size: 1.7em;
 }
 
 .icon-cog:after {
   content: "⭐";
   /* content: "\2605"; */
 }
-
 .icon-cw:after {
   /* content: "\27f3"; */
-  content: "\27f3";
+  content: "🍀";
 }
 
 .icon-location:after {
   /* content: "\e724"; */
   content: "🛫";
+}
+.icon-bookmark:after {
+  content: "📌";
+  /* content: "📖"; */
 }
 
 .sort-elements {
@@ -46,29 +49,27 @@
   display: block;
   text-decoration: none;
   background-color: #f7f7f7;
-  color: #a7a7a7;
-  margin: 25px;
-  width: 70px;
-  height: 70px;
+  color: #000000;
+  margin: 10px;
+  width: 40px;
+  height: 40px;
   position: relative;
-  text-align: center;
-  line-height: 70px;
-  border-radius: 50%;
+  text-align: j;
+  line-height: 40px;
+  border-radius: 30px 30px 30px 30px;
+  width: 120px;
   box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
   border: solid 1px transparent;
 }
-
+.sort-wrapper{
+    float: left;
+  background: #ddd;
+  border-radius: 30px 30px 30px 30px;
+  width: auto;
+  height: auto;
+}
 .sort-elements a:before {
-  content: "";
   display: block;
-  background: #fff;
-  border-top: 2px solid #ddd;
-  position: absolute;
-  top: -18px;
-  left: -18px;
-  bottom: -18px;
-  right: -18px;
-  z-index: -1;
   border-radius: 50%;
   box-shadow: inset 0px 8px 48px #ddd;
 }
@@ -77,15 +78,13 @@
   box-shadow: 0px 3px 4px #aaa inset, 0px 2px 3px #fff;
 }
 
-.sort-elements a:hover {
-  text-decoration: none;
-  color: #555;
-  background: #f5f5f5;
+.sort-elements a:link, .sort-elements a:visited{
+    display:flex;
+    justify-content: space-evenly;
 }
-
 .sort-elements {
   position: fixed;
-  right: 3vw;
+  right: 17vw;
   top: 5vh;
   padding: 30px 0 10px 0;
   text-align: center;
