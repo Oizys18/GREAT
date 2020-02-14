@@ -12,18 +12,21 @@
       <button
         v-for="(tab, idx) in tabs"
         class="sidebar-tab-button"
+        :id="'sidebar-tab' + idx"
         :class="{ active: currentTab === idx }"
         :key="`${tab}-${idx}`"
-        @click="currentTab = idx"
+        @click="tabSelect(idx)"
       >
         {{ tab }}
       </button>
-      <div class="sidebar-tab-content">
-        <div v-show="currentTab == 0"><TextInfo :textInfo="storeInfo" /></div>
-        <div v-show="currentTab == 1">
-          <ReviewInfo :reviewInfo="reviewInfo" />
-        </div>
-        <div v-show="currentTab == 2"><MapApp /></div>
+    </div>
+    <div class="sidebar-tab-content">
+      <div v-show="currentTab == 0"><TextInfo :textInfo="storeInfo" /></div>
+      <div v-show="currentTab == 1">
+        <ReviewInfo :storeId="storeInfo.id"/>
+      </div>
+      <div v-show="currentTab == 2">
+        <MapApp class="sidebar-map" :store_id="storeInfo.id"/>
       </div>
     </div>
     <button @click="collide"><SidebarCollide /></button>
@@ -38,6 +41,7 @@ import TitleText from "@/components/Sidebar/TitleText";
 import ReviewInfo from "@/components/Sidebar/ReviewInfo";
 import SidebarCollide from "@/components/Sidebar/SidebarCollide";
 import MapApp from "@/components/common/MapApp";
+import GridApi from '@/apis/GridApi.js'
 export default {
   name: "Sidebar",
   data() {
@@ -54,12 +58,14 @@ export default {
     MapApp,
     SidebarCollide
   },
+  mounted() {
+    GridApi.requestBookmarkStoreList(localStorage.getItem('id'), response => {
+      this.$store.state.bookmarkStoreList = response
+    })
+  },
   computed: {
     storeInfo() {
       return this.$store.state.storeInfo;
-    },
-    reviewInfo() {
-      return this.$store.state.reviewInfo;
     }
   },
   methods: {
@@ -67,21 +73,14 @@ export default {
       var sidebar = document.getElementById("sidebar-1");
       sidebar.classList.remove("bounceInLeft");
       sidebar.classList.add("bounceOutLeft");
+    },
+    tabSelect(idx) {
+      var prevBtn = document.getElementById("sidebar-tab" + this.currentTab)
+      prevBtn.style = "background-color: #fbedeb"
+      this.currentTab = idx
+      var selectedBtn = document.getElementById("sidebar-tab" + idx)
+      selectedBtn.style = "background-color: #c2bcbca8"
     }
   }
 };
 </script>
-
-<style>
-.sidebar-tab{
-
-}
-.sidebar-tab-button {
-  margin-top: 3vh;
-  width: 8.5vw;
-  height: 4vh;
-  border: 1px solid black;
-  background-color: silver;
-  font-size: 1rem;
-}
-</style>

@@ -32,9 +32,13 @@
 .box-container {
   padding: 10px;
   margin-top: 10px;
-  border: 1px solid grey !important;
+  border: 3px solid grey !important;
+  border-radius: 25px;
+  max-height: 900px;
   /* border :1px solid #F5331E; */
-  overflow: hidden;
+  overflow:hidden;
+  
+  /* overflow:scroll; */
 }
 /* info components */
 .user-details {
@@ -190,8 +194,8 @@
 
 /* food,grid,info components */
 .tab-food-box{
-  border:1px solid brown;
   padding:20px;
+  
 }
 /*food bookmark*/
 .foodbookmark-item{
@@ -206,32 +210,25 @@
 .hvrbox .foodgridbookmark-img {
 	display: block;
 }
-.foodbookmark-item:hover{
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  background-color: rgba(219, 216, 216, 0.3);
-}
-.foodbookmark-item img{
-  width: 200px ;
-  height: 200px ;
-  border: 1px solid blue;
-}
-/* test용 */
+
 .hvrbox,
 .hvrbox * {
 	box-sizing: border-box;
 }
 .hvrbox {
 	position: relative;
-	display: inline-block;
+	display: block;
 	overflow: hidden;
   border:2px solid navy;
   width: fit-content;
   height: 30%;
   margin: 10px;
+  float: left;
 }
 .hvrbox img {
-  width: 200px ;
-  height: 200px ;
+  width:  0 auto;
+  height: 0 auto;
+  max-height: 300px ;
 }
 .hvrbox .hvrbox-layer_bottom {
 	display: block;
@@ -279,6 +276,121 @@
 }
 .hvrbox.active .hvrbox-text_mobile {
 	display: block;
+}
+
+ /*storeInfomodal */
+ .storeInfo-modal-container {
+  width:50vw;
+  background-color: white;
+}
+
+/* Image component */
+.storeInfo-modal-image {
+  position: relative;
+  resize: both;
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Text component */
+.storeInfo-modal-text {
+  position: relative;
+  top: 1vh;
+}
+
+/* TitleText component */
+.storeInfo-modal-text-title {
+  text-align: center;
+}
+.storeInfo-modal-text-name {
+  font-size: 2rem;
+  margin-left: 1vw;
+  margin-bottom: 1vh;
+  display: block;
+}
+.storeInfo-modal-text-rating {
+  display: inline;
+  margin-right: 4vw;
+  margin-left: 1vw;
+}
+
+/* BodyText component */
+.storeInfo-modal-text-body {
+  position: relative;
+  padding: 20px;
+  margin-top: 3vh;
+}
+.storeInfo-modal-text-tag {
+  overflow-wrap: inherit;
+}
+
+/* MenuText component */
+.storeInfo-modal-text-menu {
+  margin-right: 1vw;
+  margin-left: 1vw;
+  padding: 1vw;
+  border-radius: 10px;
+  background-color: rgb(241, 239, 239);
+}
+.storeInfo-modal-menu-price {
+  float: right;
+}
+.storeInfo-modal-menu-more {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Review component */
+.storeInfo-modal-review {
+  margin-top: 3vh;
+  margin-right: 1vw;
+  margin-left: 1vw;
+}
+.storeInfo-modal-review-write {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.storeInfo-modal--review-textarea {
+  position: relative;
+  overflow: hidden; 
+  word-wrap: break-word; 
+  resize: none; 
+  height: 160px;
+  width: 100%;
+  padding-top: 2vh;
+  padding-left: 1vw;
+	background-repeat:repeat-y, repeat;
+	-webkit-border-radius:12px;
+	border-radius:12px;
+	-webkit-box-shadow: 0px 2px 14px #000;
+	box-shadow: 0px 2px 14px #000;
+	border-top:1px solid #FFF;
+	border-bottom:1px solid #FFF;
+}
+.storeInfo-modal-review-rating {
+  float: left;
+  display: block;
+}
+
+/* 사이드바 접기버튼 */
+.storeImfo-modal-img-container{
+  position: relative;
+
+}
+.storeInfo-modal-collide {
+  position: absolute;
+  top:5%;
+  right:1%;
+  transform: translate(-5%, -50%);
+  -ms-transform: translate(-5%, -50%);
+  color: white;
+  font-size:1.5rem;
+  text-shadow: 0px 3px 3px black;
 }
 
 
@@ -336,6 +448,7 @@
   .box-container {
     margin-left: 2.5%;
     margin-right: 2.5%;
+    
   }
   .mypage-radio-btn-group {
     width: 80%;
@@ -370,9 +483,7 @@
     float: none;
     height: 50px;
   }
-  .gridbookmark-box .v-icon {
-    /* border: 1px solid lightcoral; */
-  }
+  
 
   .gridlist-box .v-list-item {
     padding: 8px 0 !important;

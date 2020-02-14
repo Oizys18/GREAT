@@ -7,6 +7,9 @@ import Mypage from "../views/Mypage.vue";
 import Authentication from "../views/Authentication.vue";
 import Social from "../views/Social.vue";
 import PageNotFound from "../views/PageNotFound.vue";
+import Join from "../views/Join.vue";
+import MobileGridItem from "@/components/Grid/MobileGrid/MobileGridItem.vue";
+import SocialJoin from "../views/SocialJoin.vue";
 
 Vue.use(VueRouter);
 
@@ -46,6 +49,20 @@ const routes = [
     name: "Social",
     component: Social
   },
+  {
+    path: "/join",
+    name: "Join",
+    component: Join
+  },
+  {
+    path: "/mobileGridItem",
+    name: "MobileGridItem",
+    component: MobileGridItem
+  },
+    path: "/socialJoin",
+    name: "SocialJoin",
+    component: SocialJoin
+  }
 ];
 
 const router = new VueRouter({

@@ -11,6 +11,30 @@
 		   and type = #{type}
 	</select>
 
+	<select id="selectByUserId" parameterType="Integer" resultType="store">
+		select * from store as s , (
+		select bs.store as code from bookmark b, bookmarkstore bs where b.user = #{userId} and b.id = bs.bookmark and b.type='S'
+		) as sq	
+		where s.id = sq.code;
+	</select>
+	
+	<delete id="deleteByBookmarkUserId" parameterType="java.util.HashMap">
+		delete from bookmark where id in (select code  from  (
+		 select b.id as code
+		 from bookmark b, bookmarkstore bs 
+		 where b.user = #{userId} and b.type='S' and b.id=bs.bookmark and bs.store=#{storeId}
+		) tmp );
+	</delete>
+	
+	<delete id="deleteByBookmarkStoreUserId" parameterType="java.util.HashMap">
+		delete from bookmarkstore where bookmark in (select code from  (
+		 select b.id as code
+		 from bookmark as b, bookmarkstore  as bs 
+		 where b.user = #{userId} and b.type='S' and b.id=bs.bookmark and bs.store=#{storeId}
+		) tmp );
+
+	</delete>
+
 	<select id="selectById" parameterType="integer" resultType="integer">
 		select store
 		from bookmarkstore

@@ -2,7 +2,6 @@
   <div>
     <div class="bar-btn" @click="go('/')">
       <span>Log Out</span>
-      <img src="@/assets/img/arrow-icon.png" class="bar-btn-img" />
     </div>
   </div>
 </template>

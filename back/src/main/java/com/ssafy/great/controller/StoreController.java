@@ -51,7 +51,7 @@ public class StoreController {
 
 	@GetMapping("/store/location/{category}/{x}/{y}")
 	@ApiOperation("사용자 지정 위치로부터 가까운 식당 8개 목록 검색")
-	public ResponseEntity<Map<String, Object>> ssearchByLocation(@PathVariable int category, @PathVariable double x,
+	public ResponseEntity<Map<String, Object>> searchByLocation(@PathVariable int category, @PathVariable double x,
 			@PathVariable double y) {
 		return RestUtil.handleSuccess(service.searchByLocation(category, x, y));
 	}
@@ -69,4 +69,6 @@ public class StoreController {
 		service.deleteStore(id);
 		return RestUtil.handleSuccess("success");
 	}
+	
+
 }
