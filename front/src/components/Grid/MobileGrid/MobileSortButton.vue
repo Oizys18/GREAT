@@ -1,37 +1,38 @@
 <template>
-
-  <ul class="sort-elements">
-    <div class="sort-wrapper">
+<div class="m-sort-container">
+  <ul class="m-sort-elements">
+    <div class="m-sort-wrapper">
     <li>
-      <a href="#" @click="click('rating')" class="hello">
-        <span class="icon-cog"></span>
+      <a href="#" @click="click('rating')">
+        <span class="m-icon-cog"></span>
         <label>별점순</label>
       </a>
-    </li><br>
+    </li>
     <li>
       <a href="#" @click="click('random')">
-        <span class="icon-cw"></span>
+        <span class="m-icon-cw"></span>
         <label>랜덤순</label>
       </a>
-    </li><br>
+    </li>
     <li>
       <a href="#" @click="click('distance')">
-        <span class="icon-location"></span>
+        <span class="m-icon-location"></span>
         <label>거리순</label>
       </a>
-    </li><br>
+    </li>
     <li>
       <a href="#" @click="click('bookmark')">
-        <span class="icon-bookmark"></span>
+        <span class="m-icon-bookmark"></span>
         <label>북마크</label>
       </a>
     </li>
     </div>
   </ul>
+</div>
 </template>
 
 <script>
-import "@/assets/style/css/sortButton.css";
+import "@/assets/style/css/mobilesortbutton.css";
 import GridApi from '@/apis/GridApi.js'
 import BookmarkApi from '@/apis/BookmarkApi.js'
 export default {

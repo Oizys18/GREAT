@@ -13,50 +13,50 @@
   font-style: normal;
 }
 
-[class*="icon-"] {
+[class*="m-icon-"] {
   font-family: "fontello";
   font-style: normal;
   font-size: 1.7em;
 }
 
-.icon-cog:after {
+.m-icon-cog:after {
   content: "⭐";
   /* content: "\2605"; */
 }
-.icon-cw:after {
+.m-icon-cw:after {
   /* content: "\27f3"; */
   content: "🍀";
 }
 
-.icon-location:after {
+.m-icon-location:after {
   /* content: "\e724"; */
   content: "🛫";
 }
-.icon-bookmark:after {
+.m-icon-bookmark:after {
   content: "📌";
   /* content: "📖"; */
 }
 
-.sort-elements {
+.m-sort-elements {
   list-style: none;
   text-align: center;
 }
 
-.sort-elements li {
+.m-sort-elements li {
   position: relative;
   display: inline-block;
-  margin-right: -4px;
+  /* margin-right: -4px; */
 }
 
-.sort-elements a:link,
-.sort-elements a:visited {
+.m-sort-elements a:link,
+.m-sort-elements a:visited {
   display: block;
   text-decoration: none;
   background-color: #f7f7f7;
   color: #000000;
   margin: 10px;
-  width: 40px;
-  height: 40px;
+  /* width: 4vw; */
+  /* height: 40px; */
   position: relative;
   text-align: j;
   line-height: 40px;
@@ -65,55 +65,52 @@
   box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
   border: solid 1px transparent;
 }
-.sort-wrapper{
-    float: left;
+.m-sort-wrapper {
+  float: left;
   background: #ddd;
-  border-radius: 30px 30px 30px 30px;
+  border-radius: 30px;
   width: auto;
   height: auto;
 }
-.sort-elements a:before {
+.m-sort-elements a:before {
   display: block;
   border-radius: 50%;
   box-shadow: inset 0px 8px 48px #ddd;
 }
 
-.sort-elements a:active {
+.m-sort-elements a:active {
   box-shadow: 0px 3px 4px #aaa inset, 0px 2px 3px #fff;
 }
 
-.sort-elements a:link, .sort-elements a:visited{
-    display:flex;
-    justify-content: space-evenly;
+.m-sort-elements a:link,
+.m-sort-elements a:visited {
+  display: flex;
+  justify-content: space-evenly;
 }
-.sort-elements {
-  position: fixed;
-  right: 1vw;
-  top: 5vh;
-  padding: 30px 0 10px 0;
+.m-sort-elements {
   text-align: center;
 }
 
-@media (max-width: 800px) {
-  .sort-elements {
-    top: 10vh;
-    width: 100%;
-    padding-bottom: 0;
+@media (max-width: 1000px) {
+  li a label {
+    display: none;
   }
-  [class*="icon-"] {
-    font-size: 1.3em;
-  }
-  .sort-elements a:link,
-  .sort-elements a:visited {
-    margin: 0.8rem;
-    width: 2rem;
-    height: 2rem;
-    line-height: 2rem;
-  }
-  .sort-elements a:before {
-    top: -0.5em;
-    left: -0.5em;
-    bottom: -0.5em;
-    right: -0.5em;
-  }
+  .m-sort-elements a:link,
+  .m-sort-elements a:visited {
+    display: block;
+    text-decoration: none;
+    background-color: #f7f7f7;
+    color: #000000;
+    position: relative;
+    width: 40px;
+  } 
+}
+
+
+.m-sort-container{
+    display:flex;
+    position:fixed;
+    top:10vh;
+    left:10vw;
+    justify-content: space-between;
 }
