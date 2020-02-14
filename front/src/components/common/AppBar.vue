@@ -29,10 +29,13 @@ export default {
   z-index: 100;
   position: fixed;
   width: 100%;
-  background: linear-gradient(72deg, #c0392b, #f1c40f);
-  padding: 15px;
+  background: linear-gradient(72deg, #c0392b, #FBC21B);
+  /* background: #120D14; */
+  padding: 0.5em;
   font-size: 1.2em;
   display: flex;
+  height:5vh;
+  align-items: center;
 }
 .bar-banner {
   font-family: "Lobster", cursive;

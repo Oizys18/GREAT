@@ -1,3 +1,6 @@
+.carousel-container{
+  height:150vh;
+}
 .floating-container {
   /* position */
   top: 29vh;
