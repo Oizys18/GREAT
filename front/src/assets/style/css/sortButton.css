@@ -12,7 +12,7 @@
 [class*="icon-"] {
   font-family: 'fontello';
   font-style: normal;
-  font-size: 3em;
+  font-size: 1.7em;
 }
 
 .icon-cog:after {
@@ -47,12 +47,12 @@
   text-decoration: none;
   background-color: #f7f7f7;
   color: #a7a7a7;
-  margin: 25px;
-  width: 70px;
-  height: 70px;
+  margin: 15px;
+  width: 40px;
+  height: 40px;
   position: relative;
   text-align: center;
-  line-height: 70px;
+  line-height: 40px;
   border-radius: 50%;
   box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
   border: solid 1px transparent;
@@ -64,10 +64,10 @@
   background: #fff;
   border-top: 2px solid #ddd;
   position: absolute;
-  top: -18px;
-  left: -18px;
-  bottom: -18px;
-  right: -18px;
+  top: -10px;
+  left: -10px;
+  bottom: -10px;
+  right: -10px;
   z-index: -1;
   border-radius: 50%;
   box-shadow: inset 0px 8px 48px #ddd;

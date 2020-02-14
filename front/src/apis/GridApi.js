@@ -3,7 +3,7 @@ import axios from 'axios'
 var storage = localStorage
 
 /** 사용자 위치와 카테고리에 해당하는 식당 정보 요청(거리순) */
-var requestGridStores = function(data, callback) {
+var requestGridStoresByDistance = function(data, callback) {
   var x = data.locationX
   var y = data.locationY
   var category = data.category
@@ -17,17 +17,24 @@ var requestGridStores = function(data, callback) {
 
 /** 사용자 위치와 카테고리에 해당하는 식당 정보 요청(랜덤순) */
 var requestGridStoresByRandom = function(data, callback) {
+  var x = data.locationX
+  var y = data.locationY
+  var category = data.category
+  
   axios
-    .get('http://13.124.1.176:8080/store/category/' + data)
-    .then(response => {
-      callback(response.data.data)
-    })
+  .get('http://13.124.1.176:8080/store/rand/' + category + '/' + x + '/' + y)
+  .then(response => {
+    callback(response.data.data)
+  })
 }
 
 /** 사용자 위치와 카테고리에 해당하는 식당 정보 요청(별점순) */
 var requestGridStoresByRating = function(data, callback) {
+  var x = data.locationX
+  var y = data.locationY
+  var category = data.category
   axios
-    .get('http://13.124.1.176:8080/store/category/' + data)
+    .get('http://13.124.1.176:8080/store/rating/'  + category + '/' + x + '/' + y)
     .then(response => {
       callback(response.data.data)
     })
@@ -114,7 +121,7 @@ var requestBookmarkDelete = function(data, callback, errorCallback) {
 }
 
 export default {
-  requestGridStores,
+  requestGridStoresByDistance,
   requestStoreInfo,
   requestGridStoresByRating,
   requestReviewPost,

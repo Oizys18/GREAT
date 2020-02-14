@@ -43,7 +43,7 @@ export default {
         locationY : y,
         category : categoryId
       }
-      GridApi.requestGridStores(data, response => {
+      GridApi.requestGridStoresByRandom(data, response => {
         for(var i = response.length; i < 8; i++){
           response.push({"name": ""})
         }
