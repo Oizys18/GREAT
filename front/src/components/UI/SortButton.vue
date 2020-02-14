@@ -48,7 +48,7 @@ export default {
        if(input!=null)
         this.gridBookmark(input);
       }
-      else if(type!=this.sort){
+      else if(type=="random"||type!=this.sort){
         var x = this.$store.state.locationX;
         var y = this.$store.state.locationY;
         var categories = this.$store.state.categories;
@@ -77,6 +77,7 @@ export default {
           });
           break;
         case "random":
+          this.sort="random";
           GridApi.requestGridStoresByRandom(data, response => {
             for (var i = response.length; i < 8; i++) {
               response.push({ name: "" });
