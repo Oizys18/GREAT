@@ -3,7 +3,7 @@
     <template v-for="(idx, i) in indexList.slice(0, 4)">
       <button
         class="small-box"
-        draggable="true"
+        :draggable="draggable"
         @mouseover="over(i)"
         @mouseleave="out(i)"
         v-on:dragend="changeIndex(i)"
@@ -18,7 +18,7 @@
     <template v-for="(idx, i) in indexList.slice(4, 8)">
       <button
         class="small-box"
-        draggable="true"
+        :draggable="draggable"
         @mouseenter="over(i + 4)"
         @mouseleave="out(i + 4)"
         v-on:dragend="changeIndex(i + 4)"
@@ -48,7 +48,7 @@ export default {
       mouseOn: [false, false, false, false, false, false, false, false]
     };
   },
-  props: ["num"],
+  props: ["num", "bookmark"],
   methods: {
     changeIndex(i) {
       var commitName = this.categoryName + "List";
@@ -85,6 +85,10 @@ export default {
     },
     itemName() {
       return this.$store.state[this.categoryName];
+    },
+    draggable() {
+      if(this.bookmark == 0) return true
+      else return false
     }
   }
 };

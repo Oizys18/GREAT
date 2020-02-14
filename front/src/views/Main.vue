@@ -2,7 +2,7 @@
   <div>
     <div v-if="!isMobile()">
       <Sidebar />
-      <Table />
+      <Table :bookmark="0"/>
       <SortButton />
     </div>
     <div v-else>
