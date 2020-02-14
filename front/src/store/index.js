@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    viewcategory:0,
     reviews: [
       {name: "Kin Khao",rating :"3", contents: "Thai"},
       {name: 'Jū-Ni',rating :"2", contents: "SushiJapanese $$$$"},
