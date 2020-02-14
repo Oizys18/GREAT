@@ -142,7 +142,8 @@ export default new Vuex.Store({
     userReviewList:null,
     reviewInfo: [],
     starRating: 0,
-    bookmarkStoreList: []
+    bookmarkStoreList: [],
+    gridBookmarkStoreList: []
   },
   mutations:{
     'reset'(state){
@@ -246,6 +247,19 @@ export default new Vuex.Store({
 
       if(index !== undefined){
         state.bookmarkStoreList.splice(index, 1)
+      }
+    },
+    'setGridBookmarkList'(state) {
+      var categoryList = state.categories
+      for(var i = 0; i < categoryList.length; i++) {
+        var categoryName = categoryList[i].name
+        var storeList = state[categoryName]
+        var indexListName = categoryName + 'index'
+        var categoryIndexList = state[indexListName]
+
+        for(var j = 0; j < categoryIndexList.length; j++) {
+          state.gridBookmarkStoreList.push(storeList[categoryIndexList[j]].id)
+        }
       }
     }
   },
