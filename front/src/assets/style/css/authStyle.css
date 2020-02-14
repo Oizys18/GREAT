@@ -102,7 +102,8 @@ input:-webkit-autofill {
 	padding-right: 20px;
 	border: 5px solid #ffda8e;
 	border-radius: 25px;
-	background-color: #fffcf0;
+	background: linear-gradient( to bottom,lightyellow, #fffcf0);
+	/* background-color: #fffcf0; */
 	border-radius: 25px;
 }
 
@@ -171,7 +172,7 @@ input:-webkit-autofill {
 	padding-right: 20px;
 	border: 5px solid #ffda8e;
 	border-radius: 25px;
-	background-color: #fffcf0;
+	background: linear-gradient( to bottom,lightyellow, #fffcf0);
 }
 
 .join h1 {

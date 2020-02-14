@@ -90,7 +90,7 @@
       </div>
       <div class="join-button-container">
         <v-btn rounded color="#ff7761" dark @click="joinRedirect()">취소</v-btn>
-        <v-btn :aria-disabled="!isSubmit" rounded color="#ff7761" dark @click="joinApi()">가입</v-btn>
+        <v-btn rounded color="#ff7761" dark @click="joinApi()">가입</v-btn>
       </div>
     </div>
   </div>
@@ -108,6 +108,7 @@ import * as EmailValidator from "email-validator";
 export default {
   name: "Join",
   created() {
+    this.isSubmit = false;
     this.component = this;
     this.passwordSchema
       .is()
@@ -151,11 +152,6 @@ export default {
         this.error.passwordConfirm = "입력한 비밀번호와 일치해야 합니다.";
       else this.error.passwordConfirm = false;
 
-      let isSubmit = true;
-      Object.values(this.error).map(v => {
-        if (v) isSubmit = false;
-      });
-      this.isSubmit = isSubmit;
     },
     emailCheck() {
       let { email } = this;
@@ -187,6 +183,11 @@ export default {
     },
 
     joinApi() {
+      let isSubmit1 = true;
+      Object.values(this.error).map(v => {
+        if (v) isSubmit1 = false;
+      });
+      if(!isSubmit1)this.isSubmit = isSubmit1;
       let { isSubmit, email, password, nickname, birth, gender } = this;
       if (isSubmit) {
         UserApi.requestRegister(

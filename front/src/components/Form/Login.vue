@@ -14,9 +14,9 @@
         </div>
       </div>
       <div style="width: 100%; display: relative; margin-top: 5px;">
-        <div style="width: 50%; float: left; margin-left: 2px; margin-top: 7px;">
+        <!-- <div style="width: 50%; float: left; margin-left: 2px; margin-top: 7px;">
           <input type="checkbox" v-model="remID" id="remID" /> 아이디 저장하기
-        </div>
+        </div> -->
         <div style="float: right;">
           <v-btn rounded color="#ff7761" dark @click="loginApi">확 인</v-btn>
         </div>
@@ -58,7 +58,7 @@ export default {
   methods: {
     async loginApi() {
       let { remID, loginID, loginPW } = this;
-      await UserApi.requestLogin(remID, loginID, loginPW, res => {
+      await UserApi.requestLogin(loginID, loginPW, res => {
         console.log(res);
       });
       this.tokenApi();
@@ -67,7 +67,9 @@ export default {
       UserApi.requestToken(res => {
         console.log(res);
       });
-      if (localStorage.getItem("token").length > 10) {
+      var token = sessionStorage.getItem("token");
+      console.log('vue token ', token);
+      if (token.length > 10) {
         this.$router.push("/").catch(err => {});
       } else {
         alert("로그인 실패");
