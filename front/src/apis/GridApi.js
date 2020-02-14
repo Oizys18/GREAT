@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-var storage = localStorage
+var storage = sessionStorage
 
 /** 사용자 위치와 카테고리에 해당하는 식당 정보 요청(거리순) */
 var requestGridStoresByDistance = function(data, callback) {

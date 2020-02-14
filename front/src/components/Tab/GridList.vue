@@ -1,7 +1,7 @@
 <template>
   <div class="gridlist-box">
       <v-list class="">
-        <v-list-item v-for="item in items" :key="item.title"
+        <v-list-item v-for="item in items" :key="item.id"
           class="gridbookmark-container">
           <!-- <GridBookmark :gridbookmarkIdx=index /> -->
           <GridBookmark :gridbookmarkItem=item />
@@ -19,7 +19,6 @@
 <script>
 import GridBookmark from "@/components/Tab/GridBookmark.vue";
 import MypageApi from '../../apis/MypageApi'
-// import axios from "axios";
 export default {
   name: "GridList",
   props :[],
@@ -40,18 +39,9 @@ export default {
   },
   mounted:function(){
     //사용자의 gridbookmark list 목록 요청
-    MypageApi.requestGridbookmarkList(this.user.id,response=>{
-      console.log(response)
-      this.$stroe.state.userGridBookmarkList=response
+    MypageApi.requestGridbookmarkList(response=>{
+      this.$store.state.gridbookmarks=response
     })
-    // axios
-    //   .get("http://172.17.174.33:8080/bookmark/1/G",{
-    //       //사용자 id에 해당하는 grid bookmarks(G)목록을 불러온다.
-    //   })
-    //   .then(res=>{
-    //     //gridbookmark목록 저장
-    //     this.list = res.data;
-    //   })
   },
   methods:{
     isdivider(index){

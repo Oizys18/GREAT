@@ -3,7 +3,7 @@
   <ul class="sort-elements">
     <div class="sort-wrapper">
     <li>
-      <a href="#" @click="click('rating')" class="hello">
+      <a href="#" @click="click('rating')">
         <span class="icon-cog"></span>
         <label>별점순</label>
       </a>
@@ -57,6 +57,7 @@ export default {
           var categoryId = categories[i].id;
           this.apiCall(categoryId, categoryName, x, y, type);
         }
+        this.$store.commit('reset')
       }
     },
     apiCall(categoryId, categoryName, x, y, type) {
@@ -96,14 +97,16 @@ export default {
           break;
       }
     },
-        gridBookmark(input) {
+    gridBookmark(input) {
       this.$store.commit('setGridBookmarkList')
-
+      this.requestBookmarkPost(input)
+    },
+    requestBookmarkPost(input) {
       var data = {
         'name': input,
         'stores': this.$store.state.gridBookmarkStoreList,
         'type': 'G',
-        'user': localStorage.getItem('id')
+        'user': sessionStorage.getItem('id')
       }
 
       BookmarkApi.requestGridBookmarkPost(data, response => {
