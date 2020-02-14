@@ -1,5 +1,5 @@
 import axios from 'axios'
-var storage = localStorage
+var storage = sessionStorage
 /*현재 로그인한 사용자의 회원정보 요청*/ 
 
 var setID=function(){
@@ -64,21 +64,17 @@ var modifyUserInfo=function(data){
 
 /*gridbookmark list 요청*/
 var requestGridbookmarkList=function(callback){
-  //var userID=storage.getItem('id')
-  //console.log("user id :"+userID)
     axios
-      .get("http://13.124.1.176:8080/bookmark/"+2+'/'+'G',{
-        headers: { Authorization : storage.getItem('token') }
+      .get("http://13.124.1.176:8080/bookmark/"+storage.getItem('id')+'/'+'G',{
+        headers: { 'Authorization' : storage.getItem('token') }
       })
           //사용자 id에 해당하는 grid bookmarks(G)목록을 불러온다.
-      
       .then(res=>{
         //gridbookmark목록 저장
         callback(res.data.data);
-        console.log("axios_myreview 리스트")
-        console.log(res.data.data)
       })
 }
+
 /*gridbookmark 항목 수정*/
 var modifyGridbookmark=function(data){
      axios

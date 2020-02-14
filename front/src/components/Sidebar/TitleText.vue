@@ -69,7 +69,7 @@ export default {
       var data = {
         'stores': [this.store.id],
         'type': 'S',
-        'user': localStorage.getItem('id')
+        'user': sessionStorage.getItem('id')
       }
 
       GridApi.requestBookmarkPost(data, response => {
@@ -87,7 +87,7 @@ export default {
     requestDelete() {
       var heartBtn = document.getElementById("bookmark-heart")
       var data = {
-        'user' : localStorage.getItem('id'),
+        'user' : sessionStorage.getItem('id'),
         'store': this.store.id
       }
 

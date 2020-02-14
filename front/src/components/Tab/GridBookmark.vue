@@ -125,6 +125,7 @@ export default {
       //   });    
     },
     gridDetail(id){ //클릭한 grid bookmark 화면 모달화면으로 넘겨준다.
+      this.$router.push('/bookmarkGrid?bookmarkId=' + id)
       console.log('클릭한 grid bookmark list id:'+id)
     }
   }

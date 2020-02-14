@@ -45,6 +45,7 @@ const requestLogin = (loginID, loginPW, callback, errorCallback) => { // eslint-
 		.then(
 			res => {
 				session.setItem('token', res.data.data.Authorization);
+				session.setItem('id', res.data.data.Info.id)
 			}
 		)
 };
