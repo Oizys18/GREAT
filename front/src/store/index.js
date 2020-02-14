@@ -248,7 +248,6 @@ export default new Vuex.Store({
         state.bookmarkStoreList.splice(index, 1)
       }
     }
->>>>>>> front/src/store/index.js
   },
   actions: {},
   modules: {}

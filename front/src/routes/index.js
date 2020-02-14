@@ -59,6 +59,7 @@ const routes = [
     name: "MobileGridItem",
     component: MobileGridItem
   },
+  {
     path: "/socialJoin",
     name: "SocialJoin",
     component: SocialJoin
