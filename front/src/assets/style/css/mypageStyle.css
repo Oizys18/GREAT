@@ -32,7 +32,8 @@
 .box-container {
   padding: 10px;
   margin-top: 10px;
-  border: 1px solid grey !important;
+  border: 3px solid grey !important;
+  border-radius: 25px;
   max-height: 900px;
   /* border :1px solid #F5331E; */
   overflow:hidden;
@@ -255,7 +256,7 @@
 }
 .hvrbox .hvrbox-text {
 	text-align: center;
-	font-size: 22px;
+	font-size: 18px;
 	display: inline-block;
 	position: absolute;
 	top: 50%;
@@ -377,13 +378,18 @@
 }
 
 /* 사이드바 접기버튼 */
+.storeImfo-modal-img-container{
+  position: relative;
+
+}
 .storeInfo-modal-collide {
-  position: fixed;
-  top:0;
-  right:10px;
-  z-index: 5;
+  position: absolute;
+  top:5%;
+  right:1%;
+  transform: translate(-5%, -50%);
+  -ms-transform: translate(-5%, -50%);
   color: white;
-  font-size:2rem;
+  font-size:1.5rem;
   text-shadow: 0px 3px 3px black;
 }
 

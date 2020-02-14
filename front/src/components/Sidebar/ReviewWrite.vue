@@ -52,8 +52,16 @@ export default {
       GridApi.requestReviewPost(data, response => {
         if(response === 'success') {
           alert('리뷰가 등록되었습니다.\n등록한 리뷰는 MyPage에서 확인가능합니다.')
+          this.requestReviewInfo()
           this.componentKey++
         }
+      },() => {
+        alert('로그인 후 리뷰를 작성할 수 있습니다.')
+      })
+    },
+    requestReviewInfo() {
+      GridApi.requestReviewInfo(this.storeId, response => {
+        this.$store.state.reviewInfo = response
       })
     }
   },

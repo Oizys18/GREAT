@@ -17,8 +17,7 @@ const emailAuth = (email) => {
 	return axios.get('http://13.124.1.176:8080/sendemail/' + email)
 		.then(
 			res => {
-				session.setItem('emailAuth', res.data.data)
-				console.log(res);
+				session.setItem('emailAuth',res.data.data)
 			}
 		)
 }
