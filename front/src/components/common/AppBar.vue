@@ -1,7 +1,9 @@
 <template>
   <div id="app-bar" class="animated fadeInDown delay-0.2s">
-    <div class="bar-banner" @click="go('/')">GrEAT</div>
-    <div class="bar-router">
+    <div class="app-bar-banner" @click="go('/')">GrEAT |</div>
+    <div class="app-bar-banner" @click="go('authentication')">AUTH |</div>
+    <div class="app-bar-banner" @click="go('mypage')">Mypage</div>
+    <div class="app-bar-router">
       <BarButton />
     </div>
   </div>
@@ -29,22 +31,22 @@ export default {
   z-index: 100;
   position: fixed;
   width: 100%;
-  background: linear-gradient(72deg, #c0392b, #FBC21B);
-  /* background: #120D14; */
+  background: linear-gradient(72deg, #c0392b, #f1c40f);
   padding: 0.5em;
   font-size: 1.2em;
   display: flex;
-  height:5vh;
+  height:8vh;
   align-items: center;
 }
-.bar-banner {
+.app-bar-banner {
   font-family: "Lobster", cursive;
   color: rgb(236, 236, 236);
   position: relative;
   cursor: pointer;
+  font-size:1.5em;
   left: 0;
 }
-.bar-router {
+.app-bar-router {
   position: fixed;
   right: 0;
   padding: 0 10px 0 0;

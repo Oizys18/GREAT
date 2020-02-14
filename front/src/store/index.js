@@ -5,14 +5,15 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    viewcategory:0,
     reviews: [
-      {name: "Kin Khao",rating :"★★★☆☆", contents: "Thai"},
-      {name: 'Jū-Ni',rating :"★★☆☆☆", contents: "SushiJapanese $$$$"},
-      {name: 'Delfina',rating :"★☆☆☆", contents: "Pizza Casual"},
-      {name: 'San Tung', rating :"★★★★☆",contents: "Chinese  $$"},
-      {name: 'Anchor Oyster Bar', rating :"★★★☆☆",contents: "Seafood Cioppino"},
-      {name: 'Locanda',rating :"★★★☆☆", contents: "Italian"},
-      {name: 'Garden Creamery',rating :"★★★★★", contents: "Ice cream"},
+      {name: "Kin Khao",rating :"3", contents: "Thai"},
+      {name: 'Jū-Ni',rating :"2", contents: "SushiJapanese $$$$"},
+      {name: 'Delfina',rating :"1", contents: "Pizza Casual"},
+      {name: 'San Tung', rating :"4",contents: "Chinese  $$"},
+      {name: 'Anchor Oyster Bar', rating :"3",contents: "Seafood Cioppino"},
+      {name: 'Locanda',rating :"3", contents: "Italian"},
+      {name: 'Garden Creamery',rating :"5", contents: "Ice cream"},
     ],
     gridbookmarks:[
       {id:'1',name:"Jason Oner",type:'G',user:'1'},
@@ -136,7 +137,13 @@ export default new Vuex.Store({
     locationX: 127.0250186,
     locationY: 37.5056693,
     storeInfo: null,
-    reviewInfo: null
+    userInfo:null,
+    userStoreList:null,
+    userReviewList:null,
+    reviewInfo: [],
+    starRating: 0,
+    bookmarkStoreList: [],
+    gridBookmarkStoreList: []
   },
   mutations:{
     'reset'(state){
@@ -213,6 +220,48 @@ export default new Vuex.Store({
       state.기타maxIndex++;
       state.기타index.splice(payload, 1, state.기타maxIndex)
     },
+    'userInfo'(state,payload){
+      state.userInfo = payload;
+    },
+    'userStoreList'(state,payload){
+      state.userStoreList=payload;
+    },
+    'userReviewList'(state,payload){
+      state.userReviewList=payload;
+    },
+    'addBookmarkStore'(state, payload) {
+      var bookmarkList = state.bookmarkStoreList
+      var bookmark = bookmarkList.find(item => {
+        return item.id === payload.id
+      })
+
+      if(bookmark === undefined){
+        state.bookmarkStoreList.push(payload)
+      }
+    },
+    'deleteBookmarkStore'(state, payload) {
+      var bookmarkList = state.bookmarkStoreList
+      var index = bookmarkList.findIndex(item => {
+        return item.id === payload
+      })
+
+      if(index !== undefined){
+        state.bookmarkStoreList.splice(index, 1)
+      }
+    },
+    'setGridBookmarkList'(state) {
+      var categoryList = state.categories
+      for(var i = 0; i < categoryList.length; i++) {
+        var categoryName = categoryList[i].name
+        var storeList = state[categoryName]
+        var indexListName = categoryName + 'index'
+        var categoryIndexList = state[indexListName]
+
+        for(var j = 0; j < categoryIndexList.length; j++) {
+          state.gridBookmarkStoreList.push(storeList[categoryIndexList[j]].id)
+        }
+      }
+    }
   },
   actions: {},
   modules: {}

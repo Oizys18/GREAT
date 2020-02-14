@@ -1,31 +1,32 @@
 <template>
   <div class="sidebar-review">
-    <!-- <template v-for="review in reviewList">
+    <template v-for="review in reviewList">
       <div :key="review.id" class="sidebar-review-area">
-        <span>{{review.contents}}</span>
+        <span style="display:block">{{review.contents}}</span>
+        <span class="sidebar-review-date">{{review.date}}</span>
+        <StarRating :rating="review.rating"/>
       </div>  
-    </template> -->
-    <p class="review-write" @click="reviewWriting = !reviewWriting">리뷰 남기기</p>
-    <ReviewWrite v-if="reviewWriting"/>
+    </template>
+    <div 
+      v-if="reviewList.length == 0"
+      class="sidebar-review-area"> 등록된 리뷰가 없습니다. </div>
+    <ReviewWrite :storeId="storeId"/>
   </div>
 </template>
 
 <script>
 import ReviewWrite from '../Sidebar/ReviewWrite'
+import StarRating from '@/components/common/StarRating'
 export default {
   name: 'ReviewInfo',
-  props: ['reviewInfo'],
-  data() {
-    return {
-      reviewWriting: false
-    }
-  },
+  props: ['storeId'],
   components: {
-    ReviewWrite
+    ReviewWrite,
+    StarRating
   },
   computed: {
     reviewList() {
-      return this.reviewInfo
+      return this.$store.state.reviewInfo
     }
   },
 }
