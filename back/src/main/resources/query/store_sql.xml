@@ -128,7 +128,8 @@
 		from
 		store s
 		where store_id = #{store_id}
-		and ST_Distance_Sphere(location, point(#{x}, #{y})) <![CDATA[<]]>
+		and ST_Distance_Sphere(location,
+		point(#{x}, #{y})) <![CDATA[<]]>
 		10000
 	</select>
 	<select id="selectByRating" parameterType="java.util.HashMap"
@@ -136,9 +137,13 @@
 		select s.id, s.store_id, s.name, s.open_time, s.map_x,
 		s.map_y,
 		s.location_name, s.rating, s.phone, s.tag, s.category, s.image
-		from store s
+		from
+		store s
 		where
 		category = #{category}
+		and ST_Distance_Sphere(location,
+		point(#{x}, #{y})) <![CDATA[<]]>
+		10000
 		order by rating desc
 		limit 20
 	</select>
@@ -168,10 +173,10 @@
 		order by RAND()
 		limit 20
 	</select>
-	
-	
 
-	
-	
-	
+
+
+
+
+
 </mapper>
