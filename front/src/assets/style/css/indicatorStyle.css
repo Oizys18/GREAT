@@ -1,0 +1,25 @@
+.indicator-container {
+  /* position: absolute; */
+  /* width:100%; */
+  position: relative;
+  top: 46%;
+  /* right:30vw; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  box-shadow: 3px, 3px, 3px, black;
+}
+.indicator-item {
+  z-index: 5;
+  background-color: white;
+  width: 15px;
+  height: 15px;
+  margin: 15px;
+  border-radius: 15px;
+}
+@media (max-width: 800px) {
+  .indicator-container {
+    top:0vw;
+  }
+}
