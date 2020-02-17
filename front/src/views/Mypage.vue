@@ -94,13 +94,11 @@ export default {
     //로그인한 사용자 회원 정보 요청
     if (sessionStorage.getItem("token").length <= 10) {
       //로그인하지 않은 경우
-      console.log("로그인 안함");
 
       alert("로그인을 먼저 해주세요.");
       this.$router.push("/");
     } else {
       //로그인 한 경우
-      console.log("로그인함");
 
       MypageApi.setID();
       MypageApi.requestUserInfo(response=>{
@@ -110,7 +108,6 @@ export default {
         this.$store.commit('userStoreList',response);
       })
       MypageApi.requestGridbookmarkList(response=>{
-        console.log('요청받은 gridlsits')
         this.$store.commit('userGridList',response);
       })
       MypageApi.requestMyReviews(response=>{
