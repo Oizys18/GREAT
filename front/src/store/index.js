@@ -234,7 +234,6 @@ export default new Vuex.Store({
         state.bookmarkStoreList.splice(index, 1)
       }
     },
-<<<<<<< HEAD
     'modifyGridName'(state,payload){
       var gridList = state.userGridList
       var index = gridList.find(item=>{
@@ -258,9 +257,7 @@ export default new Vuex.Store({
     },
     'userGridID'(state,payload){
         state.userGridID=payload
-    }
-    
-=======
+    },
     'setGridBookmarkList'(state) {
       var categoryList = state.categories
       state.gridBookmarkStoreList = []
@@ -275,7 +272,6 @@ export default new Vuex.Store({
         }
       }
     }
->>>>>>> fe-develop
   },
   actions: {},
   modules: {}
