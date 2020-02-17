@@ -22,7 +22,7 @@ public class BookmarkDaoImpl implements BookmarkDao{
     }
 
     /** 북마크 id에 해당하는 북마크의 식당 id 리스트 검색 */
-    public List<Integer> selectById(int id){
+    public List<Store> selectById(int id){
     	return session.selectList("sql.bookmark.selectById", id);
     }
     

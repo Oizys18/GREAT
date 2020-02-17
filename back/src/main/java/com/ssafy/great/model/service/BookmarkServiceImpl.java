@@ -32,8 +32,7 @@ public class BookmarkServiceImpl implements BookmarkService {
 	
 	/** 북마크한 식당 목록 검색 (1 store / whole grid) */
 	public List<Store> searchStoresById(int id){
-		List<Integer> idList = dao.selectById(id);
-		return storeService.searchBookmarkStores(idList);
+		return dao.selectById(id);
 	}
 	
 	/** 북마크 등록 */

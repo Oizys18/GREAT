@@ -45,20 +45,6 @@
 	</select>
 
 
-	<select id="selectByIdList" parameterType="java.util.HashMap"
-		resultType="store">
-		select s.id, s.store_id, s.name, s.open_time, s.map_x, s.map_y,
-		s.location_name, s.rating, s.phone, s.tag, s.category, s.image
-		from
-		store s
-		where id in
-		<foreach collection="idList" item="item" index="index"
-			separator="," open="(" close=")">
-			#{item.value}
-		</foreach>
-		order by category
-	</select>
-
 
 
 	<update id="update" parameterType="store">
