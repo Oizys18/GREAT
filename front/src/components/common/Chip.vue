@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import '../../assets/style/css/chip.css'
+import '@/assets/style/css/chip.css'
 export default {
   name: 'Chip',
   props: ["text"],
