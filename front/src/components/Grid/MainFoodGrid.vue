@@ -1,8 +1,8 @@
 <template>
   <div class="small-grid">
     <template v-for="(idx, i) in indexList.slice(0, 4)">
-      <button
-        class="small-box"
+      <button 
+        class="small-box animated bounceIn fast delay-0.1s"
         :draggable="draggable"
         @mouseover="over(i)"
         @mouseleave="out(i)"
@@ -19,7 +19,7 @@
     </div>
     <template v-for="(idx, i) in indexList.slice(4, 8)">
       <button
-        class="small-box"
+        class="small-box animated bounceIn fast delay-0.2s"
         :draggable="draggable"
         @mouseenter="over(i + 4)"
         @mouseleave="out(i + 4)"

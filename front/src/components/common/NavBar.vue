@@ -1,17 +1,11 @@
 <template>
   <div class="nav-bar animated fadeInDown delay-0.2s" id="navbar">
-    <div class="nav-bar-mainbanner" id="navbarMB" @click="go('/')">
-      <div class="bt1">
-        GR
-      </div>
-      <div class="bt2">
-        EAT
-      </div>
-      <div class="bt3">
-        그래
-      </div>
-      <div class="bt4">
-        잇
+    <div class="nav-bar-banner-container">
+      <div class="nav-bar-mainbanner" id="navbarMB" @click="go('/')">
+        <img class="bt1" src="https://i.imgur.com/si3Uh5E.png" alt="GR" />
+        <img class="bt2" src="https://i.imgur.com/enHnxlO.png" alt="EAT" />
+        <img class="bt3" src="https://i.imgur.com/GvcutCs.png" alt="그래" />
+        <img class="bt4" src="https://i.imgur.com/GVGfFoN.png" alt="잇" />
       </div>
     </div>
     <div class="nav-bar-router">
@@ -59,7 +53,8 @@ export default {
         bt1.remove("banner-text-transition");
       } else {
         var ab2 = document.getElementById("navbar");
-        var idxB = document.getElementById("index-background").style.backgroundColor
+        var idxB = document.getElementById("index-background").style
+          .backgroundColor;
         ab2.style.background = idxB;
 
         var bt2 = document.getElementById("navbarMB").classList;
