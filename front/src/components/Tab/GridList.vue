@@ -18,7 +18,7 @@
 
 <script>
 import GridBookmark from "@/components/Tab/GridBookmark.vue";
-import MypageApi from '../../apis/MypageApi'
+import MypageApi from '@/apis/MypageApi'
 // import axios from "axios";
 export default {
   name: "GridList",

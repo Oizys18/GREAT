@@ -14,7 +14,9 @@
         <StarRating v-if="mouseOn[i]" :rating="itemName[idx].rating" />
       </button>
     </template>
-    <div class="small-category">{{ categoryName }}</div>
+    <div class="small-category">
+      {{ categoryName }}
+    </div>
     <template v-for="(idx, i) in indexList.slice(4, 8)">
       <button
         class="small-box"
@@ -34,9 +36,9 @@
 
 <script>
 import "@/assets/style/css/gridStyle.css";
-import GridItem from "./GridItem.vue";
-import StarRating from "../common/StarRating.vue";
-import GridApi from "../../apis/GridApi.js";
+import GridItem from "@/components/Grid/GridItem.vue";
+import StarRating from "@/components/common/StarRating.vue";
+import GridApi from "@/apis/GridApi.js";
 export default {
   name: "MainFoodGrid",
   components: {
@@ -71,8 +73,8 @@ export default {
       });
 
       GridApi.requestReviewInfo(this.itemName[idx].id, response => {
-        this.$store.state.reviewInfo = response
-      })
+        this.$store.state.reviewInfo = response;
+      });
     }
   },
   computed: {
@@ -87,8 +89,8 @@ export default {
       return this.$store.state[this.categoryName];
     },
     draggable() {
-      if(this.bookmark == 0) return true
-      else return false
+      if (this.bookmark == 0) return true;
+      else return false;
     }
   }
 };

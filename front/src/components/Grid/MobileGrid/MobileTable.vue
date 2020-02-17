@@ -1,17 +1,20 @@
 <template>
   <div class="M-table">
     <MobileFoodCategory />
+    <MobileFooter />
   </div>
 </template>
 
 <script>
 import MobileFoodCategory from "@/components/Grid/MobileGrid/MobileFoodCategory.vue";
+import MobileFooter from "@/components/UI/MobileFooter.vue";
 import GridApi from '@/apis/GridApi.js'
 import BookmarkApi from '@/apis/BookmarkApi.js'
 export default {
   name: "MobileTable",
   components: {
-    MobileFoodCategory
+    MobileFoodCategory,
+    MobileFooter
   },
   props: ["bookmark"],
   mounted() {

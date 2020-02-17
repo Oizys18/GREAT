@@ -11,7 +11,7 @@
 </template>
  
 <script>
-//import MypageApi from '../../apis/MypageApi'
+//import MypageApi from '@/apis/MypageApi'
 import FoodBookmark from "@/components/Tab/FoodBookmark.vue"
 export default {
   name: "FoodList",

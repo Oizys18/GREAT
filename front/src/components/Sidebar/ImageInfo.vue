@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import '../../assets/style/css/Sidebar.css'
+import '@/assets/style/css/Sidebar.css'
 export default {
   name: "ImageInfo",
   props: ["url"],
