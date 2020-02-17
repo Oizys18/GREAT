@@ -183,6 +183,14 @@ input:-webkit-autofill {
 	font-size: 40pt;
 }
 
+.join h2 {
+	padding-top: 30px;
+	padding-bottom: 20px;
+	color: #274555;
+	font-weight: 900;
+	font-size: 30pt;
+}
+
 .join .input-with-label {
 	font-size: 14px;
 	position: relative;
