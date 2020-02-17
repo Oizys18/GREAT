@@ -17,7 +17,7 @@ Kakao.init('38f6f12924a67d6a88321b717e55747c');
 //                     console.log(JSON.stringify(res["properties"]["nickname"]));
 //                     console.log("11시다")
 
-//                     axios.post("http://13.124.1.176:8080/user/socialLogin", JSON.stringify(res["id"]))
+//                     axios.post("http://13.124.1.176/user/socialLogin", JSON.stringify(res["id"]))
 //                         .then(response=>{
 //                             sessionStorage.setItem('sns_token',JSON.stringify(res["id"]));
 //                             sessionStorage.setItem('social_data',response.data.data.data);
@@ -67,7 +67,7 @@ const loginWithKakao = async () => {
         }
     });
     
-    return await axios.post("http://13.124.1.176:8080/user/socialLogin", JSON.stringify(res["id"]))
+    return await axios.post("http://13.124.1.176/user/socialLogin", JSON.stringify(res["id"]))
                 .then(response=>{
                     sessionStorage.setItem('sns_token',JSON.stringify(res["id"]));
                     sessionStorage.setItem('social_data',response.data.data.data);

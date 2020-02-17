@@ -12,6 +12,7 @@ import MobileGridItem from "@/components/Grid/MobileGrid/MobileGridItem.vue";
 import SocialJoin from "../views/SocialJoin.vue";
 import SearchMap from "@/components/common/SearchMap.vue";
 import BookmarkGrid from "@/views/BookmarkGrid.vue";
+import FindPassword from "@/views/FindPassword.vue";
 
 Vue.use(VueRouter);
 
@@ -76,6 +77,11 @@ const routes = [
     name: "BookmarkGrid",
     component: BookmarkGrid,
     props: (route) => ({ bookmarkId: route.query.bookmarkId })
+  },
+  {
+    path: "/findPassword",
+    name: "FindPassword",
+    component: FindPassword
   }
 ];
 

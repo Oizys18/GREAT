@@ -142,7 +142,7 @@ export default {
           //on success do something
           console.log("GoogleUser", GoogleUser["Ca"]);
           return axios
-            .post("http://13.124.1.176:8080/user/socialLogin", GoogleUser["Ca"])
+            .post("http://13.124.1.176/user/socialLogin", GoogleUser["Ca"])
             .then(response => {
               sessionStorage.setItem("sns_token", GoogleUser["Ca"]);
               sessionStorage.setItem("social_data", response.data.data.data);

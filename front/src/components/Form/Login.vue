@@ -34,7 +34,7 @@
     <div class="add-option">
       <div class="wrap">
         <p>비밀번호를 잊으셨나요?</p>
-        <button @click="d" class="btn--text">비밀번호 찾기</button>
+        <button @click="findPassword" class="btn--text">비밀번호 찾기</button>
       </div>
       <div class="wrap">
         <p>아직 회원이 아니신가요?</p>
@@ -77,6 +77,9 @@ export default {
     },
     joinRequest() {
       this.$router.push("Join");
+    },
+    findPassword(){
+      this.$router.push("FindPassword");
     }
   },
 
