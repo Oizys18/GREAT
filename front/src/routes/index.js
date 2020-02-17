@@ -10,7 +10,6 @@ import PageNotFound from "../views/PageNotFound.vue";
 import Join from "../views/Join.vue";
 import MobileGridItem from "@/components/Grid/MobileGrid/MobileGridItem.vue";
 import SocialJoin from "../views/SocialJoin.vue";
-
 Vue.use(VueRouter);
 
 const routes = [
@@ -37,7 +36,7 @@ const routes = [
   {
     path: "/mypage",
     name: "Mypage",
-    component: Mypage
+    component: Mypage,
   },
   {
     path: "/authentication",
@@ -59,10 +58,12 @@ const routes = [
     name: "MobileGridItem",
     component: MobileGridItem
   },
+  {
     path: "/socialJoin",
     name: "SocialJoin",
     component: SocialJoin
-  }
+  },
+  
 ];
 
 const router = new VueRouter({
