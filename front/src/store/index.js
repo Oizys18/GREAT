@@ -123,12 +123,9 @@ export default new Vuex.Store({
     reviewInfo: [],
     starRating: 0,
     bookmarkStoreList: [],
-<<<<<<< HEAD
     userGridList:null,
     userGridID:null,
-=======
     gridBookmarkStoreList: []
->>>>>>> fe-develop
   },
   mutations:{
     'reset'(state){
