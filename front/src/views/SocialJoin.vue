@@ -50,14 +50,17 @@ import UserApi from "@/apis/UserApi";
 
 export default {
   created() {
-    this.sns_token = localStorage.getItem("sns_token");
+    this.sns_token = sessionStorage.getItem("sns_token");
   },
   methods: {
     socialjoinApi() {
       let { isSubmit, nickname, birth, gender, sns_token } = this;
       UserApi.requestSocialRegister(nickname, sns_token, birth, gender, res => {
         console.log(res);
-      });
+      }).then(
+        sessionStorage.setItem('sns_token',null),
+        sessionStorage.setItem('social_data',null)
+      );
       this.joinRedirect();
     },
     afterJoin(){
