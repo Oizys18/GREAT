@@ -9,7 +9,7 @@
 
 .mypage-container h2 {
   font-family: "Lobster";
-  color: grey;
+  color: dimgrey;
   font-weight: 900;
 }
 .part-container {
@@ -43,12 +43,16 @@
 }
 .box-container {
   padding: 10px;
+  height: 450px;
   margin-top: 10px;
   border: 3px solid grey !important;
   border-radius: 25px;
   max-height: 900px;
   overflow-y: auto;
   /* overflow:hidden; */
+}
+.box-container::-webkit-scrollbar{
+  display:none;
 }
 /* info components */
 .user-details {
@@ -124,6 +128,22 @@
 .modify-button:hover {
   background-color: #f8f9f9;
   border: 1px solid #f8f9f9;
+}
+.withdraw-button{
+  position: absolute;
+  top:90%;
+  right:1%;
+  transform: translate(-5%, -50%);
+  -ms-transform: translate(-5%, -50%);
+
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 2px solid #f8f9f9;
+  background-color: #f8f9f9 ;
+}
+.withdraw-button:hover{
+  background-color: #cfd3d3 ;
+  border: 1px solid #cfd3d3 ;
 }
 .gender-box {
   align-items: center;
@@ -288,6 +308,9 @@
 }
 
  /*storeInfomodal */
+ .v-dialog{
+  width :30vw !important;
+  }
  .storeInfo-modal-container {
   width:50vw;
   overflow-y:auto;
@@ -426,6 +449,9 @@
   .slide-group {
     width: 80%;
   }
+  .name-container{
+    margin-bottom: 30px;
+  }
   .box-container {
     margin-left: 2.5%;
     margin-right: 2.5%;
@@ -462,7 +488,11 @@
   .modify-button {
     font-size: 14px;
   }
-
+  .withdraw-button{
+    font-size:12px;
+    padding: 6px 13px;
+    right:-4%
+  }
   /*grid tab bookmark*/
   .gridbookmark-container {
     width: 100%;
@@ -477,5 +507,24 @@
 
   .title-modify-input{
     width: 80%;
+  }
+
+  .tab-food-box{
+    padding:5px;
+    
+  }
+
+  .v-dialog{
+    width: 80% !important;
+  }
+  
+  .hvrbox {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    float: none;
+  }
+  .hvrbox img {
+    max-width: 80%;
+    max-height: 300px ;
   }
 }
