@@ -31,8 +31,8 @@
 </template>
 
 <script>
-import StarRating from "../common/StarRating.vue";
-import GridApi from '../../apis/GridApi'
+import StarRating from "@/components/common/StarRating.vue";
+import GridApi from '@/apis/GridApi'
 import StoreInfoModal from '@/components/Tab/StoreInfoModal.vue';
 export default {
   name: "FoodBookmark",

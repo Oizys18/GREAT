@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import MypageApi from '../../apis/MypageApi'
+import MypageApi from '@/apis/MypageApi'
 export default {
   name: "GridBookmark",
   props:["gridbookmarkIdx","gridbookmarkItem"],

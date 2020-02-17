@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div v-if="!isMobile()">
+    <div v-show="!isMobile()">
       <Sidebar />
-      <Table :bookmark="0"/>
+      <Table :bookmark="0" />
       <SortButton />
     </div>
-    <div v-else>
+    <div v-show="isMobile()">
       <MobileSortButton />
-      <MobileTable :bookmark="0"/>
+      <MobileTable :bookmark="0" />
     </div>
   </div>
 </template>
@@ -27,6 +27,9 @@ export default {
     MobileTable,
     MobileSortButton
   },
+  created: {
+    mobileChecker() {}
+  },
   methods: {
     isMobile() {
       if (
@@ -34,10 +37,10 @@ export default {
           navigator.userAgent
         )
       ) {
-        // 배포 전 false로 수정 
+        // 배포 전 false로 수정
         return true;
       } else {
-        // 배포 전 true로 수정 
+        // 배포 전 true로 수정
         return false;
       }
     }

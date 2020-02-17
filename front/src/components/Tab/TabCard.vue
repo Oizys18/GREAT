@@ -18,7 +18,7 @@
 </template>
  
 <script>
-import StarRating from '../common/StarRating.vue'
+import StarRating from '@/components/common/StarRating.vue'
 export default {
   name: "TabCard",
   props:["reviewItem"],
