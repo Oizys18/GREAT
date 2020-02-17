@@ -1,16 +1,18 @@
 <template>
   <div class="gridlist-box">
+<<<<<<< HEAD
+      <v-list class="" :key="listKey">
+=======
       <v-list class="">
+>>>>>>> fe-develop
         <v-list-item v-for="item in items" :key="item.id"
           class="gridbookmark-container">
           <!-- <GridBookmark :gridbookmarkIdx=index /> -->
           <GridBookmark :gridbookmarkItem=item />
           <!-- <v-divider v-if="isdivider(index)" class="mx-4" vertical></v-divider> -->
         </v-list-item>
-        
-        <!-- <v-list-item v-for="idx in 5 "  :key="idx"  >
-          <GridBookmark :gridbookmarkIdx=idx />
-        </v-list-item>   -->
+        <!-- {{itemL}} -->
+        <!-- {{this.items}} -->
 
       </v-list>
   </div>
@@ -28,21 +30,42 @@ export default {
   },
   data() {
     return {
-     
+      listKey: 0,
+      //items :this.$store.state.userGridList,
     };
   },
   computed:{
-    //데이터 받기
-    items: function(){
-      return this.$store.state.gridbookmarks;
-    },
+    // items: function(){
+    //   return this.$store.state.gridbookmarks;
+    // },
+    items:function(){
+      // this.items = this.$store.state.userGridList 
+      return this.$store.state.userGridList;
+    }
   
+  },
+  watch:{
+    // items(){
+    //   this.items = this.$store.state.userGridList
+    //   this.listKey += 1
+    //   console.log(this.listKey)
+    // },
+
   },
   mounted:function(){
     //사용자의 gridbookmark list 목록 요청
+<<<<<<< HEAD
+    
+    MypageApi.requestGridbookmarkList(response=>{
+      this.$store.commit('userGridList',response)
+      // this.$stroe.state.userGridBookmarkList=response
+    })
+   
+=======
     MypageApi.requestGridbookmarkList(response=>{
       this.$store.state.gridbookmarks=response
     })
+>>>>>>> fe-develop
   },
   methods:{
     isdivider(index){

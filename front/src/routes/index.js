@@ -39,7 +39,7 @@ const routes = [
   {
     path: "/mypage",
     name: "Mypage",
-    component: Mypage
+    component: Mypage,
   },
   {
     path: "/authentication",

@@ -2,21 +2,21 @@
   <!--food grid bookmark -->
   <div class="tab-food-box">
      <!-- <span v-for="item in foodgridbookmarkList" :key=item.id>
-         <FoodBookmark :FoodBookmarkItem=item />
+         <StoreBookmark :FoodBookmarkItem=item />
      </span> -->
      <span v-for="store in storeList" :key=store.id>
-         <FoodBookmark :store=store />
+         <StoreBookmark :store=store />
      </span>
    </div>
 </template>
  
 <script>
-//import MypageApi from '@/apis/MypageApi'
-import FoodBookmark from "@/components/Tab/FoodBookmark.vue"
+//import MypageApi from '../../apis/MypageApi'
+import StoreBookmark from "@/components/Tab/StoreBookmark.vue"
 export default {
   name: "FoodList",
   components:{
-      FoodBookmark,
+      StoreBookmark,
   },
   data() {
     return {

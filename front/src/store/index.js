@@ -123,7 +123,12 @@ export default new Vuex.Store({
     reviewInfo: [],
     starRating: 0,
     bookmarkStoreList: [],
+<<<<<<< HEAD
+    userGridList:null,
+    userGridID:null,
+=======
     gridBookmarkStoreList: []
+>>>>>>> fe-develop
   },
   mutations:{
     'reset'(state){
@@ -206,6 +211,9 @@ export default new Vuex.Store({
     'userStoreList'(state,payload){
       state.userStoreList=payload;
     },
+    'userGridList'(state,payload){
+      state.userGridList=payload;
+    },
     'userReviewList'(state,payload){
       state.userReviewList=payload;
     },
@@ -229,6 +237,33 @@ export default new Vuex.Store({
         state.bookmarkStoreList.splice(index, 1)
       }
     },
+<<<<<<< HEAD
+    'modifyGridName'(state,payload){
+      var gridList = state.userGridList
+      var index = gridList.find(item=>{
+        return item.id===payload.id
+      })
+
+      if(index !== undefined){
+        state.userGridList[index].name=payload.name;
+      }
+
+    },
+    'deleteGridItem'(state,payload){
+      var gridList = state.userGridList
+      var index = gridList.findIndex(item =>{
+        return item.id ==payload
+      })
+
+      if(index !== undefined){
+        state.userGridList.splice(index,1)
+      }
+    },
+    'userGridID'(state,payload){
+        state.userGridID=payload
+    }
+    
+=======
     'setGridBookmarkList'(state) {
       var categoryList = state.categories
       state.gridBookmarkStoreList = []
@@ -243,6 +278,7 @@ export default new Vuex.Store({
         }
       }
     }
+>>>>>>> fe-develop
   },
   actions: {},
   modules: {}
