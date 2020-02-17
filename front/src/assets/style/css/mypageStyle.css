@@ -29,6 +29,18 @@
   align-items: center;
   margin: 0 auto;
 }
+.store-box-container{
+  height: 450px;
+  padding: 10px;
+  margin-top: 10px;
+  border: 3px solid grey !important;
+  border-radius: 25px;
+  max-height: 900px;
+  overflow-y:auto;
+}
+.store-box-container::-webkit-scrollbar{
+  display:none;
+}
 .box-container {
   padding: 10px;
   margin-top: 10px;
@@ -219,7 +231,7 @@
 	position: relative;
 	display: block;
 	overflow: hidden;
-  border:2px solid navy;
+  /* border:1px solid gainsboro; */
   width: fit-content;
   height: 30%;
   margin: 10px;
@@ -281,9 +293,12 @@
  /*storeInfomodal */
  .storeInfo-modal-container {
   width:50vw;
-  background-color: white;
+  overflow-y:auto;
+  background-color:beige;
 }
-
+.storeInfo-modal-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
 /* Image component */
 .storeInfo-modal-image {
   position: relative;
@@ -342,39 +357,6 @@
 .storeInfo-modal-menu-more {
   text-decoration: underline;
   cursor: pointer;
-}
-
-/* Review component */
-.storeInfo-modal-review {
-  margin-top: 3vh;
-  margin-right: 1vw;
-  margin-left: 1vw;
-}
-.storeInfo-modal-review-write {
-  color: blue;
-  text-decoration: underline;
-  cursor: pointer;
-}
-.storeInfo-modal--review-textarea {
-  position: relative;
-  overflow: hidden; 
-  word-wrap: break-word; 
-  resize: none; 
-  height: 160px;
-  width: 100%;
-  padding-top: 2vh;
-  padding-left: 1vw;
-	background-repeat:repeat-y, repeat;
-	-webkit-border-radius:12px;
-	border-radius:12px;
-	-webkit-box-shadow: 0px 2px 14px #000;
-	box-shadow: 0px 2px 14px #000;
-	border-top:1px solid #FFF;
-	border-bottom:1px solid #FFF;
-}
-.storeInfo-modal-review-rating {
-  float: left;
-  display: block;
 }
 
 /* 사이드바 접기버튼 */
@@ -448,6 +430,11 @@
   .box-container {
     margin-left: 2.5%;
     margin-right: 2.5%;
+  }
+  .store-box-container{
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    
     
   }
   .mypage-radio-btn-group {

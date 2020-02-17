@@ -142,7 +142,9 @@ export default new Vuex.Store({
     userReviewList:null,
     reviewInfo: [],
     starRating: 0,
-    bookmarkStoreList: []
+    bookmarkStoreList: [],
+    userGridList:null,
+    userGridID:null,
   },
   mutations:{
     'reset'(state){
@@ -225,6 +227,9 @@ export default new Vuex.Store({
     'userStoreList'(state,payload){
       state.userStoreList=payload;
     },
+    'userGridList'(state,payload){
+      state.userGridList=payload;
+    },
     'userReviewList'(state,payload){
       state.userReviewList=payload;
     },
@@ -247,8 +252,32 @@ export default new Vuex.Store({
       if(index !== undefined){
         state.bookmarkStoreList.splice(index, 1)
       }
+    },
+    'modifyGridName'(state,payload){
+      var gridList = state.userGridList
+      var index = gridList.find(item=>{
+        return item.id===payload.id
+      })
+
+      if(index !== undefined){
+        state.userGridList[index].name=payload.name;
+      }
+
+    },
+    'deleteGridItem'(state,payload){
+      var gridList = state.userGridList
+      var index = gridList.findIndex(item =>{
+        return item.id ==payload
+      })
+
+      if(index !== undefined){
+        state.userGridList.splice(index,1)
+      }
+    },
+    'userGridID'(state,payload){
+        state.userGridID=payload
     }
->>>>>>> front/src/store/index.js
+    
   },
   actions: {},
   modules: {}

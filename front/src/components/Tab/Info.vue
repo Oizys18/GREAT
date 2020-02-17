@@ -131,8 +131,8 @@ export default {
   name: "Info",
   data() {
     return {
-      myreviews: [],
       isInfo: true,
+      tempUser:null,
     };
   },
   created: function() {},
@@ -172,6 +172,11 @@ export default {
     },
     cancle() {
       //수정하기 - 취소 버튼 클릭
+      this.tempUser= this.$store.state.userInfo;
+      console.log('수정 취소:'+this.tempUser.name)
+      
+      this.$store.commit('userInfo',this.tempUser);
+      
       this.isInfo = true;
     },
     ok() {

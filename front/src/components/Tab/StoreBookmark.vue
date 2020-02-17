@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <v-dialog v-model="isClicked"  max-width="30vw"  height="100%">
+    <v-dialog v-model="isClicked"  max-width="30vw" class="storeInfo-modal-dialog"  >
        <!-- store info-->
       <StoreInfoModal @exit_Clicked="exit_Modal"/>
     </v-dialog>
@@ -48,7 +48,6 @@ export default {
   },
   methods: {
     showStoreDetail(id) {
-      console.log("클릭한 store id:" + id);
       this.isClicked=true;
 
       GridApi.requestStoreInfo(id, response => {
