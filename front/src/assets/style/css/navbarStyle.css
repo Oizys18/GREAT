@@ -1,0 +1,117 @@
+.nav-bar {
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  /* background: linear-gradient(72deg, #c0392b, #f1c40f); */
+  padding: 0.5em;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  height: 5.5vh;
+}
+.nav-bar-banner {
+  font-style: bolder;
+  color: rgb(0, 0, 0);
+  position: relative;
+  cursor: pointer;
+  font-size: 1.5em;
+  left: 0;
+}
+.nav-bar-router {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  right: 0;
+  padding: 1vh 10px 1vh 0;
+}
+
+.nav-bar-mainbanner {
+  font-family: "Black Han Sans", sans-serif;
+  font-size: 3rem;
+}
+
+.nav-bar-mainbanner .bt1 {
+  top: 0;
+  left: 4vmax;
+}
+
+.nav-bar-mainbanner .bt3 {
+  top: 0;
+  left: calc(4vmax + 5vmax);
+  opacity: 80%;
+  font-size: 3rem;
+}
+
+.nav-bar-mainbanner .bt2 {
+  left: 6.5vmax;
+  top: 5vh;
+}
+
+.nav-bar-mainbanner .bt4 {
+  left: calc(6.5vmax + 7vmax);
+  top: 5vh;
+  opacity: 80%;
+  font-size: 3rem;
+}
+
+.nav-bar-mainbanner .bt1 {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.nav-bar-mainbanner .bt1,
+.nav-bar-mainbanner .bt2,
+.nav-bar-mainbanner .bt3,
+.nav-bar-mainbanner .bt4 {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+  transform: matrix(1, 0, 0, 1, 28, 0);
+  position: fixed;
+}
+
+.banner-text-transition {
+  font-size: 2rem;
+}
+.banner-text-transition > .bt1,
+.banner-text-transition > .bt2,
+.banner-text-transition > .bt3,
+.banner-text-transition > .bt4 {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+  transform: matrix(1, 0, 0, 1, 28, 0);
+}
+
+.banner-text-transition > .bt1 {
+  left: 0.5vmax;
+}
+.banner-text-transition > .bt2 {
+  top: 0;
+  left: 3.5vmax;
+}
+.banner-text-transition > .bt3 {
+  font-size: 2rem;
+  left: 9vmax;
+}
+.banner-text-transition > .bt4 {
+  top: 0;
+  left: 12.5vmax;
+  font-size: 2rem;
+}
+
+@media (max-width: 800px) {
+  .nav-bar-mainbanner .bt1,
+  .nav-bar-mainbanner .bt2,
+  .nav-bar-mainbanner .bt3,
+  .nav-bar-mainbanner .bt4 {
+    font-size: 1.5rem;
+  }
+  .banner-text-transition > .bt1,
+  .banner-text-transition > .bt2,
+  .banner-text-transition > .bt3,
+  .banner-text-transition > .bt4 {
+    font-size: 1.5rem;
+  }
+  .nav-bar-router {
+    display: none;
+  }
+}

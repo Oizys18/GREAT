@@ -2,7 +2,7 @@
 <div>
   <div 
     class="bar-btn" 
-    @click="go('Main')">
+    @click="go('main')">
   <span>Let's Start</span>
   <img 
       src="@/assets/img/arrow-icon.png"
