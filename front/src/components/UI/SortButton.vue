@@ -43,6 +43,7 @@ export default {
   },
   methods: {
     click(type) {
+      this.$store.state.storeInfo = null
       if(type == "bookmark"){
        var input =  prompt("북마크 이름을 설정해 주세요.");
        if(input!=null)
