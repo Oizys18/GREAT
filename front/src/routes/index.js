@@ -10,6 +10,8 @@ import PageNotFound from "../views/PageNotFound.vue";
 import Join from "../views/Join.vue";
 import MobileGridItem from "@/components/Grid/MobileGrid/MobileGridItem.vue";
 import SocialJoin from "../views/SocialJoin.vue";
+import SearchMap from "@/components/common/SearchMap.vue";
+import BookmarkGrid from "@/views/BookmarkGrid.vue";
 
 Vue.use(VueRouter);
 
@@ -37,7 +39,7 @@ const routes = [
   {
     path: "/mypage",
     name: "Mypage",
-    component: Mypage
+    component: Mypage,
   },
   {
     path: "/authentication",
@@ -59,9 +61,21 @@ const routes = [
     name: "MobileGridItem",
     component: MobileGridItem
   },
+  {
     path: "/socialJoin",
     name: "SocialJoin",
     component: SocialJoin
+  },
+  {
+    path: "/searchMap",
+    name: "SearchMap",
+    component: SearchMap
+  },
+  {
+    path: "/bookmarkGrid",
+    name: "BookmarkGrid",
+    component: BookmarkGrid,
+    props: (route) => ({ bookmarkId: route.query.bookmarkId })
   }
 ];
 

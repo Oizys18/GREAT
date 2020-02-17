@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import ReviewWrite from '../Sidebar/ReviewWrite'
+import ReviewWrite from '@/components/Sidebar/ReviewWrite'
 import StarRating from '@/components/common/StarRating'
 export default {
   name: 'ReviewInfo',

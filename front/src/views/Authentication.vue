@@ -3,12 +3,7 @@
     <div class = "login">
     <Login />
     </div>
-    <!-- <div class = "join">
-      <SocialJoin />
-    </div> -->
-    <!-- 
     <LogoutButton />
-     -->
   </div>
 </template>
 
@@ -24,9 +19,8 @@ import Login from "@/components/Form/Login.vue";
 export default {
   name: "Authentication",
   components: {
-    // LogoutButton,
-    Login,
-    // SocialJoin
+    LogoutButton,
+    Login
   }
 };
 </script>

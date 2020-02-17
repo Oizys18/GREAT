@@ -96,7 +96,7 @@ export default {
   },
   methods: {
     mouseIsMoving(e) {
-      if (screen.width >= 800) {
+      if (screen.width >= 800 && this.$router.app.$route.path === '/') {
         var hamX = document.getElementById("FlyingBurger").offsetLeft;
         var hamY = document.getElementById("FlyingBurger").offsetTop;
         var x = (hamX - e.pageX) * 0.1;

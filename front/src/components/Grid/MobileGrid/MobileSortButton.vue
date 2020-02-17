@@ -1,37 +1,38 @@
 <template>
-
-  <ul class="sort-elements">
-    <div class="sort-wrapper">
+<div class="m-sort-container">
+  <ul class="m-sort-elements">
+    <div class="m-sort-wrapper">
     <li>
       <a href="#" @click="click('rating')">
-        <span class="icon-cog"></span>
+        <span class="m-icon-cog"></span>
         <label>별점순</label>
       </a>
-    </li><br>
+    </li>
     <li>
       <a href="#" @click="click('random')">
-        <span class="icon-cw"></span>
+        <span class="m-icon-cw"></span>
         <label>랜덤순</label>
       </a>
-    </li><br>
+    </li>
     <li>
       <a href="#" @click="click('distance')">
-        <span class="icon-location"></span>
+        <span class="m-icon-location"></span>
         <label>거리순</label>
       </a>
-    </li><br>
+    </li>
     <li>
       <a href="#" @click="click('bookmark')">
-        <span class="icon-bookmark"></span>
+        <span class="m-icon-bookmark"></span>
         <label>북마크</label>
       </a>
     </li>
     </div>
   </ul>
+</div>
 </template>
 
 <script>
-import "@/assets/style/css/sortButton.css";
+import "@/assets/style/css/mobilesortbutton.css";
 import GridApi from '@/apis/GridApi.js'
 import BookmarkApi from '@/apis/BookmarkApi.js'
 export default {
@@ -43,7 +44,6 @@ export default {
   },
   methods: {
     click(type) {
-      this.$store.state.storeInfo = null
       if(type == "bookmark"){
        var input =  prompt("북마크 이름을 설정해 주세요.");
        if(input!=null)
@@ -58,7 +58,6 @@ export default {
           var categoryId = categories[i].id;
           this.apiCall(categoryId, categoryName, x, y, type);
         }
-        this.$store.commit('reset')
       }
     },
     apiCall(categoryId, categoryName, x, y, type) {
@@ -98,16 +97,14 @@ export default {
           break;
       }
     },
-    gridBookmark(input) {
+        gridBookmark(input) {
       this.$store.commit('setGridBookmarkList')
-      this.requestBookmarkPost(input)
-    },
-    requestBookmarkPost(input) {
+
       var data = {
         'name': input,
         'stores': this.$store.state.gridBookmarkStoreList,
         'type': 'G',
-        'user': sessionStorage.getItem('id')
+        'user': localStorage.getItem('id')
       }
 
       BookmarkApi.requestGridBookmarkPost(data, response => {

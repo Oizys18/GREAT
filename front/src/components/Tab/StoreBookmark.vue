@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <v-dialog v-model="isClicked"  max-width="30vw"  height="100%">
+    <v-dialog v-model="isClicked"  max-width="30vw" class="storeInfo-modal-dialog"  >
        <!-- store info-->
       <StoreInfoModal @exit_Clicked="exit_Modal"/>
     </v-dialog>
@@ -31,8 +31,8 @@
 </template>
 
 <script>
-import StarRating from "../common/StarRating.vue";
-import GridApi from '../../apis/GridApi'
+import StarRating from "@/components/common/StarRating.vue";
+import GridApi from '@/apis/GridApi'
 import StoreInfoModal from '@/components/Tab/StoreInfoModal.vue';
 export default {
   name: "FoodBookmark",
@@ -48,7 +48,6 @@ export default {
   },
   methods: {
     showStoreDetail(id) {
-      console.log("클릭한 store id:" + id);
       this.isClicked=true;
 
       GridApi.requestStoreInfo(id, response => {

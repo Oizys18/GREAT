@@ -6,28 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     viewcategory:0,
-    reviews: [
-      {name: "Kin Khao",rating :"3", contents: "Thai"},
-      {name: 'Jū-Ni',rating :"2", contents: "SushiJapanese $$$$"},
-      {name: 'Delfina',rating :"1", contents: "Pizza Casual"},
-      {name: 'San Tung', rating :"4",contents: "Chinese  $$"},
-      {name: 'Anchor Oyster Bar', rating :"3",contents: "Seafood Cioppino"},
-      {name: 'Locanda',rating :"3", contents: "Italian"},
-      {name: 'Garden Creamery',rating :"5", contents: "Ice cream"},
-    ],
-    gridbookmarks:[
-      {id:'1',name:"Jason Oner",type:'G',user:'1'},
-      {id:'2',name:"Travis Howard",type:'G',user:'1'},
-      {id:'3',name:"Ali Connors",type:'G',user:'1'},
-      {id:'4',name:"Cindy Baker",type:'G',user:'1'},
-      {id:'5',name:"ABCDEFG",type:'G',user:'1'},
-      {id:'6',name:"Oner",type:'G',user:'1'},
-      {id:'7',name:"SSAFY",type:'G',user:'1'},
-      {id:'8',name:"Vue",type:'G',user:'1'},
-      {id:'9',name:"Visual Code",type:'G',user:'1'},
-      {id:'10',name:"KaKao",type:'G',user:'1'},
-      {id:'11',name:"QWERTDF sdfsd",type:'G',user:'1'},
-    ],
+    reviews: [],
+    gridbookmarks:[],
     categories: [
       {id: 1, name: "한식"},
       {id: 2, name: "일식"},
@@ -142,7 +122,10 @@ export default new Vuex.Store({
     userReviewList:null,
     reviewInfo: [],
     starRating: 0,
-    bookmarkStoreList: []
+    bookmarkStoreList: [],
+    userGridList:null,
+    userGridID:null,
+    gridBookmarkStoreList: []
   },
   mutations:{
     'reset'(state){
@@ -225,6 +208,9 @@ export default new Vuex.Store({
     'userStoreList'(state,payload){
       state.userStoreList=payload;
     },
+    'userGridList'(state,payload){
+      state.userGridList=payload;
+    },
     'userReviewList'(state,payload){
       state.userReviewList=payload;
     },
@@ -247,8 +233,45 @@ export default new Vuex.Store({
       if(index !== undefined){
         state.bookmarkStoreList.splice(index, 1)
       }
+    },
+    'modifyGridName'(state,payload){
+      var gridList = state.userGridList
+      var index = gridList.find(item=>{
+        return item.id===payload.id
+      })
+
+      if(index !== undefined){
+        state.userGridList[index].name=payload.name;
+      }
+
+    },
+    'deleteGridItem'(state,payload){
+      var gridList = state.userGridList
+      var index = gridList.findIndex(item =>{
+        return item.id ==payload
+      })
+
+      if(index !== undefined){
+        state.userGridList.splice(index,1)
+      }
+    },
+    'userGridID'(state,payload){
+        state.userGridID=payload
+    },
+    'setGridBookmarkList'(state) {
+      var categoryList = state.categories
+      state.gridBookmarkStoreList = []
+      for(var i = 0; i < categoryList.length; i++) {
+        var categoryName = categoryList[i].name
+        var storeList = state[categoryName]
+        var indexListName = categoryName + 'index'
+        var categoryIndexList = state[indexListName]
+        
+        for(var j = 0; j < categoryIndexList.length; j++) {
+          state.gridBookmarkStoreList.push(storeList[categoryIndexList[j]].id)
+        }
+      }
     }
->>>>>>> front/src/store/index.js
   },
   actions: {},
   modules: {}

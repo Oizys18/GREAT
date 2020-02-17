@@ -5,16 +5,16 @@
     </div>
 
     <v-tabs class="tab-container" color="#FFA578">
-      <FoodTab />
+      <StoreTab />
       <GridTab />
       <InfoTab />
 
-      <!-- Food  -->
-      <v-tab-item vertical class="box-container" id="tab-food">
+      <!-- Store  -->
+      <v-tab-item vertical class="store-box-container" id="tab-store">
         <div>
           <v-card flat>
             <div class="contents">
-              <FoodList />
+              <StoreList />
             </div>
           </v-card>
         </div>
@@ -56,25 +56,25 @@
 
 <script>
 import "@/assets/style/css/mypageStyle.css";
-import FoodTab from "@/components/Tab/FoodTab.vue";
+import StoreTab from "@/components/Tab/StoreTab.vue";
 import GridTab from "@/components/Tab/GridTab.vue";
 import InfoTab from "@/components/Tab/InfoTab.vue";
 import Info from "@/components/Tab/Info.vue";
 import Reviews from "@/components/Tab/Reviews.vue";
-import FoodList from "@/components/Tab/FoodList.vue";
+import StoreList from "@/components/Tab/StoreList.vue";
 import GridList from "@/components/Tab/GridList.vue";
 import MypageApi from "@/apis/MypageApi.js";
 
 export default {
   name: "Mypage",
   components: {
-    FoodTab,
+    StoreTab,
     GridTab,
     InfoTab,
     Info,
     Reviews,
     GridList,
-    FoodList
+    StoreList
   },
   data() {
     return {
@@ -92,7 +92,7 @@ export default {
   },
   mounted: function() {
     //로그인한 사용자 회원 정보 요청
-    if (localStorage.getItem("token").length <= 10) {
+    if (sessionStorage.getItem("token").length <= 10) {
       //로그인하지 않은 경우
       console.log("로그인 안함");
 
@@ -107,14 +107,16 @@ export default {
         this.$store.commit('userInfo',response);
       })
       MypageApi.requestStorebookmarkList(response=>{
-        console.log('storelist 요청 성공쓰')
         this.$store.commit('userStoreList',response);
       })
+      MypageApi.requestGridbookmarkList(response=>{
+        console.log('요청받은 gridlsits')
+        this.$store.commit('userGridList',response);
+      })
       MypageApi.requestMyReviews(response=>{
-      console.log('요청받은 myreviews')
-      console.log(response)
       this.$store.commit('userReviewList',response);
       })
+    
     }
   },
   methods: {

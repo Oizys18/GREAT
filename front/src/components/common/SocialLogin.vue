@@ -28,7 +28,7 @@
       </button>
     </div>
     <div class="google-login">
-      <button @click="handleClickGetAuth">
+      <button @click="googleLogin">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -112,38 +112,32 @@ export default {
   name: "SocialLogin",
   methods: {
     redirectSocialJoin() {
-      // console.log(localStorage.getItem('sns_token'));
-      var social_data = localStorage.getItem("social_data");
-      // console.log(social_data);
-      if (social_data == "not success") {
-        this.$router.push("SocialJoin");
-      } else {
-        this.$router.push("/").catch(err => {});
-      }
+      this.$router.push('Loading');
     },
     getKakaoData() {
-      return new Promise(function(resolve, reject) {
-        KakaoAuth.loginWithKakao(res => {
-          console.log("kakao");
-          resolve(res);
-        });
-      });
+      KakaoAuth.loginWithKakao();
     },
     async kakaoLogin() {
       await this.getKakaoData();
-      await this.redirectSocialJoin();
+      this.redirectSocialJoin();
+    },
+    async googleLogin() {
+      await this.handleClickGetAuth();
+      this.redirectSocialJoin();
     },
     handleClickGetAuth() {
       this.$gAuth
         .signIn()
         .then(GoogleUser => {
           //on success do something
-          console.log("GoogleUser", GoogleUser["El"]);
+          console.log("GoogleUser", GoogleUser["Ca"]);
           axios
-            .post("http://13.124.1.176:8080/user/socialLogin", GoogleUser["El"])
+            .post("http://13.124.1.176:8080/user/socialLogin", GoogleUser["Ca"])
             .then(response => {
-              localStorage.setItem("sns_token", GoogleUser["El"]);
+              localStorage.setItem("sns_token", GoogleUser["Ca"]);
               localStorage.setItem("social_data", response.data.data);
+              console.log(localStorage.getItem("sns_token"));
+              console.log(localStorage.getItem("social_data"));
               console.log(response.data);
             });
         })
@@ -151,7 +145,6 @@ export default {
           //on fail do something
           console.log(error);
         });
-      this.redirectSocialJoin();
     }
   }
 };

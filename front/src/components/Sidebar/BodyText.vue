@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import Chip from '../common/Chip'
+import Chip from '@/components/common/Chip'
 export default {
   name: 'BodyText',
   props: ["textInfo"],
