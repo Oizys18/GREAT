@@ -1,10 +1,6 @@
 <template>
   <div class="gridlist-box">
-<<<<<<< HEAD
-      <v-list class="" :key="listKey">
-=======
       <v-list class="">
->>>>>>> fe-develop
         <v-list-item v-for="item in items" :key="item.id"
           class="gridbookmark-container">
           <!-- <GridBookmark :gridbookmarkIdx=index /> -->
@@ -54,18 +50,12 @@ export default {
   },
   mounted:function(){
     //사용자의 gridbookmark list 목록 요청
-<<<<<<< HEAD
     
     MypageApi.requestGridbookmarkList(response=>{
       this.$store.commit('userGridList',response)
       // this.$stroe.state.userGridBookmarkList=response
     })
    
-=======
-    MypageApi.requestGridbookmarkList(response=>{
-      this.$store.state.gridbookmarks=response
-    })
->>>>>>> fe-develop
   },
   methods:{
     isdivider(index){
