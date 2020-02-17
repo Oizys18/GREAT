@@ -36,7 +36,7 @@ public class StoreController {
 	}
 
 	@GetMapping("/store/rating/{category}/{x}/{y}")
-	@ApiOperation("식당 category에 해당하는 식당 목록 검색")
+	@ApiOperation("식당 category에 해당하는 식당 목록  별점순으로 검색")
 	public ResponseEntity<Map<String, Object>> searchByRating(@PathVariable int category, @PathVariable double x,
 			@PathVariable double y) {
 		return RestUtil.handleSuccess(service.searchByRating(category,x,y));

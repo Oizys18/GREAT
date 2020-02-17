@@ -30,7 +30,6 @@ import axios from "axios";
 import "@/assets/style/css/animated.css";
 export default {
   name: "MapApp",
-  props: ["address-x", "address-y"],
   data() {
     return {
       address: "",
@@ -51,8 +50,6 @@ export default {
         })
         .then(res => {
           this.addressList = res.data.documents;
-          console.log(res.data.documents[0].x);
-          console.log(res.data.documents[0].y);
           var mapContainer = document.getElementById("map"), // 지도를 표시할 div
             mapOption = {
               center: new kakao.maps.LatLng(
@@ -100,9 +97,9 @@ export default {
                   "근처의 맛집으로 검색할까요? ";
                 var check = confirm(message);
                 if (check) {
-                  console.log(componentInstance);
                   componentInstance.$store.state.locationX = latlng.getLng();
                   componentInstance.$store.state.locationY = latlng.getLat();
+                  componentInstance.$router.push('/main')
                 }
               });
           });
@@ -114,7 +111,9 @@ export default {
 </script>
 <style>
 .mapapp-container {
-  position: relative;
+  position: fixed;
+  top: 10vh;
+  left:35vw;
 }
 .kakao-map {
   position: relative;

@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import MypageApi from '../../apis/MypageApi'
+import MypageApi from '@/apis/MypageApi'
 export default {
   name: "GridBookmark",
   props:["gridbookmarkIdx","gridbookmarkItem"],
@@ -61,11 +61,6 @@ export default {
     }
   },
   computed:{
-    // title : function(){
-    //     return this.$store.state.gridbookmarks[this.gridbookmarkIdx].title
-    //     // return gridbookmarkItem.title
-    // },
-    
 
   },
   watch:{
@@ -88,44 +83,29 @@ export default {
       // this.$store.state.gridbookmarks[this.gridbookmarkIdx].name = this.editTitle
       this.gridbookmark = this.gridbookmarkItem;
       this.gridbookmark.name=this.editTitle;
-      console.log('그리드북마크 id:'+this.gridbookmark.id);
-      console.log('그리드북마크 name:'+this.gridbookmark.name);
-      console.log('그리드북마크 type:'+this.gridbookmark.type);
-      console.log('그리드북마크 user:'+this.gridbookmark.user);
+      
 
-       MypageApi.modifyUserInfo(this.gridbookmark,response=>{
-        console.log(response)
-        //this.$store.state.userInfo=response
+       MypageApi.modifyGridbookmark(this.gridbookmarkItem,response=>{
+        console.log('그리드 북마크 이름 수정 버튼 클릭:'+response)
+        this.$store.commit('modifyGridName',this.gridbookmark);
       })
-      //  axios
-      //   .put("http://13.124.1.176:8080/bookmark",{
-      //     params: {
-      //       bookmark: this.gridbookmark
-      //     },
-      //   })
-      //   .then(res=>{
-      //     //gridbookmark목록 수정 완료
-      //     console.log("2.그리드 북마크 수정 완료"+res.data)
-      //     this.editFlag=false;
-      //   }); 
       
       this.editFlag=false;
     },
     delteGridbookmark(){
-      console.log("1.그리드 북마크 삭제 클릭")
-      MypageApi.deleteGridbookmark(this.gridbookmark.id,response=>{
-       console.log(response)
+      MypageApi.deleteGridbookmark(this.gridbookmarkItem.id,response=>{
+       console.log('그리드 북마크 삭제함'+response)
+       this.$store.commit('deleteGridItem',this.gridbookmark.id)
       })
-      // axios
-      //   .delete("http://13.124.1.176:8080/bookmark/{{user.id}}",{
-      //   })
-      //   .then(res=>{
-      //     //gridbookmark목록 삭제
-      //     console.log("2.그리드 북마크 삭제 완료"+res.data)
-      //   });    
     },
     gridDetail(id){ //클릭한 grid bookmark 화면 모달화면으로 넘겨준다.
+      this.$router.push('/bookmarkGrid?bookmarkId=' + id)
       console.log('클릭한 grid bookmark list id:'+id)
+      // this.$store.commit('userGridID',this.gridbookmarkItem.id)
+      // this.$router.push({
+      //   path:"/myGridBookmark"
+      //   });
+      //페이지 넘겨주기
     }
   }
 };

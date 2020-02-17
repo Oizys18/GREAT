@@ -12,7 +12,7 @@ public interface BookmarkDao {
 	List<Bookmark> selectByUser(Map<String, Object> data);
 
 	/** 북마크 id에 해당하는 북마크의 식당 id 리스트 검색 */
-	List<Integer> selectById(int id);
+	List<Store> selectById(int id);
 
 	/**  userId에 해당하는 bookmark 식당 목록 검색 */
 	List<Store> selectByUserId (int userId);

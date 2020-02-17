@@ -1,6 +1,6 @@
 <template>
-     <v-tab href="#tab-food" class="tab-category ">
-       food
+     <v-tab href="#tab-store" class="tab-category ">
+       Store
      </v-tab>
 </template>
 

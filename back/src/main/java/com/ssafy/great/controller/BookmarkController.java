@@ -36,6 +36,7 @@ public class BookmarkController {
 	@GetMapping("/bookmark/{id}")
 	@ApiOperation("북마크 id에 해당하는 식당 목록 검색")
 	public ResponseEntity<Map<String,Object>> searchStoresById(@PathVariable int id){
+		System.out.println(service.searchStoresById(id));
 		return RestUtil.handleSuccess(service.searchStoresById(id));
 	}
 	
@@ -56,7 +57,6 @@ public class BookmarkController {
 	@DeleteMapping("/bookmark/{id}")
 	@ApiOperation("북마크 id에 해당하는 북마크 삭제")
 	public ResponseEntity<Map<String,Object>> deleteBookmark(@PathVariable int id){
-		service.deleteBookmark(id);
 		return RestUtil.handleSuccess("success");
 	}
 	@GetMapping("/bookmark/storelist/{userId}")

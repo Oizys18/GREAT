@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import BodyText from '../Sidebar/BodyText'
-import MenuText from '../Sidebar/MenuText'
+import BodyText from '@/components/Sidebar/BodyText'
+import MenuText from '@/components/Sidebar/MenuText'
 export default {
   name: 'TextInfo',
   props: ['textInfo'],

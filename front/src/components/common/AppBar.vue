@@ -33,9 +33,9 @@ export default {
   width: 100%;
   background: linear-gradient(72deg, #c0392b, #f1c40f);
   padding: 0.5em;
-  font-size: 1.2em;
+  font-size: 1em;
   display: flex;
-  height:8vh;
+  height:6vh;
   align-items: center;
 }
 .app-bar-banner {
