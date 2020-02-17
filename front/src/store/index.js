@@ -236,21 +236,18 @@ export default new Vuex.Store({
     },
     'modifyGridName'(state,payload){
       var gridList = state.userGridList
-      var index = gridList.find(item=>{
-        return item.id===payload.id
+      var index = gridList.findIndex(item=>{
+        return item.id === payload.id
       })
-
       if(index !== undefined){
         state.userGridList[index].name=payload.name;
       }
-
     },
     'deleteGridItem'(state,payload){
       var gridList = state.userGridList
-      var index = gridList.findIndex(item =>{
-        return item.id ==payload
+      var index = gridList.findIndex(item=>{
+        return item.id === payload
       })
-
       if(index !== undefined){
         state.userGridList.splice(index,1)
       }

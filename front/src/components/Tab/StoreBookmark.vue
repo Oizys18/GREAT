@@ -9,11 +9,16 @@
    </div> -->
   <div class="hvrbox" @click="showStoreDetail(store.id)"
   >
-    <img
+    
+    <img v-if="store.image != '' && store.image != undefined && store.image != null"
       :src="store.image" 
       alt="image"
       class="hvrbox-layer_bottom"
     />
+    <img v-else class="hvrbox-layer_bottom"
+      :src="'https://i.imgur.com/vpGJQAk.jpg'"
+    >
+
     <div class="hvrbox-layer_top">
       <div class="hvrbox-text">
         {{store.name}}<br/><br/>

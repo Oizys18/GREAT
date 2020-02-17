@@ -11,7 +11,7 @@
         </div>
 
         <div class="review-card-rating">
-          <StarRating :rating="3" /> 
+          <StarRating :rating="reviewItem.rating" /> 
         </div>
 
     </div>
