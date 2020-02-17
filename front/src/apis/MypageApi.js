@@ -1,5 +1,4 @@
 import axios from 'axios'
-// var storage = localStorage
 var storage = sessionStorage
 /*현재 로그인한 사용자의 회원정보 요청*/ 
 
@@ -62,10 +61,9 @@ var requestGridbookmarkList=function(callback){
       .then(res=>{
         //gridbookmark목록 저장
         callback(res.data.data);
-        console.log("axios_grid_list_myreview 리스트")
-        console.log(res.data.data)
       })
 }
+
 /*gridbookmark 항목 수정*/
 var modifyGridbookmark=function(data){
      axios

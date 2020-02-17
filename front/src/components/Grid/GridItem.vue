@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import '../../assets/style/css/gridStyle.css'
+import '@/assets/style/css/gridStyle.css'
 export default {
   name: "GridItem",
   props: ["name"],

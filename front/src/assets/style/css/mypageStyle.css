@@ -393,6 +393,9 @@
   display: flex;
   width: 100%;
 }
+.girdbookmark-elem-title {
+  cursor: pointer;
+}
 .girdbookmark-elem-title .edit-bookmarkgrid-title input{
   border: 1px solid red;
 }

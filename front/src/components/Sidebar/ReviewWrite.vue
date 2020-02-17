@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import '../../assets/style/css/Sidebar.css'
-import StarRatingInput from '../common/StarRatingInput'
-import GridApi from '../../apis/GridApi.js'
+import '@/assets/style/css/Sidebar.css'
+import StarRatingInput from '@/components/common/StarRatingInput'
+import GridApi from '@/apis/GridApi.js'
 export default {
   name: 'ReviewWrite',
   props: ['storeId'],
@@ -43,7 +43,7 @@ export default {
         'date': new Date(),
         'rating': rating,
         'store': this.storeId,
-        'writer': localStorage.getItem('id')
+        'writer': sessionStorage.getItem('id')
       }
 
       this.requestPost(data)
