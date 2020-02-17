@@ -1,7 +1,7 @@
 <template>
   <div class="gridlist-box">
-      <v-list class="">
-        <v-list-item v-for="item in items" :key="item.id"
+      <v-list  v-on:refreshGrid="refreshGridList">
+        <v-list-item v-for="item in items" :key="item"
           class="gridbookmark-container">
           <!-- <GridBookmark :gridbookmarkIdx=index /> -->
           <GridBookmark :gridbookmarkItem=item />
@@ -29,6 +29,9 @@ export default {
       listKey: 0,
       //items :this.$store.state.userGridList,
     };
+  },
+  created:{
+    
   },
   computed:{
     // items: function(){
@@ -62,6 +65,7 @@ export default {
       if(index%2!=0) return false;
       else return true;
     },
+  
  
   },
 };

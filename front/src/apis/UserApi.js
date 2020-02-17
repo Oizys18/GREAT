@@ -3,7 +3,7 @@ import axios from 'axios'
 var session = sessionStorage;
 
 const emailCheck = (email) => {
-	var emailRes = axios.get('http://13.124.1.176:8080/user/email/' + email)
+	var emailRes = axios.get('http://13.124.1.176/user/email/' + email)
 		.then(
 			res => {
 				console.log(res);
@@ -14,7 +14,7 @@ const emailCheck = (email) => {
 
 
 const emailAuth = (email) => {
-	return axios.get('http://13.124.1.176:8080/sendemail/' + email)
+	return axios.get('http://13.124.1.176/sendemail/' + email)
 		.then(
 			res => {
 				session.setItem('emailAuth',res.data.data)
@@ -24,7 +24,7 @@ const emailAuth = (email) => {
 
 const requestToken = () => {
 	var token = session.getItem('token');
-	return axios.get('http://70.12.246.123:8080/user', {
+	return axios.get('http://70.12.246.123/user', {
 			headers: {
 				'Authorization': token
 			}
@@ -38,7 +38,7 @@ const requestToken = () => {
 
 const requestLogin = (loginID, loginPW, callback, errorCallback) => { // eslint-disable-line no-unused-vars
 	session.setItem('email',loginID);
-	return axios.post('http://13.124.1.176:8080/user/login', {
+	return axios.post('http://13.124.1.176/user/login', {
 			email: loginID,
 			password: loginPW
 		})
@@ -58,7 +58,7 @@ const requestLogout = () => {
 };
 
 const requestSocialRegister = (username, sns_token, birth, gender) => {
-	return axios.post('http://13.124.1.176:8080/user/join', {
+	return axios.post('http://13.124.1.176/user/join', {
 			email: null,
 			password: null,
 			sns_token: sns_token,
@@ -75,7 +75,7 @@ const requestSocialRegister = (username, sns_token, birth, gender) => {
 		)
 };
 const requestRegister = (email, username, password, birth, gender) => {
-	return axios.post('http://13.124.1.176:8080/user/join', {
+	return axios.post('http://13.124.1.176/user/join', {
 			email: email,
 			password: password,
 			sns_token: null,

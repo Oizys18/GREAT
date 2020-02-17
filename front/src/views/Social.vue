@@ -35,7 +35,7 @@ export default {
         .then(GoogleUser => {
             //on success do something
           console.log("GoogleUser", GoogleUser["Ca"]);
-            axios.post("http://localhost:8080/user/socialLogin",GoogleUser["Ca"])
+            axios.post("http://localhost/user/socialLogin",GoogleUser["Ca"])
                 .then(response=>{
                     console.log(response.data);
                 })

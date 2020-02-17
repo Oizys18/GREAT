@@ -155,7 +155,7 @@ export default {
     },
     emailCheck() {
       let { email } = this;
-      axios.get("http://13.124.1.176:8080/user/email/" + email).then(res => {
+      axios.get("http://13.124.1.176/user/email/" + email).then(res => {
         console.log(res);
         if (res.data.data.length < 3) {
           this.emailCheckReturn = true;
