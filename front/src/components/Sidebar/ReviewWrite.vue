@@ -43,7 +43,7 @@ export default {
         'date': new Date(),
         'rating': rating,
         'store': this.storeId,
-        'writer': localStorage.getItem('id')
+        'writer': sessionStorage.getItem('id')
       }
 
       this.requestPost(data)

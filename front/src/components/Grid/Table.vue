@@ -65,6 +65,7 @@ export default {
         var startIndex = i * 8
 
         this.$store.commit(categoryName, list.slice(startIndex, startIndex + 8))
+        this.$store.commit('reset')
       }
     }
   },
