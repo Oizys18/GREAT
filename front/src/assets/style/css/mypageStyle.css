@@ -47,10 +47,8 @@
   border: 3px solid grey !important;
   border-radius: 25px;
   max-height: 900px;
-  /* border :1px solid #F5331E; */
-  overflow:hidden;
-  
-  /* overflow:scroll; */
+  overflow-y: auto;
+  /* overflow:hidden; */
 }
 /* info components */
 .user-details {
@@ -60,7 +58,6 @@
   text-align: center;
   overflow: hidden;
   
-  /* border:1px solid palevioletred; */
   /* display: flex; */
 }
 .edit-btn {
@@ -380,12 +377,11 @@
 /* grid list*/
 .gridlist-box {
   /* border: 1px solid red; */
-  float: left;
+  /* float: left; */
   width: 100%;
 }
 /*gridboomark components*/
 .gridbookmark-container {
-  /* border: 1px solid navy; */
   width: 50%;
   float: left;
 }
