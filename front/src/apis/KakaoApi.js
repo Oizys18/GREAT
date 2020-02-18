@@ -34,6 +34,7 @@ const loginWithKakao = async () => {
                 .then(response=>{
                     sessionStorage.setItem('sns_token',JSON.stringify(res["id"]));
                     sessionStorage.setItem('social_data',response.data.data.data);
+                    sessionStorage.setItem("token",response.data.data.Authorization);
                     console.log("kakaoapi social data", response.data);
                     console.log("d", response.data.data.data);
                     return response.data.data.Authorization;

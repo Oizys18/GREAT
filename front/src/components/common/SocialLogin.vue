@@ -120,7 +120,8 @@ export default {
       if (social_data != "success") {
         this.$router.push("SocialJoin");
       } else {
-        this.$router.push("Main");
+        console.log('social login token ',sessionStorage.getItem('token'))
+        this.$router.push('Main');
       }
     },
     kakaoLogin() {
@@ -133,6 +134,7 @@ export default {
       this.handleClickGetAuth().then(res => {
         console.log("api 호출 후 ",res);
         this.redirectSocialJoin();
+        this.$router.go(0);
       });
     },
     async handleClickGetAuth() {
@@ -146,6 +148,7 @@ export default {
             .then(response => {
               sessionStorage.setItem("sns_token", GoogleUser["Ca"]);
               sessionStorage.setItem("social_data", response.data.data.data);
+              sessionStorage.setItem("token",response.data.data.Authorization);
               console.log(sessionStorage.getItem("sns_token"));
               console.log(sessionStorage.getItem("social_data"));
               console.log(response.data);
