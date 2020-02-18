@@ -1,5 +1,6 @@
 <template>
   <div class="m-small-grid">
+    
     <template v-for="(idx, i) in indexList.slice(0, 4)">
       <button
         class="m-small-box"
@@ -29,6 +30,10 @@
         <StarRating v-if="mouseOn[i + 4]" :rating="itemName[idx].rating" />
       </button>
     </template>
+    <v-dialog v-model="isClicked"  max-width="30vw" class="storeInfo-modal-dialog"  >
+       <!-- store info-->
+      <StoreInfoModal @exit_Clicked="exit_Modal"/>
+    </v-dialog>
   </div>
 </template>
 
@@ -37,15 +42,18 @@ import "@/assets/style/css/gridStyle.css";
 import GridItem from "@/components/Grid/GridItem.vue";
 import StarRating from "@/components/common/StarRating.vue";
 import GridApi from "@/apis/GridApi.js";
+import StoreInfoModal from '@/components/Tab/StoreInfoModal.vue';
 export default {
   name: "MainFoodGrid",
   components: {
     GridItem,
-    StarRating
+    StarRating,
+    StoreInfoModal
   },
   data() {
     return {
-      mouseOn: [false, false, false, false, false, false, false, false]
+      mouseOn: [false, false, false, false, false, false, false, false],
+      isClicked: false
     };
   },
   props: ["num", "bookmark"],
@@ -62,6 +70,7 @@ export default {
       this.mouseOn.splice(i, 1, false);
     },
     storeInfo(idx) {
+      this.isClicked = true;
       GridApi.requestStoreInfo(this.itemName[idx].id, response => {
         this.$store.state.storeInfo = response;
         // open sidebar
