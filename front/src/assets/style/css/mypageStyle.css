@@ -13,7 +13,7 @@
   font-weight: 900;
 }
 .part-container {
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 20px;
   text-align: center;
   align-content: center;
@@ -30,8 +30,8 @@
   margin: 0 auto;
 }
 .store-box-container{
-  height: 450px;
-  padding: 10px;
+  height: 550px;
+  padding: 20px;
   margin-top: 10px;
   border: 3px solid grey !important;
   border-radius: 25px;
@@ -43,7 +43,7 @@
 }
 .box-container {
   padding: 10px;
-  height: 450px;
+  height: 550px;
   margin-top: 10px;
   border: 3px solid grey !important;
   border-radius: 25px;
@@ -53,6 +53,10 @@
 }
 .box-container::-webkit-scrollbar{
   display:none;
+}
+.info-box{
+  padding : 10px;
+  margin : 10px;
 }
 /* info components */
 .user-details {
@@ -191,7 +195,10 @@
 }
 
 /* reviews components*/
-
+.reviews-box{
+  margin: 10px;
+  padding: 10px;
+}
 .review-icon{
   
   width: 2.5%;
@@ -222,10 +229,6 @@
 
 
 /* food,grid,info components */
-.tab-food-box{
-  padding:20px;
-  
-}
 /*food bookmark*/
 .foodbookmark-item{
   width: fit-content;
@@ -249,18 +252,26 @@
 	display: block;
 	overflow: hidden;
   /* border:1px solid gainsboro; */
-  width: fit-content;
-  height: 30%;
-  margin: 10px;
+  width:  300px;
+  height: 300px;
+
+  /*상 우 하 좌*/
+  margin: 5px 5px 5px 15px;
+  /* margin: 5px; */
   float: left;
 }
 .hvrbox img {
+  
   width:  0 auto;
   height: 0 auto;
   max-height: 300px ;
 }
 .hvrbox .hvrbox-layer_bottom {
-	display: block;
+  display:block;
+  object-fit: cover;
+  margin: auto; 
+  width:300px;
+  height:300px;
 }
 .hvrbox .hvrbox-layer_top {
 	opacity: 0;
@@ -285,7 +296,7 @@
 }
 .hvrbox .hvrbox-text {
 	text-align: center;
-	font-size: 18px;
+	font-size: 19px;
 	display: inline-block;
 	position: absolute;
 	top: 50%;
@@ -314,7 +325,7 @@
  .storeInfo-modal-container {
   width:50vw;
   overflow-y:auto;
-  background-color:beige;
+  background-color:rgb(243,243,213);
 }
 .storeInfo-modal-container::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera*/
@@ -514,17 +525,36 @@
     
   }
 
+  .storeInfo-modal-container .sidebar-text-name{
+    font-size: 1.7em;
+  }
+  .storeInfo-modal-container .sidebar-text-rating {
+    margin-right: 3vw;
+    margin-left: 1vw;
+  }
+
+  .storeInfo-modal-container .sidebar-bookmark{
+    margin-right: 1vw;
+    width: 35px;
+    height: 35px;
+  }
+
+  .storeInfo-modal-container .sidebar-text-body {
+    padding:10px;
+  }
   .v-dialog{
     width: 80% !important;
   }
   
   .hvrbox {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    float: none;
+    margin-top: 3px;
+    margin-bottom: 3px;
+
+    width: 135px;
+    height:135px;
   }
-  .hvrbox img {
-    max-width: 80%;
-    max-height: 300px ;
+  .hvrbox .hvrbox-layer_bottom{
+    width:135px;
+    height:135px
   }
 }
