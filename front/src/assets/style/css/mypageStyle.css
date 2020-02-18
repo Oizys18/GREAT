@@ -254,7 +254,7 @@
   /* border:1px solid gainsboro; */
   width:  300px;
   height: 300px;
-
+  cursor: pointer;
   /*상 우 하 좌*/
   margin: 5px 5px 5px 15px;
   /* margin: 5px; */
@@ -300,7 +300,7 @@
 	display: inline-block;
 	position: absolute;
 	top: 50%;
-	left: 50%;
+  left: 50%;
 	-moz-transform: translate(-50%, -50%);
 	-webkit-transform: translate(-50%, -50%);
 	-ms-transform: translate(-50%, -50%);

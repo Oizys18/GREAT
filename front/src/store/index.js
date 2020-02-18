@@ -125,7 +125,17 @@ export default new Vuex.Store({
     bookmarkStoreList: [],
     userGridList:null,
     userGridID:null,
-    gridBookmarkStoreList: []
+    gridBookmarkStoreList: [],
+    categoryImageUrl: [
+      "https://i.imgur.com/XIZOsMo.png",
+      "https://i.imgur.com/iBTK8eT.png",
+      "https://i.imgur.com/w1JOWBH.png",
+      "https://i.imgur.com/gmDYKFw.png",
+      "https://i.imgur.com/ZBrgtCR.png",
+      "https://i.imgur.com/AVUnO3w.png",
+      "https://i.imgur.com/IF2chC8.png",
+      "https://i.imgur.com/6V4QzGn.png"
+    ]
   },
   mutations:{
     'reset'(state){
@@ -147,27 +157,51 @@ export default new Vuex.Store({
       state.기타maxIndex=7
     },
     '한식'(state, payload) {
+      for(var i = payload.length; i < 8; i++){
+        payload.push({"name": ""})
+      }
       state.한식 = payload
     },
     '일식'(state, payload) {
+      for(var i = payload.length; i < 8; i++){
+        payload.push({"name": ""})
+      }
       state.일식 = payload
     },
     '중식'(state, payload) {
+      for(var i = payload.length; i < 8; i++){
+        payload.push({"name": ""})
+      }
       state.중식 = payload
     },
     '아시아'(state, payload) {
+      for(var i = payload.length; i < 8; i++){
+        payload.push({"name": ""})
+      }
       state.아시아 = payload
     },
     '뷔페'(state, payload) {
+      for(var i = payload.length; i < 8; i++){
+        payload.push({"name": ""})
+      }
       state.뷔페 = payload
     },
     '분식'(state, payload) {
+      for(var i = payload.length; i < 8; i++){
+        payload.push({"name": ""})
+      }
       state.분식 = payload
     },
     '카페'(state, payload) {
+      for(var i = payload.length; i < 8; i++){
+        payload.push({"name": ""})
+      }
       state.카페 = payload
     },
     '기타'(state, payload) {
+      for(var i = payload.length; i < 8; i++){
+        payload.push({"name": ""})
+      }
       state.기타 = payload
     },
     '한식List'(state, payload) {
