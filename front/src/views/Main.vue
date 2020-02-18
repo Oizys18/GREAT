@@ -1,11 +1,11 @@
 <template>
   <div class="main">
-    <div v-show="!isMobile()">
+    <div v-if=isWeb>
       <Sidebar />
       <Table :bookmark="0" />
       <SortButton />
     </div>
-    <div v-show="isMobile()">
+    <div v-else>
       <MobileSortButton />
       <MobileTable :bookmark="0" />
     </div>
@@ -27,18 +27,12 @@ export default {
     MobileTable,
     MobileSortButton
   },
-  methods: {
-    isMobile() {
-      if (
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        )
-      ) {
-        // 배포 전 false로 수정
-        return true;
-      } else {
-        // 배포 전 true로 수정
-        return false;
+  computed:{
+    isWeb(){
+      if (window.screen.width > 800){
+        return true
+      } else{
+        return false
       }
     }
   }

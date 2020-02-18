@@ -2,7 +2,7 @@
   <div class="nav-bar animated fadeInDown delay-0.2s" id="navbar">
     <div class="nav-bar-banner-container" id="nbbc">
       <button class="nav-bar-mainbanner" @click="go('/')">
-        <div v-if={routepath}>
+        <div v-if="routepath">
           <img
             id="bt1"
             class="bt1"
@@ -29,7 +29,16 @@
           />
         </div>
         <div v-else>
-          hello
+          <img
+            class="static-banner"
+            src="https://i.imgur.com/IKrLE43.png"
+            alt="great"
+          />
+          <img
+            class="static-banner2"
+            src="https://i.imgur.com/UnePG9T.png"
+            alt="great2"
+          />
         </div>
       </button>
     </div>
@@ -82,9 +91,11 @@ export default {
           "," +
           b1.offsetHeight +
           "px)";
+
         // b3
         b3.style.webkitTransform =
           "translate(" + (5 + b1.offsetWidth) + "px" + "," + 0 + "px)";
+
         // b4
         b4.style.webkitTransform =
           "translate(" +
@@ -103,7 +114,6 @@ export default {
         // b2
         b2.style.webkitTransform =
           "translate(" + b1.offsetWidth + "px" + "," + 0 + "px)";
-        b2.style.color = "red";
         // b3
         b3.style.webkitTransform =
           "translate(" +
@@ -126,19 +136,22 @@ export default {
   },
   mounted() {
     this.change();
-    this.scrollPosition += 1;
   },
   computed: {
-    routepath(){
-      console.log(this.$route)
-      if (this.$route.name === "index"){
+    routepath() {
+      console.log(this.$route);
+      if (this.$route.name === "index") {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    loggedIn() {
+      if (sessionStorage.getItem("token")){
         return true
       } else{
         return false
       }
-    },
-    loggedIn() {
-      return sessionStorage.getItem("token");
     }
   },
   watch: {
