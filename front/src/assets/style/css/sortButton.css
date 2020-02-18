@@ -67,7 +67,7 @@
 }
 .sort-wrapper{
     float: left;
-  background: #ddd;
+  background: transparent;
   border-radius: 30px 30px 30px 30px;
   width: auto;
   height: auto;
