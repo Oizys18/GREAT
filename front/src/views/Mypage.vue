@@ -93,7 +93,6 @@ export default {
     //로그인한 사용자 회원 정보 요청
     
     if (sessionStorage.getItem("token")==null||
-      sessionStorage.getItem("id")==null ||
       sessionStorage.getItem("token").length <= 10 ) {
       //로그인하지 않은 경우
       alert("로그인을 먼저 해주세요.");
