@@ -107,8 +107,7 @@ export default {
           alert('지역명을 입력해주세요.')
         })
     }
-  },
-  mounted: {}
+  }
 };
 </script>
 <style>

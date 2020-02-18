@@ -72,27 +72,18 @@ export default {
         case "rating":
           this.sort="rating"
           GridApi.requestGridStoresByRating(data, response => {
-            for (var i = response.length; i < 8; i++) {
-              response.push({ name: "" });
-            }
             this.$store.commit(categoryName, response);
           });
           break;
         case "random":
           this.sort="random";
           GridApi.requestGridStoresByRandom(data, response => {
-            for (var i = response.length; i < 8; i++) {
-              response.push({ name: "" });
-            }
             this.$store.commit(categoryName, response);
           });
           break;
         case "distance":
           this.sort="distance"
           GridApi.requestGridStoresByDistance(data, response => {
-            for (var i = response.length; i < 8; i++) {
-              response.push({ name: "" });
-            }
             this.$store.commit(categoryName, response);
           });
           break;

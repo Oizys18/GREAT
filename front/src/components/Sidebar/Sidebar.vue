@@ -59,6 +59,7 @@ export default {
     SidebarCollide
   },
   mounted: function() {
+    if(this.storeInfo != null) this.tabSelect(0)
     var userId = sessionStorage.getItem('id')
     if(userId != null) {
       GridApi.requestBookmarkStoreList(userId, response => {
@@ -72,6 +73,11 @@ export default {
       return this.$store.state.storeInfo;
     }
   },
+  watch: {
+    storeInfo() {
+      this.tabSelect(0)
+    }
+  },
   methods: {
     collide() {
       var sidebar = document.getElementById("sidebar-1");
@@ -81,10 +87,10 @@ export default {
     },
     tabSelect(idx) {
       var prevBtn = document.getElementById("sidebar-tab" + this.currentTab)
-      prevBtn.style = "background-color: #fbedeb"
+      if(prevBtn != null) prevBtn.style = "background-color: #fbedeb"
       this.currentTab = idx
       var selectedBtn = document.getElementById("sidebar-tab" + idx)
-      selectedBtn.style = "background-color: #c2bcbca8"
+      if(selectedBtn != null) selectedBtn.style = "background-color: #c2bcbca8"
     }
   }
 };
