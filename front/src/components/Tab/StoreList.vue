@@ -12,6 +12,7 @@
  
 <script>
 //import MypageApi from '../../apis/MypageApi'
+import GridApi from '@/apis/GridApi'
 import StoreBookmark from "@/components/Tab/StoreBookmark.vue"
 export default {
   name: "FoodList",
@@ -25,13 +26,16 @@ export default {
   },
  computed: {
     storeList: function() {
-      return this.$store.state.userStoreList;
-      // return this.$store.state.bookmarkStoreList
+      //return this.$store.state.userStoreList;
+      return this.$store.state.bookmarkStoreList
     },
     
   },
   mounted:function(){
     
+    GridApi.requestStoreInfo(sessionStorage.getItem('id'), response => {
+        this.$store.state.storeInfo = response;
+    });
   }
 };
 </script>
