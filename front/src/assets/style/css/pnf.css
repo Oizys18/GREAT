@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+:root {
+    --egg: #CCCDCE;
+    --background: #878782;
+}
+
+/* {
+  border: 1px solid black;
+}*/
+
+h1 {
+  font-family: 'Roboto';
+  position: relative;
+  top: 30px;
+  font-size: 3em;
+  font-weight: 500;
+  color: var(--egg);
+}
+
+#pnf-container {
+  text-align: center;
+  background-color: #878782;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.four-icon {
+  display: inline;
+  font-size: 14rem;  
+  color: #CCCDCE;
+  margin-right: 2vw;
+  margin-left: 2vw;
+}
+
+#egg { 
+  display:inline-block;
+  margin: auto;
+  margin-top: 30vh;
+  top: 1vh;
+  width: 126px; 
+  height: 180px; 
+  cursor: pointer;
+  background-color: var(--egg); 
+  -webkit-border-radius: 63px 63px 63px 63px / 108px 108px 72px 72px; 
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;     
+}
+
+#egg:hover .timido {
+  opacity: 0.5;
+}
+
+#egg:hover #mouth {
+  border-radius: 20px;
+  border-bottom: 15px solid var(--background);
+  transform-origin: null;
+  transform: rotate(0deg);
+}
+
+#mouthCont {
+  position: relative;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100px;
+}
+
+.timido {
+    width: 12px;
+    height: 12px;
+    position: block;
+    opacity: 0;
+    transition: opacity .4s ease-in-out;
+    background-color: #D68A72;
+    border-radius: 20px;
+    /*box-shadow: 0px 0px 20px #D68A72;*/
+    -webkit-box-shadow: 0px 0px 26px 4px rgba(214,138,114,1);
+    -moz-box-shadow: 0px 0px 26px 4px rgba(214,138,114,1);
+    box-shadow: 0px 0px 6px 6px rgba(214,138,114,1);
+}
+
+.right {
+    margin-top: 72px;
+}
+
+.left {
+    margin-left: 22px;
+    margin-top: 72px;
+}
+
+#egg:hover {
+    -webkit-animation-name: wiggling;
+    -ms-animation-name: wiggling;
+    -ms-animation-duration: 1000ms;
+    -webkit-animation-duration: 1000ms;
+    -webkit-animation-iteration-count: 1;
+    -ms-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-in-out;
+    -ms-animation-timing-function: ease-in-out;
+}
+
+#mouth {
+    display: block;
+    margin: auto;
+    position: relative;
+    top: 4px;
+    height: 65px;
+    width: 25px;
+    border-radius: 7px;
+    border-bottom: 5px solid var(--background);
+    transform: rotate(180deg);
+    transform-origin: 12px 68px;
+    transition: border-radius .5s, border-bottom .4s ease-in-out, transform .0s, transform-origin 0s;
+}
+
+#eyeCont {
+    display: grid;
+    margin: auto;
+    position: relative;
+    top: 80px;
+    height: 40px;
+    width: 80px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+      "a b";
+} 
+
+.eye { 
+    margin: 14px;
+    border-radius: 10px;
+    background-color: var(--background);
+}
+
+@-webkit-keyframes wiggling {
+    0% {transform: rotate(5deg);}
+    25% {transform: rotate(-3deg);}
+    50% {transform: rotate(5deg);}
+    75% {transform: rotate(-3deg);}
+    100% {transform: rotate(0deg);}
+  }
+  
+  @-ms-keyframes wiggling {
+    0% {transform: rotate(5deg);}
+    25% {transform: rotate(-3deg);}
+    50% {transform: rotate(5deg);}
+    75% {transform: rotate(-3deg);}
+    100% {transform: rotate(0deg);}
+  }
+  
+  @keyframes wiggling {
+    0% {transform: rotate(5deg);}
+    25% {transform: rotate(-3deg);}
+    50% {transform: rotate(5deg);}
+    75% {transform: rotate(-3deg);}
+    100% {transform: rotate(0deg);}
+  }
