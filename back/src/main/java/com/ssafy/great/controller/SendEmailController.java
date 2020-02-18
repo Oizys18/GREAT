@@ -7,21 +7,18 @@ import java.util.Random;
 import javax.mail.Message;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ssafy.great.dto.User;
+import com.ssafy.great.model.service.UserService;
 import com.ssafy.great.util.RestUtil;
 
 @RestController
@@ -32,7 +29,40 @@ public class SendEmailController {
 
 	@Autowired
 	JavaMailSender jms;
-
+	@Autowired
+	UserService userService;
+	
+	@GetMapping(value="/searchpassword/{email}")
+	public ResponseEntity<Map<String,Object>> searchPassword(@PathVariable String email) {
+		User user = userService.selectByEmail(email);
+		if(user!=null) {
+			
+			MimeMessage msg = jms.createMimeMessage();
+			try {
+				
+				msg.setSubject("grEAT 비밀번호 찾기 : ");
+				msg.setRecipient(Message.RecipientType.TO, new InternetAddress(email));	
+				
+				msg.setText("비밀번호 : "+ user.getPassword());
+				msg.setSentDate(new Date());
+				jms.send(msg);
+			}catch(Exception e) {
+				System.out.println(e);
+			}
+			
+			
+			
+			return RestUtil.handleSuccess("Sueecess");
+			
+		}
+		else {
+			return RestUtil.handleSuccess("Fail");
+		}
+	}
+	
+	
+	
+	
 	
 	@GetMapping(value="/sendemail/{email}")
 	public ResponseEntity<Map<String,Object>> sendEmail(@PathVariable String email) {
