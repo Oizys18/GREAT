@@ -23,7 +23,7 @@
     </div>
 
     <div v-else>
-      <button @click="go"> hello</button>
+      <button @click="go">category</button>
       <MobileGridItem :num="store" :bookmark="bookmark"/>
     </div>
   </div>
