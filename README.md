@@ -8,7 +8,7 @@
 
 4. [REST API](#REST API)
 
-5. [구현 결과](https://lab.ssafy.com/webmobile2-sub3/s02p13a206/tree/be-develop#%EA%B5%AC%ED%98%84-%EA%B2%B0%EA%B3%BC)
+5. [구현 결과](##구현 결과)
 
 6. [Test](#Test)
 
