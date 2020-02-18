@@ -67,10 +67,6 @@ export default {
     storeInfo(idx) {
       GridApi.requestStoreInfo(this.itemName[idx].id, response => {
         this.$store.state.storeInfo = response;
-        // open sidebar
-        // var sidebar = document.getElementById("sidebar-1");
-        // sidebar.classList.remove("bounceOutLeft");
-        // sidebar.classList.add("bounceInLeft");
       });
 
       GridApi.requestReviewInfo(this.itemName[idx].id, response => {

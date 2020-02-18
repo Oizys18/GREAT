@@ -19,7 +19,7 @@ export default {
   data() {
     return {};
   },
-  mounted() {
+  mounted: function() {
     for(var i = 1; i <= 8; i++) {
       document.getElementById('category-image' + i).ondragstart = function() { return false; };
     }
