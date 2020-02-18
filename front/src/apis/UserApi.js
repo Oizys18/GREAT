@@ -17,35 +17,39 @@ const emailAuth = (email) => {
 	return axios.get('http://13.124.1.176/sendemail/' + email)
 		.then(
 			res => {
-				session.setItem('emailAuth',res.data.data)
+				session.setItem('emailAuth', res.data.data)
 			}
 		)
 }
 
-const requestToken = () => {
-	var token = session.getItem('token');
-	return axios.get('http://70.12.246.123/user', {
-			headers: {
-				'Authorization': token
-			}
-		})
-		.then(
-			res => { // eslint-disable-line no-unused-vars
-				console.log(session.getItem('token'));
-			}
-		)
-}
+// const requestToken = () => {
+// 	var token = session.getItem('token');
+// 	return axios.get('http://70.12.246.123/user', {
+// 			headers: {
+// 				'Authorization': token
+// 			}
+// 		})
+// 		.then(
+// 			res => { // eslint-disable-line no-unused-vars
+// 				console.log(session.getItem('token'));
+// 			}
+// 		)
+// }
 
 const requestLogin = (loginID, loginPW, callback, errorCallback) => { // eslint-disable-line no-unused-vars
-	session.setItem('email',loginID);
+	session.setItem('email', loginID);
 	return axios.post('http://13.124.1.176/user/login', {
 			email: loginID,
 			password: loginPW
 		})
 		.then(
 			res => {
-				session.setItem('token', res.data.data.Authorization);
-				session.setItem('id', res.data.data.Info.id)
+				console.log("login: ", res.data);
+				if (res.data.data != "not success") {
+					session.setItem('token', res.data.data.Authorization);
+					session.setItem('id', res.data.data.Info.id)
+				}
+
 			}
 		)
 };
@@ -54,6 +58,7 @@ const requestLogout = () => {
 	session.setItem('id', null);
 	session.setItem('email', null);
 	session.setItem('token', null);
+	this.$store.commit('userInfo', null);
 	return session.getItem('token');
 };
 
@@ -69,7 +74,7 @@ const requestSocialRegister = (username, sns_token, birth, gender) => {
 		.then(
 			res => {
 				session.setItem('token', res.data.data.Authorization);
-					
+
 				console.log(res);
 			}
 		)
@@ -93,7 +98,7 @@ const requestRegister = (email, username, password, birth, gender) => {
 
 
 const UserApi = {
-	requestToken: () => requestToken(),
+	// requestToken: () => requestToken(),
 	emailAuth: (email) => emailAuth(email),
 	emailCheck: (email) => emailCheck(email),
 	requestLogout: () => requestLogout(),
