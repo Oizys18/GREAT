@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="info-box">
     <!-- 이름 -->
     <div v-if="isInfo" class="user-details" id="name">
       <div class="user-details-with-label">
