@@ -1,7 +1,7 @@
 <template>
   <div class="nav-bar animated fadeInDown delay-0.2s" id="navbar">
-    <div class="nav-bar-banner-container">
-      <div class="nav-bar-mainbanner" id="navbarMB" @click="go('/')">
+    <div class="nav-bar-banner-container" id="nbbc">
+      <div class="nav-bar-mainbanner" @click="go('/')">
         <img
           id="bt1"
           class="bt1"
@@ -14,7 +14,6 @@
           src="https://i.imgur.com/enHnxlO.png"
           alt="EAT"
         />
-        <!-- {{scrollPosition}} -->
         <img
           id="bt3"
           class="bt3"
@@ -29,7 +28,7 @@
         />
       </div>
     </div>
-    <div class="nav-bar-router">
+    <div class="nav-bar-router" id="nav-router">
       <div class="temp-router">
         <div class="nav-bar-banner" @click="go('/')">
           <Chip :text="`Index`" />
@@ -56,21 +55,23 @@ export default {
     Chip
   },
   props: ["scrollPosition"],
-  data() {
-    return {};
-  },
   methods: {
     go(link) {
       this.$router.push(link);
-    }
-  },
-  watch: {
-    scrollPosition() {
+    },
+    change() {
+      var b1 = document.getElementById("bt1");
+      var b2 = document.getElementById("bt2");
+      var b3 = document.getElementById("bt3");
+      var b4 = document.getElementById("bt4");
+      var ab1 = document.getElementById("navbar");
+      var nbbc = document.getElementById("nbbc");
+      var vabr = document.getElementById("nav-router");
       if (this.scrollPosition <= 50) {
-        var b1 = document.getElementById("bt1");
-        var b2 = document.getElementById("bt2");
-        var b3 = document.getElementById("bt3");
-        var b4 = document.getElementById("bt4");
+        ab1.style.background = "transparent";
+
+        ab1.style.height = "8vh";
+        nbbc.style.height = "8vh";
         // b2
         b2.style.webkitTransform =
           "translate(" +
@@ -92,33 +93,44 @@ export default {
           "," +
           b2.offsetHeight +
           "px)";
-
+        vabr.style.webkitTransform = "translate(" + 0 + "px" + "," + 7 + "px)";
       } else {
-        var bt1 = document.getElementById("bt1");
-        var bt2 = document.getElementById("bt2");
-        var bt3 = document.getElementById("bt3");
-        var bt4 = document.getElementById("bt4");
-        bt2.style.webkitTransform =
+        var idxB = document.getElementById("index-background").style
+          .backgroundColor;
+        ab1.style.background = idxB;
+
+        vabr.style.webkitTransform = "translate(" + 0 + "px" + "," + -3 + "px)";
+
+        // b2
+        b2.style.webkitTransform =
+          "translate(" + b1.offsetWidth + "px" + "," + 0 + "px)";
+        b2.style.color = "red";
+        // b3
+        b3.style.webkitTransform =
           "translate(" +
-          bt1.offsetWidth+
+          (b2.offsetWidth + b1.offsetWidth) +
           "px" +
           "," +
           0 +
           "px)";
 
-        // b3
-        bt3.style.webkitTransform =
-          "translate(" + (bt2.offsetWidth + bt1.offsetWidth) + "px" + "," + 0 + "px)";
-
-        // // b4
-        bt4.style.webkitTransform =
+        // b4
+        b4.style.webkitTransform =
           "translate(" +
-          (bt1.offsetWidth + bt2.offsetWidth + bt3.offsetWidth) +
+          (b1.offsetWidth + b2.offsetWidth + b3.offsetWidth) +
           "px" +
           "," +
           0 +
           "px)";
       }
+    }
+  },
+  mounted() {
+    this.change()
+  },
+  watch: {
+    scrollPosition() {
+      this.change()
     }
   }
 };

@@ -3,9 +3,8 @@
   position: fixed;
   display: flex;
   align-items: center;
-  margin:0 3vw 0 3vw;
   height: 10vh;
-  width: 94vw;
+  width: 100vw;
 }
 
 .nav-bar-router {
@@ -13,11 +12,13 @@
   display: flex;
   align-items: center;
   right: 0;
-  padding: 1vh 10px 1vh 0;
+  padding: 0 2vw 0 0;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
 }
 
 .nav-bar-banner-container {
-  height: 12vh;
+  height: 10vh;
   width: 30vw;
   padding:10px;
 }
@@ -36,7 +37,7 @@
 /* 그래 */
 .nav-bar-mainbanner .bt3 {
   position: fixed;
-  opacity: 80%;
+  opacity: 70%;
   max-height: 2.5vmax;
   max-width: 5vmax;
 }
@@ -45,9 +46,8 @@
   position: fixed;
   max-height: 2.5vmax;
   max-width: 5vmax;
-  opacity: 80%;
+  opacity: 70%;
 }
-
 
 .nav-bar-mainbanner .bt1,
 .nav-bar-mainbanner .bt2,
