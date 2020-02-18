@@ -1,12 +1,11 @@
 .nav-bar {
   z-index: 50;
   position: fixed;
-  /* background: linear-gradient(72deg, #c0392b, #f1c40f); */
   display: flex;
   align-items: center;
-  padding: 0 3vw 0 3vw;
-  height: 12vh;
-  width: 100vw;
+  margin:0 3vw 0 3vw;
+  height: 10vh;
+  width: 94vw;
 }
 
 .nav-bar-router {
@@ -16,51 +15,39 @@
   right: 0;
   padding: 1vh 10px 1vh 0;
 }
+
 .nav-bar-banner-container {
-  /* display: flex; */
-  transform: none;
   height: 12vh;
   width: 30vw;
+  padding:10px;
 }
-
 /* GR */
 .nav-bar-mainbanner .bt1 {
-  position: absolute;
-  display: block;
-  max-height: 50%;
-  max-width: 100%;
-  /* max-width: 30%; */
+  position: fixed;
+  max-height: 2.5vmax;
+  max-width: 5vmax;
 }
 /* EAT */
 .nav-bar-mainbanner .bt2 {
-  position: absolute;
-  top: 50%;
-  display: block;
-  max-height: 50%;
-  max-width: 100%;
-  left:7.5%;
-  /* max-width: 100%; */
+  position: fixed;
+  max-height: 2.5vmax;
+  max-width: 6.5vmax;
 }
 /* 그래 */
 .nav-bar-mainbanner .bt3 {
-  position: absolute;
+  position: fixed;
   opacity: 80%;
-  max-height: 50%;
-  max-width: 100%;
-  left: 10%;
-  /* max-width: 100%; */
+  max-height: 2.5vmax;
+  max-width: 5vmax;
 }
 /* 잇 */
 .nav-bar-mainbanner .bt4 {
-  position: absolute;
-  display: block;
-  top: 50%;
-  max-height: 50%;
-  max-width: 100%;
-  left: 16%;
+  position: fixed;
+  max-height: 2.5vmax;
+  max-width: 5vmax;
   opacity: 80%;
-  /* max-width: 100%; */
 }
+
 
 .nav-bar-mainbanner .bt1,
 .nav-bar-mainbanner .bt2,
@@ -68,53 +55,4 @@
 .nav-bar-mainbanner .bt4 {
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
-  transform: matrix(1, 0, -0.2, 1, 20, 0);
 }
-
-.banner-text-transition > .bt1,
-.banner-text-transition > .bt2,
-.banner-text-transition > .bt3,
-.banner-text-transition > .bt4 {
-  -webkit-transition: all 1s ease;
-  transition: all 1s ease;
-  transform: matrix(1, 0, -0.2, 1, 28, 0);
-}
-/* GR */
-/* .banner-text-transition > .bt1 {
-} */
-
-/* EAT */
-.banner-text-transition > .bt2 {
-  top: 0;
-  left: 9%;
-}
-/* 그래 */
-.banner-text-transition > .bt3 {
-  font-size: 2rem;
-  left: 20%;
-}
-/* 잇 */
-.banner-text-transition > .bt4 {
-  top: 0;
-  left: 33vw;
-  left:26.5%;
-}
-
-/* 
-@media (max-width: 800px) {
-  .nav-bar-mainbanner .bt1,
-  .nav-bar-mainbanner .bt2,
-  .nav-bar-mainbanner .bt3,
-  .nav-bar-mainbanner .bt4 {
-    font-size: 1.5rem;
-  }
-  .banner-text-transition > .bt1,
-  .banner-text-transition > .bt2,
-  .banner-text-transition > .bt3,
-  .banner-text-transition > .bt4 {
-    font-size: 1.5rem;
-  }
-  .nav-bar-router {
-    display: none;
-  }
-} */
