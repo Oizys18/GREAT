@@ -32,7 +32,7 @@
     </template>
     <v-dialog v-model="isClicked"  class="storeInfo-modal-dialog"  >
        <!-- store info-->
-      <StoreInfoModal @exit_Clicked="exit_Modal"/>
+      <MobileStoreInfoModal @exit_Clicked="exit_Modal"/>
     </v-dialog>
   </div>
 </template>
@@ -42,13 +42,13 @@ import "@/assets/style/css/gridStyle.css";
 import GridItem from "@/components/Grid/GridItem.vue";
 import StarRating from "@/components/common/StarRating.vue";
 import GridApi from "@/apis/GridApi.js";
-import StoreInfoModal from '@/components/Tab/StoreInfoModal.vue';
+import MobileStoreInfoModal from '@/components/Grid/MobileGrid/MobileStoreInfoModal.vue';
 export default {
   name: "MainFoodGrid",
   components: {
     GridItem,
     StarRating,
-    StoreInfoModal
+    MobileStoreInfoModal
   },
   data() {
     return {
@@ -74,9 +74,9 @@ export default {
       GridApi.requestStoreInfo(this.itemName[idx].id, response => {
         this.$store.state.storeInfo = response;
         // open sidebar
-        var sidebar = document.getElementById("sidebar-1");
-        sidebar.classList.remove("bounceOutLeft");
-        sidebar.classList.add("bounceInLeft");
+        // var sidebar = document.getElementById("sidebar-1");
+        // sidebar.classList.remove("bounceOutLeft");
+        // sidebar.classList.add("bounceInLeft");
       });
 
       GridApi.requestReviewInfo(this.itemName[idx].id, response => {
