@@ -51,7 +51,6 @@ export default {
     return{
       editFlag:false, //그리드 북마크 수정 여부 flag
       isTitleForm:true, //title input text여부 check flag -> 수정확인 버튼 disabled 여부  
-      editTitle:'',
       gridbookmark:{
         id:"",
         name:"",
@@ -62,16 +61,6 @@ export default {
   },
   computed:{
 
-  },
-  watch:{
-    editTitle:function(){
-      //입력한 title이 맞는 경우인지 검사 -> 수정 확인 버튼 disabled 결정
-      if(this.editTitle.length<=0){
-          this.isTitleForm=false;
-          console.log('title입력안함')
-      }else this.isTitleForm=true;
-
-    }
   },
   methods:{
     clickEditBtn(){

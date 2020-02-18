@@ -71,9 +71,6 @@ export default {
         category : categoryId
       }
       GridApi.requestGridStoresByRandom(data, response => {
-        for(var i = response.length; i < 8; i++){
-          response.push({"name": ""})
-        }
         this.$store.commit(categoryName, response)
       })
     },
