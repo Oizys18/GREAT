@@ -6,13 +6,13 @@
 
 3. [데이터베이스 구조](#데이터베이스-구조)
 
-4. [REST API](#REST-API)
+4. [REST API](#rest-api)
 
 5. [구현 결과](#구현-결과)
 
-6. [Test](#Test)
+6. [Test](#test)
 
-7. [Developers](#Developers)
+7. [Developers](#developers)
 
    
 
