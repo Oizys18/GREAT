@@ -111,30 +111,39 @@ import UserApi from "@/apis/UserApi.js";
 
 export default {
   name: "SocialLogin",
+
   methods: {
-    redirectSocialJoin() {
+    async redirectSocialJoin() {
       var sns_token = sessionStorage.getItem("sns_token");
       var social_data = sessionStorage.getItem("social_data");
       console.log("re", sns_token);
       console.log("re", social_data);
+      while(social_data == null){
+        alert('아직')
+      }
       if (social_data != "success") {
         this.$router.push("SocialJoin");
       } else {
-        console.log('social login token ',sessionStorage.getItem('token'))
-        this.$router.push('Main');
+        await UserApi.getID(res => {
+          console.log(res)
+        }).then(res => {
+          console.log("vue id ", sessionStorage.getItem("id"));
+          this.$router.push("Main");
+        });
       }
     },
     kakaoLogin() {
       KakaoAuth.loginWithKakao().then(res => {
-        console.log("api 호출 후 ",res);
-        this.redirectSocialJoin();
+        this.redirectSocialJoin().then(res => {
+          this.$router.go(0)
+        });
       });
     },
     googleLogin() {
       this.handleClickGetAuth().then(res => {
-        console.log("api 호출 후 ",res);
-        this.redirectSocialJoin();
-        this.$router.go(0);
+        this.redirectSocialJoin().then(res => {
+          this.$router.go(0)
+        });
       });
     },
     async handleClickGetAuth() {
@@ -147,11 +156,10 @@ export default {
             .post("http://13.124.1.176/user/socialLogin", GoogleUser["Ca"])
             .then(response => {
               sessionStorage.setItem("sns_token", GoogleUser["Ca"]);
+              sessionStorage.setItem("email", GoogleUser["Ca"]);
               sessionStorage.setItem("social_data", response.data.data.data);
-              sessionStorage.setItem("token",response.data.data.Authorization);
-              console.log(sessionStorage.getItem("sns_token"));
-              console.log(sessionStorage.getItem("social_data"));
-              console.log(response.data);
+              if(sessionStorage.getItem('social_data')=="success")
+                sessionStorage.setItem("token", response.data.data.Authorization);
             });
         })
         .catch(error => {

@@ -23,22 +23,22 @@ const loginWithKakao = async () => {
             console.log(JSON.stringify(res["id"]));
             console.log(JSON.stringify(res["properties"]["nickname"]));
             return res
-            
+
         },
         fail: function (error) {
             console.log(JSON.stringify(error));
         }
     });
-    
+
     return await axios.post("http://13.124.1.176/user/socialLogin", JSON.stringify(res["id"]))
-                .then(response=>{
-                    sessionStorage.setItem('sns_token',JSON.stringify(res["id"]));
-                    sessionStorage.setItem('social_data',response.data.data.data);
-                    sessionStorage.setItem("token",response.data.data.Authorization);
-                    console.log("kakaoapi social data", response.data);
-                    console.log("d", response.data.data.data);
-                    return response.data.data.Authorization;
-                })
+        .then(response => {
+            sessionStorage.setItem('sns_token', JSON.stringify(res["id"]));
+            sessionStorage.setItem('email', JSON.stringify(res["id"]));
+            sessionStorage.setItem('social_data', response.data.data.data);
+            if (sessionStorage.getItem('social_data') == "success")
+                sessionStorage.setItem("token", response.data.data.Authorization);
+            return response.data.data.Authorization;
+        })
 }
 
 
