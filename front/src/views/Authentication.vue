@@ -3,7 +3,7 @@
     <div class = "login">
     <Login />
     </div>
-    <LogoutButton />
+    <!-- <LogoutButton /> -->
   </div>
 </template>
 
@@ -19,7 +19,7 @@ import Login from "@/components/Form/Login.vue";
 export default {
   name: "Authentication",
   components: {
-    LogoutButton,
+    // LogoutButton,
     Login
   }
 };
