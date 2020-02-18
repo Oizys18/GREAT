@@ -9,7 +9,7 @@
    </div> -->
   <div class="hvrbox" @click="showStoreDetail(store.id)"
   >
-    
+
     <img v-if="store.image != '' && store.image != undefined && store.image != null"
       :src="store.image" 
       alt="image"
@@ -27,7 +27,7 @@
       </div>
     </div>
 
-    <v-dialog v-model="isClicked"  max-width="30vw" class="storeInfo-modal-dialog"  >
+    <v-dialog v-model="isClicked"   class="storeInfo-modal-dialog"  >
        <!-- store info-->
       <StoreInfoModal @exit_Clicked="exit_Modal"/>
     </v-dialog>

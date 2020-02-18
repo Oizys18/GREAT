@@ -1,8 +1,8 @@
 <template>
   <div class="small-grid">
     <template v-for="(idx, i) in indexList.slice(0, 4)">
-      <button
-        class="small-box"
+      <button 
+        class="small-box animated bounceIn fast delay-0.1s"
         :draggable="draggable"
         @mouseover="over(i)"
         @mouseleave="out(i)"
@@ -19,7 +19,7 @@
     </div>
     <template v-for="(idx, i) in indexList.slice(4, 8)">
       <button
-        class="small-box"
+        class="small-box animated bounceIn fast delay-0.2s"
         :draggable="draggable"
         @mouseenter="over(i + 4)"
         @mouseleave="out(i + 4)"
@@ -39,6 +39,7 @@ import "@/assets/style/css/gridStyle.css";
 import GridItem from "@/components/Grid/GridItem.vue";
 import StarRating from "@/components/common/StarRating.vue";
 import GridApi from "@/apis/GridApi.js";
+
 export default {
   name: "MainFoodGrid",
   components: {
@@ -66,10 +67,6 @@ export default {
     storeInfo(idx) {
       GridApi.requestStoreInfo(this.itemName[idx].id, response => {
         this.$store.state.storeInfo = response;
-        // open sidebar
-        var sidebar = document.getElementById("sidebar-1");
-        sidebar.classList.remove("bounceOutLeft");
-        sidebar.classList.add("bounceInLeft");
       });
 
       GridApi.requestReviewInfo(this.itemName[idx].id, response => {

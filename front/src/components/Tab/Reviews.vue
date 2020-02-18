@@ -1,10 +1,10 @@
 <template>
-  <div align='center'>
+  <div align='center' class="reviews-box">
     <v-sheet class=""  max-width="900">
-      <v-slide-group  v-model="model" class="slide-group" :show-arrows="showArrows">
+      <v-slide-group   class="slide-group" >
         <v-slide-item 
           v-for="review in myReviews"
-          :key="review"
+          :key="review.id"
           v-slot:default="{ }"
         >
           <v-card

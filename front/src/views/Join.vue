@@ -1,8 +1,9 @@
 <template>
 <div class="auth">
   <div class="join">
+    <h1>Join</h1>
     <div class="join-container">
-      <h1>Join</h1>
+      
       <div class="input-with-label email-input">
         <input
           v-model="email"
@@ -72,7 +73,7 @@
           data-date-picker="activated"
         />
       </div>
-      <!-- <v-date-picker v-model="picker" color="green lighten-1"></v-date-picker>-->
+      
       <div class="join-radio-container">
         <div class="input-with-label">
           <label for="gender">성별</label>

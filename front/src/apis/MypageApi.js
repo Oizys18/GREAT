@@ -2,22 +2,22 @@ import axios from 'axios'
 var storage = sessionStorage
 /*현재 로그인한 사용자의 회원정보 요청*/ 
 
-var setID=function(){
-  var email = storage.getItem('email')
-  axios
-  .get('http://13.124.1.176/user/search/'+email,{
-      headers: { Authorization : storage.getItem('token') }
-  })
-  .then(res=>{
-      storage.setItem('id',res.data.data.id);
-  })
-}
+// var setID=function(){
+//   var email = storage.getItem('email')
+//   axios
+//   .get('http://13.124.1.176/user/search/'+email,{
+//       headers: { Authorization : storage.getItem('token') }
+//   })
+//   .then(res=>{
+//       storage.setItem('id',res.data.data.id);
+//   })
+// }
 
 
-var requestUserInfo=function(callback){ //data:사용자 email
-    var email = storage.getItem('email')
+var requestUserInfo=function(callback){ 
+    var id = storage.getItem('id')
     axios
-        .get('http://13.124.1.176/user/search/'+email,{
+        .get('http://13.124.1.176/user/'+id,{
             headers: { Authorization : storage.getItem('token') }
         })
         .then(res=>{
@@ -40,7 +40,6 @@ var modifyUserInfo=function(data,callback){
  var requestMyReviews=function(callback){
   
   var userID=storage.getItem('id')
-  console.log(userID)
   axios
 
   .get("http://13.124.1.176/review/search/"+userID,{
@@ -82,9 +81,8 @@ var modifyGridbookmark=function(data,callback){
 }
 /*gridbookmark 항목 삭제*/
 var deleteGridbookmark=function(data,callback){
-    
     axios                          //bookmark id에 해당하는 bookmakr 삭제
-      .delete("http://13.124.1.176:/bookmark/"+data,{
+      .delete("http://13.124.1.176/bookmark/"+data,{
         headers: { Authorization : storage.getItem('token') }
       })
       .then(res=>{
@@ -107,6 +105,19 @@ var requestStorebookmarkList=function(callback){
       })
 }
 
+/* 회원 탈퇴*/ 
+var deleteMember=function(callback){
+  var userID=storage.getItem('id')
+  axios                          //bookmark id에 해당하는 bookmakr 삭제
+    .delete("http://13.124.1.176/user/"+userID,{
+      headers: { Authorization : storage.getItem('token') }
+    })
+    .then(res=>{
+      callback(res)
+    })
+    
+}
+
 export default{
     requestUserInfo,
     modifyUserInfo,
@@ -115,6 +126,7 @@ export default{
     deleteGridbookmark,
     requestStorebookmarkList,
     requestMyReviews,
-    setID,
+    // setID,
+    deleteMember,
 
 }

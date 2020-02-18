@@ -27,7 +27,7 @@ export default {
     MainFoodGrid,
     FoodCategory
   },
-  mounted() {
+  mounted: function() {
     this.$store.state.storeInfo = null
     if(this.bookmark == 0) {
       var x = this.$store.state.locationX

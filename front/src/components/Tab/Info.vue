@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="info-box">
     <!-- 이름 -->
     <div v-if="isInfo" class="user-details" id="name">
       <div class="user-details-with-label">
@@ -25,14 +25,14 @@
     </div>
 
     <!-- 이메일 -->
-    <div v-if="isInfo" class="user-details" id="email">
+    <div  class="user-details" id="email">
       <div class="user-details-with-label">
         <label for="email">이메일</label>
         {{ user.email }}
       </div>
       <!-- <p>이메일: {{ email }}</p> -->
     </div>
-    <div v-else class="user-details">
+    <!-- <div v-else class="user-details">
       <div class="edit-with-label">
         <label for="email_modify">이메일</label>
         <input
@@ -42,7 +42,7 @@
           type="text"
         />
       </div>
-    </div>
+    </div> -->
 
     <!-- 생년월일 -->
     <div v-if="isInfo" class="user-details" id="birth">
@@ -120,6 +120,7 @@
     <div v-if="!isInfo" class="edit-box">
       <button v-on:click="cancle" class="modify-button">취소</button>
       <button v-on:click="ok" class="modify-button">수정</button>
+      <button v-on:click="withdraw" class="withdraw-button">회원 탈퇴</button>
     </div>
   </div>
 </template>
@@ -174,6 +175,15 @@ export default {
       
       this.isInfo = true;
     
+    },
+    withdraw(){ //회원탈퇴
+      
+      MypageApi.deleteMember(response=>{
+        console.log(response)
+        this.$store.commit('userInfo',null)
+        alert('회원 탈퇴 되었습니다.')
+        this.$router.push("/");
+      })
     }
   }
 };

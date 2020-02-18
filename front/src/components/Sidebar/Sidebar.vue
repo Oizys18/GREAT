@@ -58,10 +58,14 @@ export default {
     MapApp,
     SidebarCollide
   },
-  mounted() {
-    GridApi.requestBookmarkStoreList(localStorage.getItem('id'), response => {
-      this.$store.state.bookmarkStoreList = response
-    })
+  mounted: function() {
+    var userId = sessionStorage.getItem('id')
+    if(userId != null) {
+      GridApi.requestBookmarkStoreList(userId, response => {
+        this.$store.state.bookmarkStoreList = response
+      })
+    }
+    
   },
   computed: {
     storeInfo() {
@@ -73,6 +77,7 @@ export default {
       var sidebar = document.getElementById("sidebar-1");
       sidebar.classList.remove("bounceInLeft");
       sidebar.classList.add("bounceOutLeft");
+      this.$store.state.storeInfo = null
     },
     tabSelect(idx) {
       var prevBtn = document.getElementById("sidebar-tab" + this.currentTab)

@@ -1,6 +1,8 @@
 <template>
-  <div class="login-subcontainer">
+  <div>
     <h1>Login</h1>
+  <div class="login-subcontainer">
+    
     <div class="login-container">
       <div class="login-box">
         <div class="input-with-label">
@@ -41,6 +43,7 @@
         <button @click="joinRequest" class="btn--text">회원가입</button>
       </div>
     </div>
+  </div>
   </div>
 </template>
 

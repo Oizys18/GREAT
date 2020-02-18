@@ -18,7 +18,7 @@ export default {
       msg: "하이"
     };
   },
-  mounted() {
+  mounted: function() {
     var locX = this.$store.state.storeInfo.map_x;
     var locY = this.$store.state.storeInfo.map_y;
     var mapContainer = document.getElementById("map"), // 지도를 표시할 div

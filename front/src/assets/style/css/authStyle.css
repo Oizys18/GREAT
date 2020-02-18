@@ -9,20 +9,19 @@ input:-webkit-autofill {
 }
 
 
-
 .auth {
-	background-color: ghostwhite;
+	background-color: rgb(251, 251, 255);
+	width:100vw;
+	height:100vh;
 	padding-top: 30px;
-	padding-bottom: 1000%;
 }
 
 .login {
+	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
 	padding-top: 8vh;
-	margin: 0 auto;
-	width: 60%;
-
+	width: 80%;
 }
 
 .login .input-with-label {
@@ -31,7 +30,7 @@ input:-webkit-autofill {
 }
 
 .login .input-with-label input {
-	text-align: right;
+	text-align: left;
 	width: 100%;
 	height: 50px;
 	line-height: 1em;
@@ -51,12 +50,12 @@ input:-webkit-autofill {
 	color: #000;
 }
 
-.login h1 {
-	padding-top: 30px;
+.auth h1 {
+	text-align: center;
 	padding-bottom: 20px;
 	color: #274555;
-	font-weight: 900;
 	font-size: 40pt;
+	font-family: "Lobster";
 }
 
 .login .login-container {
@@ -64,6 +63,7 @@ input:-webkit-autofill {
 	margin: 0 auto;
 	margin-top: 10px;
 	margin-bottom: 20px;
+	padding-top: 15px;
 	display: flex;
 	flex-wrap: wrap;
 }
@@ -97,12 +97,12 @@ input:-webkit-autofill {
 	width: 100%;
 	margin: 0 auto;
 	margin-bottom: 10px;
-	padding-bottom: 20px;
+	padding-bottom: 10px;
 	padding-left: 20px;
 	padding-right: 20px;
 	border: 5px solid #ffda8e;
 	border-radius: 25px;
-	background: linear-gradient( to bottom,lightyellow, #fffcf0);
+	background: linear-gradient( to bottom,ghostwhite, #fffcf0);
 	/* background-color: #fffcf0; */
 	border-radius: 25px;
 }
@@ -164,31 +164,37 @@ input:-webkit-autofill {
 }
 
 .join .join-container {
-	margin-top: 8vh;
+	/* margin-top: 8vh; */
 	margin-bottom: 10px;
 	font-weight: bold;
-	padding-bottom: 20px;
+	padding-top: 20px;
+	padding-bottom: 10px;
 	padding-left: 20px;
 	padding-right: 20px;
 	border: 5px solid #ffda8e;
 	border-radius: 25px;
-	background: linear-gradient( to bottom,lightyellow, #fffcf0);
+	background: linear-gradient( to bottom,ghostwhite, #fffcf0);
 }
 
 .join h1 {
-	padding-top: 30px;
-	padding-bottom: 20px;
+	text-align: center;
+	margin-top: 20px;
+	padding-top: 40px;
+	padding-bottom: 10px;
 	color: #274555;
 	font-weight: 900;
 	font-size: 40pt;
+	font-family: "Lobster";
 }
 
-.join h2 {
-	padding-top: 30px;
-	padding-bottom: 20px;
+.auth h2 {
+	text-align: center;
+	margin-top: 50px;
+	padding-top: 40px;
+	padding-bottom: 10px;
 	color: #274555;
-	font-weight: 900;
 	font-size: 30pt;
+	font-family: "Lobster";
 }
 
 .join .input-with-label {
@@ -356,7 +362,7 @@ input:-webkit-autofill {
 }
 
 .join .join-button-container {
-	margin-top: 30px;
+	margin-top: 10px;
 	margin-bottom: 10px;
 }
 
