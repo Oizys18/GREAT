@@ -2,7 +2,7 @@
   <div class="nav-bar animated fadeInDown delay-0.2s" id="navbar">
     <div class="nav-bar-banner-container" id="nbbc">
       <button class="nav-bar-mainbanner" @click="go('/')">
-        <div v-if={routepath}>
+        <div v-if="routepath">
           <img
             id="bt1"
             class="bt1"
@@ -29,7 +29,16 @@
           />
         </div>
         <div v-else>
-          hello
+          <img
+            class="static-banner"
+            src="https://i.imgur.com/IKrLE43.png"
+            alt="great"
+          />
+          <img
+            class="static-banner2"
+            src="https://i.imgur.com/UnePG9T.png"
+            alt="great2"
+          />
         </div>
       </button>
     </div>
@@ -126,15 +135,14 @@ export default {
   },
   mounted() {
     this.change();
-    this.scrollPosition += 1;
   },
   computed: {
-    routepath(){
-      console.log(this.$route)
-      if (this.$route.name === "index"){
-        return true
-      } else{
-        return false
+    routepath() {
+      console.log(this.$route);
+      if (this.$route.name === "index") {
+        return true;
+      } else {
+        return false;
       }
     },
     loggedIn() {

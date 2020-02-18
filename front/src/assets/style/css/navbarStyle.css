@@ -16,15 +16,15 @@
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
 }
-.nav-bar-mainbanner{
+.nav-bar-mainbanner {
   align-items: center;
-  position:fixed;
-  top:0;
+  position: fixed;
+  top: 0;
 }
 .nav-bar-banner-container {
   height: 6vh;
   width: 30vw;
-  padding:10px;
+  padding: 10px;
 }
 /* GR */
 .nav-bar-mainbanner .bt1 {
@@ -60,8 +60,27 @@
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
 }
+.static-banner {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 5rem;
+  max-height: 7vmax;
+  max-width: 14vmax;
+}
+.static-banner2 {
+  display: none;
+}
 
-
-@media (max-width : 800px){
-  
+@media (max-width: 800px) {
+  .static-banner {
+    display: none;
+  }
+  .static-banner2 {
+    display: block;
+    position: fixed;
+    top:0;
+    left:1rem;
+    max-width:45vmin;
+  }
 }
