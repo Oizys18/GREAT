@@ -30,7 +30,7 @@
         <StarRating v-if="mouseOn[i + 4]" :rating="itemName[idx].rating" />
       </button>
     </template>
-    <v-dialog v-model="isClicked"  max-width="30vw" class="storeInfo-modal-dialog"  >
+    <v-dialog v-model="isClicked"  class="storeInfo-modal-dialog"  >
        <!-- store info-->
       <StoreInfoModal @exit_Clicked="exit_Modal"/>
     </v-dialog>
@@ -82,6 +82,9 @@ export default {
       GridApi.requestReviewInfo(this.itemName[idx].id, response => {
         this.$store.state.reviewInfo = response
       })
+    },
+    exit_Modal(flag){
+      this.isClicked=!flag;
     }
   },
   computed: {

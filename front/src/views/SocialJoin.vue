@@ -1,8 +1,8 @@
 <template>
   <div class="auth">
     <div class="join">
+      <h1>Social Join</h1>
       <div class="join-container">
-        <h1>Social Join</h1>
         <div class="input-with-label">
           <input v-model="nickname" id="nickname" placeholder="닉네임을 입력하세요." type="text" />
           <label for="nickname">닉네임</label>
@@ -64,7 +64,7 @@ export default {
       this.joinRedirect();
     },
     afterJoin(){
-      this.$router.push("/").catch(err => {});
+      this.$router.push("Authentication").catch(err => {});
     },
     joinRedirect() {
       this.$router.push("Authentication");
