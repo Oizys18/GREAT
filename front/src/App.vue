@@ -1,20 +1,30 @@
 <template>
   <div id="app">
     <v-app>
-      <AppBar />
+      <NavBar :scrollPosition="this.scrollPosition"/>
       <router-view />
     </v-app>
   </div>
 </template>
 <script>
-import AppBar from "@/components/common/AppBar.vue";
+import NavBar from "@/components/common/NavBar.vue";
 export default {
   name: "App",
   components: {
-    AppBar
+    NavBar
   },
   data() {
-    return {};
+    return {
+      scrollPosition: null
+    };
+  },
+  methods:{
+    updateScroll() {
+      this.scrollPosition = window.scrollY
+    }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.updateScroll);
   }
 };
 </script>
@@ -24,6 +34,7 @@ export default {
   font-family: "Noto Sans KR", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 </style>

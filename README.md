@@ -1,6 +1,22 @@
-﻿# Sub-PJT 03
+﻿# Great(Sub-PJT 03)
 
-## 기본환경세팅
+1. [기본 환경 세팅](#기본-환경-세팅)
+
+2. [디렉토리 구조](#디렉토리-구조)
+
+3. [데이터베이스 구조](#데이터베이스-구조)
+
+4. [REST API](#rest-api)
+
+5. [구현 결과](#구현-결과)
+
+6. [Test](#test)
+
+7. [Developers](#developers)
+
+   
+
+## 기본 환경 세팅
 
 ### Frontend
 
@@ -102,6 +118,8 @@
             `-- PageNotFound.vue
 ```
 
+
+
 ## 데이터베이스 구조
 
 #### 사용자 테이블 : user
@@ -175,19 +193,29 @@
 | bookmark | 북마크 id                | int  | foreign key(bookmark.id)    |
 | store    | 식당 id                  | int  | foreign key(store.id)       |
 
+
+
+#### Database Diagram
+
+![DatabaseDiagram](/img/DatabaseDiagram.PNG)
+
+
+
 ## REST API
 
 #### User API
 
-| Method | URI                 | Definition                                            |
-| ------ | ------------------- | ----------------------------------------------------- |
-| GET    | /user               | 모든 사용자 목록 검색                                 |
-| GET    | /user/{id}          | 사용자 id에 해당하는 사용자 검색                      |
-| GET    | /user/email/{email} | 사용자 email에 해당하는 사용자 검색(이메일 중복 체크) |
-| POST   | /user/login         | 사용자 로그인                                         |
-| POST   | /user               | 사용자 정보 등록(회원가입)                            |
-| PUT    | /user               | 사용자 정보 수정                                      |
-| DELETE | /user/{id}          | 사용자 id에 해당하는 사용자 정보 삭제(회원탈퇴)       |
+| Method | URI                  | Definition                                            |
+| ------ | -------------------- | ----------------------------------------------------- |
+| GET    | /user                | 모든 사용자 목록 검색                                 |
+| GET    | /user/{id}           | 사용자 id에 해당하는 사용자 검색                      |
+| GET    | /user/email/{email}  | 사용자 email에 해당하는 사용자 검색(이메일 중복 체크) |
+| GET    | /user/search/{email} | 사용자 email에 해당하는 사용자 id 검색                |
+| POST   | /user/login          | 사용자 로그인                                         |
+| POST   | /user/socialLogin    | 사용자 소셜로그인                                     |
+| POST   | /user                | 사용자 정보 등록(회원가입)                            |
+| PUT    | /user                | 사용자 정보 수정                                      |
+| DELETE | /user/{id}           | 사용자 id에 해당하는 사용자 정보 삭제(회원탈퇴)       |
 
 #### Category API
 
@@ -198,31 +226,106 @@
 
 #### Store API
 
-| Method | URI                        | Definition                                                           |
-| ------ | -------------------------- | -------------------------------------------------------------------- |
-| GET    | /store/{id}                | 식당 id에 해당하는 식당 정보 검색                                    |
-| GET    | /store/category/{category} | 식당 category에 해당하는 식당 목록 검색<br>(별점 기준 내림차순 정렬) |
-| GET    | /store/location/{category} | 식당 category에 해당하는 식당 목록 검색<br>(거리 기준 내림차순 정렬) |
-| PUT    | /store                     | 식당 정보 수정                                                       |
-| DELETE | /store/{id}                | 식당 id에 해당하는 식당 정보 삭제                                    |
+| Method | URI                                | Definition                                                   |
+| ------ | ---------------------------------- | ------------------------------------------------------------ |
+| GET    | /store/{id}                        | 식당 id에 해당하는 식당 정보 검색                            |
+| GET    | /store/rating/{category}/{x}/{y}   | 식당 category에 해당하는 식당 목록 검색<br>(별점 기준 내림차순 정렬) |
+| GET    | /store/location/{category}/{x}/{y} | 식당 category에 해당하는 식당 목록 검색<br>(거리 기준 내림차순 정렬) |
+| GET    | /store/rand/{category}/{x}/{y}     | 식당 category에 해당하는 식당 목록 검색<br>(랜덤 정렬)       |
+| PUT    | /store                             | 식당 정보 수정                                               |
+| DELETE | /store/{id}                        | 식당 id에 해당하는 식당 정보 삭제                            |
 
 #### Review API
 
-| Method | URI                   | Definition                                                               |
-| ------ | --------------------- | ------------------------------------------------------------------------ |
-| GET    | /review               | 모든 리뷰 목록 검색                                                      |
-| GET    | /review/{id}          | 리뷰 id에 해당하는 리뷰 검색                                             |
-| GET    | /review/store/{store} | 식당 id에 해당하는 리뷰 목록 검색<br>(리뷰 작성 날짜 기준 내림차순 정렬) |
-| POST   | /review               | 리뷰 정보 등록                                                           |
-| PUT    | /review               | 리뷰 정보 수정                                                           |
-| DELETE | /review/{id}          | 리뷰 id에 해당하는 리뷰 정보 삭제                                        |
+| Method | URI                     | Definition                                                   |
+| ------ | ----------------------- | ------------------------------------------------------------ |
+| GET    | /review                 | 모든 리뷰 목록 검색                                          |
+| GET    | /review/{id}            | 리뷰 id에 해당하는 리뷰 검색                                 |
+| GET    | /review/store/{store}   | 식당 id에 해당하는 리뷰 목록 검색<br>(리뷰 작성 날짜 기준 내림차순 정렬) |
+| GET    | /review/search/{userId} | 사용자 id에 해당하는 리뷰 목록 검색                          |
+| POST   | /review                 | 리뷰 정보 등록                                               |
+| PUT    | /review                 | 리뷰 정보 수정                                               |
+| DELETE | /review/{id}            | 리뷰 id에 해당하는 리뷰 정보 삭제                            |
 
 #### Bookmark API
 
-| Method | URI                     | Definition                                   |
-| ------ | ----------------------- | -------------------------------------------- |
-| GET    | /bookmark/{user}/{type} | 사용자 id와 type에 해당하는 북마크 목록 검색 |
-| GET    | /bookmark/{id}          | 북마크 id에 해당하는 식당 목록 검색          |
-| POST   | /bookmark               | 북마크 정보 등록                             |
-| PUT    | /bookmark               | 북마크 정보 수정                             |
-| DELETE | /bookmark/{id}          | 북마크 id에 해당하는 북마크 삭제             |
+| Method | URI                          | Definition                                       |
+| ------ | ---------------------------- | ------------------------------------------------ |
+| GET    | /bookmark/{user}/{type}      | 사용자 id와 type에 해당하는 북마크 목록 검색     |
+| GET    | /bookmark/{id}               | 북마크 id에 해당하는 식당 목록 검색              |
+| POST   | /bookmark                    | 북마크 정보 등록                                 |
+| PUT    | /bookmark                    | 북마크 정보 수정                                 |
+| DELETE | /bookmark/{id}               | 북마크 id에 해당하는 북마크 삭제                 |
+| DELETE | /bookmark/{userId}/{storeId} | 사용자가 북마크한 식당 id에 해당하는 북마크 삭제 |
+
+
+
+## 구현 결과
+
+#### Index 
+
+![index](/img/pages/index.PNG)
+
+![index2](/img/pages/index2.PNG)
+
+![index3](/img/pages/index3.PNG)
+
+<img src="/img/pages/mindex.PNG" alt="mindex" style="zoom:80%;" />
+
+
+
+#### Login / Join
+
+![join](/img/pages/join.PNG)
+
+![socialjoin](/img/pages/socialjoin.PNG)
+
+<img src="/img/pages/mlogin.PNG" alt="mlogin" style="zoom:70%;" />
+
+<img src="/img/pages/mjoin.PNG" alt="mjoin" style="zoom:70%;" />
+
+#### Mypage
+
+![mypage1](/img/pages/mypage1.PNG)
+
+![mypage2](/img/pages/mypage2.PNG)
+
+![mypage3](/img/pages/mypage3.PNG)
+
+<img src="/img/pages/mmypage.PNG" alt="mmypage" style="zoom:70%;" />
+
+#### Grid
+
+![grid1](/img/pages/grid1.PNG)
+
+![grid2](/img/pages/grid2.PNG)
+
+![sidebar](/img/pages/sidebar.png)
+
+
+
+## Test
+
+#### Test Case
+
+![TestCase1](/img/TestCase1.PNG)
+
+![TestCase2](/img/TestCase2.PNG)
+
+![TestCase3](/img/TestCase3.PNG)
+
+![TestCase4](/img/TestCase4.PNG)
+
+
+
+## Developers
+
+#### 양찬우 (Team Leader / Front-End manager)
+
+#### 박지수 (Back-End manager)
+
+#### 조한슬 (Back-End developer)
+
+#### 조신비 (Front-End developer)
+
+#### 신채민 (Front-End developer)

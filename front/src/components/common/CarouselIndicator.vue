@@ -1,17 +1,16 @@
 <template>
-  <div>
-    <div class="indicator-container">
-      <span 
-        class="indicator-item"
-        v-for="(item, idx) in items"
-        :key="`${item} - ${idx}`"
-        :style="{ backgroundColor: bgc[pageIDX][item] }"
-      ></span>
-    </div>
+  <div class="indicator-container">
+    <span
+      class="indicator-item"
+      v-for="(item, idx) in items"
+      :key="`${item} - ${idx}`"
+      :style="{ backgroundColor: bgc[pageIDX][item] }"
+    ></span>
   </div>
 </template>
 
 <script>
+import "@/assets/style/css/indicatorStyle.css";
 export default {
   name: "CarouselIndicator",
   props: ["pageIDX"],
@@ -25,24 +24,8 @@ export default {
       ]
     };
   },
-  methods:{} 
+  methods: {}
 };
 </script>
 
-<style>
-.indicator-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 5;
-  box-shadow: 3px, 3px, 3px, black;
-}
-.indicator-item {
-  z-index: 5;
-  background-color: white;
-  width: 15px;
-  height: 15px;
-  margin: 15px;
-  border-radius: 15px;
-}
-</style>
+<style></style>

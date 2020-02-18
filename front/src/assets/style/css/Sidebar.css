@@ -8,6 +8,7 @@
   position: fixed;
   z-index: 100;
   top: 0vh;
+  left:0;
   width: 27%;
   min-width: 280px;
   height: 100%;

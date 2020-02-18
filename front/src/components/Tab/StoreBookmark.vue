@@ -9,11 +9,16 @@
    </div> -->
   <div class="hvrbox" @click="showStoreDetail(store.id)"
   >
-    <img
+
+    <img v-if="store.image != '' && store.image != undefined && store.image != null"
       :src="store.image" 
       alt="image"
       class="hvrbox-layer_bottom"
     />
+    <img v-else class="hvrbox-layer_bottom"
+      :src="'https://i.imgur.com/vpGJQAk.jpg'"
+    >
+
     <div class="hvrbox-layer_top">
       <div class="hvrbox-text">
         {{store.name}}<br/><br/>
@@ -22,9 +27,9 @@
       </div>
     </div>
 
-    <v-dialog v-model="isClicked"  max-width="30vw" class="storeInfo-modal-dialog"  >
+    <v-dialog v-model="isClicked"   class="storeInfo-modal-dialog" @close="isClicked"  >
        <!-- store info-->
-      <StoreInfoModal @exit_Clicked="exit_Modal"/>
+      <StoreInfoModal @exit_Clicked="exit_Modal" />
     </v-dialog>
 
   </div>

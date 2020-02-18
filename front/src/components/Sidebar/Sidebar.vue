@@ -58,14 +58,24 @@ export default {
     MapApp,
     SidebarCollide
   },
-  mounted() {
-    GridApi.requestBookmarkStoreList(localStorage.getItem('id'), response => {
-      this.$store.state.bookmarkStoreList = response
-    })
+  mounted: function() {
+    if(this.storeInfo != null) this.tabSelect(0)
+    var userId = sessionStorage.getItem('id')
+    if(userId != null) {
+      GridApi.requestBookmarkStoreList(userId, response => {
+        this.$store.state.bookmarkStoreList = response
+      })
+    }
+    
   },
   computed: {
     storeInfo() {
       return this.$store.state.storeInfo;
+    }
+  },
+  watch: {
+    storeInfo() {
+      this.tabSelect(0)
     }
   },
   methods: {
@@ -73,13 +83,14 @@ export default {
       var sidebar = document.getElementById("sidebar-1");
       sidebar.classList.remove("bounceInLeft");
       sidebar.classList.add("bounceOutLeft");
+      this.$store.state.storeInfo = null
     },
     tabSelect(idx) {
       var prevBtn = document.getElementById("sidebar-tab" + this.currentTab)
-      prevBtn.style = "background-color: #fbedeb"
+      if(prevBtn != null) prevBtn.style = "background-color: #fbedeb"
       this.currentTab = idx
       var selectedBtn = document.getElementById("sidebar-tab" + idx)
-      selectedBtn.style = "background-color: #c2bcbca8"
+      if(selectedBtn != null) selectedBtn.style = "background-color: #c2bcbca8"
     }
   }
 };

@@ -1,0 +1,86 @@
+.nav-bar {
+  z-index: 50;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  height: 6vh;
+  width: 100vw;
+}
+
+.nav-bar-router {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  right: 0;
+  padding: 0 2vw 0 0;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+.nav-bar-mainbanner {
+  align-items: center;
+  position: fixed;
+  top: 0;
+}
+.nav-bar-banner-container {
+  height: 6vh;
+  width: 30vw;
+  padding: 10px;
+}
+/* GR */
+.nav-bar-mainbanner .bt1 {
+  position: fixed;
+  max-height: 2.5vmax;
+  max-width: 5vmax;
+}
+/* EAT */
+.nav-bar-mainbanner .bt2 {
+  position: fixed;
+  max-height: 2.5vmax;
+  max-width: 6.5vmax;
+}
+/* 그래 */
+.nav-bar-mainbanner .bt3 {
+  position: fixed;
+  opacity: 70%;
+  max-height: 2.5vmax;
+  max-width: 5vmax;
+}
+/* 잇 */
+.nav-bar-mainbanner .bt4 {
+  position: fixed;
+  max-height: 2.5vmax;
+  max-width: 5vmax;
+  opacity: 70%;
+}
+
+.nav-bar-mainbanner .bt1,
+.nav-bar-mainbanner .bt2,
+.nav-bar-mainbanner .bt3,
+.nav-bar-mainbanner .bt4 {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+.static-banner {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 5rem;
+  max-height: 7vmax;
+  max-width: 14vmax;
+}
+.static-banner2 {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .static-banner {
+    display: none;
+  }
+  .static-banner2 {
+    display: block;
+    position: fixed;
+    top:0;
+    left:1rem;
+    max-width:20rem;
+  }
+}

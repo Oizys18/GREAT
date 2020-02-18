@@ -1,6 +1,6 @@
 <template>
   <div class="gridlist-box">
-      <v-list class="">
+      <v-list  >
         <v-list-item v-for="item in items" :key="item.id"
           class="gridbookmark-container">
           <!-- <GridBookmark :gridbookmarkIdx=index /> -->
@@ -27,25 +27,17 @@ export default {
   data() {
     return {
       listKey: 0,
-      //items :this.$store.state.userGridList,
     };
   },
   computed:{
-    // items: function(){
-    //   return this.$store.state.gridbookmarks;
-    // },
+   
     items:function(){
-      // this.items = this.$store.state.userGridList 
       return this.$store.state.userGridList;
     }
   
   },
   watch:{
-    // items(){
-    //   this.items = this.$store.state.userGridList
-    //   this.listKey += 1
-    //   console.log(this.listKey)
-    // },
+    
 
   },
   mounted:function(){
@@ -62,9 +54,9 @@ export default {
       if(index%2!=0) return false;
       else return true;
     },
+  
  
   },
 };
 </script>
 
-<style></style>

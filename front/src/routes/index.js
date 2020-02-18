@@ -12,70 +12,76 @@ import MobileGridItem from "@/components/Grid/MobileGrid/MobileGridItem.vue";
 import SocialJoin from "../views/SocialJoin.vue";
 import SearchMap from "@/components/common/SearchMap.vue";
 import BookmarkGrid from "@/views/BookmarkGrid.vue";
+import FindPassword from "@/views/FindPassword.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "Index",
+    name: "index",
     component: Index
   },
   {
     path: "/main",
-    name: "Main",
+    name: "main",
     component: Main
   },
   {
     path: "/map",
-    name: "Map",
+    name: "map",
     component: Map
   },
   {
     path: "*",
-    name: "PageNotFound",
+    name: "pagenotfound",
     component: PageNotFound
   },
   {
     path: "/mypage",
-    name: "Mypage",
+    name: "mypage",
     component: Mypage,
   },
   {
     path: "/authentication",
-    name: "Authentication",
+    name: "authentication",
     component: Authentication
   },
   {
     path: "/social",
-    name: "Social",
+    name: "social",
     component: Social
   },
   {
     path: "/join",
-    name: "Join",
+    name: "join",
     component: Join
   },
   {
-    path: "/mobileGridItem",
-    name: "MobileGridItem",
+    path: "/mobilegriditem",
+    name: "mobilegriditem",
     component: MobileGridItem
   },
   {
-    path: "/socialJoin",
-    name: "SocialJoin",
+    path: "/socialjoin",
+    name: "socialjoin",
     component: SocialJoin
   },
   {
-    path: "/searchMap",
-    name: "SearchMap",
+    path: "/searchmap",
+    name: "searchmap",
     component: SearchMap
   },
   {
-    path: "/bookmarkGrid",
-    name: "BookmarkGrid",
+    path: "/bookmarkgrid",
+    name: "bookmarkgrid",
     component: BookmarkGrid,
     props: (route) => ({ bookmarkId: route.query.bookmarkId })
+  },
+  {
+    path: "/findPassword",
+    name: "FindPassword",
+    component: FindPassword
   }
 ];
 

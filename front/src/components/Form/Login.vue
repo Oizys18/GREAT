@@ -1,6 +1,8 @@
 <template>
-  <div class="login-subcontainer">
+  <div>
     <h1>Login</h1>
+  <div class="login-subcontainer">
+    
     <div class="login-container">
       <div class="login-box">
         <div class="input-with-label">
@@ -34,13 +36,14 @@
     <div class="add-option">
       <div class="wrap">
         <p>비밀번호를 잊으셨나요?</p>
-        <button class="btn--text">비밀번호 찾기</button>
+        <button @click="findPassword" class="btn--text">비밀번호 찾기</button>
       </div>
       <div class="wrap">
         <p>아직 회원이 아니신가요?</p>
         <button @click="joinRequest" class="btn--text">회원가입</button>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
@@ -64,19 +67,20 @@ export default {
       this.tokenApi();
     },
     tokenApi() {
-      UserApi.requestToken(res => {
-        console.log(res);
-      });
       var token = sessionStorage.getItem("token");
       console.log('vue token ', token);
-      if (token.length > 10) {
-        this.$router.push("/").catch(err => {});
+      if (token != null) {
+        this.$router.push("Main");
+        this.$router.go(0);
       } else {
-        alert("로그인 실패");
+        alert("존재하지 않는 이메일이거나, 틀린 비밀번호입니다.");
       }
     },
     joinRequest() {
       this.$router.push("Join");
+    },
+    findPassword(){
+      this.$router.push("FindPassword");
     }
   },
 

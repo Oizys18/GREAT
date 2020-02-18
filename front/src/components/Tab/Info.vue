@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="info-box">
     <!-- 이름 -->
     <div v-if="isInfo" class="user-details" id="name">
       <div class="user-details-with-label">
@@ -25,14 +25,14 @@
     </div>
 
     <!-- 이메일 -->
-    <div v-if="isInfo" class="user-details" id="email">
+    <div  class="user-details" id="email">
       <div class="user-details-with-label">
         <label for="email">이메일</label>
         {{ user.email }}
       </div>
       <!-- <p>이메일: {{ email }}</p> -->
     </div>
-    <div v-else class="user-details">
+    <!-- <div v-else class="user-details">
       <div class="edit-with-label">
         <label for="email_modify">이메일</label>
         <input
@@ -42,7 +42,7 @@
           type="text"
         />
       </div>
-    </div>
+    </div> -->
 
     <!-- 생년월일 -->
     <div v-if="isInfo" class="user-details" id="birth">
@@ -69,9 +69,8 @@
     <div v-if="isInfo" class="user-details" id="gender">
       <div class="user-details-with-label">
         <label for="userGender">성별</label>
-        <!-- <div v-if="gender_">Male</div>
-            <div v-else>Female</div> -->
-        {{ userGender }}
+         <div v-if="gender_()">Male</div>
+         <div v-else>Female</div> 
       </div>
       <!-- <p>성별 : {{ gender }}</p> -->
     </div>
@@ -84,7 +83,7 @@
         <div class="mypage-radio">
           <input
             type="radio"
-            value="Male"
+            value="M"
             v-model="user.gender"
             id="male_modify"
             name="male_modify"
@@ -95,7 +94,7 @@
         <div class="mypage-radio">
           <input
             type="radio"
-            value="Female"
+            value="F"
             v-model="user.gender"
             id="female_modify"
             name="female_modify"
@@ -121,6 +120,7 @@
     <div v-if="!isInfo" class="edit-box">
       <button v-on:click="cancle" class="modify-button">취소</button>
       <button v-on:click="ok" class="modify-button">수정</button>
+      <button v-on:click="withdraw" class="withdraw-button">회원 탈퇴</button>
     </div>
   </div>
 </template>
@@ -135,61 +135,55 @@ export default {
       tempUser:null,
     };
   },
-  created: function() {},
   mounted: function() {
-    //로그인한 사용자 회원 정보 요청
-      
-    if (this.user.gender == "M") this.user.gender = "Male";
-    else this.user.gender = "Female";
+    
   },
   computed: {
     user(){
       return this.$store.state.userInfo
     },
-    userGender(){
-      var gen = this.user.gender
-      if (gen == "M") gen = "Male";
-      else gen = "Female";
-      return gen
-    }
   },
   methods: {
     gender_() {
-      console.log("사용자 성별:" + this.user.gender);
       if (this.user.gender == "M") {
-        console.log("남성");
         return true;
       } else if (this.user.gender == "F") {
-        console.log("여성");
         return false;
       }
     },
     change() {
       //수정하기 버튼 클릭
       this.isInfo = false;
-      if(this.userGender=='Male') this.user.gender="Male"
-      else this.user.gender="Female"
     },
     cancle() {
       //수정하기 - 취소 버튼 클릭
-      this.tempUser= this.$store.state.userInfo;
-      console.log('수정 취소:'+this.tempUser.name)
-      
-      this.$store.commit('userInfo',this.tempUser);
-      
+       MypageApi.requestUserInfo(response=>{
+        this.$store.commit('userInfo',response);
+      })
       this.isInfo = true;
     },
     ok() {
       //수정하기 - 확인 버튼 클릭
-      if (this.user.gender == "Male") this.user.gender = "M";
-      else this.user.gender = "F";
+      // if (this.user.gender == "Male") this.user.gender = "M";
+      // else this.user.gender = "F";
 
       MypageApi.modifyUserInfo(this.user,response=>{
-        this.$store.commit('userInfo',response)
+        if(response=='success'){
+        this.$store.commit('userInfo',this.user)
+        }
       });
       
       this.isInfo = true;
     
+    },
+    withdraw(){ //회원탈퇴
+      
+      MypageApi.deleteMember(response=>{
+        console.log(response)
+        this.$store.commit('userInfo',null)
+        alert('회원 탈퇴 되었습니다.')
+        this.$router.push("/");
+      })
     }
   }
 };
