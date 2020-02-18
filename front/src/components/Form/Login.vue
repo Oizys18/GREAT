@@ -67,15 +67,12 @@ export default {
       this.tokenApi();
     },
     tokenApi() {
-      UserApi.requestToken(res => {
-        console.log(res);
-      });
       var token = sessionStorage.getItem("token");
       console.log('vue token ', token);
-      if (token.length > 10) {
+      if (token != null) {
         this.$router.push("/").catch(err => {});
       } else {
-        alert("로그인 실패");
+        alert("존재하지 않는 이메일이거나, 틀린 비밀번호입니다.");
       }
     },
     joinRequest() {
