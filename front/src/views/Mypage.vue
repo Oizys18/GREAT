@@ -1,10 +1,12 @@
 <template>
   <div class="mypage-container">
     <div class="name-container">
-      <h2>{{this.$store.state.userInfo.email}}</h2>
+      <div v-if="this.$store.state.userInfo!=null">
+        <h2>{{this.$store.state.userInfo.email}}</h2>
+      </div>
     </div>
 
-    <v-tabs class="tab-container" color="#FFA578">
+    <v-tabs class="tab-container" color="#DFD7AF">
       <StoreTab />
       <GridTab />
       <InfoTab />
@@ -85,22 +87,21 @@ export default {
     };
   },
   computed: {
-    gridbookmarks: function() {
-      return this.$store.state.gridbookmarks;
-    },
-    
+
   },
   mounted: function() {
     //로그인한 사용자 회원 정보 요청
-    if (sessionStorage.getItem("token").length <= 10) {
+    
+    if (sessionStorage.getItem("token")==null||
+      sessionStorage.getItem("id")==null ||
+      sessionStorage.getItem("token").length <= 10 ) {
       //로그인하지 않은 경우
-
       alert("로그인을 먼저 해주세요.");
-      this.$router.push("/");
+      this.$router.push("/authentication");
     } else {
       //로그인 한 경우
 
-      MypageApi.setID();
+      // MypageApi.setID();
       MypageApi.requestUserInfo(response=>{
         this.$store.commit('userInfo',response);
       })
@@ -125,12 +126,7 @@ export default {
 };
 </script>
 <style>
-.myp-tab {
-  position: relative;
-  top: 10vh;
-  left: 0;
-  max-height: 300px;
-}
+
 .contents {
   max-height: 300px;
 }
