@@ -181,6 +181,7 @@
   border-radius: 5px;
   cursor: pointer;
   color: #444;
+  
   transition: box-shadow 400ms ease;
 }
 

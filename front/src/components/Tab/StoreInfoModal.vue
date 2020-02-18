@@ -54,6 +54,7 @@ export default {
     exitModal(){
         this.isClicked=true;
         this.$emit('exit_Clicked',this.isClicked)
+        
     },
   }
 };
