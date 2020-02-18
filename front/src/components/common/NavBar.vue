@@ -30,10 +30,10 @@
     </div>
     <div class="nav-bar-router" id="nav-router">
       <div class="temp-router">
-        <button class="nav-bar-banner" @click="go('authentication')">
+        <button v-if="!loggedIn" class="nav-bar-banner" @click="go('authentication')">
           <Chip :text="`Auth`" />
         </button>
-        <button class="nav-bar-banner" @click="go('mypage')">
+        <button v-else class="nav-bar-banner" @click="go('mypage')">
           <Chip :text="`Mypage`" />
         </button>
         <BarButton />
@@ -93,6 +93,11 @@ export default {
   },
   mounted() {
     this.change()
+  },
+  computed:{
+    loggedIn(){
+      return sessionStorage.getItem('token')
+    }
   },
   watch: {
     scrollPosition() {
