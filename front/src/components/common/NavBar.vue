@@ -1,7 +1,7 @@
 <template>
   <div class="nav-bar animated fadeInDown delay-0.2s" id="navbar">
     <div class="nav-bar-banner-container" id="nbbc">
-      <div class="nav-bar-mainbanner" @click="go('/')">
+      <button class="nav-bar-mainbanner" @click="go('/')">
         <img
           id="bt1"
           class="bt1"
@@ -26,19 +26,16 @@
           src="https://i.imgur.com/GVGfFoN.png"
           alt="잇"
         />
-      </div>
+      </button>
     </div>
     <div class="nav-bar-router" id="nav-router">
       <div class="temp-router">
-        <div class="nav-bar-banner" @click="go('/')">
-          <Chip :text="`Index`" />
-        </div>
-        <div class="nav-bar-banner" @click="go('authentication')">
+        <button v-if="!loggedIn" class="nav-bar-banner" @click="go('authentication')">
           <Chip :text="`Auth`" />
-        </div>
-        <div class="nav-bar-banner" @click="go('mypage')">
+        </button>
+        <button v-else class="nav-bar-banner" @click="go('mypage')">
           <Chip :text="`Mypage`" />
-        </div>
+        </button>
         <BarButton />
       </div>
     </div>
@@ -65,74 +62,48 @@ export default {
       var b3 = document.getElementById("bt3");
       var b4 = document.getElementById("bt4");
       var ab1 = document.getElementById("navbar");
-      var nbbc = document.getElementById("nbbc");
       var vabr = document.getElementById("nav-router");
       if (this.scrollPosition <= 50) {
         ab1.style.background = "transparent";
-
-        ab1.style.height = "8vh";
-        nbbc.style.height = "8vh";
         // b2
-        b2.style.webkitTransform =
-          "translate(" +
-          b1.offsetWidth / 2 +
-          "px" +
-          "," +
-          b1.offsetHeight +
-          "px)";
-
+        b2.style.webkitTransform ="translate(" + b1.offsetWidth / 2 +"px" +"," +b1.offsetHeight + "px)";
         // b3
-        b3.style.webkitTransform =
-          "translate(" + (5 + b1.offsetWidth) + "px" + "," + 0 + "px)";
-
-        // // b4
-        b4.style.webkitTransform =
-          "translate(" +
-          (b1.offsetWidth / 2 + b2.offsetWidth) +
-          "px" +
-          "," +
-          b2.offsetHeight +
-          "px)";
+        b3.style.webkitTransform = "translate(" + (5 + b1.offsetWidth) + "px" + "," + 0 + "px)";
+        // b4
+        b4.style.webkitTransform ="translate(" + (b1.offsetWidth / 2 + b2.offsetWidth) + "px" + "," + b2.offsetHeight + "px)";
         vabr.style.webkitTransform = "translate(" + 0 + "px" + "," + 7 + "px)";
-      } else {
-        var idxB = document.getElementById("index-background").style
-          .backgroundColor;
-        ab1.style.background = idxB;
 
-        vabr.style.webkitTransform = "translate(" + 0 + "px" + "," + -3 + "px)";
+      } else {
+        var idxB = document.getElementById("index-background").style.backgroundColor;
+        ab1.style.background = idxB;
+        vabr.style.webkitTransform = "translate(" + 0 + "px" + "," + -2 + "px)";
 
         // b2
         b2.style.webkitTransform =
           "translate(" + b1.offsetWidth + "px" + "," + 0 + "px)";
         b2.style.color = "red";
         // b3
-        b3.style.webkitTransform =
-          "translate(" +
-          (b2.offsetWidth + b1.offsetWidth) +
-          "px" +
-          "," +
-          0 +
-          "px)";
+        b3.style.webkitTransform ="translate(" +(b2.offsetWidth + b1.offsetWidth) +"px" +"," + 0 + "px)";
 
         // b4
         b4.style.webkitTransform =
-          "translate(" +
-          (b1.offsetWidth + b2.offsetWidth + b3.offsetWidth) +
-          "px" +
-          "," +
-          0 +
-          "px)";
+          "translate(" + (b1.offsetWidth + b2.offsetWidth + b3.offsetWidth) +"px" +"," +0 +"px)";
       }
     }
   },
   mounted() {
     this.change()
   },
+  computed:{
+    loggedIn(){
+      return sessionStorage.getItem('token')
+    }
+  },
   watch: {
     scrollPosition() {
       this.change()
     }
-  }
+  },
 };
 </script>
 

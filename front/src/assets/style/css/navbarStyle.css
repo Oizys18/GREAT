@@ -3,7 +3,7 @@
   position: fixed;
   display: flex;
   align-items: center;
-  height: 10vh;
+  height: 6vh;
   width: 100vw;
 }
 
@@ -16,9 +16,13 @@
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
 }
-
+.nav-bar-mainbanner{
+  align-items: center;
+  position:fixed;
+  top:0;
+}
 .nav-bar-banner-container {
-  height: 10vh;
+  height: 6vh;
   width: 30vw;
   padding:10px;
 }
@@ -55,4 +59,9 @@
 .nav-bar-mainbanner .bt4 {
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
+}
+
+
+@media (max-width : 800px){
+  
 }
