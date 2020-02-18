@@ -11,7 +11,7 @@ export default {
     return {};
   },
   methods:{
-
+    
   },
   mounted(){
 
@@ -22,12 +22,13 @@ export default {
 <style>
 .about-wrapper {
   position: absolute;
-  /* width: 100vw;
-  height: 100vh; */
   left:0;
   top:100vh;    
   width:100vw;
   height:100vh;
-  background-color: rgb(175, 175, 175);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: rgb(233, 233, 233);
 }
 </style>

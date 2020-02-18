@@ -91,9 +91,11 @@ export default {
           "," +
           b1.offsetHeight +
           "px)";
+
         // b3
         b3.style.webkitTransform =
           "translate(" + (5 + b1.offsetWidth) + "px" + "," + 0 + "px)";
+
         // b4
         b4.style.webkitTransform =
           "translate(" +
@@ -112,7 +114,6 @@ export default {
         // b2
         b2.style.webkitTransform =
           "translate(" + b1.offsetWidth + "px" + "," + 0 + "px)";
-        b2.style.color = "red";
         // b3
         b3.style.webkitTransform =
           "translate(" +
@@ -146,7 +147,11 @@ export default {
       }
     },
     loggedIn() {
-      return sessionStorage.getItem("token");
+      if (sessionStorage.getItem("token")){
+        return true
+      } else{
+        return false
+      }
     }
   },
   watch: {
