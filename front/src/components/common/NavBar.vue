@@ -2,35 +2,44 @@
   <div class="nav-bar animated fadeInDown delay-0.2s" id="navbar">
     <div class="nav-bar-banner-container" id="nbbc">
       <button class="nav-bar-mainbanner" @click="go('/')">
-        <img
-          id="bt1"
-          class="bt1"
-          src="https://i.imgur.com/si3Uh5E.png"
-          alt="GR"
-        />
-        <img
-          id="bt2"
-          class="bt2"
-          src="https://i.imgur.com/enHnxlO.png"
-          alt="EAT"
-        />
-        <img
-          id="bt3"
-          class="bt3"
-          src="https://i.imgur.com/GvcutCs.png"
-          alt="그래"
-        />
-        <img
-          id="bt4"
-          class="bt4"
-          src="https://i.imgur.com/GVGfFoN.png"
-          alt="잇"
-        />
+        <div v-if={routepath}>
+          <img
+            id="bt1"
+            class="bt1"
+            src="https://i.imgur.com/si3Uh5E.png"
+            alt="GR"
+          />
+          <img
+            id="bt2"
+            class="bt2"
+            src="https://i.imgur.com/enHnxlO.png"
+            alt="EAT"
+          />
+          <img
+            id="bt3"
+            class="bt3"
+            src="https://i.imgur.com/GvcutCs.png"
+            alt="그래"
+          />
+          <img
+            id="bt4"
+            class="bt4"
+            src="https://i.imgur.com/GVGfFoN.png"
+            alt="잇"
+          />
+        </div>
+        <div v-else>
+          hello
+        </div>
       </button>
     </div>
     <div class="nav-bar-router" id="nav-router">
       <div class="temp-router">
-        <button v-if="!loggedIn" class="nav-bar-banner" @click="go('authentication')">
+        <button
+          v-if="!loggedIn"
+          class="nav-bar-banner"
+          @click="go('authentication')"
+        >
           <Chip :text="`Auth`" />
         </button>
         <button v-else class="nav-bar-banner" @click="go('mypage')">
@@ -66,15 +75,28 @@ export default {
       if (this.scrollPosition <= 50) {
         ab1.style.background = "transparent";
         // b2
-        b2.style.webkitTransform ="translate(" + b1.offsetWidth / 2 +"px" +"," +b1.offsetHeight + "px)";
+        b2.style.webkitTransform =
+          "translate(" +
+          b1.offsetWidth / 2 +
+          "px" +
+          "," +
+          b1.offsetHeight +
+          "px)";
         // b3
-        b3.style.webkitTransform = "translate(" + (5 + b1.offsetWidth) + "px" + "," + 0 + "px)";
+        b3.style.webkitTransform =
+          "translate(" + (5 + b1.offsetWidth) + "px" + "," + 0 + "px)";
         // b4
-        b4.style.webkitTransform ="translate(" + (b1.offsetWidth / 2 + b2.offsetWidth) + "px" + "," + b2.offsetHeight + "px)";
+        b4.style.webkitTransform =
+          "translate(" +
+          (b1.offsetWidth / 2 + b2.offsetWidth) +
+          "px" +
+          "," +
+          b2.offsetHeight +
+          "px)";
         vabr.style.webkitTransform = "translate(" + 0 + "px" + "," + 7 + "px)";
-
       } else {
-        var idxB = document.getElementById("index-background").style.backgroundColor;
+        var idxB = document.getElementById("index-background").style
+          .backgroundColor;
         ab1.style.background = idxB;
         vabr.style.webkitTransform = "translate(" + 0 + "px" + "," + -2 + "px)";
 
@@ -83,27 +105,47 @@ export default {
           "translate(" + b1.offsetWidth + "px" + "," + 0 + "px)";
         b2.style.color = "red";
         // b3
-        b3.style.webkitTransform ="translate(" +(b2.offsetWidth + b1.offsetWidth) +"px" +"," + 0 + "px)";
+        b3.style.webkitTransform =
+          "translate(" +
+          (b2.offsetWidth + b1.offsetWidth) +
+          "px" +
+          "," +
+          0 +
+          "px)";
 
         // b4
         b4.style.webkitTransform =
-          "translate(" + (b1.offsetWidth + b2.offsetWidth + b3.offsetWidth) +"px" +"," +0 +"px)";
+          "translate(" +
+          (b1.offsetWidth + b2.offsetWidth + b3.offsetWidth) +
+          "px" +
+          "," +
+          0 +
+          "px)";
       }
     }
   },
   mounted() {
-    this.change()
+    this.change();
+    this.scrollPosition += 1;
   },
-  computed:{
-    loggedIn(){
-      return sessionStorage.getItem('token')
+  computed: {
+    routepath(){
+      console.log(this.$route)
+      if (this.$route.name === "index"){
+        return true
+      } else{
+        return false
+      }
+    },
+    loggedIn() {
+      return sessionStorage.getItem("token");
     }
   },
   watch: {
     scrollPosition() {
-      this.change()
+      this.change();
     }
-  },
+  }
 };
 </script>
 
