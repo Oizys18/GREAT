@@ -1,5 +1,6 @@
 package com.ssafy.great.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,7 @@ public class BookmarkController {
 	@GetMapping("/bookmark/{id}")
 	@ApiOperation("북마크 id에 해당하는 식당 목록 검색")
 	public ResponseEntity<Map<String,Object>> searchStoresById(@PathVariable int id){
+		System.out.println(service.searchStoresById(id));
 		return RestUtil.handleSuccess(service.searchStoresById(id));
 	}
 	
@@ -55,7 +57,21 @@ public class BookmarkController {
 	@DeleteMapping("/bookmark/{id}")
 	@ApiOperation("북마크 id에 해당하는 북마크 삭제")
 	public ResponseEntity<Map<String,Object>> deleteBookmark(@PathVariable int id){
-		service.deleteBookmark(id);
+		return RestUtil.handleSuccess("success");
+	}
+	@GetMapping("/bookmark/storelist/{userId}")
+	@ApiOperation("user가 bookmark한 store list")
+	public ResponseEntity<Map<String, Object>> selectByUserId(@PathVariable int userId) {
+		return RestUtil.handleSuccess(service.selectByUserId(userId));
+	}
+	
+	@DeleteMapping("/bookmark/{userId}/{storeId}")
+	@ApiOperation("user가 bookmark한 식당정보 삭제")
+	public ResponseEntity<Map<String, Object>> deleteBookmarkByUserId(@PathVariable int userId,@PathVariable int storeId) {
+		Map<String,Object> data = new HashMap<String, Object>();
+		data.put("userId",userId);
+		data.put("storeId",storeId);
+		service.deleteByUserId(data);
 		return RestUtil.handleSuccess("success");
 	}
 }

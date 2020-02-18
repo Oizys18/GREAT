@@ -7,9 +7,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+//@AllArgsConstructor
+//@NoArgsConstructor
 public class User{
+	public User() {
+		System.out.println("User");
+	}
     private int id;                     // primary key
     private String email;               // 이메일 주소
     private String password;            // 비밀번호
