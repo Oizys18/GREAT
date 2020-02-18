@@ -27,9 +27,6 @@ export default {
     MobileTable,
     MobileSortButton
   },
-  created: {
-    mobileChecker() {}
-  },
   methods: {
     isMobile() {
       if (
