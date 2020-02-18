@@ -92,14 +92,14 @@ var deleteGridbookmark=function(data,callback){
 }
 
 
-/*foodgrid list*/
+/*store grid list*/
 var requestStorebookmarkList=function(callback){
   var userID=storage.getItem('id')  
   axios
       .get('http://13.124.1.176/bookmark/storelist/'+userID,{
         headers: { Authorization : storage.getItem('token') }
       })
-          //사용자 id에 해당하는 food bookmarks(F)목록을 불러온다.
+          //사용자 id에 해당하는 food bookmarks목록을 불러온다.
       .then(res=>{
         callback(res.data.data)
       })

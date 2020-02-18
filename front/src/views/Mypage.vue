@@ -6,7 +6,7 @@
       </div>
     </div>
 
-    <v-tabs class="tab-container" color="#DFD7AF">
+    <v-tabs class="tab-container" color="#000">
       <StoreTab />
       <GridTab />
       <InfoTab />
@@ -66,7 +66,7 @@ import Reviews from "@/components/Tab/Reviews.vue";
 import StoreList from "@/components/Tab/StoreList.vue";
 import GridList from "@/components/Tab/GridList.vue";
 import MypageApi from "@/apis/MypageApi.js";
-
+import GridApi from '@/apis/GridApi.js';
 export default {
   name: "Mypage",
   components: {
@@ -105,9 +105,12 @@ export default {
       MypageApi.requestUserInfo(response=>{
         this.$store.commit('userInfo',response);
       })
-      MypageApi.requestStorebookmarkList(response=>{
-        this.$store.commit('userStoreList',response);
+      GridApi.requestBookmarkStoreList(sessionStorage.getItem('id'), response => {
+      this.$store.state.bookmarkStoreList = response
       })
+      // MypageApi.requestStorebookmarkList(response=>{
+      //   this.$store.commit('userStoreList',response);
+      // })
       MypageApi.requestGridbookmarkList(response=>{
         this.$store.commit('userGridList',response);
       })
