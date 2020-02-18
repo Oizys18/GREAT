@@ -59,7 +59,7 @@ const requestLogout = () => {
 
 const requestSocialRegister = (username, sns_token, birth, gender) => {
 	return axios.post('http://13.124.1.176/user/join', {
-			email: null,
+			email: sns_token,
 			password: null,
 			sns_token: sns_token,
 			birth: birth,
