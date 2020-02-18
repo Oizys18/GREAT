@@ -59,15 +59,20 @@ export default {
         console.log(res);
       }).then(
         sessionStorage.setItem('sns_token',null),
-        sessionStorage.setItem('social_data',null)
+        sessionStorage.setItem('social_data',null),
+        sessionStorage.setItem('email',null),
+        sessionStorage.setItem('token',null)
       );
       this.joinRedirect();
     },
     afterJoin(){
-      this.$router.push("Authentication").catch(err => {});
+      this.$router.push("Authentication");
+      // this.$router.go(0);
     },
     joinRedirect() {
+      sessionStorage.setItem('social_data',null);
       this.$router.push("Authentication");
+      // this.$router.go(0);
     }
   },
   data() {
