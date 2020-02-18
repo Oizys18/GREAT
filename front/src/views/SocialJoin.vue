@@ -1,8 +1,8 @@
 <template>
   <div class="auth">
     <div class="join">
+      <h1>Social Join</h1>
       <div class="join-container">
-        <h1>Social Join</h1>
         <div class="input-with-label">
           <input v-model="nickname" id="nickname" placeholder="닉네임을 입력하세요." type="text" />
           <label for="nickname">닉네임</label>
@@ -50,21 +50,29 @@ import UserApi from "@/apis/UserApi";
 
 export default {
   created() {
-    this.sns_token = localStorage.getItem("sns_token");
+    this.sns_token = sessionStorage.getItem("sns_token");
   },
   methods: {
     socialjoinApi() {
       let { isSubmit, nickname, birth, gender, sns_token } = this;
       UserApi.requestSocialRegister(nickname, sns_token, birth, gender, res => {
         console.log(res);
-      });
+      }).then(
+        sessionStorage.setItem('sns_token',null),
+        sessionStorage.setItem('social_data',null),
+        sessionStorage.setItem('email',null),
+        sessionStorage.setItem('token',null)
+      );
       this.joinRedirect();
     },
     afterJoin(){
-      this.$router.push("/").catch(err => {});
+      this.$router.push("Authentication");
+      // this.$router.go(0);
     },
     joinRedirect() {
+      sessionStorage.setItem('social_data',null);
       this.$router.push("Authentication");
+      // this.$router.go(0);
     }
   },
   data() {

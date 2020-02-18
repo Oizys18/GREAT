@@ -27,7 +27,7 @@ export default {
     MainFoodGrid,
     FoodCategory
   },
-  mounted() {
+  mounted: function() {
     this.$store.state.storeInfo = null
     if(this.bookmark == 0) {
       var x = this.$store.state.locationX
@@ -71,9 +71,6 @@ export default {
         category : categoryId
       }
       GridApi.requestGridStoresByRandom(data, response => {
-        for(var i = response.length; i < 8; i++){
-          response.push({"name": ""})
-        }
         this.$store.commit(categoryName, response)
       })
     },

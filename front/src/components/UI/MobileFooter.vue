@@ -1,13 +1,13 @@
 <template>
   <div class="mobile-footer">
     <div class="footer-container">
-      <div class="footer-button">
+      <div class="footer-button" @click="redirectBack">
         Back
       </div>
-      <div class="footer-button">
+      <div class="footer-button" @click="redirectMain">
         Main
       </div>
-      <div class="footer-button">
+      <div class="footer-button" @click="redirectMypage">
         Mypage
       </div>
     </div>
@@ -20,7 +20,17 @@ export default {
   data() {
     return {};
   },
-  methods: {}
+  methods: {
+    redirectBack(){
+      this.$router.go(-1);
+    },
+    redirectMain(){
+      this.$router.go();
+    },
+    redirectMypage(){
+      this.$router.push("Mypage");
+    }
+  }
 };
 </script>
 

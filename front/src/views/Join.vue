@@ -1,8 +1,9 @@
 <template>
 <div class="auth">
   <div class="join">
+    <h1>Join</h1>
     <div class="join-container">
-      <h1>Join</h1>
+      
       <div class="input-with-label email-input">
         <input
           v-model="email"
@@ -72,7 +73,7 @@
           data-date-picker="activated"
         />
       </div>
-      <!-- <v-date-picker v-model="picker" color="green lighten-1"></v-date-picker>-->
+      
       <div class="join-radio-container">
         <div class="input-with-label">
           <label for="gender">성별</label>
@@ -155,7 +156,7 @@ export default {
     },
     emailCheck() {
       let { email } = this;
-      axios.get("http://13.124.1.176:8080/user/email/" + email).then(res => {
+      axios.get("http://13.124.1.176/user/email/" + email).then(res => {
         console.log(res);
         if (res.data.data.length < 3) {
           this.emailCheckReturn = true;

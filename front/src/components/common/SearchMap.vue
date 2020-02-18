@@ -10,13 +10,12 @@
       @keydown.enter="getXY"
       style="border:1px solid; margin:10px; padding:10px;"
     />
-    <button
+    <div
+      class="map-search-btn"
       @click="getXY"
-      style="border:1px solid; margin: 10px; padding:10px;"
-    >
-      GOGO
-    </button>
-    <div id="map" class="kakao-map"></div>
+    >검색</div>
+
+    <div id="map" class="kakao-map search-map"></div>
     <br />
   </div>
 </template>
@@ -103,21 +102,33 @@ export default {
                 }
               });
           });
-        });
+        })
+        .catch(() => {
+          alert('지역명을 입력해주세요.')
+        })
     }
-  },
-  mounted: {}
+  }
 };
 </script>
 <style>
 .mapapp-container {
   position: fixed;
   top: 10vh;
-  left:35vw;
+  left:25vw;
+  text-align: center;
 }
-.kakao-map {
+.search-map {
   position: relative;
-  width: 27vw;
-  height: 42vh;
+  width: 50vw;
+  height: 60vh;
+}
+.map-search-btn {
+  display: inline-block;
+  background-color: #fbedeb;
+  border-radius: 20px;
+  font-size: 1.3rem;
+  padding: 0.4em 0.7em 0.4em 0.7em;
+  cursor: pointer;
+  font-weight: bold;
 }
 </style>

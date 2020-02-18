@@ -1,5 +1,11 @@
-.carousel-container{
-  height:150vh;
+.index-container {
+  height: 300vh;
+}
+.carousel-container {
+  height: 100vh;
+  /* position:fixed; */
+  top: 0;
+  left: 0;
 }
 .floating-container {
   /* position */
@@ -8,17 +14,18 @@
   width: 40vw;
   height: 50vh;
   z-index: 3;
-  position: fixed;
+  /* position: fixed; */
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
   /* image layout */
   background-size: contain;
   background-image: url("https://i2.wp.com/freepngimages.com/wp-content/uploads/2016/11/bacon-burger.png?fit=895%2C895");
   background-position: center;
 }
 .floating-text {
-  /* position */ 
+  /* position */
   z-index: 3;
   bottom: 2vmin;
 
@@ -31,10 +38,10 @@
 
 .index-card {
   /* position */
-  top: 12vh;
+  top: 13vh;
   left: 5vw;
   z-index: 2;
-  position: fixed;
+  position: absolute;
 
   /* shape */
   width: 68vw;
@@ -46,21 +53,14 @@
 .index-card:focus {
   background-color: transparent;
 }
-.index-carousel {
-  /* carousel position */
-  z-index: 1;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  /* justify-content: flex-end; */
-}
+
 .index-card-title {
   /* card title position */
-  left: 9vw;
-  top: 20vh;
+  position: relative;
+  left: 5vw;
+  top: 9vh;
   z-index: 4;
-  position: fixed;
+
 
   /* title text style */
   color: black;
@@ -70,52 +70,17 @@
 }
 .index-card-content {
   /* card content position */
-  position: fixed;
+  /* position: fixed; */
+  position: relative;
+  left: 5vw;
+  top: 10vh;
   z-index: 4;
-  left: 10vw;
-  top: 30vh;
 
   /* content text style */
   color: black;
   font-weight: bold;
   font-size: 2.5vmax;
   font-family: "Noto Sans KR", sans-serif;
-}
-
-@media (max-width: 600px) {
-  .index-card {
-    /* position */
-    top: 22vh;
-    left: 4vw;
-
-    /* shape */
-    width: 92vw;
-    height: 60vh;
-  }
-  .floating-container {
-    /* position */
-    top: 10vh;
-    left: 25vw;
-    width: 50vw;
-    height: 25vh;
-    z-index: 3;
-  }
-  .index-card-title {
-    /* card title position */
-    left: 8vw;
-    top: 35vh;
-
-    /* title text style */
-    font-size: 6vmin;
-  }
-  .index-card-content {
-    /* card content position */
-    left: 12vw;
-    top: 40vh;
-
-    /* content text style */
-    font-size: 5vmin;
-  }
 }
 
 .index-background {
@@ -129,8 +94,6 @@
   height: 100vh;
 
   /* position & gradient */
-  position: fixed;
-
   -webkit-transition: width 0.6s, height 0.6s, background-color 0.6s,
     -webkit-transform 0.6s;
   transition: width 0.6s, height 0.6s, background-color 0.6s, transform 0.6s;
@@ -154,6 +117,46 @@
   z-index: 5;
   width: 3.5rem;
   height: 3.5rem;
+}
+  
+@media (max-width: 600px) {
+  .index-card{
+    width:90vw;
+  }
+  .index-card-container {
+    /* position */
+    top: 22vh;
+
+    /* shape */
+    width: 80vw;
+    height: 60vh;
+  }
+  .floating-container {
+    /* position */
+    top: 10vh;
+    left: 25vw;
+    width: 50vw;
+    height: 25vh;
+    z-index: 3;
+  }
+  .index-card-title {
+    /* card title position */
+    left: 6vw;
+    top: 25vh;
+    width:80vw;
+
+    /* title text style */
+    font-size: 5.5vmin;
+  }
+  .index-card-content {
+    /* card content position */
+    width:80vw;
+    left: 8vw;
+    top: 27vh;
+
+    /* content text style */
+    font-size: 5vmin;
+  }
 }
 
 @media (max-width: 800px) {

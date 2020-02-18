@@ -107,38 +107,59 @@
 /* eslint-disable no-unused-vars */
 import KakaoAuth from "@/apis/KakaoApi.js";
 import axios from "axios";
+import UserApi from "@/apis/UserApi.js";
 
 export default {
   name: "SocialLogin",
+
   methods: {
-    redirectSocialJoin() {
-      this.$router.push('Loading');
+    async redirectSocialJoin() {
+      var sns_token = sessionStorage.getItem("sns_token");
+      var social_data = sessionStorage.getItem("social_data");
+      console.log("re", sns_token);
+      console.log("re", social_data);
+      while(social_data == null){
+        alert('아직')
+      }
+      if (social_data != "success") {
+        this.$router.push("SocialJoin");
+      } else {
+        await UserApi.getID(res => {
+          console.log(res)
+        }).then(res => {
+          console.log("vue id ", sessionStorage.getItem("id"));
+          this.$router.push("Main");
+        });
+      }
     },
-    getKakaoData() {
-      KakaoAuth.loginWithKakao();
+    kakaoLogin() {
+      KakaoAuth.loginWithKakao().then(res => {
+        this.redirectSocialJoin().then(res => {
+          this.$router.go(0)
+        });
+      });
     },
-    async kakaoLogin() {
-      await this.getKakaoData();
-      this.redirectSocialJoin();
+    googleLogin() {
+      this.handleClickGetAuth().then(res => {
+        this.redirectSocialJoin().then(res => {
+          this.$router.go(0)
+        });
+      });
     },
-    async googleLogin() {
-      await this.handleClickGetAuth();
-      this.redirectSocialJoin();
-    },
-    handleClickGetAuth() {
-      this.$gAuth
+    async handleClickGetAuth() {
+      await this.$gAuth
         .signIn()
         .then(GoogleUser => {
           //on success do something
           console.log("GoogleUser", GoogleUser["Ca"]);
-          axios
-            .post("http://13.124.1.176:8080/user/socialLogin", GoogleUser["Ca"])
+          return axios
+            .post("http://13.124.1.176/user/socialLogin", GoogleUser["Ca"])
             .then(response => {
-              localStorage.setItem("sns_token", GoogleUser["Ca"]);
-              localStorage.setItem("social_data", response.data.data);
-              console.log(localStorage.getItem("sns_token"));
-              console.log(localStorage.getItem("social_data"));
-              console.log(response.data);
+              sessionStorage.setItem("sns_token", GoogleUser["Ca"]);
+              sessionStorage.setItem("email", GoogleUser["Ca"]);
+              sessionStorage.setItem("social_data", response.data.data.data);
+              if(sessionStorage.getItem('social_data')=="success")
+                sessionStorage.setItem("token", response.data.data.Authorization);
             });
         })
         .catch(error => {
@@ -148,4 +169,18 @@ export default {
     }
   }
 };
+
+// getKakaoData() {
+
+//       return KakaoAuth.loginWithKakao(
+//          success callback
+//         (res) => {
+//           console.log("콜백나왔다"+res);
+//         },
+//          fail callback
+//         (error) => {
+
+//       });
+
+//     },
 </script>
