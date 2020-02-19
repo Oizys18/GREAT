@@ -1,6 +1,6 @@
 <template>
   <div class="nav-bar animated fadeInDown delay-0.2s" id="navbar">
-    <div class="nav-bar-banner-container" id="nbbc">
+    <div class="nav-bar-banner-container">
       <button class="nav-bar-mainbanner" @click="go('/')">
         <div v-if="routepath">
           <img
@@ -102,9 +102,7 @@ export default {
       if(b1 != null && b2 != null && b3 != null && b4 != null &&
           ab1 != null && vabr != null){
           if (this.scrollPosition >= 50) {
-            var idxB = document.getElementById("index-background").style
-              .backgroundColor;
-            ab1.style.background = idxB;
+            ab1.style.background = "transparent";
             vabr.style.webkitTransform = "translate(" + 0 + "px" + "," + -2 + "px)";
     
             // b2

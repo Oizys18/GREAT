@@ -47,7 +47,7 @@
         </div>
       </div>
     </div>
-    <About />
+    <About :page="page" />
   </div>
 </template>
 
@@ -91,6 +91,9 @@ export default {
     };
   },
   methods: {
+    changePageWithKey(e) {
+      console.log(e.target.value);
+    },
     mouseIsMoving(e) {
       if (screen.width >= 800 && this.$router.app.$route.path === "/") {
         var hamX = document.getElementById("FlyingBurger").offsetLeft;
@@ -154,7 +157,6 @@ export default {
   },
   mounted() {
     window.addEventListener("mousemove", this.mouseIsMoving);
-
     // touch start
     window.addEventListener("touchstart", this.lock);
     window.addEventListener("mousedown", this.lock);
