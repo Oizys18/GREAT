@@ -36,7 +36,7 @@
         <ReviewInfo :storeId="storeInfo.id"/>
       </div>
       <div v-show="currentTab == 2">
-        <MapApp class="sidebar-map" :store_id="storeInfo.id"/>
+        <MapApp class="modal-map" :store_id="storeInfo.id"/>
       </div>
     </div>
   </div>
@@ -93,9 +93,13 @@ export default {
 };
 </script>
 
-<style>
-  .sidebar-text-body{
-    text-align: center;
-    padding: 1px 1px 1px 1px;
+<style scoped>
+
+.modal-map{
+  position: relative;
+  left:0vw;
+  width: 80vw;
+  height: 42vh;
+  background-color: red;
   }
 </style>
