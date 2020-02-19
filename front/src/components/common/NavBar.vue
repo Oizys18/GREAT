@@ -139,7 +139,6 @@ export default {
   },
   computed: {
     routepath() {
-      console.log(this.$route);
       if (this.$route.name === "index") {
         return true;
       } else {
