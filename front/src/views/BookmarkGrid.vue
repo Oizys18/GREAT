@@ -14,9 +14,13 @@ export default {
   components: {
     Table,
     Sidebar
-  }
+  },
+  mounted: function() {
+    this.$store.state.tabFlag=true;
+  },
 }
 </script>
+
 
 <style>
 .main {
