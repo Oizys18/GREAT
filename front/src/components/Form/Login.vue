@@ -68,10 +68,9 @@ export default {
     },
     tokenApi() {
       var token = sessionStorage.getItem("token");
-      console.log('vue token ', token);
       if (token != null) {
-        this.$router.push("Main");
-        this.$router.go(0);
+        this.$router.push('/')
+        window.location.reload()
       } else {
         alert("존재하지 않는 이메일이거나, 틀린 비밀번호입니다.");
       }

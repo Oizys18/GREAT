@@ -42,21 +42,10 @@ export default {
     };
   },
   mounted: function() {
-    this.$store.state.storeInfo = null;
-    if (this.bookmark == 0) {
-      var x = this.$store.state.locationX;
-      var y = this.$store.state.locationY;
-      var categories = this.$store.state.categories;
-      for (var i = 0; i < categories.length; i++) {
-        var categoryName = categories[i].name;
-        var categoryId = categories[i].id;
-        this.requestStores(categoryId, categoryName, x, y);
-      }
-    } else {
-      BookmarkApi.requestGridBookmarkStores(this.bookmark, response => {
-        this.setBookmarkStores(response);
-      });
-    }
+    this.requestStoreList()
+  },
+  updated() {
+    this.requestStoreList()
   },
   watch: {
     bookmark(v) {
@@ -77,8 +66,26 @@ export default {
     }
   },
   methods: {
+    requestStoreList() {
+      this.$store.state.storeInfo = null;
+      if (this.bookmark == 0) {
+        var x = this.$store.state.locationX;
+        var y = this.$store.state.locationY;
+        var categories = this.$store.state.categories;
+        for (var i = 0; i < categories.length; i++) {
+          var categoryName = categories[i].name;
+          var categoryId = categories[i].id;
+          this.requestStores(categoryId, categoryName, x, y);
+        }
+      } else {
+        BookmarkApi.requestGridBookmarkStores(this.bookmark, response => {
+          this.setBookmarkStores(response);
+        });
+      }
+    },
     gogo() {
       this.tableKey += 1;
+      this.$forceUpdate()
     },
     requestStores(categoryId, categoryName, x, y) {
       var data = {
