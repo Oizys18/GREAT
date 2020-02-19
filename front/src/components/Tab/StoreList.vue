@@ -1,13 +1,11 @@
 <template> 
   <!--food grid bookmark -->
   <div class="">
-     <!-- <span v-for="item in foodgridbookmarkList" :key=item.id>
-         <StoreBookmark :FoodBookmarkItem=item />
-     </span> -->
      <span v-for="store in storeList" :key=store.id>
+          <!-- {{store.id}} -->
          <StoreBookmark :store=store />
      </span>
-   </div>
+  </div>
 </template>
  
 <script>
@@ -39,9 +37,3 @@ export default {
   }
 };
 </script>
-<style>
-.hellloo{
-  display: flex;
-  justify-content: center;
-}
-</style>
