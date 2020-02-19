@@ -58,7 +58,8 @@
   height: 550px;
   padding: 20px;
   margin-top: 10px;
-  border: 3px solid lightgoldenrodyellow !important;
+  background-color: ghostwhite !important;
+  border: 3px solid ghostwhite !important;
   border-radius: 25px;
   max-height: 900px;
   overflow-y:auto;
@@ -70,7 +71,8 @@
   padding: 10px;
   height: 550px;
   margin-top: 10px;
-  border: 3px solid lightgoldenrodyellow !important;
+  background-color: ghostwhite !important;
+  border: 3px solid ghostwhite !important;
   border-radius: 25px;
   max-height: 900px;
   overflow-y: auto;
@@ -211,12 +213,12 @@
 }
 
 .mypage-radio-btn-group input[type="radio"] {
+  
   display: none;
 }
 
 .mypage-radio-btn-group input[type="radio"]:checked + label {
-  background: rgb(204, 242, 245);
-  /* color: #fff; */
+  background-color: rgb(204, 242, 245) !important;
   border-color: rgb(204, 242, 245);
 }
 
