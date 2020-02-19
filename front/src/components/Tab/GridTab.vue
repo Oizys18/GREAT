@@ -1,5 +1,5 @@
 <template>
-    <v-tab href="#tab-grid" class="tab-category ">
+    <v-tab key='grid' href="#tab-grid" class="tab-category ">
       Grid
     </v-tab>
  </template>
