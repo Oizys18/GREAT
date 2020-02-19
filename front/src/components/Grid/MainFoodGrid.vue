@@ -14,8 +14,11 @@
         <StarRating v-if="mouseOn[i]" :rating="itemName[idx].rating" />
       </button>
     </template>
-    <div class="small-category">
-      {{ categoryName }}
+    <div class="center-box">
+      <div class="category-img-box"><img class="category-image" :src="categoryImage" /></div>
+      <div class="category-name">
+        <p>{{categoryName}}</p>
+      </div>
     </div>
     <template v-for="(idx, i) in indexList.slice(4, 8)">
       <button
@@ -77,6 +80,9 @@ export default {
   computed: {
     categoryName() {
       return this.$store.state.categories[this.num].name;
+    },
+    categoryImage() {
+      return this.$store.state.categoryImageUrl[this.num];
     },
     indexList() {
       var listName = this.categoryName + "index";

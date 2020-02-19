@@ -8,7 +8,7 @@
       </span>
 
       <div
-        class="index-background transition:0.15s" 
+        class="index-background transition:0.15s"
         id="index-background"
         :style="{ backgroundColor: IndexColors[this.page] }"
       >
@@ -30,24 +30,25 @@
       </div>
       <div class="big-screen-carousel" :key="this.page">
         <div class="index-card">
-            <div class="index-card-title animated fadeInDown delay:0.15s">
-              {{ this.title[this.page] }}
-            </div>
-            <div class="index-card-content animated fadeInDown delay:0.05s">
-              <span
-                v-for="(cardText, id) in this.content[this.page]"
-                :key="`${cardText}-${id}`"
-              >
-                {{ cardText }}<br />
-              </span>
-              <span v-show="page === 2">
-                <br />
-                <BarButton />
-              </span>
+          <div class="index-card-title animated fadeInDown delay:0.15s">
+            {{ this.title[this.page] }}
+          </div>
+          <div class="index-card-content animated fadeInDown delay:0.05s">
+            <span
+              v-for="(cardText, id) in this.content[this.page]"
+              :key="`${cardText}-${id}`"
+            >
+              {{ cardText }}<br />
+            </span>
+            <span v-show="page === 2">
+              <br />
+              <BarButton />
+            </span>
           </div>
         </div>
       </div>
     </div>
+    <About />
   </div>
 </template>
 
@@ -55,12 +56,14 @@
 import "@/assets/style/css/indexStyle.css";
 import "@/assets/style/css/animated.css";
 import BarButton from "@/components/common/BarButton.vue";
+import About from "@/components/Index/About.vue";
 import CarouselIndicator from "@/components/common/CarouselIndicator.vue";
 export default {
   name: "Index",
   components: {
     CarouselIndicator,
-    BarButton
+    BarButton,
+    About
   },
   data() {
     return {
