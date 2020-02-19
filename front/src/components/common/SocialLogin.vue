@@ -118,14 +118,18 @@ export default {
       var social_data = sessionStorage.getItem("social_data");
       console.log("re", sns_token);
       console.log("re", social_data);
-      while(social_data == null){
-        alert('아직')
+      if (sessionStorage.getItem("error") == "access") {
+        console.log(sessionStorage.getItem("error"));
+        this.kakaoLogin();
+      }
+      while (social_data == null) {
+        // alert('아직')
       }
       if (social_data != "success") {
         this.$router.push("SocialJoin");
       } else {
         await UserApi.getID(res => {
-          console.log(res)
+          console.log(res);
         }).then(res => {
           console.log("vue id ", sessionStorage.getItem("id"));
           this.$router.push("Main");
@@ -133,16 +137,18 @@ export default {
       }
     },
     kakaoLogin() {
-      KakaoAuth.loginWithKakao().then(res => {
-        this.redirectSocialJoin().then(res => {
-          this.$router.go(0)
-        });
-      });
+      KakaoAuth.loginWithKakao()
+        .then(res => {
+          this.redirectSocialJoin().then(res => {
+            this.$router.go(0);
+          });
+        })
+        .catch(console.log('kakao error' + sessionStorage.getItem("error")));
     },
     googleLogin() {
       this.handleClickGetAuth().then(res => {
         this.redirectSocialJoin().then(res => {
-          this.$router.go(0)
+          this.$router.go(0);
         });
       });
     },
@@ -158,8 +164,11 @@ export default {
               sessionStorage.setItem("sns_token", GoogleUser["Ca"]);
               sessionStorage.setItem("email", GoogleUser["Ca"]);
               sessionStorage.setItem("social_data", response.data.data.data);
-              if(sessionStorage.getItem('social_data')=="success")
-                sessionStorage.setItem("token", response.data.data.Authorization);
+              if (sessionStorage.getItem("social_data") == "success")
+                sessionStorage.setItem(
+                  "token",
+                  response.data.data.Authorization
+                );
             });
         })
         .catch(error => {

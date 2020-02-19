@@ -95,3 +95,10 @@ export default {
   }
 };
 </script>
+<style  scoped>
+.sidebar-map{
+  position:relative;
+  width:30vw;
+  height:45vh;
+}
+</style>
