@@ -81,7 +81,33 @@ export default {
       var b4 = document.getElementById("bt4");
       var ab1 = document.getElementById("navbar");
       var vabr = document.getElementById("nav-router");
-      if (this.scrollPosition <= 50) {
+      if (this.scrollPosition >= 50) {
+        var idxB = document.getElementById("index-background").style
+          .backgroundColor;
+        ab1.style.background = idxB;
+        vabr.style.webkitTransform = "translate(" + 0 + "px" + "," + -2 + "px)";
+
+        // b2
+        b2.style.webkitTransform =
+          "translate(" + b1.offsetWidth + "px" + "," + 0 + "px)";
+        // b3
+        b3.style.webkitTransform =
+          "translate(" +
+          (b2.offsetWidth * 2) +
+          "px" +
+          "," +
+          0 +
+          "px)";
+
+        // b4
+        b4.style.webkitTransform =
+          "translate(" +
+          (b1.offsetWidth * 4) +
+          "px" +
+          "," +
+          0 +
+          "px)";
+      } else {
         ab1.style.background = "transparent";
         // b2
         b2.style.webkitTransform =
@@ -105,32 +131,6 @@ export default {
           b2.offsetHeight +
           "px)";
         vabr.style.webkitTransform = "translate(" + 0 + "px" + "," + 7 + "px)";
-      } else {
-        var idxB = document.getElementById("index-background").style
-          .backgroundColor;
-        ab1.style.background = idxB;
-        vabr.style.webkitTransform = "translate(" + 0 + "px" + "," + -2 + "px)";
-
-        // b2
-        b2.style.webkitTransform =
-          "translate(" + b1.offsetWidth + "px" + "," + 0 + "px)";
-        // b3
-        b3.style.webkitTransform =
-          "translate(" +
-          (b2.offsetWidth + b1.offsetWidth) +
-          "px" +
-          "," +
-          0 +
-          "px)";
-
-        // b4
-        b4.style.webkitTransform =
-          "translate(" +
-          (b1.offsetWidth + b2.offsetWidth + b3.offsetWidth) +
-          "px" +
-          "," +
-          0 +
-          "px)";
       }
     }
   },
@@ -146,10 +146,10 @@ export default {
       }
     },
     loggedIn() {
-      if (sessionStorage.getItem("token")){
-        return true
-      } else{
-        return false
+      if (sessionStorage.getItem("token")) {
+        return true;
+      } else {
+        return false;
       }
     }
   },
