@@ -1,5 +1,5 @@
 <template>
-  <div class="small-grid">
+  <div class="small-grid" >
     <template v-for="(idx, i) in indexList.slice(0, 4)">
       <button 
         class="small-box animated bounceIn fast delay-0.1s"
@@ -99,4 +99,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+
+</style>
