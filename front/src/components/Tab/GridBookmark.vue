@@ -2,7 +2,7 @@
   <div class="gridbookmark-box" >
     
     <v-list-item-icon class="girdbookmark-elem-star">
-      <v-btn text icon color="#F5D82E">
+      <v-btn text icon color="#FFD900">
         <v-icon  v-if="true">mdi-star</v-icon>
       </v-btn>
     </v-list-item-icon>
@@ -20,11 +20,11 @@
 
     <!-- 수정 버튼-->
     <v-list-item-icon class="girdbookmark-elem-edit">
-      <v-btn  v-if="!editFlag" class="ma-2" text icon color="#7CC1EC" id=btn-edit
+      <v-btn  v-if="!editFlag" class="ma-2" text icon color="#58ABDE" id=btn-edit
         v-on:click="clickEditBtn">
         <v-icon>mdi-pencil</v-icon>
       </v-btn>
-      <v-btn  v-else class="ma-2" text icon color="#F5D82E" id=btn-edit
+      <v-btn  v-else class="ma-2" text icon color="#4AAF6A" id=btn-edit
         v-on:click="editGridBookmark_click" 
         :disabled="!isTitleForm"  
       >
@@ -34,7 +34,7 @@
 
     <!-- 삭제 버튼 -->
     <v-list-item-icon class="girdbookmark-elem-delete" id="btn-delete">
-      <v-btn class="ma-2" text icon color="grey" id="btn-delete"
+      <v-btn class="ma-2" text icon color="#8A8989" id="btn-delete"
         v-on:click="delteGridbookmark">
         <v-icon>mdi-delete</v-icon>
       </v-btn>
@@ -46,20 +46,27 @@
 import MypageApi from '@/apis/MypageApi'
 export default {
   name: "GridBookmark",
-  props:["gridbookmarkIdx","gridbookmarkItem"],
+  props:["gridbookmarkItem"],
   data(){
     return{
       editFlag:false, //그리드 북마크 수정 여부 flag
       isTitleForm:true, //title input text여부 check flag -> 수정확인 버튼 disabled 여부  
-      gridbookmark:{
-        id:"",
-        name:"",
-        type:"",
-        user:""
-      },
+      editTitle:null,
     }
   },
   computed:{
+   
+  },
+  watch:{
+    editTitle(v){
+      console.log(this.editTitle.length)
+      if(v.length<=0){
+        console.log('입력안함')
+        this.isTitleForm=false;
+      }else{
+        this.isTitleForm=true;
+      }
+    }
 
   },
   methods:{
@@ -74,7 +81,6 @@ export default {
 
        MypageApi.modifyGridbookmark(this.gridbookmarkItem,response=>{
         if(response=='success'){
-          console.log(this.gridbookmark)
           this.$store.commit('modifyGridName',this.gridbookmark);
         }
         

@@ -477,9 +477,11 @@
   border: 1px solid red;
 }
 .title-modify-input{
-  color:gray;
-  padding:2px;
-  border:1px solid grey;
+  /* color:ghostwhite; */
+  padding:5px;
+  border:0.5px solid lightgoldenrodyellow;
+  border-radius:2px;
+  
 }
 /* icon */
 .gridlist-box .v-application--is-ltr .v-list-item__action:first-child,
