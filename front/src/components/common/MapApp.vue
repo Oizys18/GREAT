@@ -1,7 +1,5 @@
 <template>
-  <div id="dmap">
     <div id="map" class="kakao-map"></div>
-  </div>
 </template>
 <script
   type="text/javascript"
@@ -59,7 +57,7 @@ export default {
 <style>
 .kakao-map {
   position: relative;
-  width: 27vw;
-  height: 42vh;
+  width: 100%;
+  height: 100%;
 }
 </style>
