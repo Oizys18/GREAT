@@ -10,10 +10,7 @@
       @keydown.enter="getXY"
       style="border:1px solid; margin:10px; padding:10px;"
     />
-    <div
-      class="map-search-btn"
-      @click="getXY"
-    >검색</div>
+    <div class="map-search-btn" @click="getXY">검색</div>
 
     <div id="map" class="kakao-map search-map"></div>
     <br />
@@ -98,24 +95,23 @@ export default {
                 if (check) {
                   componentInstance.$store.state.locationX = latlng.getLng();
                   componentInstance.$store.state.locationY = latlng.getLat();
-                  componentInstance.$router.push('/main')
+                  componentInstance.$router.push("/main");
                 }
               });
           });
         })
         .catch(() => {
-          alert('지역명을 입력해주세요.')
-        })
+          alert("지역명을 입력해주세요.");
+        });
     }
-  },
-  mounted: {}
+  }
 };
 </script>
 <style>
 .mapapp-container {
   position: fixed;
   top: 10vh;
-  left:25vw;
+  left: 25vw;
   text-align: center;
 }
 .search-map {
