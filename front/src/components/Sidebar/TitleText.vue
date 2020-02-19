@@ -31,18 +31,26 @@ export default {
       marked: false,
     }
   },
+  mounted() {
+    this.checkMarked()
+  },
   computed: {
     store() {
       return this.textInfo;
     },
   },
   watch: {
-    store(v) {
+    store() {
+      this.checkMarked()
+    }
+  },
+  methods: {
+    checkMarked() {
       var heartBtn = document.getElementById("bookmark-heart")
       var bookmarkList = this.$store.state.bookmarkStoreList
 
       var bookmark = bookmarkList.find(item => {
-        return item.id === v.id
+        return item.id === this.store.id
       })
 
       if(bookmark === undefined) {
@@ -53,9 +61,7 @@ export default {
         heartBtn.style = "fill: red"
         this.marked = true
       }
-    }
-  },
-  methods: {
+    },
     bookmark() {
       if(!this.marked){
         this.requestPost()
