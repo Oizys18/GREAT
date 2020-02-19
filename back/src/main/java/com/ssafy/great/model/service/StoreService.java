@@ -21,6 +21,9 @@ public interface StoreService {
 	/** 사용자 지정 위치로부터 가까운 식당 8개 목록 검색 */
 	List<Store> searchByLocation(int category, double x, double y);
 	
+	
+
+	
 	/** 식당 정보 수정 */
 	void updateStore(Store store);
 

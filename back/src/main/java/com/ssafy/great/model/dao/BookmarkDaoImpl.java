@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.ssafy.great.dto.Bookmark;
+import com.ssafy.great.dto.Store;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class BookmarkDaoImpl implements BookmarkDao{
     }
 
     /** 북마크 id에 해당하는 북마크의 식당 id 리스트 검색 */
-    public List<Integer> selectById(int id){
+    public List<Store> selectById(int id){
     	return session.selectList("sql.bookmark.selectById", id);
     }
     
@@ -49,4 +50,17 @@ public class BookmarkDaoImpl implements BookmarkDao{
         session.delete("sql.bookmark.deleteFromBookmarkStore", id);
         session.delete("sql.bookmark.deleteFromBookmark", id);
     }
+    
+	@Override
+	public List<Store> selectByUserId(int userId) {
+		// TODO Auto-generated method stub
+		return session.selectList("sql.bookmark.selectByUserId",userId);
+	}
+
+	@Override
+	public void deleteByUserId(Map<String, Object> data) {
+		session.delete("sql.bookmark.deleteByBookmarkStoreUserId",data);
+		session.delete("sql.bookmark.deleteByBookmarkUserId",data);
+		
+	}
 }

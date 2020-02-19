@@ -30,7 +30,7 @@ public class StoreDaoImpl implements StoreDao{
 
     /** 식당 category에 해당하는 식당 목록 검색 */
     public List<Store> selectByRating(Map<String,Object> data){
-        return session.selectList("sql.store.selectByCategory", data);
+        return session.selectList("sql.store.selectByRating", data);
     }
     
     /** x,y 좌표 기준 최소 거리 8개 식당 목록 검색 
@@ -79,4 +79,6 @@ public class StoreDaoImpl implements StoreDao{
 		// TODO Auto-generated method stub
 		return session.selectList("sql.store.selectByDefault",data);
 	}
+
+
 }

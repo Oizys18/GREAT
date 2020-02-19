@@ -4,43 +4,90 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="sql.bookmark">
-	<select id="selectByUser" parameterType="java.util.HashMap" resultType="bookmark">
-		select * 
-		  from bookmark
-		 where user = #{user}
-		   and type = #{type}
+	<select id="selectByUser" parameterType="java.util.HashMap"
+		resultType="bookmark">
+		select *
+		from bookmark
+		where user = #{user}
+		and type = #{type}
 	</select>
 
-	<select id="selectById" parameterType="integer" resultType="integer">
-		select store
-		from bookmarkstore
-		where bookmark = #{bookmark}
+	<select id="selectByUserId" parameterType="Integer"
+		resultType="store">
+		select * from store as s , (
+		select bs.store as code from
+		bookmark b, bookmarkstore bs where b.user = #{userId} and b.id =
+		bs.bookmark and b.type='S'
+		) as sq
+		where s.id = sq.code;
 	</select>
-	
-	<insert id="insertIntoBookmark" parameterType="bookmark" useGeneratedKeys="true" keyProperty="id">
-		insert into bookmark(user, name, type)
+
+	<delete id="deleteByBookmarkUserId"
+		parameterType="java.util.HashMap">
+		delete from bookmark where id in (select code from (
+		select b.id as code
+		from bookmark b, bookmarkstore bs
+		where b.user =
+		#{userId} and b.type='S' and b.id=bs.bookmark and
+		bs.store=#{storeId}
+		)
+		tmp );
+	</delete>
+
+	<delete id="deleteByBookmarkStoreUserId"
+		parameterType="java.util.HashMap">
+		delete from bookmarkstore where bookmark in (select code
+		from (
+		select b.id as code
+		from bookmark as b, bookmarkstore as bs
+		where
+		b.user = #{userId} and b.type='S' and b.id=bs.bookmark and
+		bs.store=#{storeId}
+		) tmp );
+
+	</delete>
+
+	<select id="selectById" parameterType="integer"
+		resultType="store">
+		select s.id, s.store_id, s.name, s.open_time, s.map_x,
+		s.map_y,
+		s.location_name, s.rating, s.phone, s.tag, s.category, s.image
+		from
+		store s, bookmarkstore bs
+		where bookmark = #{bookmark} and s.id = bs.store
+		order by category, bs.id
+	</select>
+
+	<insert id="insertIntoBookmark" parameterType="bookmark"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into bookmark(user, name,
+		type)
 		values(#{user}, #{name}, #{type})
 	</insert>
 
 	<update id="update" parameterType="bookmark">
-		update bookmark 
-		   set name = #{name},
-		       type = #{type}
-		 where id = #{id}
+		update bookmark
+		set name =
+		#{name},
+		type = #{type}
+		where id = #{id}
 	</update>
 
-	<insert id="insertIntoBookmarkStore" parameterType="java.util.HashMap">
+	<insert id="insertIntoBookmarkStore"
+		parameterType="java.util.HashMap">
 		insert into bookmarkstore(bookmark, store)
 		values(#{bookmark}, #{store})
 	</insert>
-	
+
 	<delete id="deleteFromBookmarkStore" parameterType="integer">
-		delete from bookmarkstore
-		 where bookmark = #{bookmark} 
+		delete from
+		bookmarkstore
+		where bookmark = #{bookmark}
 	</delete>
-	
+
 	<delete id="deleteFromBookmark" parameterType="integer">
-		delete from bookmark
-		 where id = #{id}
+		delete from
+		bookmark
+		where id = #{id}
 	</delete>
 </mapper>

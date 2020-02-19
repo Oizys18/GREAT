@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.ssafy.great.dto.User;
 import com.ssafy.great.model.dao.UserDao;
-import com.ssafy.great.util.JwtUtil;
 
 @Service
 public class UserServiceImpl implements UserService{

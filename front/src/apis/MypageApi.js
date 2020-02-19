@@ -2,22 +2,22 @@ import axios from 'axios'
 var storage = sessionStorage
 /*현재 로그인한 사용자의 회원정보 요청*/ 
 
-var setID=function(){
-  var email = storage.getItem('email')
-  axios
-  .get('http://13.124.1.176/user/search/'+email,{
-      headers: { Authorization : storage.getItem('token') }
-  })
-  .then(res=>{
-      storage.setItem('id',res.data.data.id);
-  })
-}
+// var setID=function(){
+//   var email = storage.getItem('email')
+//   axios
+//   .get('http://13.124.1.176/user/search/'+email,{
+//       headers: { Authorization : storage.getItem('token') }
+//   })
+//   .then(res=>{
+//       storage.setItem('id',res.data.data.id);
+//   })
+// }
 
 
-var requestUserInfo=function(callback){ //data:사용자 email
-    var email = storage.getItem('email')
+var requestUserInfo=function(callback){ 
+    var id = storage.getItem('id')
     axios
-        .get('http://13.124.1.176/user/search/'+email,{
+        .get('http://13.124.1.176/user/'+id,{
             headers: { Authorization : storage.getItem('token') }
         })
         .then(res=>{
@@ -92,14 +92,14 @@ var deleteGridbookmark=function(data,callback){
 }
 
 
-/*foodgrid list*/
+/*store grid list*/
 var requestStorebookmarkList=function(callback){
   var userID=storage.getItem('id')  
   axios
       .get('http://13.124.1.176/bookmark/storelist/'+userID,{
         headers: { Authorization : storage.getItem('token') }
       })
-          //사용자 id에 해당하는 food bookmarks(F)목록을 불러온다.
+          //사용자 id에 해당하는 food bookmarks목록을 불러온다.
       .then(res=>{
         callback(res.data.data)
       })
@@ -126,7 +126,7 @@ export default{
     deleteGridbookmark,
     requestStorebookmarkList,
     requestMyReviews,
-    setID,
+    // setID,
     deleteMember,
 
 }

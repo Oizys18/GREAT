@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.great.dto.User;
+import com.ssafy.great.model.service.JwtService;
 import com.ssafy.great.model.service.UserService;
-import com.ssafy.great.util.JwtUtil;
 import com.ssafy.great.util.RestUtil;
 
 import io.swagger.annotations.ApiOperation;
@@ -26,6 +26,8 @@ import io.swagger.annotations.ApiOperation;
 public class UserController {
 	@Autowired
 	private UserService service;
+	@Autowired
+	private JwtService jwtService;
 	
 	@GetMapping("/user")
 	@ApiOperation("모든 사용자 목록 검색")
@@ -58,12 +60,15 @@ public class UserController {
 	@ApiOperation("사용자 로그인")
 	public ResponseEntity<Map<String,Object>> login(@RequestBody Map<String, String> loginData){
 		boolean result = service.login(loginData);
-		Map<String, String> data = new HashMap<String, String>();
+		Map<String, Object> data = new HashMap<String, Object>();
 		
-		if(result) data.put("data", "success");
+		if(result) {
+			data.put("data", "success");
+			data.put("Info",service.selectByEmail(loginData.get("email")));
+		}
 		else return RestUtil.handleSuccess("not success");
 		
-		String token = JwtUtil.CreateToken();
+		String token = jwtService.create("user",loginData,"great");
 		data.put("Authorization", token);
 		
 		return RestUtil.handleSuccess(data);
@@ -79,7 +84,7 @@ public class UserController {
 		
 		if(result) data.put("data", "success");
 		else return RestUtil.handleSuccess("not success");		
-		String token = JwtUtil.CreateToken();
+		String token = jwtService.create("user",sns_token,"great");
 		data.put("Authorization", token);
 		return RestUtil.handleSuccess(data);
 	}
@@ -90,7 +95,7 @@ public class UserController {
 		service.join(user);
 		Map<String, String> data = new HashMap<String, String>();
 		
-		String token = JwtUtil.CreateToken();
+		String token = jwtService.create("user",user,"great");
 		data.put("Authorization", token);
 		data.put("data", "success");
 		
@@ -100,6 +105,8 @@ public class UserController {
 	@PutMapping("/user")
 	@ApiOperation("사용자 정보 수정")
 	public ResponseEntity<Map<String,Object>> update(@RequestBody User user){
+		System.out.println("=============");
+		System.out.println(user);
 		service.updateUser(user);
 		return RestUtil.handleSuccess("success");
 	}

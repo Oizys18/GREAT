@@ -36,7 +36,7 @@ public class BasicSettingController {
 	StoreApiServiceImpl storeApiService;
 	
 	@RequestMapping(value = "/create")
-	public ResponseEntity<Map<String,Object>> searchBooks(HttpServletRequest req, HttpServletResponse res) {
+	public ResponseEntity<Map<String,Object>> create(HttpServletRequest req, HttpServletResponse res) {
 		String searchBaseWord="%20맛집";
 		String[] searchWordList = {"명동", "강남", "사당", "홍대", "건대"};
 		

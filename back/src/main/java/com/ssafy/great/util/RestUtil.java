@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 public class RestUtil {
+	public RestUtil() {
+		System.out.println("RestUtil");
+	}
 	public static ResponseEntity<Map<String,Object>> handleSuccess(Object data){
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		resultMap.put("state", "ok");

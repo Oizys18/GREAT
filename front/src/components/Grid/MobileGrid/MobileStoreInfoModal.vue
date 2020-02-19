@@ -2,12 +2,22 @@
   <div
     v-if="storeInfo != null"
     id="sidebar-1"
-    class="sidebar-container animated bounceInLeft delay:0.05s"
-  >
+    class="mobile-modal-container animated bounce"
+    style="overflow-y:auto; 
+          background-color:white;
+          position: relative;
+          top: 0vh;
+          "
+    >
     <ImageInfo :url="storeInfo.image" />
-    <div class="sidebar-text">
+    <button v-on:click="exitModal" >
+        <div class="storeInfo-modal-collide">✖</div>
+      </button>
+    <div class="sidebar-text" style="top: 0vh;">
       <TitleText :textInfo="storeInfo" />
     </div>
+
+    <!-- <TextInfo :textInfo="storeInfo" /> -->
     <div class="sidebar-tab">
       <button
         v-for="(tab, idx) in tabs"
@@ -29,69 +39,63 @@
         <MapApp class="sidebar-map" :store_id="storeInfo.id"/>
       </div>
     </div>
-    <button @click="collide"><SidebarCollide /></button>
   </div>
 </template>
 
 <script>
+import "@/assets/style/css/mypageStyle.css";
 import "@/assets/style/css/Sidebar.css";
 import ImageInfo from "@/components/Sidebar/ImageInfo";
 import TextInfo from "@/components/Sidebar/TextInfo";
 import TitleText from "@/components/Sidebar/TitleText";
 import ReviewInfo from "@/components/Sidebar/ReviewInfo";
-import SidebarCollide from "@/components/Sidebar/SidebarCollide";
 import MapApp from "@/components/common/MapApp";
-import GridApi from '@/apis/GridApi.js'
+// import GridApi from '@/apis/GridApi.js';
 export default {
   name: "Sidebar",
-  data() {
-    return {
-      currentTab: 0,
-      tabs: ["상세정보", "리뷰", "지도"]
-    };
-  },
   components: {
     ImageInfo,
     TextInfo,
-    ReviewInfo,
     TitleText,
+    ReviewInfo,
     MapApp,
-    SidebarCollide
+    // GridApi
   },
-  mounted: function() {
-    if(this.storeInfo != null) this.tabSelect(0)
-    var userId = sessionStorage.getItem('id')
-    if(userId != null) {
-      GridApi.requestBookmarkStoreList(userId, response => {
-        this.$store.state.bookmarkStoreList = response
-      })
+  data(){
+    return{
+      isClicked:false,
+      currentTab: 0,
+      tabs: ["상세정보", "리뷰", "지도"]
     }
-    
   },
   computed: {
     storeInfo() {
       return this.$store.state.storeInfo;
-    }
-  },
-  watch: {
-    storeInfo() {
-      this.tabSelect(0)
-    }
+    },
+    reviewInfo() {
+      return this.$store.state.reviewInfo;
+    },
+    
   },
   methods: {
-    collide() {
-      var sidebar = document.getElementById("sidebar-1");
-      sidebar.classList.remove("bounceInLeft");
-      sidebar.classList.add("bounceOutLeft");
-      this.$store.state.storeInfo = null
+    exitModal(){
+        this.isClicked=true;
+        this.$emit('exit_Clicked',this.isClicked)
     },
     tabSelect(idx) {
       var prevBtn = document.getElementById("sidebar-tab" + this.currentTab)
-      if(prevBtn != null) prevBtn.style = "background-color: #fbedeb"
+      prevBtn.style = "background-color: #fbedeb"
       this.currentTab = idx
       var selectedBtn = document.getElementById("sidebar-tab" + idx)
-      if(selectedBtn != null) selectedBtn.style = "background-color: #c2bcbca8"
+      selectedBtn.style = "background-color: #c2bcbca8"
     }
   }
 };
 </script>
+
+<style>
+  .sidebar-text-body{
+    text-align: center;
+    padding: 1px 1px 1px 1px;
+  }
+</style>
