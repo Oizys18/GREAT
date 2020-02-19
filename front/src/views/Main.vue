@@ -4,6 +4,7 @@
       <Sidebar />
       <Table :bookmark="0" />
       <SortButton />
+      <ChatUI/>
     </div>
     <div v-else>
       <MobileSortButton />
@@ -18,6 +19,7 @@ import SortButton from "@/components/UI/SortButton.vue";
 import Table from "@/components/Grid/Table.vue";
 import MobileTable from "@/components/Grid/MobileGrid/MobileTable.vue";
 import MobileSortButton from "@/components/Grid/MobileGrid/MobileSortButton.vue";
+import ChatUI from "@/components/UI/ChatUI.vue";
 export default {
   name: "Main",
   components: {
@@ -25,7 +27,8 @@ export default {
     Sidebar,
     SortButton,
     MobileTable,
-    MobileSortButton
+    MobileSortButton,
+    ChatUI
   },
   computed:{
     isWeb(){
