@@ -1,6 +1,6 @@
 <template>
   <div class="nav-bar animated fadeInDown delay-0.2s" id="navbar">
-    <div class="nav-bar-banner-container" id="nbbc">
+    <div class="nav-bar-banner-container">
       <button class="nav-bar-mainbanner" @click="go('/')">
         <div v-if="routepath">
           <img
@@ -49,11 +49,16 @@
           class="nav-bar-banner"
           @click="go('authentication')"
         >
-          <Chip :text="`Auth`" />
+          <Chip :text="`Login`" />
         </button>
-        <button v-else class="nav-bar-banner" @click="go('mypage')">
+        <template v-else>
+        <button class="nav-bar-banner" @click="go('mypage')">
           <Chip :text="`Mypage`" />
         </button>
+        <button class="nav-bar-banner" @click="logout">
+          <Chip :text="`Logout`" />
+        </button>
+        </template>
         <BarButton />
       </div>
     </div>
@@ -69,10 +74,23 @@ export default {
     BarButton,
     Chip
   },
+  data() {
+    return {
+      loggedIn: false
+    }
+  },
   props: ["scrollPosition"],
   methods: {
     go(link) {
       this.$router.push(link);
+    },
+    logout() {
+      sessionStorage.setItem('id', null);
+      sessionStorage.setItem('email', null);
+      sessionStorage.setItem('token', null);
+      this.$store.commit('userInfo', null);
+      this.go('/')
+      this.loggedIn = false
     },
     change() {
       var b1 = document.getElementById("bt1");
@@ -81,61 +99,67 @@ export default {
       var b4 = document.getElementById("bt4");
       var ab1 = document.getElementById("navbar");
       var vabr = document.getElementById("nav-router");
-      if (this.scrollPosition <= 50) {
-        ab1.style.background = "transparent";
-        // b2
-        b2.style.webkitTransform =
-          "translate(" +
-          b1.offsetWidth / 2 +
-          "px" +
-          "," +
-          b1.offsetHeight +
-          "px)";
-
-        // b3
-        b3.style.webkitTransform =
-          "translate(" + (5 + b1.offsetWidth) + "px" + "," + 0 + "px)";
-
-        // b4
-        b4.style.webkitTransform =
-          "translate(" +
-          (b1.offsetWidth / 2 + b2.offsetWidth) +
-          "px" +
-          "," +
-          b2.offsetHeight +
-          "px)";
-        vabr.style.webkitTransform = "translate(" + 0 + "px" + "," + 7 + "px)";
-      } else {
-        var idxB = document.getElementById("index-background").style
-          .backgroundColor;
-        ab1.style.background = idxB;
-        vabr.style.webkitTransform = "translate(" + 0 + "px" + "," + -2 + "px)";
-
-        // b2
-        b2.style.webkitTransform =
-          "translate(" + b1.offsetWidth + "px" + "," + 0 + "px)";
-        // b3
-        b3.style.webkitTransform =
-          "translate(" +
-          (b2.offsetWidth + b1.offsetWidth) +
-          "px" +
-          "," +
-          0 +
-          "px)";
-
-        // b4
-        b4.style.webkitTransform =
-          "translate(" +
-          (b1.offsetWidth + b2.offsetWidth + b3.offsetWidth) +
-          "px" +
-          "," +
-          0 +
-          "px)";
-      }
+      if(b1 != null && b2 != null && b3 != null && b4 != null &&
+          ab1 != null && vabr != null){
+          if (this.scrollPosition >= 50) {
+            ab1.style.background = "transparent";
+            vabr.style.webkitTransform = "translate(" + 0 + "px" + "," + -2 + "px)";
+    
+            // b2
+            b2.style.webkitTransform =
+              "translate(" + b1.offsetWidth + "px" + "," + 0 + "px)";
+            // b3
+            b3.style.webkitTransform =
+              "translate(" +
+              (b2.offsetWidth * 2) +
+              "px" +
+              "," +
+              0 +
+              "px)";
+    
+            // b4
+            b4.style.webkitTransform =
+              "translate(" +
+              (b1.offsetWidth * 4) +
+              "px" +
+              "," +
+              0 +
+              "px)";
+          } else {
+            ab1.style.background = "transparent";
+            // b2
+            b2.style.webkitTransform =
+              "translate(" +
+              b1.offsetWidth / 2 +
+              "px" +
+              "," +
+              b1.offsetHeight +
+              "px)";
+    
+            // b3
+            b3.style.webkitTransform =
+              "translate(" + (5 + b1.offsetWidth) + "px" + "," + 0 + "px)";
+    
+            // b4
+            b4.style.webkitTransform =
+              "translate(" +
+              (b1.offsetWidth / 2 + b2.offsetWidth) +
+              "px" +
+              "," +
+              b2.offsetHeight +
+              "px)";
+            vabr.style.webkitTransform = "translate(" + 0 + "px" + "," + 7 + "px)";
+            }
+        }
     }
   },
   mounted() {
     this.change();
+    if (sessionStorage.getItem("token") != null) {
+      this.loggedIn = true
+    } else {
+      this.loggedIn = false
+    }
   },
   computed: {
     routepath() {
@@ -143,13 +167,6 @@ export default {
         return true;
       } else {
         return false;
-      }
-    },
-    loggedIn() {
-      if (sessionStorage.getItem("token")){
-        return true
-      } else{
-        return false
       }
     }
   },
@@ -161,8 +178,21 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .temp-router {
   display: flex;
+}
+
+.text-chip{
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.3rem 1em 0.3em 1em;
+  margin-right: 0.5vw;
+}
+
+@media (max-width: 800px){
+  .text-chip {
+    display: none;
+  }
 }
 </style>
