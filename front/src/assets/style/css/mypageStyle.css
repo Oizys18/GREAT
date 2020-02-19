@@ -127,7 +127,7 @@
 }
 
 .edit-with-label {
-  font-size: 14px;
+  font-size: 15px;
   position: relative;
 }
 .edit-with-label label {
@@ -136,6 +136,7 @@
   color: grey;
 }
 .edit-with-label input {
+  font-size: 15px;
   text-align: left;
   width: 250px;
   height: 30px;
@@ -143,15 +144,15 @@
   padding: 0 15px 0 70px;
   box-sizing: border-box;
   color: #000;
-  background-color: lightyellow;
+  background-color: #F5F5DC !important;
   /* border: 1px solid #000;
     border-radius: 3px; */
   font-size: 13px;
 }
 .modify-button {
-  padding: 5px 18px;
+  padding: 5px 20px;
   /* border: 1px solid grey; */
-  border: 2px solid #f8f9f9;
+  border: 2px solid lightgrey;
   border-radius: 5px;
   margin-left: 5px;
   margin-right: 5px;

@@ -135,7 +135,8 @@ export default new Vuex.Store({
       "https://i.imgur.com/AVUnO3w.png",
       "https://i.imgur.com/IF2chC8.png",
       "https://i.imgur.com/6V4QzGn.png"
-    ]
+    ],
+    tabFlag:false,
   },
   mutations:{
     'reset'(state){

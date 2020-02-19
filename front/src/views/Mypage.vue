@@ -7,10 +7,13 @@
         </div>
       </div>
       <div class="tab-wrapper">
-        <v-tabs class="tab-container" color="rgb(248,248,255)">
-          <StoreTab />
-          <GridTab />
-          <InfoTab />
+        <v-tabs v-model="active_tab" class="tab-container" color="rgb(248,248,255)">
+          <!-- <v-tab v-for="tab of tabs" :key="tab.index" href='#tab-info'  class="tab-category ">{{tab.name}} </v-tab> -->
+          
+          <v-tab :key=0 href="#tab-store" class="tab-category "> Store </v-tab>
+          <v-tab :key=1 href="#tab-grid"  class="tab-category "> Grid </v-tab>
+          <v-tab :key=2 href="#tab-info"  class="tab-category "> info </v-tab> 
+         
 
           <!-- Store  -->
           <v-tab-item vertical class="store-box-container" id="tab-store">
@@ -58,9 +61,10 @@
 
 <script>
 import "@/assets/style/css/mypageStyle.css";
-import StoreTab from "@/components/Tab/StoreTab.vue";
-import GridTab from "@/components/Tab/GridTab.vue";
-import InfoTab from "@/components/Tab/InfoTab.vue";
+//import StoreTab from "@/components/Tab/StoreTab.vue";
+// import GridTab from "@/components/Tab/GridTab.vue";
+//import InfoTab from "@/components/Tab/InfoTab.vue";
+
 import Info from "@/components/Tab/Info.vue";
 import Reviews from "@/components/Tab/Reviews.vue";
 import StoreList from "@/components/Tab/StoreList.vue";
@@ -70,9 +74,9 @@ import GridApi from '@/apis/GridApi.js';
 export default {
   name: "Mypage",
   components: {
-    StoreTab,
-    GridTab,
-    InfoTab,
+    //StoreTab,
+    // GridTab,
+    //InfoTab,
     Info,
     Reviews,
     GridList,
@@ -80,16 +84,29 @@ export default {
   },
   data() {
     return {
-      tab: null,
       userName: "",
-      tabs: ["Food", "Grid", "Info"],
-      currentTab: 0
+      tabs: [
+        { index: 0, name: "Store" ,page:'#tab-store'},
+        { index: 1, name: "Grid" , page:'#tab-grid'},
+        { index: 2, name: "Info" , page:'#tab-info'}
+      ],
+      active_tab:'tab-store',
     };
+  },
+  watch:{
+    active_tab(){
+      console.log("tab::"+this.active_tab)
+    }
   },
   computed: {},
   mounted: function() {
     //로그인한 사용자 회원 정보 요청
-    
+    // this.active_tab =2;
+    if(this.$store.state.tabFlag){
+      this.active_tab ='tab-grid';
+      this.$store.state.tabFlag=false;
+    }
+    console.log(window.history)
     if (sessionStorage.getItem("token")==null||
       sessionStorage.getItem("token").length <= 10 ) {
       //로그인하지 않은 경우
