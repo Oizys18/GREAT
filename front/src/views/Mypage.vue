@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="tab-wrapper">
-        <v-tabs class="tab-container" color="#000000">
+        <v-tabs class="tab-container" color="rgb(250,250,210)">
           <StoreTab />
           <GridTab />
           <InfoTab />
