@@ -28,7 +28,8 @@ const getID = () => {
 		headers: { Authorization : session.getItem('token') }
 	}).then(
 		res=> {
-			console.log("UserApi id ",res.data.data.id);
+			alert("UserApi email ",session.getItem('email'));
+			alert("UserApi id ",res.data.data.id);
 			session.setItem("id",res.data.data.id);
 		}
 	)

@@ -30,6 +30,7 @@ const loginWithKakao = (success1, fail) => {
                             sessionStorage.setItem('sns_token', JSON.stringify(res["id"]));
                             sessionStorage.setItem('email', JSON.stringify(res["id"]));
                             sessionStorage.setItem('social_data', response.data.data.data);
+                            alert("KakaoApi res ", JSON.stringify(res["id"]));
                             console.log("kakaoapi social data", response.data);
                             console.log("d", response.data.data.data);
                             var msg = response.data.data.data;
@@ -40,7 +41,7 @@ const loginWithKakao = (success1, fail) => {
                                 UserApi.getID(res => {
                                     console.log(res);
                                 }).then(
-                                    console.log("vue id ", sessionStorage.getItem("id")),
+                                    alert("vue id ", sessionStorage.getItem("id")),
                                     window.location.href = "/Main"
                                 );
                             }

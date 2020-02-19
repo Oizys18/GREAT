@@ -126,7 +126,6 @@ var deleteMember = function (callback) {
       }
     })
     .then(res => {
-      storage.setItem('email', null)
       storage.setItem('token', null)
       callback(res)
     })
