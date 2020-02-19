@@ -116,12 +116,6 @@ export default {
     async redirectSocialJoin() {
       var sns_token = sessionStorage.getItem("sns_token");
       var social_data = sessionStorage.getItem("social_data");
-      console.log("re", sns_token);
-      console.log("re social data", social_data);
-      if (sessionStorage.getItem("error") == "access") {
-        console.log(sessionStorage.getItem("error"));
-        this.kakaoLogin();
-      }
       while (social_data == null) {
          alert('아직')
       }
@@ -138,12 +132,6 @@ export default {
     },
     kakaoLogin() {
       KakaoAuth.loginWithKakao()
-        // .then(res => {
-        //   this.redirectSocialJoin().then(res => {
-        //     this.$router.go(0);
-        //   });
-        // })
-        // .catch(console.log('kakao error' + sessionStorage.getItem("error")));
     },
     googleLogin() {
       this.handleClickGetAuth().then(res => {
