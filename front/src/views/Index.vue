@@ -6,7 +6,6 @@
           GrEAT
         </span>
       </span>
-
       <div
         class="index-background transition:0.15s"
         id="index-background"
@@ -50,7 +49,6 @@
     <About :page="page" />
   </div>
 </template>
-
 <script>
 import "@/assets/style/css/indexStyle.css";
 import "@/assets/style/css/animated.css";
@@ -74,8 +72,9 @@ export default {
         "😆GrEAT 해보고 싶어요!🐱‍🚀"
       ],
       content: {
-        0: ["🍱대충 정해도 근사한 식사!", "😮8개의 카테고리 분류를 한 눈에!"],
+        0: ["","🍱대충 정해도 근사한 식사!", "😮8개의 카테고리 분류를 한 눈에!"],
         1: [
+          "",
           "🤦‍♂️메뉴를 결정하지 못해 고민일 때!",
           "🦅빠르게 메뉴를 결정해야 할 때!",
           "🕵️‍♀️처음 가본 곳의 맛집을 찾고싶을 때!"
@@ -84,8 +83,8 @@ export default {
           "",
           "1. 주소를 입력!",
           "2. 9 X 9 그리드로 맛집 고르기!",
-          "",
-          "👇Great한 맛집 고르러 가기"
+          "👇Great한 맛집 고르러 가기",
+          ""
         ]
       }
     };
@@ -160,12 +159,10 @@ export default {
     // touch start
     window.addEventListener("touchstart", this.lock);
     window.addEventListener("mousedown", this.lock);
-
     // touch end
     window.addEventListener("touchend", this.move);
     window.addEventListener("mouseup", this.move);
   }
 };
 </script>
-
 <style></style>
