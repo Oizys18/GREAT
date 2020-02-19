@@ -1,0 +1,72 @@
+﻿<?xml version = "1.0" encoding = "UTF-8"?>
+<aiml>
+   <category>
+      <pattern>안녕</pattern>
+      <template>
+         	안녕하세요. GrEAT봇 입니다.<br></br>이쁘게 봐주세요 :)
+      </template>
+   </category>
+   
+   <category>
+      <pattern>도움말</pattern>
+      <template>
+         1. 전달 [하고싶은말] :<br></br> GrEAT관리자에게 메시지를 전송합니다.<br></br>
+         2. 구성원
+      </template>
+   </category>
+   
+   <category>
+      <pattern>구성원 </pattern>
+      <template>
+         양찬우(팀장) : Front-end<br></br>
+         신채민  : Front-end<br></br>
+         조신비 : Front-end<br></br>
+         조한슬 : Back-end<br></br>
+         박지수 : Back-end
+      </template>
+   </category>
+   
+   
+   <category>
+      <pattern>전달 *</pattern>
+      <template>
+                   관리자에게 <star/> <br></br>
+		 라고 전달할까요 ?
+      </template>
+   </category>
+   
+   <category>
+      <pattern>응</pattern>
+      <template>
+         메세지를 성공적으로 전달하였습니다.
+      </template>
+   </category>
+   
+   <category>
+      <pattern>네</pattern>
+      <template>
+        메세지를 성공적으로 전달하였습니다.
+      </template>
+   </category>
+   
+   <category>
+      <pattern>예</pattern>
+      <template>
+        메세지를 성공적으로 전달하였습니다.
+      </template>
+   </category>
+   
+   <category>
+      <pattern>ㅇㅋ</pattern>
+      <template>
+        메세지를 성공적으로 전달하였습니다.
+      </template>
+   </category>
+   <category>
+      <pattern>ㅇㅇ</pattern>
+      <template>
+        메세지를 성공적으로 전달하였습니다.
+      </template>
+   </category>
+   
+</aiml>
