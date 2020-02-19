@@ -101,58 +101,58 @@ export default {
       var vabr = document.getElementById("nav-router");
       if(b1 != null && b2 != null && b3 != null && b4 != null &&
           ab1 != null && vabr != null){
-        if (this.scrollPosition <= 50) {
-          ab1.style.background = "transparent";
-          // b2
-          b2.style.webkitTransform =
-            "translate(" +
-            b1.offsetWidth / 2 +
-            "px" +
-            "," +
-            b1.offsetHeight +
-            "px)";
-
-          // b3
-          b3.style.webkitTransform =
-            "translate(" + (5 + b1.offsetWidth) + "px" + "," + 0 + "px)";
-
-          // b4
-          b4.style.webkitTransform =
-            "translate(" +
-            (b1.offsetWidth / 2 + b2.offsetWidth) +
-            "px" +
-            "," +
-            b2.offsetHeight +
-            "px)";
-          vabr.style.webkitTransform = "translate(" + 0 + "px" + "," + 7 + "px)";
-        } else {
-          var idxB = document.getElementById("index-background").style
-            .backgroundColor;
-          ab1.style.background = idxB;
-          vabr.style.webkitTransform = "translate(" + 0 + "px" + "," + -2 + "px)";
-
-          // b2
-          b2.style.webkitTransform =
-            "translate(" + b1.offsetWidth + "px" + "," + 0 + "px)";
-          // b3
-          b3.style.webkitTransform =
-            "translate(" +
-            (b2.offsetWidth + b1.offsetWidth) +
-            "px" +
-            "," +
-            0 +
-            "px)";
-
-          // b4
-          b4.style.webkitTransform =
-            "translate(" +
-            (b1.offsetWidth + b2.offsetWidth + b3.offsetWidth) +
-            "px" +
-            "," +
-            0 +
-            "px)";
+          if (this.scrollPosition >= 50) {
+            var idxB = document.getElementById("index-background").style
+              .backgroundColor;
+            ab1.style.background = idxB;
+            vabr.style.webkitTransform = "translate(" + 0 + "px" + "," + -2 + "px)";
+    
+            // b2
+            b2.style.webkitTransform =
+              "translate(" + b1.offsetWidth + "px" + "," + 0 + "px)";
+            // b3
+            b3.style.webkitTransform =
+              "translate(" +
+              (b2.offsetWidth * 2) +
+              "px" +
+              "," +
+              0 +
+              "px)";
+    
+            // b4
+            b4.style.webkitTransform =
+              "translate(" +
+              (b1.offsetWidth * 4) +
+              "px" +
+              "," +
+              0 +
+              "px)";
+          } else {
+            ab1.style.background = "transparent";
+            // b2
+            b2.style.webkitTransform =
+              "translate(" +
+              b1.offsetWidth / 2 +
+              "px" +
+              "," +
+              b1.offsetHeight +
+              "px)";
+    
+            // b3
+            b3.style.webkitTransform =
+              "translate(" + (5 + b1.offsetWidth) + "px" + "," + 0 + "px)";
+    
+            // b4
+            b4.style.webkitTransform =
+              "translate(" +
+              (b1.offsetWidth / 2 + b2.offsetWidth) +
+              "px" +
+              "," +
+              b2.offsetHeight +
+              "px)";
+            vabr.style.webkitTransform = "translate(" + 0 + "px" + "," + 7 + "px)";
+            }
         }
-      }
     }
   },
   mounted() {
