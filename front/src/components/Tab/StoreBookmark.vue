@@ -27,8 +27,8 @@
       </div>
     </div>
 
+    
     <v-dialog v-model="isClicked"   class="storeInfo-modal-dialog" @close="isClicked"  >
-       <!-- store info-->
       <StoreInfoModal @exit_Clicked="exit_Modal" />
     </v-dialog>
 
@@ -61,6 +61,7 @@ export default {
     },
     exit_Modal(flag){
       this.isClicked=!flag;
+       this.$store.state.storeInfo=null;
     }
   }
 };

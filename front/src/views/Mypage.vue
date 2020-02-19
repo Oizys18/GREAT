@@ -7,32 +7,28 @@
         </div>
       </div>
       <div class="tab-wrapper">
-        <v-tabs class="tab-container" color="#DFD7AF">
+        <v-tabs class="tab-container" color="rgb(250,250,210)">
           <StoreTab />
           <GridTab />
           <InfoTab />
 
           <!-- Store  -->
           <v-tab-item vertical class="store-box-container" id="tab-store">
-            <div>
               <v-card flat>
                 <div class="contents">
                   <StoreList />
                 </div>
               </v-card>
-            </div>
           </v-tab-item>
 
           <!-- Grid  -->
           <v-tab-item vertical class="box-container" id="tab-grid">
-            <div>
               <v-card flat>
                 <div class="contents">
                   <!-- <p>grid bookmark lists</p> -->
                   <GridList />
                 </div>
               </v-card>
-            </div>
           </v-tab-item>
 
           <v-tab-item vertical class="box-container" id="tab-info">
@@ -53,6 +49,7 @@
               <Reviews />
             </div>
           </v-tab-item>
+          
         </v-tabs>
       </div>
     </div>
@@ -129,7 +126,5 @@ export default {
 };
 </script>
 <style>
-.contents {
-  max-height: 300px;
-}
+  
 </style>
