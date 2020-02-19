@@ -71,12 +71,16 @@
   display: block;
   position: fixed;
   top: 0;
-  left: 5rem;
-  max-height: 7vmax;
-  max-width: 14vmax;
+  left: 1rem;
+  max-width: 13.5vmax;
+  max-height: 5.5vmax;
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
 }
 .static-banner2 {
   display: none;
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
 }
 
 @media (max-width: 800px) {
@@ -88,6 +92,7 @@
     position: fixed;
     top:0;
     left:1rem;
+
     max-width:20rem;
   }
 }
