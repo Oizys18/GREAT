@@ -28,7 +28,6 @@ const getID = () => {
 		headers: { Authorization : session.getItem('token') }
 	}).then(
 		res=> {
-			console.log("UserApi id ",res.data.data.id);
 			session.setItem("id",res.data.data.id);
 		}
 	)
@@ -41,7 +40,6 @@ const requestLogin = (loginID, loginPW, callback, errorCallback) => { // eslint-
 		})
 		.then(
 			res => {
-				console.log("login: ", res.data);
 				if (res.data.data != "not success") {
 					session.setItem('token', res.data.data.Authorization);
 					session.setItem('id', res.data.data.Info.id)
@@ -71,8 +69,6 @@ const requestSocialRegister = (username, sns_token, birth, gender) => {
 		.then(
 			res => {
 				session.setItem('token', res.data.data.Authorization);
-
-				console.log(res);
 			}
 		)
 };
@@ -88,7 +84,6 @@ const requestRegister = (email, username, password, birth, gender) => {
 		.then(
 			res => {
 				session.setItem('token', res.data.data.Authorization);
-				console.log(res);
 			}
 		)
 };

@@ -116,16 +116,14 @@ export default {
     async redirectSocialJoin() {
       var sns_token = sessionStorage.getItem("sns_token");
       var social_data = sessionStorage.getItem("social_data");
-      console.log("re", sns_token);
-      console.log("re", social_data);
-      while(social_data == null){
-        alert('아직')
+      while (social_data == null) {
+         alert('아직')
       }
       if (social_data != "success") {
         this.$router.push("SocialJoin");
       } else {
         await UserApi.getID(res => {
-          console.log(res)
+          console.log(res);
         }).then(res => {
           console.log("vue id ", sessionStorage.getItem("id"));
           this.$router.push("Main");
@@ -133,16 +131,12 @@ export default {
       }
     },
     kakaoLogin() {
-      KakaoAuth.loginWithKakao().then(res => {
-        this.redirectSocialJoin().then(res => {
-          this.$router.go(0)
-        });
-      });
+      KakaoAuth.loginWithKakao()
     },
     googleLogin() {
       this.handleClickGetAuth().then(res => {
         this.redirectSocialJoin().then(res => {
-          this.$router.go(0)
+          this.$router.go(0);
         });
       });
     },
@@ -158,13 +152,16 @@ export default {
               sessionStorage.setItem("sns_token", GoogleUser["Ca"]);
               sessionStorage.setItem("email", GoogleUser["Ca"]);
               sessionStorage.setItem("social_data", response.data.data.data);
-              if(sessionStorage.getItem('social_data')=="success")
-                sessionStorage.setItem("token", response.data.data.Authorization);
+              if (sessionStorage.getItem("social_data") == "success")
+                sessionStorage.setItem(
+                  "token",
+                  response.data.data.Authorization
+                );
             });
         })
         .catch(error => {
           //on fail do something
-          console.log(error);
+          console.log("error",error);
         });
     }
   }

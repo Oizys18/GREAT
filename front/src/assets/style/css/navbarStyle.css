@@ -29,47 +29,65 @@
 /* GR */
 .nav-bar-mainbanner .bt1 {
   position: fixed;
-  max-height: 2.5vmax;
-  max-width: 5vmax;
+  /* max-height: 2.5vmax;
+  max-width: 5vmax; */
+  max-height: 6vmin;
+  max-width: 15vmin;
+  
 }
 /* EAT */
-.nav-bar-mainbanner .bt2 {
+.nav-bar-mainbanner .bt2 {  
   position: fixed;
-  max-height: 2.5vmax;
-  max-width: 6.5vmax;
+  /* max-height: 2.5vmax;
+  max-width: 6.5vmax; */
+  max-height: 6vmin;
+  max-width: 18vmin;
+  -webkit-transform: translate(50%,100%);
+  transform: translate(50%,100%);
 }
 /* 그래 */
 .nav-bar-mainbanner .bt3 {
   position: fixed;
   opacity: 70%;
-  max-height: 2.5vmax;
-  max-width: 5vmax;
+  /* max-height: 2.5vmax;
+  max-width: 5vmax; */
+  max-height: 6vmin;
+  max-width: 18vmin;
+  -webkit-transform: translate(100%,0%);
+  transform: translate(100%,0%);
 }
 /* 잇 */
 .nav-bar-mainbanner .bt4 {
   position: fixed;
-  max-height: 2.5vmax;
-  max-width: 5vmax;
+  /* max-height: 2.5vmax;
+  max-width: 5vmax; */
+  max-height: 6vmin;
+  max-width: 16vmin;
   opacity: 70%;
+  -webkit-transform: translate(380%,100%);
+  transform: translate(380%,100%);
 }
 
 .nav-bar-mainbanner .bt1,
 .nav-bar-mainbanner .bt2,
 .nav-bar-mainbanner .bt3,
 .nav-bar-mainbanner .bt4 {
-  -webkit-transition: all 1s ease;
-  transition: all 1s ease;
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
 }
 .static-banner {
   display: block;
   position: fixed;
   top: 0;
-  left: 5rem;
-  max-height: 7vmax;
-  max-width: 14vmax;
+  max-width: 13.5vmax;
+  max-height: 5.5vmax;
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
 }
 .static-banner2 {
   display: none;
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
 }
 
 @media (max-width: 800px) {
@@ -79,8 +97,7 @@
   .static-banner2 {
     display: block;
     position: fixed;
-    top:0;
-    left:1rem;
-    max-width:20rem;
+    top:0.5rem;
+    max-width:50vw;
   }
 }

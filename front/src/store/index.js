@@ -135,7 +135,15 @@ export default new Vuex.Store({
       "https://i.imgur.com/AVUnO3w.png",
       "https://i.imgur.com/IF2chC8.png",
       "https://i.imgur.com/6V4QzGn.png"
-    ]
+    ],
+    profileImageUrl:[
+      "https://i.imgur.com/L1i698U.jpg",
+      "https://i.imgur.com/UNlLmE6.jpg",
+      "https://i.imgur.com/sIXjrZh.jpg",
+      "https://i.imgur.com/tC4Mrcq.jpg",
+      "https://i.imgur.com/yrT1WDN.jpg",
+    ],
+    tabFlag:false,
   },
   mutations:{
     'reset'(state){
