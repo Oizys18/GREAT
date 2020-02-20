@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="tab-wrapper">
-        <v-tabs v-model="active_tab" class="tab-container" color="rgb(248,248,255)">
+        <v-tabs id="tab-container" v-model="active_tab" class="tab-container" color="rgb(248,248,255)">
           
           <v-tab :key=0 href="#tab-store" class="tab-category "> Store </v-tab>
           <v-tab :key=1 href="#tab-grid"  class="tab-category "> Grid </v-tab>
