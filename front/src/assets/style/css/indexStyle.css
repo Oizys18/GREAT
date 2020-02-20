@@ -109,7 +109,7 @@
   height: 100vh;
 
   /* background */
-  opacity: 70%;
+  opacity: 0.7;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -129,7 +129,7 @@
   justify-content: space-between;
   z-index: 2;
   width: 100%;
-  opacity: 100%;
+  opacity: 1;
 }
 /* index buttons */
 .index-next {

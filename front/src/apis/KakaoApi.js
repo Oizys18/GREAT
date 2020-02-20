@@ -29,13 +29,13 @@ const loginWithKakao = (success1, fail) => {
                             sessionStorage.setItem('social_data', response.data.data.data);
                             var msg = response.data.data.data;
                             if (msg != "success") {
-                                window.location.href = "/SocialJoin";
+                                window.location.href = "/socialjoin";
                             } else {
                                 sessionStorage.setItem("token", response.data.data.Authorization);
                                 UserApi.getID(res => {
                                     console.log(res);
                                 }).then(
-                                    window.location.href = "/Main"
+                                    window.location.href = "/main"
                                 );
                             }
                         })

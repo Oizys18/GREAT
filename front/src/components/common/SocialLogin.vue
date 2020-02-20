@@ -116,17 +116,14 @@ export default {
     async redirectSocialJoin() {
       var sns_token = sessionStorage.getItem("sns_token");
       var social_data = sessionStorage.getItem("social_data");
-      while (social_data == null) {
-         alert('아직')
-      }
       if (social_data != "success") {
-        this.$router.push("SocialJoin");
+        this.$router.push("socialjoin");
       } else {
         await UserApi.getID(res => {
           console.log(res);
         }).then(res => {
           console.log("vue id ", sessionStorage.getItem("id"));
-          this.$router.push("Main");
+          this.$router.push("main");
         });
       }
     },
@@ -166,18 +163,4 @@ export default {
     }
   }
 };
-
-// getKakaoData() {
-
-//       return KakaoAuth.loginWithKakao(
-//          success callback
-//         (res) => {
-//           console.log("콜백나왔다"+res);
-//         },
-//          fail callback
-//         (error) => {
-
-//       });
-
-//     },
 </script>
