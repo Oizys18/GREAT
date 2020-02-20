@@ -238,8 +238,10 @@
 }
 .review-card-contents {
   position: absolute;
-  bottom: 20%;
-  left: 35%;
+  /* bottom: 20%; */
+  display:flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -255,9 +257,9 @@
 }
 .tab-review-card {
   border: 0.5px solid black;
-  padding: 10px;
+  padding: 2px;
   float: left;
-  margin: 10px 10px 5px 5px;
+  margin: 1vw 1vw 1vw 1vw;
   width: 170px;
   height: 140px;
 }
