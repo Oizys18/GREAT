@@ -43,6 +43,8 @@ const requestLogin = (loginID, loginPW, callback, errorCallback) => { // eslint-
 				if (res.data.data != "not success") {
 					session.setItem('token', res.data.data.Authorization);
 					session.setItem('id', res.data.data.Info.id)
+				}else{
+					session.setItem('token',null)
 				}
 
 			}
@@ -101,17 +103,3 @@ const UserApi = {
 }
 
 export default UserApi
-
-// const requestToken = () => {
-// 	var token = session.getItem('token');
-// 	return axios.get('http://70.12.246.123/user', {
-// 			headers: {
-// 				'Authorization': token
-// 			}
-// 		})
-// 		.then(
-// 			res => { // eslint-disable-line no-unused-vars
-// 				console.log(session.getItem('token'));
-// 			}
-// 		)
-// }
