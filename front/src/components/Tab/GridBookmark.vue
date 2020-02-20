@@ -59,9 +59,7 @@ export default {
   },
   watch:{
     editTitle(v){
-      console.log(this.editTitle.length)
       if(v.length<=0){
-        console.log('입력안함')
         this.isTitleForm=false;
       }else{
         this.isTitleForm=true;
@@ -83,16 +81,16 @@ export default {
         if(response=='success'){
           this.$store.commit('modifyGridName',this.gridbookmark);
         }
-        
-        //this.$emit('refreshGrid')
       })
       
       this.editFlag=false;
     },
     delteGridbookmark(){
       MypageApi.deleteGridbookmark(this.gridbookmarkItem.id,response=>{
-       console.log('그리드 북마크 삭제함'+response)
-       this.$store.commit('deleteGridItem',this.gridbookmarkItem.id)
+       if(response == 'success'){
+        alert('그리드 북마크를 삭제 완료했습니다.')
+        this.$store.commit('deleteGridItem',this.gridbookmarkItem.id)
+       }
       })
     },
     gridDetail(id){ //클릭한 grid bookmark 화면 모달화면으로 넘겨준다.

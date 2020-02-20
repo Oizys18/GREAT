@@ -6,11 +6,7 @@
           GrEAT
         </span>
       </span>
-      <div
-        class="index-background transition:0.15s"
-        id="index-background"
-        :style="{ backgroundColor: IndexColors[this.page] }"
-      >
+      <div class="index-carousel-indicator">
         <button>
           <img
             @click="pagePrev"
@@ -27,6 +23,11 @@
           />
         </button>
       </div>
+      <div
+        class="index-background transition:0.15s"
+        id="index-background"
+        :style="{ backgroundImage: this.backgroundIMG[this.page] }"
+      ></div>
       <div class="big-screen-carousel" :key="this.page">
         <div class="index-card">
           <div class="index-card-title animated fadeInDown delay:0.15s">
@@ -39,6 +40,16 @@
             >
               {{ cardText }}<br />
             </span>
+            <div class="index-sample-box-container">
+              <span
+                v-show="page === 0"
+                class="index-sample-box animated tada"
+                v-for="(item, idx) in categories"
+                :key="`${item}-${idx}`"
+              >
+                {{ item.name }}
+              </span>
+            </div>
             <span v-show="page === 2">
               <BarButton />
             </span>
@@ -64,6 +75,11 @@ export default {
   },
   data() {
     return {
+      backgroundIMG: [
+        "url(https://i.imgur.com/ZftYIKh.jpg)",
+        "url(https://i.imgur.com/CHTl61z.jpg)",
+        "url(https://i.imgur.com/VpqrLcy.jpg)"
+      ],
       IndexColors: ["#F9D423", "#FC913A", "#FF4E50"],
       page: 0,
       title: [
@@ -72,7 +88,11 @@ export default {
         "😆GrEAT 해보고 싶어요!🐱‍🚀"
       ],
       content: {
-        0: ["","🍱대충 정해도 근사한 식사!", "😮8개의 카테고리 분류를 한 눈에!"],
+        0: [
+          "",
+          "🍱대충 정해도 근사한 식사!",
+          "😮8개의 카테고리 분류를 한 눈에!"
+        ],
         1: [
           "",
           "🤦‍♂️메뉴를 결정하지 못해 고민일 때!",
@@ -152,6 +172,11 @@ export default {
           }
         }
       }
+    }
+  },
+  computed: {
+    categories() {
+      return this.$store.state["categories"];
     }
   },
   mounted() {

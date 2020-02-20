@@ -96,6 +96,7 @@
   }
   .static-banner2 {
     display: block;
+    left:5vw;
     position: fixed;
     top:0.5rem;
     max-width:50vw;

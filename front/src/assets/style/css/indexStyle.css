@@ -36,16 +36,16 @@
 }
 .index-card {
   /* position */
-  top: 13vh;
-  left: 5vw;
+  top: 20vh;
+  left: 9vw;
   z-index: 2;
   position: absolute;
   /* shape */
-  width: 68vw;
-  height: 80vh;
+  width: 60vw;
+  height: 70vh;
   /* box-shadow: 0 0 10px darkslategray; */
   border-radius: 15px;
-  background-color: white;
+  background-color: ghostwhite;
 }
 .index-card:focus {
   background-color: transparent;
@@ -53,8 +53,8 @@
 .index-card-title {
   /* card title position */
   position: relative;
-  left: 5vw;
-  top: 9vh;
+  left: 2vw;
+  top: 5vh;
   z-index: 4;
   /* title text style */
   color: black;
@@ -66,8 +66,8 @@
   /* card content position */
   /* position: fixed; */
   position: relative;
-  left: 5vw;
-  top: 10vh;
+  left: 3vw;
+  top: 5vh;
   z-index: 4;
   /* content text style */
   color: black;
@@ -75,42 +75,103 @@
   font-size: 2.5vmax;
   font-family: "Noto Sans KR", sans-serif;
 }
-.index-background {
-  /* overflow: hidden; */
+
+/* index-content에 들어가는 샘플 박스 */
+.index-sample-box{
+  border:1.5px solid black;
+  font-size:1.3rem;
+  height:5vw;
+  width:5vw;
+  display:block;
+  margin:0.5rem;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center; 
+  font-weight:bold;
+  border-radius: 10px;
+  box-shadow: 0 5px 5px 5px grey;
+  background-color:rgb(243, 153, 8);
+}
+.index-sample-box:hover{
+  background-color: rgb(167, 50, 7);
+}
+.index-sample-box-container{
+  position: absolute;
+  width:50vw;
+  margin-top:8vh;
+  display: flex;
+  justify-content: center;
+}
+
+.index-background {
   /* width & height */
   width: 100vw;
   height: 100vh;
-  /* position & gradient */
+
+  /* background */
+  opacity: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  /* transition */
   -webkit-transition: width 0.6s, height 0.6s, background-color 0.6s,
     -webkit-transform 0.6s;
   transition: width 0.6s, height 0.6s, background-color 0.6s, transform 0.6s;
 }
 /* carousel indicators */
 .index-carousel-indicator {
-  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
   width: 100%;
+  opacity: 100%;
 }
 /* index buttons */
 .index-next {
-  z-index: 5;
+  z-index: 10;
   width: 3.5rem;
   height: 3.5rem;
   transform: scaleX(-1);
   -webkit-transform: scaleX(-1);
 }
 .index-prev {
-  z-index: 5;
+  z-index: 10;
   width: 3.5rem;
   height: 3.5rem;
 }
+
+
+
 @media (max-width: 800px) {
+  .index-carousel-indicator {
+    top:45vh;
+  }
+  .index-sample-box{
+    font-size:1rem;
+    height:13vw;
+    width:13vw;
+    border-radius: 0;
+  }
   .index-card {
     height: 65vh;
-    width: 90vw;
+    width: 83vw;
     top: 22vh;
+    display:flex;
+    /* justify-content: center; */
+    text-align: center;
+    flex-direction: column;
+  }
+  .index-sample-box-container{
+    display:grid;
+    grid-template-rows: 10vh 10vh ;
+    grid-template-columns: 10vh 10vh 10vh 10vh;
+    width:78vw;
+    margin-top:4vh;
   }
   .floating-container {
     /* position */
@@ -122,17 +183,15 @@
   }
   .index-card-title {
     /* card title position */
-    left: 5vw;
-    top: 15vh;
-    width: 80vw;
+    top: 10vh;
+
     /* title text style */
     font-size: 5.5vmin;
   }
   .index-card-content {
     /* card content position */
+    top:10vh;
     width: 80vw;
-    left: 8vw;
-    top: 16vh;
     /* content text style */
     font-size: 5vmin;
   }
@@ -146,3 +205,5 @@
     z-index: 10;
   }
 }
+
+
