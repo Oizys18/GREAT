@@ -85,7 +85,7 @@
   border-radius: 25px;
   max-height: 900px;
   overflow-y: auto;
-  /* overflow:hidden; */
+  margin-right:1vw;
 }
 .box-container::-webkit-scrollbar {
   display: none;
