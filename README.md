@@ -298,6 +298,9 @@
 
 <img src="/img/pages/mmypage.PNG" alt="mmypage" style="zoom:70%;" />
 
+<img src="/img/pages/mmypage2.PNG" alt="mmypage" style="zoom:70%;" />
+
+<img src="/img/pages/mmypage3.PNG" alt="mmypage" style="zoom:70%;" />
 #### Grid
 
 ![grid1](/img/pages/grid1.PNG)
