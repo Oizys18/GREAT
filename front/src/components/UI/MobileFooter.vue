@@ -25,10 +25,10 @@ export default {
       this.$router.go(-1);
     },
     redirectMain(){
-      this.$router.go();
+      this.$router.push('/');
     },
     redirectMypage(){
-      this.$router.push("Mypage");
+      this.$router.push("mypage");
     }
   }
 };
@@ -43,14 +43,13 @@ export default {
 .footer-container {
   display: flex;
   justify-content: space-around;
-  /* align-items: center; */
 }
 .footer-button{
-    /* padding:10px; */
     margin:0 0 15px 0;
     padding:2px 15px 2px 15px;
-    border:1px solid grey;
+    /* border:1px solid transparent; */
     border-radius: 10px;
-    background-color:rgb(202, 142, 74);
+    background-color:rgb(233, 233, 233);
+    box-shadow: 0px 5px 5px rgb(0, 0, 0);
 }
 </style>
