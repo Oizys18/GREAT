@@ -210,7 +210,7 @@ export default {
   background-color: blue;
   color: white;
 }
-.grid-item-name{
+.m-small-box .grid-item-name{
   font-size:5vw;
 }
 </style>
