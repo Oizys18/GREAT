@@ -15,7 +15,7 @@
         <StarRating v-if="mouseOn[i]" :rating="itemName[idx].rating" />
       </button>
     </template>
-    <div class="m-small-category">{{ categoryName }}</div>
+    <div class="m-small-category"><img class="category-image" :src="categoryImage" /></div>
     <template v-for="(idx, i) in indexList.slice(4, 8)">
       <button
         class="m-small-box"
@@ -73,10 +73,6 @@ export default {
       this.isClicked = true;
       GridApi.requestStoreInfo(this.itemName[idx].id, response => {
         this.$store.state.storeInfo = response;
-        // open sidebar
-        // var sidebar = document.getElementById("sidebar-1");
-        // sidebar.classList.remove("bounceOutLeft");
-        // sidebar.classList.add("bounceInLeft");
       });
 
       GridApi.requestReviewInfo(this.itemName[idx].id, response => {
@@ -101,7 +97,10 @@ export default {
     draggable() {
       if(this.bookmark == 0) return true
       else return false
-    }
+    },
+    categoryImage() {
+      return this.$store.state.categoryImageUrl[this.num];
+    },
   }
 };
 </script>

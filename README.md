@@ -276,9 +276,13 @@
 
 #### Login / Join
 
+![login](/img/pages/login.PNG)
+
 ![join](/img/pages/join.PNG)
 
 ![socialjoin](/img/pages/socialjoin.PNG)
+
+![findpassword](/img/pages/findpassword.PNG)
 
 <img src="/img/pages/mlogin.PNG" alt="mlogin" style="zoom:70%;" />
 
@@ -302,7 +306,11 @@
 
 ![sidebar](/img/pages/sidebar.png)
 
+<img src="/img/pages/mgrid1.PNG" alt="mgrid1" style="zoom:70%;" />
 
+<img src="/img/pages/mgrid2.PNG" alt="mgrid2" style="zoom:70%;" />
+
+<img src="/img/pages/mgrid3.PNG" alt="mgrid3" style="zoom:70%;" />
 
 ## Test
 
@@ -329,3 +337,5 @@
 #### 조신비 (Front-End developer)
 
 #### 신채민 (Front-End developer)
+
+![team](/img/pages/team.PNG)

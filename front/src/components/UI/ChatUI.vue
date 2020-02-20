@@ -49,7 +49,7 @@ export default {
         }
         generate_message(msg, "self");
         setTimeout(function() {
-          axios.post("http://localhost/chat", data           ).then(response => {
+          axios.post("http://13.124.1.176/chat", data           ).then(response => {
           generate_message(response.data.data.data);
           });
         }, 1000);

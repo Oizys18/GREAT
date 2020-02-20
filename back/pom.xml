@@ -23,14 +23,6 @@
 
 	<dependencies>
 
-
-		<dependency>
-			<groupId>ab</groupId>
-			<artifactId>program-ab</artifactId>
-			<scope>system</scope>
-			<version>1.0</version>
-			<systemPath>${basedir}\src\lib\Ab.jar</systemPath>
-		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
@@ -127,6 +119,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<includeSystemScope>true</includeSystemScope>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
