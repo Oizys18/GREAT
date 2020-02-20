@@ -21,7 +21,7 @@
   position: absolute;
   /* image layout */
   background-size: contain;
-  background-image: url("https://i2.wp.com/freepngimages.com/wp-content/uploads/2016/11/bacon-burger.png?fit=895%2C895");
+  background-image: url("https://i.imgur.com/umjl3DC.png");
   background-position: center;
 }
 .floating-text {
@@ -129,7 +129,11 @@
   justify-content: space-between;
   z-index: 2;
   width: 100%;
+<<<<<<< HEAD
   opacity: 1;
+=======
+  opacity: 0.7;
+>>>>>>> dabf7fff87e5a3cfc800cff436bfe669107fa5b6
 }
 /* index buttons */
 .index-next {
