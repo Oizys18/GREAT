@@ -85,8 +85,8 @@ export default {
       this.$router.push(link);
     },
     logout() {
-      sessionStorage.setItem('id', null);
-      sessionStorage.setItem('email', null);
+      // sessionStorage.setItem('id', null);
+      // sessionStorage.setItem('email', null);
       sessionStorage.setItem('token', null);
       this.$store.commit('userInfo', null);
       this.go('/')
