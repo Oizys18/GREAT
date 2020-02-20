@@ -24,13 +24,6 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>ab</groupId>
-			<artifactId>program-ab</artifactId>
-			<scope>system</scope>
-			<version>1.0</version>
-			<systemPath>${basedir}\src\lib\Ab.jar</systemPath>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.5.4</version>
