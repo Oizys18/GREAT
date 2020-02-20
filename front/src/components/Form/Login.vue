@@ -68,11 +68,11 @@ export default {
     },
     tokenApi() {
       var token = sessionStorage.getItem("token");
-      if (token != null) {
+      if (token != 'null') {
         this.$router.push('/')
         window.location.reload()
       } else {
-        alert("존재하지 않는 이메일이거나, 틀린 비밀번호입니다.");
+        alert("존재하지 않는 이메일이거나, 틀린 비밀번호입니다.")
       }
     },
     joinRequest() {
