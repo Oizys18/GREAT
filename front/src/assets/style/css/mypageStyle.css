@@ -43,8 +43,8 @@
   align-content: center;
 }
 .name-container {
-  padding-top: 5vh;
-  margin-bottom: 7vh;
+  padding-top: 9vh;
+  margin-bottom: 5vh;
   text-align: center;
 }
 .tab-container {
@@ -504,14 +504,16 @@
     width: 80%;
   }
   .name-container{
-    margin-top: 15px;
-    margin-bottom:1px;
+    margin-top: 1vh;
+    margin-bottom:1vh;
   }
   .box-container {
+    height:480px;
     margin-left: 2.5%;
     margin-right: 2.5%;
   }
   .store-box-container{
+    height:480px;
     margin-left: 2.5%;
     margin-right: 2.5%;
     
@@ -523,8 +525,9 @@
 
   /*info tab*/
   .user-details-with-label label {
-    left: 8%;
-    font-size: 13px;
+    left: 2%;
+    font-size: 14px;
+    
   }
   .edit-with-label label {
     font-size: 13px;
@@ -594,11 +597,15 @@
     margin-top: 3px;
     margin-bottom: 3px;
 
-    width: 110px;
-    height:110px;
+    width: 111px;
+    height:111px;
   }
   .hvrbox .hvrbox-layer_bottom{
-    width:110px;
-    height:110px
+    width:111px;
+    height:111px
+  }
+  .hvrbox .hvrbox-text {
+    font-size: 9px;
+  
   }
 }
