@@ -14,8 +14,6 @@
 
 7. [Developers](#developers)
 
-   
-
 ## 기본 환경 세팅
 
 ### Frontend
@@ -25,10 +23,16 @@
 - `vue`: 2.6.11
   - `vuecli` : `npm install -g @vue/cli` : 4.1.2
 - package.json dependencies
+
 ```
 "dependencies": {
+  "axios": "^0.19.2",
   "core-js": "^3.4.4",
+  "email-validator": "^2.0.4",
+  "password-validator": "^5.0.3",
   "vue": "^2.6.10",
+  "vue-google-oauth2": "^1.4.0",
+  "vue-kakao-login": "^1.0.5",
   "vue-router": "^3.1.3",
   "vuetify": "^2.1.0",
   "vuex": "^3.1.2"
@@ -68,6 +72,7 @@
 |           |               |-- config
 |           |               |-- controller
 |           |               |-- dto
+|           |               |-- exception
 |           |               |-- filter
 |           |               |-- interceptor
 |           |               |-- model
@@ -77,12 +82,24 @@
 |               |-- config
 |               |   |-- SqlMapConfig.xml
 |               |   `-- application-config.xml
-|               `-- query
-|                   |-- bookmark_sql.xml
-|                   |-- category_sql.xml
-|                   |-- review_sql.xml
-|                   |-- store_sql.xml
-|                   `-- user_sql.xml
+|               |-- query
+|               |   |-- bookmark_sql.xml
+|               |   |-- category_sql.xml
+|               |   |-- review_sql.xml
+|               |   |-- store_sql.xml
+|               |   `-- user_sql.xml
+|               `-- static
+|                   |-- 649900.png
+|                   |-- css
+|                   |   |-- app.6f548207.css
+|                   |   `-- chunk-vendors.d0bfe27c.css
+|                   |-- favicon.ico
+|                   |-- index.html
+|                   `-- js
+|                       |-- app.fc8c495d.js
+|                       |-- app.fc8c495d.js.map
+|                       |-- chunk-vendors.270e66b8.js
+|                       `-- chunk-vendors.270e66b8.js.map
 `-- front
     |-- README.md
     |-- babel.config.js
@@ -95,14 +112,70 @@
     `-- src
         |-- App.vue
         |-- apis
+        |   |-- BookmarkApi.js
+        |   |-- GridApi.js
+        |   |-- KakaoApi copy.js
+        |   |-- KakaoApi.js
+        |   |-- MypageApi.js
         |   `-- UserApi.js
         |-- assets
+        |   |-- img
         |   `-- style
         |-- components
+        |   `
+        |   |-- Form
+        |   |   `-- Login.vue
         |   |-- Grid
+        |   |   |-- FoodCategory.vue
+        |   |   |-- GridItem.vue
+        |   |   |-- GridMap.vue
+        |   |   |-- MainFoodGrid.vue
+        |   |   |-- MobileGrid
+        |   |   `-- Table.vue
+        |   |-- Index
+        |   |   |-- About.vue
+        |   |   `-- AboutCard.vue
+        |   |-- Sidebar
+        |   |   |-- BodyText.vue
+        |   |   |-- ImageInfo.vue
+        |   |   |-- MenuText.vue
+        |   |   |-- ReviewInfo.vue
+        |   |   |-- ReviewWrite.vue
+        |   |   |-- Sidebar.vue
+        |   |   |-- SidebarCollide.vue
+        |   |   |-- TextInfo.vue
+        |   |   `-- TitleText.vue
         |   |-- Tab
+        |   |   |-- GridBookmark.vue
+        |   |   |-- GridList.vue
+        |   |   |-- Info.vue
+        |   |   |-- ReviewCard.vue
+        |   |   |-- Reviews.vue
+        |   |   |-- StoreBookmark.vue
+        |   |   |-- StoreInfoModal.vue
+        |   |   `-- StoreList.vue
         |   |-- UI
+        |   |   |-- Button.vue
+        |   |   |-- ChatUI.vue
+        |   |   |-- Footer.vue
+        |   |   |-- Input.vue
+        |   |   |-- MobileFooter.vue
+        |   |   |-- SearchBar.vue
+        |   |   `-- SortButton.vue
         |   `-- common
+        |       |-- BarButton.vue
+        |       |-- BreadCrumb.vue
+        |       |-- Card.vue
+        |       |-- CardContainer.vue
+        |       |-- CarouselIndicator.vue
+        |       |-- Chip.vue
+        |       |-- LogoutButton.vue
+        |       |-- MapApp.vue
+        |       |-- NavBar.vue
+        |       |-- SearchMap.vue
+        |       |-- SocialLogin.vue
+        |       |-- StarRating.vue
+        |       `-- StarRatingInput.vue
         |-- main.js
         |-- plugins
         |   `-- vuetify.js
@@ -112,13 +185,18 @@
         |   `-- index.js
         `-- views
             |-- Authentication.vue
+            |-- BookmarkGrid.vue
+            |-- FindPassword.vue
             |-- Index.vue
+            |-- Join.vue
             |-- Main.vue
+            |-- Map.vue
             |-- Mypage.vue
-            `-- PageNotFound.vue
+            |-- PageNotFound.vue
+            |-- Social.vue
+            |-- SocialJoin.vue
+            `-- index2.vue
 ```
-
-
 
 ## 데이터베이스 구조
 
@@ -193,13 +271,9 @@
 | bookmark | 북마크 id                | int  | foreign key(bookmark.id)    |
 | store    | 식당 id                  | int  | foreign key(store.id)       |
 
-
-
 #### Database Diagram
 
 ![DatabaseDiagram](/img/DatabaseDiagram.PNG)
-
-
 
 ## REST API
 
@@ -226,26 +300,26 @@
 
 #### Store API
 
-| Method | URI                                | Definition                                                   |
-| ------ | ---------------------------------- | ------------------------------------------------------------ |
-| GET    | /store/{id}                        | 식당 id에 해당하는 식당 정보 검색                            |
+| Method | URI                                | Definition                                                           |
+| ------ | ---------------------------------- | -------------------------------------------------------------------- |
+| GET    | /store/{id}                        | 식당 id에 해당하는 식당 정보 검색                                    |
 | GET    | /store/rating/{category}/{x}/{y}   | 식당 category에 해당하는 식당 목록 검색<br>(별점 기준 내림차순 정렬) |
 | GET    | /store/location/{category}/{x}/{y} | 식당 category에 해당하는 식당 목록 검색<br>(거리 기준 내림차순 정렬) |
-| GET    | /store/rand/{category}/{x}/{y}     | 식당 category에 해당하는 식당 목록 검색<br>(랜덤 정렬)       |
-| PUT    | /store                             | 식당 정보 수정                                               |
-| DELETE | /store/{id}                        | 식당 id에 해당하는 식당 정보 삭제                            |
+| GET    | /store/rand/{category}/{x}/{y}     | 식당 category에 해당하는 식당 목록 검색<br>(랜덤 정렬)               |
+| PUT    | /store                             | 식당 정보 수정                                                       |
+| DELETE | /store/{id}                        | 식당 id에 해당하는 식당 정보 삭제                                    |
 
 #### Review API
 
-| Method | URI                     | Definition                                                   |
-| ------ | ----------------------- | ------------------------------------------------------------ |
-| GET    | /review                 | 모든 리뷰 목록 검색                                          |
-| GET    | /review/{id}            | 리뷰 id에 해당하는 리뷰 검색                                 |
+| Method | URI                     | Definition                                                               |
+| ------ | ----------------------- | ------------------------------------------------------------------------ |
+| GET    | /review                 | 모든 리뷰 목록 검색                                                      |
+| GET    | /review/{id}            | 리뷰 id에 해당하는 리뷰 검색                                             |
 | GET    | /review/store/{store}   | 식당 id에 해당하는 리뷰 목록 검색<br>(리뷰 작성 날짜 기준 내림차순 정렬) |
-| GET    | /review/search/{userId} | 사용자 id에 해당하는 리뷰 목록 검색                          |
-| POST   | /review                 | 리뷰 정보 등록                                               |
-| PUT    | /review                 | 리뷰 정보 수정                                               |
-| DELETE | /review/{id}            | 리뷰 id에 해당하는 리뷰 정보 삭제                            |
+| GET    | /review/search/{userId} | 사용자 id에 해당하는 리뷰 목록 검색                                      |
+| POST   | /review                 | 리뷰 정보 등록                                                           |
+| PUT    | /review                 | 리뷰 정보 수정                                                           |
+| DELETE | /review/{id}            | 리뷰 id에 해당하는 리뷰 정보 삭제                                        |
 
 #### Bookmark API
 
@@ -258,11 +332,9 @@
 | DELETE | /bookmark/{id}               | 북마크 id에 해당하는 북마크 삭제                 |
 | DELETE | /bookmark/{userId}/{storeId} | 사용자가 북마크한 식당 id에 해당하는 북마크 삭제 |
 
-
-
 ## 구현 결과
 
-#### Index 
+#### Index
 
 ![index](/img/pages/index.PNG)
 
@@ -271,8 +343,6 @@
 ![index3](/img/pages/index3.PNG)
 
 <img src="/img/pages/mindex.PNG" alt="mindex" style="zoom:80%;" />
-
-
 
 #### Login / Join
 
@@ -301,6 +371,7 @@
 <img src="/img/pages/mmypage2.PNG" alt="mmypage" style="zoom:70%;" />
 
 <img src="/img/pages/mmypage3.PNG" alt="mmypage" style="zoom:70%;" />
+
 #### Grid
 
 ![grid1](/img/pages/grid1.PNG)
@@ -326,8 +397,6 @@
 ![TestCase3](/img/TestCase3.PNG)
 
 ![TestCase4](/img/TestCase4.PNG)
-
-
 
 ## Developers
 
