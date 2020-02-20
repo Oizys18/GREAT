@@ -23,10 +23,10 @@
     <div class="sidebar-tab-content">
       <div v-show="currentTab == 0"><TextInfo :textInfo="storeInfo" /></div>
       <div v-show="currentTab == 1">
-        <ReviewInfo :storeId="storeInfo.id"/>
+        <ReviewInfo :storeId="storeInfo.id" />
       </div>
-      <div v-show="currentTab == 2">
-        <MapApp class="sidebar-map" :store_id="storeInfo.id"/>
+      <div v-show="currentTab == 2" :key="MapKey">
+        <MapApp class="sidebar-map" :store_id="storeInfo.id" />
       </div>
     </div>
     <button @click="collide"><SidebarCollide /></button>
@@ -41,11 +41,12 @@ import TitleText from "@/components/Sidebar/TitleText";
 import ReviewInfo from "@/components/Sidebar/ReviewInfo";
 import SidebarCollide from "@/components/Sidebar/SidebarCollide";
 import MapApp from "@/components/common/MapApp";
-import GridApi from '@/apis/GridApi.js'
+import GridApi from "@/apis/GridApi.js";
 export default {
   name: "Sidebar",
   data() {
     return {
+      MapKey: 0,
       currentTab: 0,
       tabs: ["상세정보", "리뷰", "지도"]
     };
@@ -59,14 +60,13 @@ export default {
     SidebarCollide
   },
   mounted: function() {
-    if(this.storeInfo != null) this.tabSelect(0)
-    var userId = sessionStorage.getItem('id')
-    if(userId != null) {
+    if (this.storeInfo != null) this.tabSelect(0);
+    var userId = sessionStorage.getItem("id");
+    if (userId != null) {
       GridApi.requestBookmarkStoreList(userId, response => {
-        this.$store.state.bookmarkStoreList = response
-      })
+        this.$store.state.bookmarkStoreList = response;
+      });
     }
-    
   },
   computed: {
     storeInfo() {
@@ -75,7 +75,7 @@ export default {
   },
   watch: {
     storeInfo() {
-      this.tabSelect(0)
+      this.tabSelect(0);
     }
   },
   methods: {
@@ -83,22 +83,29 @@ export default {
       var sidebar = document.getElementById("sidebar-1");
       sidebar.classList.remove("bounceInLeft");
       sidebar.classList.add("bounceOutLeft");
-      this.$store.state.storeInfo = null
+      this.$store.state.storeInfo = null;
     },
     tabSelect(idx) {
-      var prevBtn = document.getElementById("sidebar-tab" + this.currentTab)
-      if(prevBtn != null) prevBtn.style = "background-color: #fbedeb"
-      this.currentTab = idx
-      var selectedBtn = document.getElementById("sidebar-tab" + idx)
-      if(selectedBtn != null) selectedBtn.style = "background-color: #c2bcbca8"
+      var prevBtn = document.getElementById("sidebar-tab" + this.currentTab);
+      if (prevBtn != null) prevBtn.style = "background-color: #fbedeb";
+      this.currentTab = idx;
+      var selectedBtn = document.getElementById("sidebar-tab" + idx);
+      if (selectedBtn != null)
+        selectedBtn.style = "background-color: #c2bcbca8";
+      if (idx == 2) {
+        this.MapKey += 1;
+      }
     }
   }
 };
 </script>
-<style  scoped>
-.sidebar-map{
-  position:relative;
-  width:30vw;
-  height:45vh;
+<style scoped>
+.sidebar-map {
+  position: relative;
+  width: 30vw;
+  height: 45vh;
+}
+#map {
+  width: 100%;
 }
 </style>

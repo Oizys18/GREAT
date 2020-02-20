@@ -210,4 +210,7 @@ export default {
   background-color: blue;
   color: white;
 }
+.grid-item-name{
+  font-size:5vw;
+}
 </style>
