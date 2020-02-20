@@ -1,20 +1,17 @@
 <template>
   <div class="M-table">
     <MobileFoodCategory />
-    <MobileFooter />
   </div>
 </template>
 
 <script>
 import MobileFoodCategory from "@/components/Grid/MobileGrid/MobileFoodCategory.vue";
-import MobileFooter from "@/components/UI/MobileFooter.vue";
-import GridApi from '@/apis/GridApi.js'
-import BookmarkApi from '@/apis/BookmarkApi.js'
+import GridApi from "@/apis/GridApi.js";
+import BookmarkApi from "@/apis/BookmarkApi.js";
 export default {
   name: "MobileTable",
   components: {
-    MobileFoodCategory,
-    MobileFooter
+    MobileFoodCategory
   },
   props: ["bookmark"],
   mounted() {
@@ -41,9 +38,6 @@ export default {
         category: categoryId
       };
       GridApi.requestGridStoresByRandom(data, response => {
-        for (var i = response.length; i < 8; i++) {
-          response.push({ name: "" });
-        }
         this.$store.commit(categoryName, response);
       });
     },
@@ -52,7 +46,6 @@ export default {
       for (var i = 0; i < categories.length; i++) {
         var categoryName = categories[i].name;
         var startIndex = i * 8;
-
         this.$store.commit(
           categoryName,
           list.slice(startIndex, startIndex + 8)
@@ -64,11 +57,5 @@ export default {
 </script>
 
 <style>
-.M-table {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 </style>

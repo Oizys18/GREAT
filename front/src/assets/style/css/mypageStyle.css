@@ -145,37 +145,33 @@
   box-sizing: border-box;
   color: #000;
   background-color: #F5F5DC !important;
-  /* border: 1px solid #000;
-    border-radius: 3px; */
   font-size: 13px;
 }
 .modify-button {
   padding: 5px 20px;
-  /* border: 1px solid grey; */
   border: 2px solid lightgrey;
   border-radius: 5px;
   margin-left: 5px;
   margin-right: 5px;
 }
 .modify-button:hover {
-  background-color: #f8f9f9;
-  border: 1px solid #f8f9f9;
+  background-color: lightgrey !important;
+  border: 2px solid lightgrey;
 }
 .withdraw-button{
   position: absolute;
-  top:90%;
+  top:85%;
   right:1%;
   transform: translate(-5%, -50%);
   -ms-transform: translate(-5%, -50%);
 
   padding: 5px 15px;
   border-radius: 5px;
-  border: 2px solid #f8f9f9;
-  background-color: #f8f9f9 ;
+  border: 1px solid lightgrey;
 }
 .withdraw-button:hover{
-  background-color: #cfd3d3 ;
-  border: 1px solid #cfd3d3 ;
+  background-color: lightgrey !important ;
+  border: 1px solid lightgrey ;
 }
 .gender-box {
   align-items: center;
@@ -194,9 +190,6 @@
 .mypage-radio-btn-group label {
   font-size: 14px;
   color: grey;
-
-  /* position: absolute;
-    left: -7.5%; */
 }
 .mypage-radio-btn-group .mypage-radio {
   margin: 0 0.35rem;
@@ -233,6 +226,19 @@
   width: 2.5%;
   height: 2.5%;
 }
+.review-card-contents{
+  position: absolute;
+  bottom: 20%;
+  left:35%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.review-card-rating{
+  position: absolute;
+  left:30%;
+  bottom: 7%;
+}
+
 /* card components */
 .v-card{
   box-shadow: none !important;
@@ -241,22 +247,10 @@
   border: 0.5px solid black;
   padding: 10px;
   float: left;
-  /* margin-top:10px;
-    margin-bottom: 5px;
-    margin-right:10px; */
   margin: 10px 10px 5px 5px;
   width: 170px;
   height: 140px;
 }
-
-.review-card-name {
-}
-.review-card-contents {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-
 /* food,grid,info components */
 /*food bookmark*/
 .foodbookmark-item{
@@ -280,13 +274,10 @@
 	position: relative;
 	display: block;
 	overflow: hidden;
-  /* border:1px solid gainsboro; */
   width:  250px;
   height: 250px;
   cursor: pointer;
-  /*상 우 하 좌*/
   margin: 5px 5px 5px 20px;
-  /* margin: 5px; */
   float: left;
 }
 .hvrbox img {

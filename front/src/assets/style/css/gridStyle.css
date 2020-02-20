@@ -131,7 +131,7 @@
   vertical-align: middle;
 }
 .category-image {
-  z-index: 2;
+  z-index: 1;
   position: relative;
   border-radius: 15px;
   box-shadow: 0px 4px 4px gray;
@@ -154,28 +154,15 @@
 .category-name:hover {
   opacity: 1;
 }
-/* for tablet and mobile viewport */
-/* @media (max-width: 800px) {
-  .big-grid {
-    display: inline;
-  }
-  .big-box {
-    background: none;
-  }
-  .cross-box {
-    background: none;
-  }
-  .small-grid {
-    display: none;
-  }
-  .category-grid {
-    display: grid;
-    grid-template-rows: 30vw 30vw 30vw;
-    grid-template-columns: 30vw 30vw 30vw;
-  }
-} */
 
 /* 모바일 페이지 */
+.M-table {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .m-small-grid {
   display: grid;
@@ -185,18 +172,15 @@
 
 .m-small-box {
   /* colors */
-  background: rgb(240, 193, 39);
+  background: rgb(226, 226, 226);
   color: rgb(0, 0, 0);
 
   /* shapes */
   box-shadow: 0px 5px 5px rgb(255, 192, 76);
   border-radius: 20px;
   margin: 4px;
+  font-size:8vw;
   font-style: bold;
-}
-.m-small-box:hover {
-  white-space: nowrap;
-  overflow: hidden;
 }
 .m-small-category {
   z-index: 1;
@@ -229,5 +213,5 @@
   /* border: 1px solid grey; */
   width: 100%;
   height: 100%;
-  background-color: rgb(236, 122, 16);
+  background-color: rgb(235, 235, 235);
 }

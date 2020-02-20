@@ -1,23 +1,15 @@
 <template>
-  <div
-    v-if="storeInfo != null"
-    id=""
-    class="storeInfo-modal-container "
-  >
+  <div v-if="storeInfo != null" class="storeInfo-modal-container" >
     
     <div class="storeImfo-modal-img-container">
       <img v-if="storeInfo.image !==null || storeInfo.image != undefined" class="storeInfo-modal-image" :src="storeInfo.image"/>
       <img v-else class="storeInfo-modal-image" :src="'https://i.imgur.com/vpGJQAk.jpg'"> 
-      
+
       <button v-on:click="exitModal" >
         <div class="storeInfo-modal-collide">✖</div>
       </button>
-
     </div>
 
-    <!-- <div class="">
-      <TitleText :textInfo="storeInfo" :flag="true" />
-    </div> -->
     <div class="sidebar-text-title">
     <span>
         <div class="sidebar-bookmark" @click="bookmark">
@@ -28,10 +20,11 @@
             />
           </svg>
         </div>
-      <span class="sidebar-text-name">{{storeInfo.name}}</span>
+    <span class="sidebar-text-name">{{storeInfo.name}}</span>
+    
     </span>
-    <StarRating class="sidebar-text-rating" :rating="storeInfo.rating" />
-    <i v-if="storeInfo.phone != '' && storeInfo.phone != undefined" class="fa fa-phone"></i>
+      <StarRating class="sidebar-text-rating" :rating="storeInfo.rating" />
+      <i v-if="storeInfo.phone != '' && storeInfo.phone != undefined" class="fa fa-phone"></i>
     <span style="margin-left:5px">{{storeInfo.phone}}</span>
   </div>
 
@@ -42,8 +35,6 @@
 
 <script>
 import "@/assets/style/css/mypageStyle.css";
-
-// import ImageInfo from "@/components/Sidebar/ImageInfo";
 import TextInfo from "@/components/Sidebar/TextInfo";
 import StarRating from "@/components/common/StarRating";
 import GridApi from "@/apis/GridApi.js";
@@ -63,18 +54,12 @@ export default {
     storeInfo() {
       return this.$store.state.storeInfo;
     },
-    reviewInfo() {
-      return this.$store.state.reviewInfo;
-    },
-    
   },
   methods: {
     exitModal(){
         this.isClicked=true;
         this.$emit('exit_Clicked',this.isClicked)
-        
     },
-    //title text
     bookmark() {
       if(this.marked){
         this.requestDelete()
