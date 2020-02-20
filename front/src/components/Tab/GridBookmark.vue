@@ -8,14 +8,12 @@
     </v-list-item-icon>
 
     <!-- 북마크 이름 -->
-
     <v-list-item-content class="girdbookmark-elem-title" >
       <v-list-item-title v-if="!editFlag" @click="gridDetail(gridbookmarkItem.id)">{{gridbookmarkItem.name}} </v-list-item-title>
       <v-list-item-title v-else>
         <input v-model="editTitle" id="title_modify" name="title_modify" 
         class="title-modify-input" type="text"/> 
       </v-list-item-title>
-      
     </v-list-item-content>
 
     <!-- 수정 버튼-->
@@ -26,8 +24,7 @@
       </v-btn>
       <v-btn  v-else class="ma-2" text icon color="#4AAF6A" id=btn-edit
         v-on:click="editGridBookmark_click" 
-        :disabled="!isTitleForm"  
-      >
+        :disabled="!isTitleForm"  >
         <v-icon>mdi-checkbox-marked-circle</v-icon>
       </v-btn>
     </v-list-item-icon>
@@ -49,19 +46,14 @@ export default {
   props:["gridbookmarkItem"],
   data(){
     return{
-      editFlag:false, //그리드 북마크 수정 여부 flag
-      isTitleForm:true, //title input text여부 check flag -> 수정확인 버튼 disabled 여부  
+      editFlag:false, 
+      isTitleForm:true, 
       editTitle:null,
     }
   },
-  computed:{
-   
-  },
   watch:{
     editTitle(v){
-      console.log(this.editTitle.length)
       if(v.length<=0){
-        console.log('입력안함')
         this.isTitleForm=false;
       }else{
         this.isTitleForm=true;
@@ -75,7 +67,6 @@ export default {
       this.editTitle=this.gridbookmarkItem.name;
     },
     editGridBookmark_click(){ //수정 확인 버튼 클릭
-      // this.$store.state.gridbookmarks[this.gridbookmarkIdx].name = this.editTitle
       this.gridbookmark = this.gridbookmarkItem;
       this.gridbookmark.name=this.editTitle;
 
@@ -83,24 +74,21 @@ export default {
         if(response=='success'){
           this.$store.commit('modifyGridName',this.gridbookmark);
         }
-        
-        //this.$emit('refreshGrid')
       })
-      
       this.editFlag=false;
     },
     delteGridbookmark(){
       MypageApi.deleteGridbookmark(this.gridbookmarkItem.id,response=>{
-       console.log('그리드 북마크 삭제함'+response)
-       this.$store.commit('deleteGridItem',this.gridbookmarkItem.id)
+        if(response=='success'){
+          alert('그리드 북마크가 삭제 되었습니다.')
+          this.$store.commit('deleteGridItem',this.gridbookmarkItem.id)
+        }
       })
     },
     gridDetail(id){ //클릭한 grid bookmark 화면 모달화면으로 넘겨준다.
       this.$router.push('/bookmarkGrid?bookmarkId=' + id)
-     
     }
   }
 };
 </script>
 
-<style></style>

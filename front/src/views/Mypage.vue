@@ -8,7 +8,6 @@
       </div>
       <div class="tab-wrapper">
         <v-tabs v-model="active_tab" class="tab-container" color="rgb(248,248,255)">
-          <!-- <v-tab v-for="tab of tabs" :key="tab.index" href='#tab-info'  class="tab-category ">{{tab.name}} </v-tab> -->
           
           <v-tab :key=0 href="#tab-store" class="tab-category "> Store </v-tab>
           <v-tab :key=1 href="#tab-grid"  class="tab-category "> Grid </v-tab>
@@ -28,7 +27,6 @@
           <v-tab-item vertical class="box-container" id="tab-grid">
               <v-card flat>
                 <div class="contents">
-                  <!-- <p>grid bookmark lists</p> -->
                   <GridList />
                 </div>
               </v-card>
@@ -38,7 +36,6 @@
             <div>
               <v-card flat>
                 <div class="contents">
-                  <!-- <p>grid bookmark lists</p> -->
                   <Info />
                 </div>
               </v-card>
@@ -61,10 +58,6 @@
 
 <script>
 import "@/assets/style/css/mypageStyle.css";
-//import StoreTab from "@/components/Tab/StoreTab.vue";
-// import GridTab from "@/components/Tab/GridTab.vue";
-//import InfoTab from "@/components/Tab/InfoTab.vue";
-
 import Info from "@/components/Tab/Info.vue";
 import Reviews from "@/components/Tab/Reviews.vue";
 import StoreList from "@/components/Tab/StoreList.vue";
@@ -74,9 +67,6 @@ import GridApi from '@/apis/GridApi.js';
 export default {
   name: "Mypage",
   components: {
-    //StoreTab,
-    // GridTab,
-    //InfoTab,
     Info,
     Reviews,
     GridList,
@@ -94,19 +84,14 @@ export default {
     };
   },
   watch:{
-    active_tab(){
-      console.log("tab::"+this.active_tab)
-    }
   },
   computed: {},
   mounted: function() {
-    //로그인한 사용자 회원 정보 요청
-    // this.active_tab =2;
     if(this.$store.state.tabFlag){
       this.active_tab ='tab-grid';
       this.$store.state.tabFlag=false;
     }
-    console.log(window.history)
+    //로그인한 사용자 회원 정보 요청
     if (sessionStorage.getItem("token")==null||
       sessionStorage.getItem("token").length <= 10 ) {
       //로그인하지 않은 경우
@@ -114,17 +99,12 @@ export default {
       this.$router.push("/authentication");
     } else {
       //로그인 한 경우
-
-      // MypageApi.setID();
       MypageApi.requestUserInfo(response=>{
         this.$store.commit('userInfo',response);
       })
       GridApi.requestBookmarkStoreList(sessionStorage.getItem('id'), response => {
       this.$store.state.bookmarkStoreList = response
       })
-      // MypageApi.requestStorebookmarkList(response=>{
-      //   this.$store.commit('userStoreList',response);
-      // })
       MypageApi.requestGridbookmarkList(response=>{
         this.$store.commit('userGridList',response);
       })
@@ -135,10 +115,7 @@ export default {
     }
   },
   methods: {
-    setName(name) {
-      console.log("전달받은 이름:" + name);
-      this.userName = name;
-    }
+   
   }
 };
 </script>

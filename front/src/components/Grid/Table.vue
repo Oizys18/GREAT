@@ -9,7 +9,6 @@
       <div class="cross-box">
         <MainFoodGrid :num="3" :bookmark="bookmark" />
       </div>
-      <!-- <div><FoodCategory /></div> -->
       <div><GridMap v-on:newsearch="gogo" /></div>
       <div class="cross-box">
         <MainFoodGrid :num="4" :bookmark="bookmark" />

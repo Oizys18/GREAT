@@ -9,7 +9,7 @@
         >
           <v-card
           >
-            <TabCard :reviewItem=review />
+            <ReviewCard :reviewItem=review />
           </v-card>
 
         </v-slide-item>
@@ -19,16 +19,11 @@
 </template>
 
 <script>
-import TabCard from "@/components/Tab/TabCard.vue";
+import ReviewCard from "@/components/Tab/ReviewCard.vue";
 export default {
   name: "Reviews",
   components: {
-    TabCard,
-  },
-  data(){
-      return{
-        reviewList:[],
-      }
+    ReviewCard,
   },
   computed:{
     totalReiviews : function(){
@@ -38,11 +33,6 @@ export default {
       return this.$store.state.userReviewList;
     }
   },
-  mounted:function(){
-    
-  }
 };
-
 </script>
 
-<style></style>
