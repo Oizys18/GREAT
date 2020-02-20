@@ -81,6 +81,7 @@ export default {
 }
 
 .about-container {
+  overflow-x:hidden;
   position: absolute;
   top: 100vh;
   width: 100vw;
