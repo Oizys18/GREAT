@@ -28,8 +28,6 @@ const getID = () => {
 		headers: { Authorization : session.getItem('token') }
 	}).then(
 		res=> {
-			alert("UserApi email ",session.getItem('email'));
-			alert("UserApi id ",res.data.data.id);
 			session.setItem("id",res.data.data.id);
 		}
 	)
@@ -42,10 +40,11 @@ const requestLogin = (loginID, loginPW, callback, errorCallback) => { // eslint-
 		})
 		.then(
 			res => {
-				console.log("login: ", res.data);
 				if (res.data.data != "not success") {
 					session.setItem('token', res.data.data.Authorization);
 					session.setItem('id', res.data.data.Info.id)
+				}else{
+					session.setItem('token',null)
 				}
 
 			}
@@ -72,8 +71,6 @@ const requestSocialRegister = (username, sns_token, birth, gender) => {
 		.then(
 			res => {
 				session.setItem('token', res.data.data.Authorization);
-
-				console.log(res);
 			}
 		)
 };
@@ -89,7 +86,6 @@ const requestRegister = (email, username, password, birth, gender) => {
 		.then(
 			res => {
 				session.setItem('token', res.data.data.Authorization);
-				console.log(res);
 			}
 		)
 };
@@ -107,17 +103,3 @@ const UserApi = {
 }
 
 export default UserApi
-
-// const requestToken = () => {
-// 	var token = session.getItem('token');
-// 	return axios.get('http://70.12.246.123/user', {
-// 			headers: {
-// 				'Authorization': token
-// 			}
-// 		})
-// 		.then(
-// 			res => { // eslint-disable-line no-unused-vars
-// 				console.log(session.getItem('token'));
-// 			}
-// 		)
-// }

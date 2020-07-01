@@ -1,15 +1,6 @@
 <template>
-  <!-- <div class="foodbookmark-item">
-    <img src="@/assets/img/cafe.png" class="foodgridbookmark-img" >
-    <div class="foodgridbookmark-box">
-      <div class="foodgridbookmakr-hover-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      </div>
-    </div>
-   </div> -->
   <div class="hvrbox" @click="showStoreDetail(store.id)"
   >
-
     <img v-if="store.image != '' && store.image != undefined && store.image != null"
       :src="store.image" 
       alt="image"
@@ -26,9 +17,8 @@
         <StarRating :rating= "store.rating"/>
       </div>
     </div>
-
+    
     <v-dialog v-model="isClicked"   class="storeInfo-modal-dialog" @close="isClicked"  >
-       <!-- store info-->
       <StoreInfoModal @exit_Clicked="exit_Modal" />
     </v-dialog>
 
@@ -54,13 +44,13 @@ export default {
   methods: {
     showStoreDetail(id) {
       this.isClicked=true;
-
       GridApi.requestStoreInfo(id, response => {
         this.$store.state.storeInfo = response;
       });
     },
     exit_Modal(flag){
       this.isClicked=!flag;
+       this.$store.state.storeInfo=null;
     }
   }
 };

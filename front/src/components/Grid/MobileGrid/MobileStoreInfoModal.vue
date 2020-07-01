@@ -8,11 +8,11 @@
           position: relative;
           top: 0vh;
           "
-    >
+  >
     <ImageInfo :url="storeInfo.image" />
-    <button v-on:click="exitModal" >
-        <div class="storeInfo-modal-collide">✖</div>
-      </button>
+    <button v-on:click="exitModal">
+      <div class="storeInfo-modal-collide">✖</div>
+    </button>
     <div class="sidebar-text" style="top: 0vh;">
       <TitleText :textInfo="storeInfo" />
     </div>
@@ -33,10 +33,10 @@
     <div class="sidebar-tab-content">
       <div v-show="currentTab == 0"><TextInfo :textInfo="storeInfo" /></div>
       <div v-show="currentTab == 1">
-        <ReviewInfo :storeId="storeInfo.id"/>
+        <ReviewInfo :storeId="storeInfo.id" />
       </div>
-      <div v-show="currentTab == 2">
-        <MapApp class="modal-map" :store_id="storeInfo.id"/>
+      <div v-show="currentTab == 2" :key="MapKey">
+        <MapApp class="modal-map" :store_id="storeInfo.id" />
       </div>
     </div>
   </div>
@@ -50,7 +50,6 @@ import TextInfo from "@/components/Sidebar/TextInfo";
 import TitleText from "@/components/Sidebar/TitleText";
 import ReviewInfo from "@/components/Sidebar/ReviewInfo";
 import MapApp from "@/components/common/MapApp";
-// import GridApi from '@/apis/GridApi.js';
 export default {
   name: "Sidebar",
   components: {
@@ -58,15 +57,15 @@ export default {
     TextInfo,
     TitleText,
     ReviewInfo,
-    MapApp,
-    // GridApi
+    MapApp
   },
-  data(){
-    return{
-      isClicked:false,
+  data() {
+    return {
+      MapKey: 0,
+      isClicked: false,
       currentTab: 0,
       tabs: ["상세정보", "리뷰", "지도"]
-    }
+    };
   },
   computed: {
     storeInfo() {
@@ -74,32 +73,38 @@ export default {
     },
     reviewInfo() {
       return this.$store.state.reviewInfo;
-    },
-    
+    }
   },
   methods: {
-    exitModal(){
-        this.isClicked=true;
-        this.$emit('exit_Clicked',this.isClicked)
+    exitModal() {
+      this.isClicked = true;
+      this.$emit("exit_Clicked", this.isClicked);
     },
     tabSelect(idx) {
-      var prevBtn = document.getElementById("sidebar-tab" + this.currentTab)
-      prevBtn.style = "background-color: #fbedeb"
-      this.currentTab = idx
-      var selectedBtn = document.getElementById("sidebar-tab" + idx)
-      selectedBtn.style = "background-color: #c2bcbca8"
+      var prevBtn = document.getElementById("sidebar-tab" + this.currentTab);
+      prevBtn.style = "background-color: #fbedeb";
+      this.currentTab = idx;
+      var selectedBtn = document.getElementById("sidebar-tab" + idx);
+      selectedBtn.style = "background-color: #c2bcbca8";
+      if (idx == 2) {
+        this.MapKey += 1;
+      }
+    }
+  },
+  watch: {
+    storeInfo() {
+      this.tabSelect(0);
     }
   }
 };
 </script>
 
 <style scoped>
-
-.modal-map{
+.modal-map {
   position: relative;
-  left:0vw;
+  left: 0vw;
   width: 80vw;
   height: 42vh;
   background-color: red;
-  }
+}
 </style>

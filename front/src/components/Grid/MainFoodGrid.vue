@@ -1,7 +1,7 @@
 <template>
   <div class="small-grid">
     <template v-for="(idx, i) in indexList.slice(0, 4)">
-      <button 
+      <button
         class="small-box animated bounceIn fast delay-0.1s"
         :draggable="draggable"
         @mouseover="over(i)"
@@ -15,9 +15,11 @@
       </button>
     </template>
     <div class="center-box">
-      <div class="category-img-box"><img class="category-image" :src="categoryImage" /></div>
+      <div class="category-img-box">
+        <img class="category-image" :src="categoryImage" />
+      </div>
       <div class="category-name">
-        <p>{{categoryName}}</p>
+        <p>{{ categoryName }}</p>
       </div>
     </div>
     <template v-for="(idx, i) in indexList.slice(4, 8)">
@@ -99,4 +101,4 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped></style>

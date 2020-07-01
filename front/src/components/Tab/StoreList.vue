@@ -1,17 +1,13 @@
 <template> 
   <!--food grid bookmark -->
   <div class="">
-     <!-- <span v-for="item in foodgridbookmarkList" :key=item.id>
-         <StoreBookmark :FoodBookmarkItem=item />
-     </span> -->
      <span v-for="store in storeList" :key=store.id>
          <StoreBookmark :store=store />
      </span>
-   </div>
+  </div>
 </template>
  
 <script>
-//import MypageApi from '../../apis/MypageApi'
 import GridApi from '@/apis/GridApi'
 import StoreBookmark from "@/components/Tab/StoreBookmark.vue"
 export default {
@@ -26,22 +22,14 @@ export default {
   },
  computed: {
     storeList: function() {
-      //return this.$store.state.userStoreList;
       return this.$store.state.bookmarkStoreList
     },
     
   },
   mounted:function(){
-    
     GridApi.requestStoreInfo(sessionStorage.getItem('id'), response => {
         this.$store.state.storeInfo = response;
     });
   }
 };
 </script>
-<style>
-.hellloo{
-  display: flex;
-  justify-content: center;
-}
-</style>

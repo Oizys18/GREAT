@@ -1,5 +1,5 @@
 <template>
-    <div id="map" class="kakao-map"></div>
+  <div id="map" class="kakao-map"></div>
 </template>
 <script
   type="text/javascript"
@@ -12,9 +12,7 @@ export default {
   name: "MapApp",
   props: ["store_id"],
   data() {
-    return {
-      msg: "하이"
-    };
+    return {};
   },
   mounted: function() {
     var locX = this.$store.state.storeInfo.map_x;
@@ -50,8 +48,8 @@ export default {
       });
       // 지도에 마커를 표시합니다
       marker.setMap(map);
-    },
-  }
+    }
+  },
 };
 </script>
 <style>

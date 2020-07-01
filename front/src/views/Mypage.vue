@@ -7,39 +7,35 @@
         </div>
       </div>
       <div class="tab-wrapper">
-        <v-tabs class="tab-container" color="#DFD7AF">
-          <StoreTab />
-          <GridTab />
-          <InfoTab />
+        <v-tabs id="tab-container" v-model="active_tab" class="tab-container" color="rgb(248,248,255)">
+          
+          <v-tab :key=0 href="#tab-store" class="tab-category "> Store </v-tab>
+          <v-tab :key=1 href="#tab-grid"  class="tab-category "> Grid </v-tab>
+          <v-tab :key=2 href="#tab-info"  class="tab-category "> info </v-tab> 
+         
 
           <!-- Store  -->
           <v-tab-item vertical class="store-box-container" id="tab-store">
-            <div>
               <v-card flat>
                 <div class="contents">
                   <StoreList />
                 </div>
               </v-card>
-            </div>
           </v-tab-item>
 
           <!-- Grid  -->
           <v-tab-item vertical class="box-container" id="tab-grid">
-            <div>
               <v-card flat>
                 <div class="contents">
-                  <!-- <p>grid bookmark lists</p> -->
                   <GridList />
                 </div>
               </v-card>
-            </div>
           </v-tab-item>
 
           <v-tab-item vertical class="box-container" id="tab-info">
             <div>
               <v-card flat>
                 <div class="contents">
-                  <!-- <p>grid bookmark lists</p> -->
                   <Info />
                 </div>
               </v-card>
@@ -53,6 +49,7 @@
               <Reviews />
             </div>
           </v-tab-item>
+          
         </v-tabs>
       </div>
     </div>
@@ -61,9 +58,6 @@
 
 <script>
 import "@/assets/style/css/mypageStyle.css";
-import StoreTab from "@/components/Tab/StoreTab.vue";
-import GridTab from "@/components/Tab/GridTab.vue";
-import InfoTab from "@/components/Tab/InfoTab.vue";
 import Info from "@/components/Tab/Info.vue";
 import Reviews from "@/components/Tab/Reviews.vue";
 import StoreList from "@/components/Tab/StoreList.vue";
@@ -73,9 +67,6 @@ import GridApi from '@/apis/GridApi.js';
 export default {
   name: "Mypage",
   components: {
-    StoreTab,
-    GridTab,
-    InfoTab,
     Info,
     Reviews,
     GridList,
@@ -83,16 +74,24 @@ export default {
   },
   data() {
     return {
-      tab: null,
       userName: "",
-      tabs: ["Food", "Grid", "Info"],
-      currentTab: 0
+      tabs: [
+        { index: 0, name: "Store" ,page:'#tab-store'},
+        { index: 1, name: "Grid" , page:'#tab-grid'},
+        { index: 2, name: "Info" , page:'#tab-info'}
+      ],
+      active_tab:'tab-store',
     };
+  },
+  watch:{
   },
   computed: {},
   mounted: function() {
+    if(this.$store.state.tabFlag){
+      this.active_tab ='tab-grid';
+      this.$store.state.tabFlag=false;
+    }
     //로그인한 사용자 회원 정보 요청
-    
     if (sessionStorage.getItem("token")==null||
       sessionStorage.getItem("token").length <= 10 ) {
       //로그인하지 않은 경우
@@ -100,17 +99,12 @@ export default {
       this.$router.push("/authentication");
     } else {
       //로그인 한 경우
-
-      // MypageApi.setID();
       MypageApi.requestUserInfo(response=>{
         this.$store.commit('userInfo',response);
       })
       GridApi.requestBookmarkStoreList(sessionStorage.getItem('id'), response => {
       this.$store.state.bookmarkStoreList = response
       })
-      // MypageApi.requestStorebookmarkList(response=>{
-      //   this.$store.commit('userStoreList',response);
-      // })
       MypageApi.requestGridbookmarkList(response=>{
         this.$store.commit('userGridList',response);
       })
@@ -121,15 +115,10 @@ export default {
     }
   },
   methods: {
-    setName(name) {
-      console.log("전달받은 이름:" + name);
-      this.userName = name;
-    }
+   
   }
 };
 </script>
 <style>
-.contents {
-  max-height: 300px;
-}
+  
 </style>

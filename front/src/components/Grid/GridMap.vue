@@ -38,14 +38,13 @@ export default {
               }
             })
             .then(res => {
-              console.log(res);
               this.$store.state.locationX = res.data.documents[0].x;
               this.$store.state.locationY = res.data.documents[0].y;
               this.$emit('newsearch')
             });
         }
       }
-    }
+    },
   },
   mounted() {
     var locX = this.$store.state.locationX;

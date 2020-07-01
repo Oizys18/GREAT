@@ -1,5 +1,5 @@
 .index-container {
-  height: 300vh;
+  height: 100vh;
 }
 .carousel-container {
   height: 100vh;
@@ -21,47 +21,41 @@
   position: absolute;
   /* image layout */
   background-size: contain;
-  background-image: url("https://i2.wp.com/freepngimages.com/wp-content/uploads/2016/11/bacon-burger.png?fit=895%2C895");
+  background-image: url("https://i.imgur.com/umjl3DC.png");
   background-position: center;
 }
 .floating-text {
   /* position */
   z-index: 3;
   bottom: 2vmin;
-
   /* shape */
   color: rgba(255, 0, 0, 0.89);
   font-size: min(13vmin, 11.5vmax);
   font-family: "Lobster", cursive;
   text-shadow: 3px 10px 5px rgba(0, 0, 0, 0.541);
 }
-
 .index-card {
   /* position */
-  top: 13vh;
-  left: 5vw;
+  top: 20vh;
+  left: 9vw;
   z-index: 2;
   position: absolute;
-
   /* shape */
-  width: 68vw;
-  height: 80vh;
+  width: 60vw;
+  height: 70vh;
   /* box-shadow: 0 0 10px darkslategray; */
   border-radius: 15px;
-  background-color: white;
+  background-color: ghostwhite;
 }
 .index-card:focus {
   background-color: transparent;
 }
-
 .index-card-title {
   /* card title position */
   position: relative;
-  left: 5vw;
-  top: 9vh;
+  left: 2vw;
+  top: 5vh;
   z-index: 4;
-
-
   /* title text style */
   color: black;
   font-weight: bold;
@@ -72,10 +66,9 @@
   /* card content position */
   /* position: fixed; */
   position: relative;
-  left: 5vw;
-  top: 10vh;
+  left: 3vw;
+  top: 5vh;
   z-index: 4;
-
   /* content text style */
   color: black;
   font-weight: bold;
@@ -83,53 +76,102 @@
   font-family: "Noto Sans KR", sans-serif;
 }
 
-.index-background {
-  /* overflow: hidden; */
+/* index-content에 들어가는 샘플 박스 */
+.index-sample-box{
+  border:1.5px solid black;
+  font-size:1.3rem;
+  height:5vw;
+  width:5vw;
+  display:block;
+  margin:0.5rem;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center; 
+  font-weight:bold;
+  border-radius: 10px;
+  box-shadow: 0 5px 5px 5px grey;
+  background-color:rgb(243, 153, 8);
+}
+.index-sample-box:hover{
+  background-color: rgb(167, 50, 7);
+}
+.index-sample-box-container{
+  position: absolute;
+  width:50vw;
+  margin-top:8vh;
+  display: flex;
+  justify-content: center;
+}
 
+.index-background {
   /* width & height */
   width: 100vw;
   height: 100vh;
 
-  /* position & gradient */
+  /* background */
+  opacity: 0.7;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  /* transition */
   -webkit-transition: width 0.6s, height 0.6s, background-color 0.6s,
     -webkit-transform 0.6s;
   transition: width 0.6s, height 0.6s, background-color 0.6s, transform 0.6s;
 }
-
 /* carousel indicators */
 .index-carousel-indicator {
-  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
   width: 100%;
+  opacity: 0.7;
 }
-
 /* index buttons */
 .index-next {
-  z-index: 5;
+  z-index: 10;
   width: 3.5rem;
   height: 3.5rem;
   transform: scaleX(-1);
   -webkit-transform: scaleX(-1);
 }
 .index-prev {
-  z-index: 5;
+  z-index: 10;
   width: 3.5rem;
   height: 3.5rem;
 }
-  
-@media (max-width: 600px) {
-  .index-card{
-    width:90vw;
-  }
-  .index-card-container {
-    /* position */
-    top: 22vh;
 
-    /* shape */
-    width: 80vw;
-    height: 60vh;
+
+
+@media (max-width: 800px) {
+  .index-carousel-indicator {
+    top:45vh;
+  }
+  .index-sample-box{
+    font-size:1rem;
+    height:13vw;
+    width:13vw;
+    border-radius: 0;
+  }
+  .index-card {
+    height: 65vh;
+    width: 83vw;
+    top: 22vh;
+    display:flex;
+    /* justify-content: center; */
+    text-align: center;
+    flex-direction: column;
+  }
+  .index-sample-box-container{
+    display:grid;
+    grid-template-rows: 10vh 10vh ;
+    grid-template-columns: 10vh 10vh 10vh 10vh;
+    width:78vw;
+    margin-top:4vh;
   }
   .floating-container {
     /* position */
@@ -141,25 +183,18 @@
   }
   .index-card-title {
     /* card title position */
-    left: 6vw;
-    top: 25vh;
-    width:80vw;
+    top: 10vh;
 
     /* title text style */
     font-size: 5.5vmin;
   }
   .index-card-content {
     /* card content position */
-    width:80vw;
-    left: 8vw;
-    top: 27vh;
-
+    top:10vh;
+    width: 80vw;
     /* content text style */
     font-size: 5vmin;
   }
-}
-
-@media (max-width: 800px) {
   .index-background {
     align-items: flex-end;
   }
@@ -170,3 +205,5 @@
     z-index: 10;
   }
 }
+
+

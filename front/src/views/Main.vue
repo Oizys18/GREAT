@@ -4,6 +4,7 @@
       <Sidebar />
       <Table :bookmark="0" />
       <SortButton />
+      <ChatUI/>
     </div>
     <div v-else>
       <MobileSortButton />
@@ -18,6 +19,7 @@ import SortButton from "@/components/UI/SortButton.vue";
 import Table from "@/components/Grid/Table.vue";
 import MobileTable from "@/components/Grid/MobileGrid/MobileTable.vue";
 import MobileSortButton from "@/components/Grid/MobileGrid/MobileSortButton.vue";
+import ChatUI from "@/components/UI/ChatUI.vue";
 export default {
   name: "Main",
   components: {
@@ -25,7 +27,8 @@ export default {
     Sidebar,
     SortButton,
     MobileTable,
-    MobileSortButton
+    MobileSortButton,
+    ChatUI
   },
   computed:{
     isWeb(){
@@ -49,17 +52,5 @@ export default {
   background: linear-gradient(-45deg, rgb(255, 89, 100), #F6A035, rgb(236, 219, 58));
   background-size: 800% 400%;
   animation: gradientBG 5s ease infinite;
-}
-
-@keyframes gradientBG {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
 }
 </style>
