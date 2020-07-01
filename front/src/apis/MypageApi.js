@@ -120,8 +120,6 @@ var requestStorebookmarkList = function (callback) {
     })
 }
 
-
-
 export default {
   requestUserInfo,
   modifyUserInfo,

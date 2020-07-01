@@ -35,7 +35,9 @@ const loginWithKakao = (success1, fail) => {
                                 UserApi.getID(res => {
                                     console.log(res);
                                 }).then(
-                                    window.location.href = "/main"
+                                    alert("vue id ", sessionStorage.getItem("id")),
+                                    window.location.href = "/Main"
+
                                 );
                             }
                         })

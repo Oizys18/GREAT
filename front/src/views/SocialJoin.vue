@@ -58,9 +58,6 @@ export default {
       UserApi.requestSocialRegister(nickname, sns_token, birth, gender, res => {
         console.log(res);
       }).then(
-        sessionStorage.setItem('sns_token',null),
-        sessionStorage.setItem('social_data',null),
-        sessionStorage.setItem('email',null),
         sessionStorage.setItem('token',null)
       );
       this.joinRedirect();
