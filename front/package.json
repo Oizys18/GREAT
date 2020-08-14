@@ -7,9 +7,9 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://oizys18.github.io/GREAT/",
+  "homepage": "https://projects.oizys18.great/",
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.4.4",

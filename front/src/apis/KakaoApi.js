@@ -14,7 +14,7 @@ export default KakaoApi
 const loginWithKakao = (success1, fail) => {
     // 로그인 창을 띄웁니다.
     Kakao.Auth.login({
-        success: function (authObj) {
+        success: function () {
 
             Kakao.API.request({
                 url: '/v2/user/me',
