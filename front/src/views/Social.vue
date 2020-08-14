@@ -17,34 +17,28 @@
   </div>
 </template>
 
-
-
 <script>
 import KakaoAuth from "@/apis/KakaoApi.js";
-import axios from 'axios'
+import axios from "axios";
 export default {
   name: "App",
   methods: {
     kakaoLogin() {
       KakaoAuth.loginWithKakao();
-
     },
     handleClickGetAuth() {
-        this.$gAuth
+      this.$gAuth
         .signIn()
-        .then(GoogleUser => {
-            //on success do something
-          console.log("GoogleUser", GoogleUser["Ca"]);
-            axios.post("http://localhost/user/socialLogin",GoogleUser["Ca"])
-                .then(response=>{
-                    console.log(response.data);
-                })
+        .then((GoogleUser) => {
+          //on success do something
+          axios
+            .post("http://localhost/user/socialLogin", GoogleUser["Ca"])
+            .then();
         })
-        .catch(error => {
-          //on fail do something
-          console.log(error);
+        .catch((error) => {
+          alert(error);
         });
-    }
-  }
+    },
+  },
 };
 </script>

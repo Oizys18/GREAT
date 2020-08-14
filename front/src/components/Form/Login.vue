@@ -61,9 +61,7 @@ export default {
   methods: {
     async loginApi() {
       let { remID, loginID, loginPW } = this;
-      await UserApi.requestLogin(loginID, loginPW, res => {
-        console.log(res);
-      });
+      await UserApi.requestLogin(loginID, loginPW);
       this.tokenApi();
     },
     tokenApi() {

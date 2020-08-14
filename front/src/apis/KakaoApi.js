@@ -15,8 +15,6 @@ const loginWithKakao = (success1, fail) => {
     // 로그인 창을 띄웁니다.
     Kakao.Auth.login({
         success: function (authObj) {
-            console.log(authObj["access_token"])
-            console.log(authObj["refresh_token"])
 
             Kakao.API.request({
                 url: '/v2/user/me',
@@ -32,9 +30,7 @@ const loginWithKakao = (success1, fail) => {
                                 window.location.href = "/socialjoin";
                             } else {
                                 sessionStorage.setItem("token", response.data.data.Authorization);
-                                UserApi.getID(res => {
-                                    console.log(res);
-                                }).then(
+                                UserApi.getID().then(
                                     alert("vue id ", sessionStorage.getItem("id")),
                                     window.location.href = "/Main"
 
@@ -43,7 +39,6 @@ const loginWithKakao = (success1, fail) => {
                         })
                 },
                 fail: function (error) {
-                    console.log(JSON.stringify(error));
                     fail(error)
                 }
             });

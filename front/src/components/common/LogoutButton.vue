@@ -18,9 +18,7 @@ export default {
       this.$router.push(link);
     },
     logoutApi() {
-      UserApi.requestLogout(res => {
-        console.log(res);
-      });
+      UserApi.requestLogout();
     }
   }
 };

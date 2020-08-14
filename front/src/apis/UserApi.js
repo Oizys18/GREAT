@@ -4,11 +4,6 @@ var session = sessionStorage;
 
 const emailCheck = (email) => {
 	var emailRes = axios.get('http://13.124.1.176/user/email/' + email)
-		.then(
-			res => {
-				console.log(res);
-			}
-		)
 	return emailRes.data;
 }
 

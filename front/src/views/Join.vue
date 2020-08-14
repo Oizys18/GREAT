@@ -1,101 +1,138 @@
 <template>
-<div class="auth">
-  <div class="join">
-    <h1>Join</h1>
-    <div class="join-container">
-      
-      <div class="input-with-label email-input">
-        <input
-          v-model="email"
-          v-bind:class="{error : error.email, complete:!error.email&&email.length!==0}"
-          id="email"
-          placeholder="이메일을 입력하세요."
-          type="text"
-        />
-        <label for="email">이메일</label>
+  <div class="auth">
+    <div class="join">
+      <h1>Join</h1>
+      <div class="join-container">
+        <div class="input-with-label email-input">
+          <input
+            v-model="email"
+            v-bind:class="{
+              error: error.email,
+              complete: !error.email && email.length !== 0,
+            }"
+            id="email"
+            placeholder="이메일을 입력하세요."
+            type="text"
+          />
+          <label for="email">이메일</label>
 
-        <button
-          v-if="emailCheckReturn==false"
-          class="v-btn v-btn--contained v-btn--rounded theme--dark"
-          id="email-check"
-          @click="emailCheck()"
-        >중복 확인</button>
-        <button
-          v-else
-          class="v-btn v-btn--contained v-btn--rounded theme--dark"
-          id="email-check"
-          @click="emailAuth()"
-        >이메일 인증</button>
-        <div class="error-text" v-if="error.email">{{error.email}}</div>
-      </div>
+          <button
+            v-if="emailCheckReturn == false"
+            class="v-btn v-btn--contained v-btn--rounded theme--dark"
+            id="email-check"
+            @click="emailCheck()"
+          >
+            중복 확인
+          </button>
+          <button
+            v-else
+            class="v-btn v-btn--contained v-btn--rounded theme--dark"
+            id="email-check"
+            @click="emailAuth()"
+          >
+            이메일 인증
+          </button>
+          <div class="error-text" v-if="error.email">{{ error.email }}</div>
+        </div>
 
-      <div id="emailAuthInput" v-if="emailAuthReturn==true">
-        <input v-model="emailAuthInput" type="text" placeholder="메일로 전송된 인증번호를 입력하세요" />
-        <div></div>
-        <button @click="emailSubmit()">확인</button>
-      </div>
-      <div v-else></div>
-      <div class="input-with-label">
-        <input
-          v-model="password"
-          v-bind:class="{error : error.password, complete:!error.password&&password.length!==0}"
-          id="password"
-          type="password"
-          placeholder="비밀번호를 입력하세요."
-        />
-        <label for="password">비밀번호</label>
-        <div class="error-text" v-if="error.password">{{error.password}}</div>
-      </div>
-
-      <div class="input-with-label">
-        <input
-          v-model="passwordConfirm"
-          type="password"
-          id="password-confirm"
-          placeholder="비밀번호를 다시한번 입력하세요."
-        />
-        <label for="password-confirm">비밀번호 확인</label>
-        <div class="error-text" v-if="error.passwordConfirm">{{error.passwordConfirm}}</div>
-      </div>
-
-      <div class="input-with-label">
-        <input v-model="nickname" id="nickname" placeholder="닉네임을 입력하세요." type="text" />
-        <label for="nickname">닉네임</label>
-      </div>
-
-      <div class="input-with-label">
-        <label for="birth">생년월일</label>
-        <input
-          v-model="birth"
-          id="birth"
-          placeholder="생년월일을 입력하세요."
-          type="date"
-          data-date-picker="activated"
-        />
-      </div>
-      
-      <div class="join-radio-container">
+        <div id="emailAuthInput" v-if="emailAuthReturn == true">
+          <input
+            v-model="emailAuthInput"
+            type="text"
+            placeholder="메일로 전송된 인증번호를 입력하세요"
+          />
+          <div></div>
+          <button @click="emailSubmit()">확인</button>
+        </div>
+        <div v-else></div>
         <div class="input-with-label">
-          <label for="gender">성별</label>
-        </div>
-        <div class="radio-btn-group">
-          <div class="radio">
-            <input type="radio" name="radio" value="M" checked="checked" v-model="gender" id="M" />
-            <label for="M">남성</label>
+          <input
+            v-model="password"
+            v-bind:class="{
+              error: error.password,
+              complete: !error.password && password.length !== 0,
+            }"
+            id="password"
+            type="password"
+            placeholder="비밀번호를 입력하세요."
+          />
+          <label for="password">비밀번호</label>
+          <div class="error-text" v-if="error.password">
+            {{ error.password }}
           </div>
-          <div class="radio">
-            <input type="radio" name="radio" value="F" v-model="gender" id="F" />
-            <label for="F">여성</label>
+        </div>
+
+        <div class="input-with-label">
+          <input
+            v-model="passwordConfirm"
+            type="password"
+            id="password-confirm"
+            placeholder="비밀번호를 다시한번 입력하세요."
+          />
+          <label for="password-confirm">비밀번호 확인</label>
+          <div class="error-text" v-if="error.passwordConfirm">
+            {{ error.passwordConfirm }}
           </div>
         </div>
-      </div>
-      <div class="join-button-container">
-        <v-btn rounded color="#ff7761" dark @click="joinRedirect()">취소</v-btn>
-        <v-btn rounded color="#ff7761" dark @click="joinApi()">가입</v-btn>
+
+        <div class="input-with-label">
+          <input
+            v-model="nickname"
+            id="nickname"
+            placeholder="닉네임을 입력하세요."
+            type="text"
+          />
+          <label for="nickname">닉네임</label>
+        </div>
+
+        <div class="input-with-label">
+          <label for="birth">생년월일</label>
+          <input
+            v-model="birth"
+            id="birth"
+            placeholder="생년월일을 입력하세요."
+            type="date"
+            data-date-picker="activated"
+          />
+        </div>
+
+        <div class="join-radio-container">
+          <div class="input-with-label">
+            <label for="gender">성별</label>
+          </div>
+          <div class="radio-btn-group">
+            <div class="radio">
+              <input
+                type="radio"
+                name="radio"
+                value="M"
+                checked="checked"
+                v-model="gender"
+                id="M"
+              />
+              <label for="M">남성</label>
+            </div>
+            <div class="radio">
+              <input
+                type="radio"
+                name="radio"
+                value="F"
+                v-model="gender"
+                id="F"
+              />
+              <label for="F">여성</label>
+            </div>
+          </div>
+        </div>
+        <div class="join-button-container">
+          <v-btn rounded color="#ff7761" dark @click="joinRedirect()"
+            >취소</v-btn
+          >
+          <v-btn rounded color="#ff7761" dark @click="joinApi()">가입</v-btn>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -130,7 +167,7 @@ export default {
     },
     passwordConfirm: function(v) {
       this.checkForm();
-    }
+    },
   },
   methods: {
     checkForm() {
@@ -152,12 +189,10 @@ export default {
       )
         this.error.passwordConfirm = "입력한 비밀번호와 일치해야 합니다.";
       else this.error.passwordConfirm = false;
-
     },
     emailCheck() {
       let { email } = this;
-      axios.get("http://13.124.1.176/user/email/" + email).then(res => {
-        console.log(res);
+      axios.get("http://13.124.1.176/user/email/" + email).then((res) => {
         if (res.data.data.length < 3) {
           this.emailCheckReturn = true;
         } else {
@@ -167,9 +202,7 @@ export default {
     },
     emailAuth() {
       let { email } = this;
-      UserApi.emailAuth(email, res => {
-        console.log(res);
-      });
+      UserApi.emailAuth(email);
       this.emailAuthReturn = true;
     },
     emailSubmit() {
@@ -185,22 +218,13 @@ export default {
 
     joinApi() {
       let isSubmit1 = true;
-      Object.values(this.error).map(v => {
+      Object.values(this.error).map((v) => {
         if (v) isSubmit1 = false;
       });
-      if(!isSubmit1)this.isSubmit = isSubmit1;
+      if (!isSubmit1) this.isSubmit = isSubmit1;
       let { isSubmit, email, password, nickname, birth, gender } = this;
       if (isSubmit) {
-        UserApi.requestRegister(
-          email,
-          nickname,
-          password,
-          birth,
-          gender,
-          res => {
-            console.log(res);
-          }
-        );
+        UserApi.requestRegister(email, nickname, password, birth, gender);
         this.joinRedirect();
       } else {
         alert("이메일 인증을 해주세요");
@@ -208,8 +232,8 @@ export default {
     },
 
     joinRedirect() {
-      this.$router.push('Authentication');
-    }
+      this.$router.push("Authentication");
+    },
   },
   data() {
     return {
@@ -228,11 +252,11 @@ export default {
       error: {
         email: false,
         password: false,
-        passwordConfirm: false
+        passwordConfirm: false,
       },
       isSubmit: false,
-      component: this
+      component: this,
     };
-  }
+  },
 };
 </script>

@@ -71,48 +71,45 @@ export default {
   components: {
     CarouselIndicator,
     BarButton,
-    About
+    About,
   },
   data() {
     return {
       backgroundIMG: [
         "url(https://i.imgur.com/ZftYIKh.jpg)",
         "url(https://i.imgur.com/CHTl61z.jpg)",
-        "url(https://i.imgur.com/VpqrLcy.jpg)"
+        "url(https://i.imgur.com/VpqrLcy.jpg)",
       ],
       IndexColors: ["#F9D423", "#FC913A", "#FF4E50"],
       page: 0,
       title: [
         "🎉GrEAT과 함께 메뉴를 정해봐요",
         "🐱‍💻언제 GrEAT을 써야하죠?🐱‍🏍",
-        "😆GrEAT 해보고 싶어요!🐱‍🚀"
+        "😆GrEAT 해보고 싶어요!🐱‍🚀",
       ],
       content: {
         0: [
           "",
           "🍱대충 정해도 근사한 식사!",
-          "😮8개의 카테고리 분류를 한 눈에!"
+          "😮8개의 카테고리 분류를 한 눈에!",
         ],
         1: [
           "",
           "🤦‍♂️메뉴를 결정하지 못해 고민일 때!",
           "🦅빠르게 메뉴를 결정해야 할 때!",
-          "🕵️‍♀️처음 가본 곳의 맛집을 찾고싶을 때!"
+          "🕵️‍♀️처음 가본 곳의 맛집을 찾고싶을 때!",
         ],
         2: [
           "",
           "1. 주소를 입력!",
           "2. 9 X 9 그리드로 맛집 고르기!",
           "👇Great한 맛집 고르러 가기",
-          ""
-        ]
-      }
+          "",
+        ],
+      },
     };
   },
   methods: {
-    changePageWithKey(e) {
-      console.log(e.target.value);
-    },
     mouseIsMoving(e) {
       if (screen.width >= 800 && this.$router.app.$route.path === "/") {
         var hamX = document.getElementById("FlyingBurger").offsetLeft;
@@ -172,12 +169,12 @@ export default {
           }
         }
       }
-    }
+    },
   },
   computed: {
     categories() {
       return this.$store.state["categories"];
-    }
+    },
   },
   mounted() {
     window.addEventListener("mousemove", this.mouseIsMoving);
@@ -187,7 +184,7 @@ export default {
     // touch end
     window.addEventListener("touchend", this.move);
     window.addEventListener("mouseup", this.move);
-  }
+  },
 };
 </script>
 <style></style>

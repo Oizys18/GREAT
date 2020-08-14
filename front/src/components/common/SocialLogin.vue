@@ -2,15 +2,38 @@
   <div class="social-login">
     <div id="kakao-login">
       <button @click="kakaoLogin">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 55 55">
-          <g id="그룹_247" data-name="그룹 247" transform="translate(-237 -406)">
-            <g id="구성_요소_2" data-name="구성 요소 2" transform="translate(237 406)">
-              <g id="타원_6" data-name="타원 6" fill="#ffd800" stroke="#eee" stroke-width="1">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="48"
+          height="48"
+          viewBox="0 0 55 55"
+        >
+          <g
+            id="그룹_247"
+            data-name="그룹 247"
+            transform="translate(-237 -406)"
+          >
+            <g
+              id="구성_요소_2"
+              data-name="구성 요소 2"
+              transform="translate(237 406)"
+            >
+              <g
+                id="타원_6"
+                data-name="타원 6"
+                fill="#ffd800"
+                stroke="#eee"
+                stroke-width="1"
+              >
                 <circle cx="27.5" cy="27.5" r="27.5" stroke="none" />
                 <circle cx="27.5" cy="27.5" r="27" fill="none" />
               </g>
             </g>
-            <g id="kakaotalk_1_" data-name="kakaotalk (1)" transform="translate(254 424)">
+            <g
+              id="kakaotalk_1_"
+              data-name="kakaotalk (1)"
+              transform="translate(254 424)"
+            >
               <path
                 id="패스_288"
                 data-name="패스 288"
@@ -46,7 +69,11 @@
               />
             </clipPath>
           </defs>
-          <g id="그룹_248" data-name="그룹 248" transform="translate(-300 -406)">
+          <g
+            id="그룹_248"
+            data-name="그룹 248"
+            transform="translate(-300 -406)"
+          >
             <g
               id="타원_6"
               data-name="타원 6"
@@ -119,20 +146,15 @@ export default {
       if (social_data != "success") {
         this.$router.push("socialjoin");
       } else {
-        await UserApi.getID(res => {
-          console.log(res);
-        }).then(res => {
-          console.log("vue id ", sessionStorage.getItem("id"));
-          this.$router.push("main");
-        });
+        await UserApi.getID().then(this.$router.push("main"));
       }
     },
     kakaoLogin() {
-      KakaoAuth.loginWithKakao()
+      KakaoAuth.loginWithKakao();
     },
     googleLogin() {
-      this.handleClickGetAuth().then(res => {
-        this.redirectSocialJoin().then(res => {
+      this.handleClickGetAuth().then((res) => {
+        this.redirectSocialJoin().then((res) => {
           this.$router.go(0);
         });
       });
@@ -140,12 +162,11 @@ export default {
     async handleClickGetAuth() {
       await this.$gAuth
         .signIn()
-        .then(GoogleUser => {
+        .then((GoogleUser) => {
           //on success do something
-          console.log("GoogleUser", GoogleUser["Ca"]);
           return axios
             .post("http://13.124.1.176/user/socialLogin", GoogleUser["Ca"])
-            .then(response => {
+            .then((response) => {
               sessionStorage.setItem("sns_token", GoogleUser["Ca"]);
               sessionStorage.setItem("email", GoogleUser["Ca"]);
               sessionStorage.setItem("social_data", response.data.data.data);
@@ -156,11 +177,11 @@ export default {
                 );
             });
         })
-        .catch(error => {
+        .catch((error) => {
           //on fail do something
-          console.log("error",error);
+          alert(error)
         });
-    }
-  }
+    },
+  },
 };
 </script>

@@ -42,7 +42,6 @@ export default {
     sendPW() {
       let email = this.email;
       axios.get("http://13.124.1.176/searchpassword/" + email).then((res) => {
-        console.log('메일 전송 성공');
         alert('메일이 전송되었습니다.');
         this.$router.push("Authentication");
       });
