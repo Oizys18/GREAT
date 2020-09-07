@@ -56,7 +56,7 @@ export default {
     socialjoinApi() {
       let { isSubmit, nickname, birth, gender, sns_token } = this;
       UserApi.requestSocialRegister(nickname, sns_token, birth, gender, res => {
-        console.log(res);
+        let result = res
       }).then(
         sessionStorage.setItem('token',null)
       );
